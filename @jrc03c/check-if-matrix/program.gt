@@ -1,0 +1,38 @@
+-- @jrc03c/check-if-matrix
+-- https://www.guidedtrack.com/programs/20507/edit
+-- by Josh Castle (joshrcastle@gmail.com)
+
+>> is_a_matrix = "yes"
+
+*if: not matrix
+	>> is_a_matrix = "no"
+	*return
+
+>> matrix_type = matrix.type
+
+*if: not (matrix_type = "collection")
+	>> is_a_matrix = "no"
+	*return
+
+>> row_sizes = []
+
+*for: i, row in matrix
+	>> row_type = row.type
+
+	*if: not (row_type = "collection")
+		>> is_a_matrix = "no"
+		*return
+
+	*for: j, value in row
+		>> value_type = value.type
+
+		*if: value_type = "collection"
+			>> is_a_matrix = "no"
+			*return
+
+	>> row_sizes.add(row.size)
+
+>> unique_row_sizes = row_sizes.unique
+
+*if: unique_row_sizes.size > 1
+	>> is_a_matrix = "no"

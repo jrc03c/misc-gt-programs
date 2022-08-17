@@ -1,0 +1,33 @@
+>> wrongs = []
+>> wrongs.add(234)
+>> wrongs.add("foo")
+>> wrongs.add([5, 6, 7])
+>> wrongs.add([[10, 20], [30, 40, 50, 60, 70]])
+>> wrongs.add([[8, 9, [10]], [11, [12], 13]])
+>> wrongs.add({"hello" -> "world"})
+
+*for: i, value in wrongs
+	>> matrix = value
+	*program: @jrc03c/check-if-matrix
+
+	*if: is_a_matrix = "yes"
+		>> error_title = "@jrc03c/check-if-matrix/tests error"
+		>> error_message = "The value {matrix} is /not/ a matrix, but the @jrc03c/check-if-matrix program said it was one!"
+		*program: @jrc03c/show-error
+
+>> rights = []
+>> rights.add([[]])
+>> rights.add([[2, 3], [4, 5], [6, 7]])
+>> rights.add([[10, 70, 79, 49, 89, 7, 11, 82, 93, 39, 98, 85, 34, 16, 90, 26, 57, 33, 48, 38], [73, 52, 66, 6, 64, 91, 50, 28, 45, 3, 94, 15, 42, 12, 1, 59, 95, 35, 9, 92], [29, 2, 81, 72, 23, 58, 71, 19, 69, 54, 18, 65, 55, 47, 77, 83, 46, 8, 5, 17], [44, 86, 62, 56, 60, 31, 21, 53, 97, 80, 32, 68, 78, 74, 61, 51, 13, 96, 41, 24], [63, 36, 88, 27, 40, 84, 99, 22, 20, 14, 43, 37, 67, 25, 75, 30, 76, 87, 4, 0]])
+
+*for: i, value in rights
+	>> matrix = value
+	*program: @jrc03c/check-if-matrix
+	
+	*if: is_a_matrix = "no"
+		>> error_title = "@jrc03c/check-if-matrix/tests error"
+		>> error_message = "The value {matrix} /is/ a matrix, but the @jrc03c/check-if-matrix program said it wasn't one!"
+		*program: @jrc03c/show-error
+
+All tests passed!
+*button: Okay
