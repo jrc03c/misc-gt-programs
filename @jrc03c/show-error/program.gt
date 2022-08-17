@@ -1,0 +1,32 @@
+-- @jrc03c/show-error
+-- https://www.guidedtrack.com/programs/18868
+-- by Josh Castle (joshrcastle@gmail.com)
+
+*if: not error_title
+	>> error_title = "Error"
+
+*if: not error_message
+	>> error_message = "An unknown error occurred!"
+
+*html
+	<style>
+		.component * {
+			color: rgb(217, 83, 79) !important;
+		}
+		
+		.component h3 {
+			font-weight: bold;
+		}
+		
+		.component p:last-of-type {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	</style>
+
+*component
+	*classes: alert alert-danger
+	*header: {error_title}
+	{error_message}
+		
+*wait

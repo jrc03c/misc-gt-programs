@@ -1,0 +1,31 @@
+-- @jrc03c/matrix-transpose/tests
+-- https://www.guidedtrack.com/programs/20499/edit
+-- by Josh Castle (joshrcastle@gmail.com)
+
+>> matrix_in = [[2, 3, 4], [5, 6, 7]]
+>> matrix_out_true = [[2, 5], [3, 6], [4, 7]]
+*program: @jrc03c/matrix-transpose
+
+*if: not (matrix_out.size = matrix_out_true.size)
+	>> error_title = "@jrc03c/matrix-transpose error (line 10)"
+	>> error_message = "The predicted value didn't match the true value! (matrix_out.size = {matrix_out.size}, matrix_out_true.size = {matrix_out_true.size})"
+	*program: @jrc03c/show-error
+
+*for: i, row in matrix_out
+	>> row_true = matrix_out_true[i]
+
+	*if: not (row.size = row_true.size)
+		>> error_title = "@jrc03c/matrix-transpose error (line 18)"
+		>> error_message = "The predicted value didn't match the true value! (row{i}.size = {row.size}, row_true{i}.size = {row_true.size})"
+		*program: @jrc03c/show-error
+
+	*for: j, value in row
+		>> value_true = row_true[j]
+
+		*if: not (value = value_true)
+			>> error_title = "@jrc03c/matrix-transpose error (line 26)"
+			>> error_message = "The predicted value didn't match the true value! (row{i}[{j}] = {value}, row_true{i}[{j}] = {value_true})"
+			*program: @jrc03c/show-error
+
+Done!
+*button: Yay!
