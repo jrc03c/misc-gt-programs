@@ -5,37 +5,28 @@
 -- tests  : https://www.guidedtrack.com/programs/20499
 -- author : josh castle (joshrcastle@gmail.com)
 -- --------------------------------------------------------
+-- inputs:
+--     `matrix_in` = the matrix to transpose
+-- outputs:
+--     `matrix_out` = the transposed matrix
+-- --------------------------------------------------------
 
 *if: not matrix_in
 	>> error_title = "@jrc03c/matrix-transpose error"
 	>> error_message = "You must define a `matrix_in` variable that holds a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
->> matrix_in_type = matrix_in.type
+>> matrix = matrix_in
+*program: @jrc03c/check-if-matrix
 
-*if: not (matrix_in_type = "collection")
+*if: is_a_matrix = "no"
 	>> error_title = "@jrc03c/matrix-transpose error"
 	>> error_message = "The `matrix_in` variable must be a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
 >> matrix_out = []
->> max_row_length = 0
-
-*for: row in matrix_in
-	>> row_type = row.type
-
-	*if: not (row_type = "collection")
-		>> error_title = "@jrc03c/matrix-transpose error"
-		>> error_message = "The `matrix_in` variable must be a matrix (i.e., a collection of collections)!"
-		*program: @jrc03c/show-error
-		
-	*if: row.size > max_row_length
-		>> max_row_length = row.size
 
 *for: i, row in matrix_in
-	*while: row.size < max_row_length
-		>> row.add("")
-
 	*for: j, value in row
 		*if: j > matrix_out.size
 			>> matrix_out.add([])
