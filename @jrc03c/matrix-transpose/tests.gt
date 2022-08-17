@@ -1,6 +1,9 @@
+-- --------------------------------------------------------
 -- @jrc03c/matrix-transpose/tests
--- https://www.guidedtrack.com/programs/20499/edit
--- by Josh Castle (joshrcastle@gmail.com)
+-- --------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20498/edit
+-- author : josh castle (joshrcastle@gmail.com)
+-- --------------------------------------------------------
 
 >> matrix_in = [[2, 3, 4], [5, 6, 7]]
 >> matrix_out_true = [[2, 5], [3, 6], [4, 7]]
