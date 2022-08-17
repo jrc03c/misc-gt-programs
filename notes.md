@@ -1,0 +1,1 @@
+- remember to clean up after yourself before exiting each program by setting all non-return variables to empty strings! presumably, this could be accomplished by adding a "cleanup" label to each program and going to that label before returning (in case the program needs to return early).

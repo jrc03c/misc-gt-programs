@@ -15,13 +15,13 @@
 
 *if: not matrix
 	>> is_a_matrix = "no"
-	*return
+	*goto: clean-up
 
 >> matrix_type = matrix.type
 
 *if: not (matrix_type = "collection")
 	>> is_a_matrix = "no"
-	*return
+	*goto: clean-up
 
 >> row_sizes = []
 
@@ -30,14 +30,14 @@
 
 	*if: not (row_type = "collection")
 		>> is_a_matrix = "no"
-		*return
+		*goto: clean-up
 
 	*for: j, value in row
 		>> value_type = value.type
 
 		*if: value_type = "collection"
 			>> is_a_matrix = "no"
-			*return
+			*goto: clean-up
 
 	>> row_sizes.add(row.size)
 
@@ -45,3 +45,16 @@
 
 *if: unique_row_sizes.size > 1
 	>> is_a_matrix = "no"
+
+*label: clean-up
+
+>> matrix = ""
+>> matrix_type = ""
+>> i = ""
+>> row = ""
+>> row_type = ""
+>> j = ""
+>> value = ""
+>> value_type = ""
+>> row_sizes = ""
+>> unique_row_sizes = ""
