@@ -1,6 +1,10 @@
+-- --------------------------------------------------------
 -- @jrc03c/check-if-matrix
--- https://www.guidedtrack.com/programs/20507/edit
--- by Josh Castle (joshrcastle@gmail.com)
+-- --------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20507/edit
+-- tests  : https://www.guidedtrack.com/programs/20508/edit
+-- author : josh castle (joshrcastle@gmail.com)
+-- --------------------------------------------------------
 
 >> is_a_matrix = "yes"
 
