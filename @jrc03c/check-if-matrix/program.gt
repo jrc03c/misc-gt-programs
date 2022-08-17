@@ -1,15 +1,15 @@
--- --------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 -- @jrc03c/check-if-matrix
--- --------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 -- url    : https://www.guidedtrack.com/programs/20507/edit
 -- tests  : https://www.guidedtrack.com/programs/20508/edit
 -- author : josh castle (joshrcastle@gmail.com)
--- --------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 -- inputs:
 --     `matrix` = the value you want to check
 -- outputs:
 --     `is_a_matrix` = "yes" if `matrix` is a matrix; "no" if not
--- --------------------------------------------------------------
+-- ----------------------------------------------------------------------------
 
 >> is_a_matrix = "yes"
 
@@ -24,27 +24,45 @@
 	*goto: clean-up
 
 >> row_sizes = []
+>> i = 1
+>> should_stop_outer = "no"
 
-*for: i, row in matrix
+*while: i <= matrix.size and should_stop_outer = "no"
+	>> row = matrix[i]
 	>> row_type = row.type
 
 	*if: not (row_type = "collection")
 		>> is_a_matrix = "no"
-		*goto: clean-up
+		>> should_stop_outer = "yes"
 
-	*for: j, value in row
-		>> value_type = value.type
+	*if: should_stop_outer = "no"
+		>> j = 1
+		>> should_stop_inner = "no"
 
-		*if: value_type = "collection"
-			>> is_a_matrix = "no"
-			*goto: clean-up
+		*while: j <= row.size and should_stop_inner = "no"
+			>> value = row[j]
+			>> value_type = value.type
 
-	>> row_sizes.add(row.size)
+			*if: value_type = "collection"
+				>> is_a_matrix = "no"
+				>> should_stop_inner = "yes"
+				>> should_stop_outer = "yes"
+
+			>> j = j + 1
+
+		>> row_sizes.add(row.size)
+
+	>> i = i + 1
+
+*if: should_stop_outer = "yes"
+	*goto: clean-up
 
 >> unique_row_sizes = row_sizes.unique
 
 *if: unique_row_sizes.size > 1
 	>> is_a_matrix = "no"
+
+-- ----------------------------------------------------------------------------
 
 *label: clean-up
 
@@ -58,3 +76,5 @@
 >> value_type = ""
 >> row_sizes = ""
 >> unique_row_sizes = ""
+>> should_stop_inner = ""
+>> should_stop_outer = ""
