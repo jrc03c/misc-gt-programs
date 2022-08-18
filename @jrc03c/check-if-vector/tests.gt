@@ -1,0 +1,40 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/check-if-vector/tests
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20524/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
+>> rights = []
+>> rights.add([])
+>> rights.add([2, 3, 4])
+>> rights.add(["abc", "abd", "abe", "acb", "acd", "ace", "adb", "adc", "ade", "aeb", "aec", "aed", "bac", "bad", "bae", "bca", "bcd", "bce", "bda", "bdc", "bde", "bea", "bec", "bed", "cab", "cad", "cae", "cba", "cbd", "cbe", "cda", "cdb", "cde", "cea", "ceb", "ced", "dab", "dac", "dae", "dba", "dbc", "dbe", "dca", "dcb", "dce", "dea", "deb", "dec", "eab", "eac", "ead", "eba", "ebc", "ebd", "eca", "ecb", "ecd", "eda", "edb", "edc"])
+>> rights.add([234, "foo", {"hello" -> "world"}, calendar::now])
+
+*for: i, item in rights
+	>> vector = item
+	*program: @jrc03c/check-if-vector
+
+	*if: is_a_vector = "no"
+		>> error_title = "@jrc03c/check-if-vector error"
+		>> error_message = "This item is a vector but wasn't identified as one: {item}"
+		*program: @jrc03c/show-error
+
+>> wrongs = []
+>> wrongs.add(234)
+>> wrongs.add("foo")
+>> wrongs.add({"hello" -> "world"})
+>> wrongs.add(calendar::now)
+>> wrongs.add([[2, 3, 4], [5, 6, 7]])
+>> wrongs.add([10, 20, 30, 40, [50]])
+
+*for: i, item in wrongs
+	>> vector = item
+	*program: @jrc03c/check-if-vector
+
+	*if: is_a_vector = "yes"
+		>> error_title = "@jrc03c/check-if-vector error"
+		>> error_message = "This item is /not/ a vector but was identified as one: {item}"
+
+All tests passed!
+*button: Okay

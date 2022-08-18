@@ -1,0 +1,42 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/check-if-vector
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20523/edit
+-- tests  : https://www.guidedtrack.com/programs/20524/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `vector` = the value you want to check
+-- outputs:
+--     `is_a_vector` = "yes" if `vector` is a vector; "no" if not
+-------------------------------------------------------------------------------
+
+>> is_a_vector = "yes"
+>> vector_type = vector.type
+
+*if: not (vector_type = "collection")
+	>> is_a_vector = "no"
+	*goto: clean-up
+
+>> i = 1
+>> should_stop = "no"
+
+*while: i <= vector.size and should_stop = "no"
+	>> value = vector[i]
+	>> value_type = value.type
+	>> i = i + 1
+	
+	*if: value_type = "collection"
+		>> is_a_vector = "no"
+		>> should_stop = "yes"
+
+-------------------------------------------------------------------------------
+
+*label: clean-up
+
+>> vector = ""
+>> vector_type = ""
+>> value = ""
+>> value_type = ""
+>> i = ""
+>> should_stop = ""
