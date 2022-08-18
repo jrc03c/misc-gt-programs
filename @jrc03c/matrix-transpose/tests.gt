@@ -1,9 +1,9 @@
--- --------------------------------------------------------
+-------------------------------------------------------------------------------
 -- @jrc03c/matrix-transpose/tests
--- --------------------------------------------------------
+-------------------------------------------------------------------------------
 -- url    : https://www.guidedtrack.com/programs/20498/edit
--- author : josh castle (joshrcastle@gmail.com)
--- --------------------------------------------------------
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
 
 >> matrix_in = [[2, 3, 4], [5, 6, 7]]
 >> matrix_out_true = [[2, 5], [3, 6], [4, 7]]
@@ -30,5 +30,5 @@
 			>> error_message = "The predicted value didn't match the true value! (row{i}[{j}] = {value}, row_true{i}[{j}] = {value_true})"
 			*program: @jrc03c/show-error
 
-Done!
+All tests passed!
 *button: Yay!

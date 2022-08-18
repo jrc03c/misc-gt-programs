@@ -1,15 +1,15 @@
--- --------------------------------------------------------
+-------------------------------------------------------------------------------
 -- @jrc03c/matrix-transpose
--- --------------------------------------------------------
+-------------------------------------------------------------------------------
 -- url    : https://www.guidedtrack.com/programs/20498/edit
 -- tests  : https://www.guidedtrack.com/programs/20499
--- author : josh castle (joshrcastle@gmail.com)
--- --------------------------------------------------------
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
 -- inputs:
 --     `matrix_in` = the matrix to transpose
 -- outputs:
 --     `matrix_out` = the transposed matrix
--- --------------------------------------------------------
+-------------------------------------------------------------------------------
 
 *if: not matrix_in
 	>> error_title = "@jrc03c/matrix-transpose error"
@@ -33,4 +33,14 @@
 
 		>> matrix_out[j].add(value)
 
--- return `matrix_out`
+-------------------------------------------------------------------------------
+
+*label: clean-up
+
+>> matrix_in = ""
+>> matrix = ""
+>> is_a_matrix = ""
+>> i = ""
+>> row = ""
+>> j = ""
+>> value = ""
