@@ -24,37 +24,20 @@
 	*goto: clean-up
 
 >> row_sizes = []
->> i = 1
->> should_stop_outer = "no"
 
-*while: i <= matrix.size and should_stop_outer = "no"
-	>> row = matrix[i]
-	>> row_type = row.type
+*for: i, row in matrix	
+	*if: is_a_matrix = "yes"
+		>> vector = row
 
-	*if: not (row_type = "collection")
-		>> is_a_matrix = "no"
-		>> should_stop_outer = "yes"
+		*program: @jrc03c/check-if-vector
 
-	*if: should_stop_outer = "no"
-		>> j = 1
-		>> should_stop_inner = "no"
+		*if: is_a_vector = "yes"
+			>> row_sizes.add(row.size)
+		
+		*if: is_a_vector = "no"
+			>> is_a_matrix = "no"
 
-		*while: j <= row.size and should_stop_inner = "no"
-			>> value = row[j]
-			>> value_type = value.type
-
-			*if: value_type = "collection"
-				>> is_a_matrix = "no"
-				>> should_stop_inner = "yes"
-				>> should_stop_outer = "yes"
-
-			>> j = j + 1
-
-		>> row_sizes.add(row.size)
-
-	>> i = i + 1
-
-*if: should_stop_outer = "yes"
+*if: is_a_matrix = "no"
 	*goto: clean-up
 
 >> unique_row_sizes = row_sizes.unique
@@ -69,12 +52,7 @@
 >> matrix = ""
 >> matrix_type = ""
 >> i = ""
->> row = ""
->> row_type = ""
->> j = ""
->> value = ""
->> value_type = ""
+>> vector = ""
+>> is_a_vector = ""
 >> row_sizes = ""
 >> unique_row_sizes = ""
->> should_stop_inner = ""
->> should_stop_outer = ""
