@@ -18,7 +18,7 @@
 	*program: @jrc03c/check-if-matrix
 
 	*if: is_a_matrix = "yes"
-		>> error_title = "@jrc03c/check-if-matrix/tests error"
+		>> error_title = "@jrc03c/check-if-matrix/tests"
 		>> error_message = "The value is /not/ a matrix, but the @jrc03c/check-if-matrix program said it was one! Value: {value}"
 		*program: @jrc03c/show-error
 
@@ -32,7 +32,7 @@
 	*program: @jrc03c/check-if-matrix
 	
 	*if: is_a_matrix = "no"
-		>> error_title = "@jrc03c/check-if-matrix/tests error"
+		>> error_title = "@jrc03c/check-if-matrix/tests"
 		>> error_message = "The value /is/ a matrix, but the @jrc03c/check-if-matrix program said it wasn't one! Value: {value}"
 		*program: @jrc03c/show-error
 

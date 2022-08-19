@@ -1,6 +1,20 @@
+-------------------------------------------------------------------------------
 -- @jrc03c/show-error
--- https://www.guidedtrack.com/programs/18868
--- by Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- url    : ...
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `error_title` = the title of the error message box; defaults to "Error"
+--         if undefined
+--
+--     `error_message` = the message body to be displayed in the error message
+--         box; defaults to "An unknown error occurred!" if undefined
+--
+--     `error_is_fatal` = a "yes" or "no" value indicating whether the program
+--         should completely halt after showing the error message; defaults to
+--         "yes" if undefined
+-------------------------------------------------------------------------------
 
 *if: not error_title
 	>> error_title = "Error"
@@ -8,10 +22,13 @@
 *if: not error_message
 	>> error_message = "An unknown error occurred!"
 
+*if: not error_is_fatal
+	>> error_is_fatal = "yes"
+
 *html
 	<style>
 		.component * {
-			color: rgb(217, 83, 79) !important;
+			color: rgb(169, 68, 66) !important;
 		}
 		
 		.component h3 {
@@ -28,5 +45,6 @@
 	*classes: alert alert-danger
 	*header: {error_title}
 	{error_message}
-		
-*wait
+	
+*if: error_is_fatal = "yes"
+	*wait

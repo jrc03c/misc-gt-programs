@@ -16,7 +16,7 @@
 	*program: @jrc03c/check-if-vector
 
 	*if: is_a_vector = "no"
-		>> error_title = "@jrc03c/check-if-vector error"
+		>> error_title = "@jrc03c/check-if-vector"
 		>> error_message = "This item is a vector but wasn't identified as one: {item}"
 		*program: @jrc03c/show-error
 
@@ -33,7 +33,7 @@
 	*program: @jrc03c/check-if-vector
 
 	*if: is_a_vector = "yes"
-		>> error_title = "@jrc03c/check-if-vector error"
+		>> error_title = "@jrc03c/check-if-vector"
 		>> error_message = "This item is /not/ a vector but was identified as one: {item}"
 
 All tests passed!

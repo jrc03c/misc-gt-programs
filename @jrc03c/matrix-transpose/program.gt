@@ -12,7 +12,7 @@
 -------------------------------------------------------------------------------
 
 *if: not matrix_in
-	>> error_title = "@jrc03c/matrix-transpose error"
+	>> error_title = "@jrc03c/matrix-transpose"
 	>> error_message = "You must define a `matrix_in` variable that holds a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
@@ -20,7 +20,7 @@
 *program: @jrc03c/check-if-matrix
 
 *if: is_a_matrix = "no"
-	>> error_title = "@jrc03c/matrix-transpose error"
+	>> error_title = "@jrc03c/matrix-transpose"
 	>> error_message = "The `matrix_in` variable must be a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 

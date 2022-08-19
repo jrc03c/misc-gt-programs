@@ -1,0 +1,44 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/show-warning
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20531/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `warning_title` = the title of the warning message box; defaults to
+--         "Warning" if undefined
+--
+--     `warning_message` = the message body to be displayed in the warning
+--         message box; defaults to "Something fishy happened!" if undefined
+-------------------------------------------------------------------------------
+
+*if: not warning_title
+	>> warning_title = "Warning"
+
+*if: not warning_message
+	>> warning_message = "Something fishy happened!"
+
+*html
+	<style>
+		.component {
+			margin-bottom: 1.5em;
+		}
+
+		.component * {
+			color: rgb(138, 109, 59) !important;
+		}
+		
+		.component h3 {
+			font-weight: bold;
+		}
+		
+		.component p:last-of-type {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	</style>
+
+*component
+	*classes: alert alert-warning
+	*header: {warning_title}
+	{warning_message}
