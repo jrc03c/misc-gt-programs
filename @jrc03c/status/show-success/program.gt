@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/show-success
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20558/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `success_title` = the title of the success message box; defaults to
+--         "success" if undefined
+--
+--     `success_message` = the message body to be displayed in the success
+--         message box; defaults to "..." if undefined
+-------------------------------------------------------------------------------
+
+*if: not success_title
+	>> success_title = "Success"
+
+*if: not success_message
+	>> success_message = "..."
+
+*html
+	<style>
+		.component {
+			margin-bottom: 1.5em;
+			border: 1px solid rgb(60, 118, 61) !important;
+		}
+
+		.component * {
+			color: rgb(60, 118, 61) !important;
+		}
+		
+		.component h3 {
+			font-weight: bold;
+		}
+		
+		.component p:last-of-type {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	</style>
+
+*component
+	*classes: alert alert-success
+	*header: {success_title}
+	{success_message}

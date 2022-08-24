@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/show-info
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20559/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `info_title` = the title of the info message box; defaults to
+--         "info" if undefined
+--
+--     `info_message` = the message body to be displayed in the info
+--         message box; defaults to "..." if undefined
+-------------------------------------------------------------------------------
+
+*if: not info_title
+	>> info_title = "Info"
+
+*if: not info_message
+	>> info_message = "..."
+
+*html
+	<style>
+		.component {
+			margin-bottom: 1.5em;
+			border: 1px solid rgb(49, 112, 143) !important;
+		}
+
+		.component * {
+			color: rgb(49, 112, 143) !important;
+		}
+		
+		.component h3 {
+			font-weight: bold;
+		}
+		
+		.component p:last-of-type {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	</style>
+
+*component
+	*classes: alert alert-info
+	*header: {info_title}
+	{info_message}

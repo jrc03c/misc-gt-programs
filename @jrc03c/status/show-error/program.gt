@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 -- @jrc03c/show-error
 -------------------------------------------------------------------------------
--- url    : ...
+-- url    : https://www.guidedtrack.com/programs/20556/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
@@ -27,6 +27,11 @@
 
 *html
 	<style>
+		.component {
+			margin-bottom: 1.5em;
+			border: 1px solid rgb(169, 68, 66) !important;
+		}
+
 		.component * {
 			color: rgb(169, 68, 66) !important;
 		}
