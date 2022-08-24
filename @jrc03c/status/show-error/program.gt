@@ -28,7 +28,7 @@
 *html
 	<style>
 		.component {
-			margin-bottom: 1.5em;
+			margin: 0 0 1.5em 0;
 			border: 1px solid rgb(169, 68, 66) !important;
 		}
 
@@ -46,10 +46,20 @@
 		}
 	</style>
 
-*component
-	*classes: alert alert-danger
-	*header: {error_title}
-	{error_message}
+*html
+	<div class="component alert alert-danger">
+		<h3>
+			<span class="icon">
+				<i class="fa fa-exclamation-circle"></i>
+			</span>
+
+			&nbsp;{error_title}
+		</h3>
+
+		<div class="text">
+			{error_message}
+		</div>
+	</div>
 	
 *if: error_is_fatal = "yes"
 	*wait

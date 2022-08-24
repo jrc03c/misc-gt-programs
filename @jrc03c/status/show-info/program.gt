@@ -21,7 +21,7 @@
 *html
 	<style>
 		.component {
-			margin-bottom: 1.5em;
+			margin: 0 0 1.5em 0;
 			border: 1px solid rgb(49, 112, 143) !important;
 		}
 
@@ -39,7 +39,17 @@
 		}
 	</style>
 
-*component
-	*classes: alert alert-info
-	*header: {info_title}
-	{info_message}
+*html
+	<div class="component alert alert-info">
+		<h3>
+			<span class="icon">
+				<i class="fa fa-info-circle"></i>
+			</span>
+
+			&nbsp;{info_title}
+		</h3>
+
+		<div class="text">
+			{info_message}
+		</div>
+	</div>

@@ -21,7 +21,7 @@
 *html
 	<style>
 		.component {
-			margin-bottom: 1.5em;
+			margin: 0 0 1.5em 0;
 			border: 1px solid rgb(60, 118, 61) !important;
 		}
 
@@ -39,7 +39,17 @@
 		}
 	</style>
 
-*component
-	*classes: alert alert-success
-	*header: {success_title}
-	{success_message}
+*html
+	<div class="component alert alert-success">
+		<h3>
+			<span class="icon">
+				<i class="fa fa-check-circle"></i>
+			</span>
+
+			&nbsp;{success_title}
+		</h3>
+
+		<div class="text">
+			{success_message}
+		</div>
+	</div>

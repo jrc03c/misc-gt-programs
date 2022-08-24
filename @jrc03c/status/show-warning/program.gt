@@ -21,7 +21,7 @@
 *html
 	<style>
 		.component {
-			margin-bottom: 1.5em;
+			margin: 0 0 1.5em 0;
 			border: 1px solid rgb(138, 109, 59) !important;
 		}
 
@@ -39,7 +39,17 @@
 		}
 	</style>
 
-*component
-	*classes: alert alert-warning
-	*header: {warning_title}
-	{warning_message}
+*html
+	<div class="component alert alert-warning">
+		<h3>
+			<span class="icon">
+				<i class="fa fa-exclamation-circle"></i>
+			</span>
+
+			&nbsp;{warning_title}
+		</h3>
+
+		<div class="text">
+			{warning_message}
+		</div>
+	</div>
