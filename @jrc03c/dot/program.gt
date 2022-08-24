@@ -1,0 +1,180 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/dot
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20504/edit
+-- tests  : https://www.guidedtrack.com/programs/20505
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `a` = the left vector or matrix
+--
+--     `b` = the right vector or matrix
+--
+--     `should_transpose_a` = "yes" if you want `a` to be transposed before the
+--         multiplication; defaults to "no" if undefined; is only applicable if
+--         `a` is a matrix
+--
+--     `should_transpose_b` = "yes" if you want `a` to be transposed before the
+--         multiplication; defaults to "no" if undefined; is only applicable if
+--         `b` is a matrix
+--
+-- outputs:
+--     `c` = the dot product of `a` and `b`
+-------------------------------------------------------------------------------
+
+------------------
+-- BASIC CHECKS --
+------------------
+
+-- confirm that `a` exists
+*if: not a
+	>> error_title = "@jrc03c/dot"
+	>> error_message = "You must define a variable `a` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
+	*program: @jrc03c/show-error
+
+-- confirm that `b` exists
+*if: not b
+	>> error_title = "@jrc03c/dot"
+	>> error_message = "You must define a variable `b` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
+	*program: @jrc03c/show-error
+
+-- confirm that `a` is either a vector or a matrix
+>> vector = a
+>> matrix = a
+*program: @jrc03c/check-if-vector
+*program: @jrc03c/check-if-matrix
+>> a_is_a_vector = is_a_vector
+>> a_is_a_matrix = is_a_matrix
+
+*if: a_is_a_vector = "no" and a_is_a_matrix = "no"
+	>> error_title = "@jrc03c/dot"
+	>> error_message = "The variable `a` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
+	*program: @jrc03c/show-error
+
+-- confirm that `b` is either a vector or a matrix
+>> vector = b
+>> matrix = b
+*program: @jrc03c/check-if-vector
+*program: @jrc03c/check-if-matrix
+>> b_is_a_vector = is_a_vector
+>> b_is_a_matrix = is_a_matrix
+
+*if: b_is_a_vector = "no" and b_is_a_matrix = "no"
+	>> error_title = "@jrc03c/dot"
+	>> error_message = "The variable `b` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
+	*program: @jrc03c/show-error
+
+--------------------
+-- TRANSPOSITIONS --
+--------------------
+
+-- if either variable is a matrix and needs to be transposed, then do that now
+*if: a_is_a_matrix = "yes" and should_transpose_a = "yes"
+	>> matrix_in = a
+	*program: @jrc03c/matrix-transpose
+	>> a = matrix_out
+
+*if: b_is_a_matrix = "yes" and should_transpose_b = "yes"
+	>> matrix_in = b
+	*program: @jrc03c/matrix-transpose
+	>> b = matrix_out
+
+---------------------
+-- VECTOR * VECTOR --
+---------------------
+
+*if: a_is_a_vector = "yes" and b_is_a_vector = "yes"
+	>> c = 0
+
+	*for: i, a_value in a
+		>> c = c + a_value * b[i]
+
+	*goto: clean-up
+
+---------------------
+-- VECTOR * MATRIX --
+---------------------
+
+*if: a_is_a_vector = "yes" and b_is_a_matrix = "yes"
+	>> c = []
+
+	*for: i, row in b
+		>> c_temp = 0
+
+		*for: j, val in row
+			>> c_temp = c_temp + val * a[j]
+
+		>> c.add(c_temp)
+
+	*goto: clean-up
+
+---------------------
+-- MATRIX * VECTOR --
+---------------------
+
+*if: a_is_a_matrix = "yes" and b_is_a_vector = "yes"
+	>> c = []
+
+	*for: i, row in a
+		>> c_temp = 0
+
+		*for: j, val in row
+			>> c_temp = c_temp + val * b[j]
+
+		>> c.add(c_temp)
+
+	*goto: clean-up
+
+---------------------
+-- MATRIX * MATRIX --
+---------------------
+
+*if: a_is_a_matrix = "yes" and b_is_a_matrix = "yes"
+	>> c = []
+
+	*for: i, a_row in a
+		>> c_row = []
+
+		*for: j, b_row in b
+			>> c_temp = 0
+
+			*for: k, a_val in a_row
+				>> c_temp = c_temp + a_val * b_row[k]
+
+			>> c_row.add(c_temp)
+
+		>> c.add(c_row)
+
+	*goto: clean-up
+
+-------------------------------------------------------------------------------
+
+*label: clean-up
+
+>> a = ""
+>> a_is_a_matrix = ""
+>> a_is_a_vector = ""
+>> a_row = ""
+>> a_value = ""
+>> b = ""
+>> b_is_a_matrix = ""
+>> b_is_a_vector = ""
+>> b_row = ""
+>> c = ""
+>> c_row = ""
+>> c_temp = ""
+>> error_message = ""
+>> error_title = ""
+>> i = ""
+>> is_a_matrix = ""
+>> is_a_vector = ""
+>> j = ""
+>> k = ""
+>> matrix = ""
+>> matrix_in = ""
+>> matrix_out = ""
+>> row = ""
+>> should_transpose_a = ""
+>> should_transpose_b = ""
+>> val = ""
+>> vector = ""

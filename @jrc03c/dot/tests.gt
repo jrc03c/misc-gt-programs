@@ -1,0 +1,78 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/dot/tests
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20505
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
+-- vector * vector
+>> a = [2, -3, 4]
+>> b = [-5, 6, -7]
+>> cTrue = (2 * -5) + (-3 * 6) + (4 * -7)
+*program: @jrc03c/dot
+
+*if: not (c = cTrue)
+	>> error_title = "@jrc03c/dot/tests"
+	>> error_message = "Failed to get the dot product of two vectors! (expected: {cTrue}, received: {c})"
+	*program: @jrc03c/show-error
+
+-- vector * matrix
+>> a = [2, -3, 4]
+>> b = [[-5, 6, -7], [8, -9, 10] , [-11, 12, -13], [14, -15, 16]]
+>> cTrue = [(2 * -5) + (-3 * 6) + (4 * -7), (2 * 8) + (-3 * -9) + (4 * 10), (2 * -11) + (-3 * 12) + (4 * -13), (2 * 14) + (-3 * -15) + (4 * 16)]
+
+*if: not (c.size = cTrue.size)
+	>> error_title = "@jrc03c/dot/tests"
+	>> error_message = "The dot product of a vector and a matrix did not end up with the expected length! (expected = {cTrue.size}, received = {c.size})"
+	*program: @jrc03c/show-error
+
+*for: i, val in c
+	*if: not (val = cTrue[i])
+		>> error_title = "@jrc03c/dot/tests"
+		>> error_message = "The dot product of a vector and a matrix did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
+		*program: @jrc03c/show-error
+
+-- matrix * vector
+>> a = [[-5, 6, -7], [8, -9, 10] , [-11, 12, -13], [14, -15, 16]]
+>> b = [2, -3, 4]
+>> cTrue = [(2 * -5) + (-3 * 6) + (4 * -7), (2 * 8) + (-3 * -9) + (4 * 10), (2 * -11) + (-3 * 12) + (4 * -13), (2 * 14) + (-3 * -15) + (4 * 16)]
+
+*if: not (c.size = cTrue.size)
+	>> error_title = "@jrc03c/dot/tests"
+	>> error_message = "The dot product of a matrix and a vector did not end up with the expected length! (expected = {cTrue.size}, received = {c.size})"
+	*program: @jrc03c/show-error
+
+*for: i, val in c
+	*if: not (val = cTrue[i])
+		>> error_title = "@jrc03c/dot/tests"
+		>> error_message = "The dot product of a matrix and a vector did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
+		*program: @jrc03c/show-error
+
+-- matrix * matrix
+>> a = [[5, 3, 13, 10, 12], [8, 7, 2, 6, 1], [14, 11, 0, 9, 4]]
+>> b = [[7, 19, 5, 1], [18, 17, 2, 11], [13, 14, 4, 6], [15, 8, 10, 3], [0, 9, 12, 16]]
+>> cTrue = [[408, 516, 327, 338], [298, 356, 134, 131], [431, 561, 230, 226]]
+
+*program: @jrc03c/dot
+
+*if: not (c.size = cTrue.size)
+	>> error_title = "@jrc03c/dot"
+	>> error_message = "The dot product of two matrices did not end up with the expected length! (expected: {cTrue.size}, received: {c.size})"
+	*program: @jrc03c/show-error
+
+*for: i, cRow in c
+	>> cTrueRow = cTrue[i]
+
+	*if: not (cRow.size = cTrueRow.size)
+		>> error_title = "@jrc03c/dot"
+		>> error_message = "The dot product of two matrices did not end up with the expected width! (expected: {cTrueRow.size}, received: {cRow.size})"
+		*program: @jrc03c/show-error
+
+	*for: j, val in cRow
+		*if: not (val = cTrueRow[j])
+			>> error_title = "@jrc03c/dot"
+			>> error_message = "The dot product of two matrices did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
+			*program: @jrc03c/show-error
+
+All tests passed!
+*button: Okay
