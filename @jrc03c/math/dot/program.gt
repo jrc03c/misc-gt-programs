@@ -32,10 +32,16 @@
 	>> error_message = "You must define a variable `a` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
+	>> c = ""
+	*goto: clean-up
+
 *if: not b
 	>> error_title = "@jrc03c/dot"
 	>> error_message = "You must define a variable `b` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
+
+	>> c = ""
+	*goto: clean-up
 
 *if: not should_transpose_a
 	>> should_transpose_a = "no"
@@ -56,6 +62,9 @@
 	>> error_title = "@jrc03c/dot"
 	>> error_message = "The variable `a` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
+	
+	>> c = ""
+	*goto: clean-up
 
 -- confirm that `b` is either a vector or a matrix
 >> vector = b
@@ -70,6 +79,9 @@
 	>> error_title = "@jrc03c/dot"
 	>> error_message = "The variable `b` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
+
+	>> c = ""
+	*goto: clean-up
 
 --------------------
 -- TRANSPOSITIONS --
@@ -91,6 +103,14 @@
 ---------------------
 
 *if: a_is_a_vector = "yes" and b_is_a_vector = "yes"
+	*if: not (a.size = b.size)
+		>> error_title = "@jrc03c/dot"
+		>> error_message = "`a` and `b` are vectors of differing lengths! (a.size = {a.size}, b.size = {b.size})"
+		*program: @jrc03c/show-error
+
+		>> c = ""
+		*goto: clean-up
+
 	>> c = 0
 
 	*for: i, a_value in a
@@ -103,6 +123,14 @@
 ---------------------
 
 *if: a_is_a_vector = "yes" and b_is_a_matrix = "yes"
+	*if: not (a.size = b[1].size)
+		>> error_title = "@jrc03c/dot"
+		>> error_message = "The length of `a` (a vector) doesn't match the row length of `b` (a matrix)! (a.size = {a.size}, b[1].size = {b[1].size})"
+		*program: @jrc03c/show-error
+
+		>> c = ""
+		*goto: clean-up
+
 	>> c = []
 
 	*for: i, row in b
@@ -120,6 +148,14 @@
 ---------------------
 
 *if: a_is_a_matrix = "yes" and b_is_a_vector = "yes"
+	*if: not (a[1].size = b.size)
+		>> error_title = "@jrc03c/dot"
+		>> error_message = "The row length of `a` (a matrix) doesn't match the length of `b` (a vector)! (a[1].size = {a[1].size}, b.size = {b.size})"
+		*program: @jrc03c/show-error
+
+		>> c = ""
+		*goto: clean-up
+
 	>> c = []
 
 	*for: i, row in a
@@ -137,6 +173,14 @@
 ---------------------
 
 *if: a_is_a_matrix = "yes" and b_is_a_matrix = "yes"
+	*if: not (a[1].size = b[1].size)
+		>> error_title = "@jrc03c/dot"
+		>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
+		*program: @jrc03c/show-error
+		
+		>> c = ""
+		*goto: clean-up
+
 	>> c = []
 
 	*for: i, a_row in a

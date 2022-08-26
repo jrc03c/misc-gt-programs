@@ -27,12 +27,12 @@
 
 *html
 	<style>
-		.component {
+		.alert-danger {
 			margin: 0 0 1.5em 0;
 			border: 1px solid rgb(169, 68, 66) !important;
 		}
 
-		.component * {
+		.alert-danger * {
 			color: rgb(169, 68, 66) !important;
 		}
 		

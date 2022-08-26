@@ -20,12 +20,12 @@
 
 *html
 	<style>
-		.component {
+		.alert-success {
 			margin: 0 0 1.5em 0;
 			border: 1px solid rgb(60, 118, 61) !important;
 		}
 
-		.component * {
+		.alert-success * {
 			color: rgb(60, 118, 61) !important;
 		}
 		
