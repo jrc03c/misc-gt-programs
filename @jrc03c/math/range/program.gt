@@ -1,0 +1,107 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/range
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20584/edit
+-- tests  : https://www.guidedtrack.com/programs/20585/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- Returns `range`, a collection of values in the range [`start`, `stop`) in
+--     which each value is separated by `step`. For example, if `start` = 0,
+--     `stop` = 10, and `step` = 2, then `range` = [0, 2, 4, 6, 8].
+--
+-- inputs:
+--     `start` = the lowest value
+--
+--     `stop` = the highest value + `step`
+--
+--     `step` = the distance between each term; defaults to 1 if undefined
+--
+-- outputs:
+--     `range` = the transposed matrix
+-------------------------------------------------------------------------------
+
+*if: not start
+	>> error_title = "@jrc03c/range"
+	>> error_message = "You must define a number variable called `start` before invoking this program!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+>> start_type = start.type
+
+*if: not (start_type = "number")
+	>> error_title = "@jrc03c/range"
+	>> error_message = "The variable called `start` must hold a number value, instead it was a(n) {start_type}!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+*if: not stop
+	>> error_title = "@jrc03c/range"
+	>> error_message = "You must define a number variable called `stop` before invoking this program!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+>> stop_type = stop.type
+
+*if: not (stop_type = "number")
+	>> error_title = "@jrc03c/range"
+	>> error_message = "The variable called `stop` must hold a number value, but instead it was a(n) {stop_type}!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+*if: not step
+	>> step = 1
+
+>> step_type = step.type
+
+*if: not (step_type = "number")
+	>> error_title = "@jrc03c/range"
+	>> error_message = "The variable called `step` must hold a non-zero number value (or be undefined), but instead it was a(n) {step_type}!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+*if: step = 0
+	>> error_title = "@jrc03c/range"
+	>> error_message = "The variable called `step` must hold a non-zero number value (or be undefined), but its value was {step}!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+*if: (stop - start < 0 and step > 0) or (stop - start > 0 and step < 0)
+	>> error_title = "@jrc03c/range"
+	>> error_message = "The `step` value you provided ({step}) does not match the direction from `start` ({start}) to `stop` ({stop})!"
+	*program: @jrc03c/show-error
+	
+	>> range = ""
+	*goto: clean-up
+
+>> range = []
+>> i = start
+
+*while: i < stop
+	>> range.add(i)
+	>> i = i + step
+
+-------------------------------------------------------------------------------
+
+*label: clean-up
+
+>> error_message = ""
+>> error_title = ""
+>> i = ""
+>> start = ""
+>> start_type = ""
+>> step = ""
+>> step_type = ""
+>> stop = ""
+>> stop_type = ""
