@@ -218,8 +218,8 @@
 		*for: j, b_row in b
 			>> c_temp = 0
 
-			*for: k, a_val in a_row
-				>> c_temp = c_temp + a_val * b_row[k]
+			*for: k, a_value in a_row
+				>> c_temp = c_temp + a_value * b_row[k]
 
 			>> c_row.add(c_temp)
 
