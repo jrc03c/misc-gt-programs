@@ -8,8 +8,8 @@
 *html
 	<style>
 		h1 {
-			color: black;
-			font-weight: bold;
+			color: black !important;
+			font-weight: 700 !important;
 		}
 	</style>
 
@@ -52,7 +52,7 @@
 	*if: not (val = cTrue[i])
 		>> failed_dot_vector_matrix = "yes"
 		>> error_title = "@jrc03c/dot/tests"
-		>> error_message = "The dot product of a vector and a matrix did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
+		>> error_message = "The dot product of a vector and a matrix did not contain the correct values! (expected: [ {cTrue} ], received: [ {c} ])"
 		*program: @jrc03c/show-error
 
 *if: failed_dot_vector_matrix = "no"
@@ -77,7 +77,7 @@
 	*if: not (val = cTrue[i])
 		>> failed_dot_matrix_vector = "yes"
 		>> error_title = "@jrc03c/dot/tests"
-		>> error_message = "The dot product of a matrix and a vector did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
+		>> error_message = "The dot product of a matrix and a vector did not contain the correct values! (expected: [ {cTrue} ], received: [ {c} ])"
 		*program: @jrc03c/show-error
 
 *if: failed_dot_matrix_vector = "no"
@@ -112,7 +112,7 @@
 		*if: not (val = cTrueRow[j])
 			>> failed_dot_matrix_matrix = "yes"
 			>> error_title = "@jrc03c/dot"
-			>> error_message = "The dot product of two matrices did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
+			>> error_message = "The dot product of two matrices did not contain the correct values! (expected: [ {cTrue} ], received: [ {c} ])"
 			*program: @jrc03c/show-error
 
 *if: failed_dot_matrix_matrix = "no"
@@ -124,22 +124,41 @@
 
 *html
 	<hr>
+	<h1>The following test should show a warning (but <i>not</i> throw an error):</h1>
+
+>> a = [ [ 2, 3, 4 ], [ 5, 6, 7 ] ]
+>> b = [ [ 8, 9, 10 ], [ 11, 12, 13 ], [ 14, 15, 16 ], [ 17, 18, 19 ] ]
+>> should_transpose_b = "yes"
+>> cTrue = [ [ 83, 110, 137, 164 ], [ 164, 218, 272, 326 ] ]
+*program: @jrc03c/dot
+
+*for: i, row in c
+	*for: j, val in row
+		*if: not(c[i][j] = cTrue[i][j])
+			>> error_title = "@jrc03c/dot/tests"
+			>> error_message = "The test of the warning system failed because it returned the wrong dot product! (a[{i}][{j}] = {a[i][j]}, b[i][j] = {b[i][j]})"
+			*program: @jrc03c/show-error
+
+-------------------------------------------------------------------------------
+
+*html
+	<hr>
 	<h1>The following tests should all fail:</h1>
 
->> a = [2, 3, 4]
->> b = [5, 6, 7, 8]
+>> a = [ 2, 3, 4 ]
+>> b = [ 5, 6, 7, 8 ]
 *program: @jrc03c/dot
 
->> a = [2, 3, 4]
->> b = [[5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+>> a = [ 2, 3, 4 ]
+>> b = [ [ 5, 6, 7, 8 ], [ 9, 10, 11, 12 ], [ 13, 14, 15, 16 ] ]
 *program: @jrc03c/dot
 
->> a = [[5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
->> b = [2, 3, 4]
+>> a = [ [ 5, 6, 7, 8 ], [ 9, 10, 11, 12 ], [ 13, 14, 15, 16 ] ]
+>> b = [ 2, 3, 4 ]
 *program: @jrc03c/dot
 
->> a = [[2, 3, 4], [5, 6, 7]]
->> b =  [[8, 9, 10, 11], [12, 13, 14, 15], [16, 17, 18, 19], [20, 21, 22, 23]]
+>> a = [ [ 2, 3, 4 ], [ 5, 6, 7 ] ]
+>> b =  [ [ 8, 9, 10, 11 ], [ 12, 13, 14, 15 ], [ 16, 17, 18, 19 ], [ 20, 21, 22, 23 ] ]
 *program: @jrc03c/dot
 
 *button: Okay

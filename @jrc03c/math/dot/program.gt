@@ -173,13 +173,42 @@
 ---------------------
 
 *if: a_is_a_matrix = "yes" and b_is_a_matrix = "yes"
+	-- if the row sizes aren't compatible...
 	*if: not (a[1].size = b[1].size)
-		>> error_title = "@jrc03c/dot"
-		>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
-		*program: @jrc03c/show-error
+		-- but if the tranposed row sizes would be compatible...
+		*if: a[1].size = b.size
+			-- and if we already transposed `b`, then warn the user that they needn't
+			-- have asked us to transpose `b` in the first place
+			*if: should_transpose_b = "yes"
+				>> warning_title = "@jrc03c/dot"
+				>> warning_message = "You asked us to transpose matrix `b`, but the shape of `b` was actually compatible with `a` in its original orientation!"
+				*program: @jrc03c/show-warning
+
+				>> matrix_in = b
+				*program: @jrc03c/matrix-transpose
+				>> b = matrix_out
+				>> should_transpose_b = "no"
+
+				*program: @jrc03c/dot
+				*goto: clean-up
+
+			-- or, if we didn't already transpose `b`, then throw an error
+			*if: should_transpose_b = "no"
+				>> error_title = "@jrc03c/dot"
+				>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
+				*program: @jrc03c/show-error
+
+				>> c = ""
+				*goto: clean-up
+
+		-- otherwise, throw an error
+		*if: not (a[1].size = b.size)
+			>> error_title = "@jrc03c/dot"
+			>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
+			*program: @jrc03c/show-error
 		
-		>> c = ""
-		*goto: clean-up
+			>> c = ""
+			*goto: clean-up
 
 	>> c = []
 
@@ -228,3 +257,5 @@
 >> should_transpose_b = ""
 >> val = ""
 >> vector = ""
+>> warning_message = ""
+>> warning_title = ""
