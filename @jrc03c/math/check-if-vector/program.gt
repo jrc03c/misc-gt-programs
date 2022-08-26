@@ -11,6 +11,10 @@
 --     `is_a_vector` = "yes" if `vector` is a vector; "no" if not
 -------------------------------------------------------------------------------
 
+*if: not vector
+	>> is_a_vector = "no"
+	*goto: clean-up
+
 >> is_a_vector = "yes"
 >> vector_type = vector.type
 

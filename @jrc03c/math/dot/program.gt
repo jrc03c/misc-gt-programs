@@ -60,7 +60,7 @@
 
 *if: a_is_a_vector = "no" and a_is_a_matrix = "no"
 	>> error_title = "@jrc03c/dot"
-	>> error_message = "The variable `a` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
+	>> error_message = "The variable `a` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections), but instead it was a(n) {a.type}!"
 	*program: @jrc03c/show-error
 	
 	>> c = ""
@@ -77,7 +77,7 @@
 
 *if: b_is_a_vector = "no" and b_is_a_matrix = "no"
 	>> error_title = "@jrc03c/dot"
-	>> error_message = "The variable `b` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
+	>> error_message = "The variable `b` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections), but instead it was a(n) {b.type}!"
 	*program: @jrc03c/show-error
 
 	>> c = ""

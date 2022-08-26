@@ -11,12 +11,11 @@
 --     `is_a_matrix` = "yes" if `matrix` is a matrix; "no" if not
 -------------------------------------------------------------------------------
 
->> is_a_matrix = "yes"
-
 *if: not matrix
 	>> is_a_matrix = "no"
 	*goto: clean-up
 
+>> is_a_matrix = "yes"
 >> matrix_type = matrix.type
 
 *if: not (matrix_type = "collection")
