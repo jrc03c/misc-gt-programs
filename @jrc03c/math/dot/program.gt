@@ -83,6 +83,41 @@
 	>> c = ""
 	*goto: clean-up
 
+-- confirm that the arrays contain only numbers
+>> collection = a
+*program: @jrc03c/contains-only-numbers
+
+*if: contains_only_numbers = "no"
+	>> error_title = "@jrc03c/dot"
+
+	*if: a_is_a_vector = "yes"
+		>> error_message = "The vector `a` should contain only numbers!"
+
+	*if: a_is_a_matrix = "yes"
+		>> error_message = "The matrix `a` should contain only numbers!"
+
+	*program: @jrc03c/show-error
+
+	>> c = ""
+	*goto: clean-up
+
+>> collection = b
+*program: @jrc03c/contains-only-numbers
+
+*if: contains_only_numbers = "no"
+	>> error_title = "@jrc03c/dot"
+
+	*if: b_is_a_vector = "yes"
+		>> error_message = "The vector `b` should contain only numbers!"
+
+	*if: b_is_a_matrix = "yes"
+		>> error_message = "The matrix `b` should contain only numbers!"
+
+	*program: @jrc03c/show-error
+
+	>> c = ""
+	*goto: clean-up
+
 --------------------
 -- TRANSPOSITIONS --
 --------------------

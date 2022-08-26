@@ -165,7 +165,7 @@
 >> b =  [ [ 8, 9, 10, 11 ], [ 12, 13, 14, 15 ], [ 16, 17, 18, 19 ], [ 20, 21, 22, 23 ] ]
 *program: @jrc03c/dot
 
->> wrongs = [234, "hello", {"yes" -> "no"}, calendar::now, [2, 3, 4], [5, 6, 7, 8]]
+>> wrongs = [234, "hello", {"yes" -> "no"}, calendar::now, [2, 3, 4], [2, "three", 4], [5, 6, 7, 8]]
 
 *for: i, item1 in wrongs
 	*for: j, item2 in wrongs
