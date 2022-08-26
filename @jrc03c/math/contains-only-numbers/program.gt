@@ -1,0 +1,73 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/contains-only-numbers
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/20579/edit
+-- tests  : https://www.guidedtrack.com/programs/20580/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `collection` = the value you want to check
+-- outputs:
+--     `contains_only_numbers` = "yes" if `collection` contains only numbers; or
+--         "no" otherwise;
+-------------------------------------------------------------------------------
+
+>> contains_only_numbers = "yes"
+
+*if: not collection
+	>> error_title = "@jrc03c/contains-only-numbers"
+	>> error_message = "You must define a collection called `collection` before invoking this program!"
+	*program: @jrc03c/show-error
+
+	>> contains_only_numbers = "no"
+	*goto: clean-up
+
+>> collection_type = collection.type
+
+*if: not (collection_type = "collection")
+	>> error_title = "@jrc03c/contains-only-numbers"
+	>> error_message = "This program only works on collections, but the variable called `collections` you provided is a(n) {collection_type}!"
+	*program: @jrc03c/show-error
+
+	>> contains_only_numbers = "no"
+	*goto: clean-up
+
+*if: not index
+	>> index = []
+
+>> i = 1
+
+*while: i <= collection.size
+	>> value = collection[i]
+	>> value_type = value.type
+
+	*if: not (value_type = "collection")
+		*if: not (value_type = "number")
+			>> contains_only_numbers = "no"
+			*goto: clean-up
+
+	*if: value_type = "collection"
+		>> orig_collection = []
+		>> orig_collection.combine(collection)
+		>> collection = value
+		*program: @jrc03c/contains-only-numbers
+
+		*if: contains_only_numbers = "no"
+			*goto: clean-up
+
+		>> collection = orig_collection
+
+	>> i = i + 1
+
+-------------------------------------------------------------------------------
+
+*label: clean-up
+
+>> collection = ""
+>> collection_type = ""
+>> error_message = ""
+>> error_title = ""
+>> i = ""
+>> orig_collection = ""
+>> value = ""
+>> value_type = ""
