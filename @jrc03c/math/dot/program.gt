@@ -26,24 +26,30 @@
 -- BASIC CHECKS --
 ------------------
 
--- confirm that `a` exists
+-- confirm that the relevant variables exist
 *if: not a
 	>> error_title = "@jrc03c/dot"
 	>> error_message = "You must define a variable `a` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
--- confirm that `b` exists
 *if: not b
 	>> error_title = "@jrc03c/dot"
 	>> error_message = "You must define a variable `b` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
+*if: not should_transpose_a
+	>> should_transpose_a = "no"
+
+*if: not should_transpose_b
+	>> should_transpose_b = "no"
+
 -- confirm that `a` is either a vector or a matrix
 >> vector = a
->> matrix = a
 *program: @jrc03c/check-if-vector
-*program: @jrc03c/check-if-matrix
 >> a_is_a_vector = is_a_vector
+
+>> matrix = a
+*program: @jrc03c/check-if-matrix
 >> a_is_a_matrix = is_a_matrix
 
 *if: a_is_a_vector = "no" and a_is_a_matrix = "no"
@@ -53,10 +59,11 @@
 
 -- confirm that `b` is either a vector or a matrix
 >> vector = b
->> matrix = b
 *program: @jrc03c/check-if-vector
-*program: @jrc03c/check-if-matrix
 >> b_is_a_vector = is_a_vector
+
+>> matrix = b
+*program: @jrc03c/check-if-matrix
 >> b_is_a_matrix = is_a_matrix
 
 *if: b_is_a_vector = "no" and b_is_a_matrix = "no"
@@ -160,7 +167,6 @@
 >> b_is_a_matrix = ""
 >> b_is_a_vector = ""
 >> b_row = ""
->> c = ""
 >> c_row = ""
 >> c_temp = ""
 >> error_message = ""

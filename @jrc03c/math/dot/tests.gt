@@ -5,57 +5,86 @@
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
+>> error_is_fatal = "no"
+
 -- vector * vector
->> a = [2, -3, 4]
->> b = [-5, 6, -7]
->> cTrue = (2 * -5) + (-3 * 6) + (4 * -7)
+>> failed_dot_vector_vector = "no"
+>> a = [ 1, -7, 6, 2, -4, 7, 5, 8, -14, -0, -10, 23, -8, 10, -5, 4, 9, 10, 6, 4, -5, 16, -4, 3, 9, -2, -3, 3, -7, -10, -6, 14, 2, -15, -10, 2, 20, -4, 21, -8, -14, 5, -4, 7, 5, -5, -12, -16, -4, -7, 3, 3, 21, -7, 10, -3, -20, -6, -6, -10, -9, 10, -8, -1, 9, 17, -0, 7, 20, 9, 12, 1, -2, -14, 3, 11, 1, -7, 1, 6, 16, 2, -6, 2, 4, 5, -2, 3, -20, -10, -0, -4, 18, 3, 7, 4, -11, 6, -5, -5 ]
+>> b = [ 2, 11, -2, 2, -1, -10, 9, 12, -20, 2, 12, -1, 12, 18, 8, -1, -1, 4, 21, -1, -6, 7, 6, -22, 2, -7, 10, -10, -6, 0, -8, -8, 6, 1, 7, 9, 15, -8, -2, -9, -0, 1, -16, 6, -2, 11, -8, 15, 0, 20, 3, 5, 15, -17, 15, -6, -0, -3, 3, -6, 24, -1, 1, -14, 8, -6, 7, 0, 8, -1, -6, -7, 18, -2, 2, 1, -3, -3, -0, 2, 2, 3, 9, 8, 6, 3, 5, -6, -8, -26, -13, -7, -2, -9, 3, -12, -5, 5, -7, -10 ] 
+>> cTrue = 1479
 *program: @jrc03c/dot
 
 *if: not (c = cTrue)
+	>> failed_dot_vector_vector = "yes"
 	>> error_title = "@jrc03c/dot/tests"
 	>> error_message = "Failed to get the dot product of two vectors! (expected: {cTrue}, received: {c})"
 	*program: @jrc03c/show-error
 
+*if: failed_dot_vector_vector = "no"
+	>> success_title = "@jrc03c/dot/tests"
+	>> success_message = "dot(vector, vector) passed!"
+	*program: @jrc03c/show-success
+
 -- vector * matrix
->> a = [2, -3, 4]
->> b = [[-5, 6, -7], [8, -9, 10] , [-11, 12, -13], [14, -15, 16]]
->> cTrue = [(2 * -5) + (-3 * 6) + (4 * -7), (2 * 8) + (-3 * -9) + (4 * 10), (2 * -11) + (-3 * 12) + (4 * -13), (2 * 14) + (-3 * -15) + (4 * 16)]
+>> failed_dot_vector_matrix = "no"
+>> a = [ 1, 8, 10, -10, -1, 9, -2, -18, -16, -2 ]
+>> b = [ [ 8, -7, 1, 4, 14, -6, -25, -3, -5, -4 ], [ -8, -1, -0, 3, 12, 7, 4, -4, -17, 1 ], [ 4, 6, 22, 1, 17, -6, -2, -3, -11, -8 ], [ -6, -1, -9, 1, 27, 0, -14, 5, -1, 7 ], [ -5, -3, 8, 1, 2, -1, -4, -16, 1, -1 ] ]
+>> cTrue = [ 46, 339, 441, -201, 312 ]
+*program: @jrc03c/dot
 
 *if: not (c.size = cTrue.size)
+	>> failed_dot_vector_matrix = "yes"
 	>> error_title = "@jrc03c/dot/tests"
 	>> error_message = "The dot product of a vector and a matrix did not end up with the expected length! (expected = {cTrue.size}, received = {c.size})"
 	*program: @jrc03c/show-error
 
 *for: i, val in c
 	*if: not (val = cTrue[i])
+		>> failed_dot_vector_matrix = "yes"
 		>> error_title = "@jrc03c/dot/tests"
 		>> error_message = "The dot product of a vector and a matrix did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
 		*program: @jrc03c/show-error
 
+*if: failed_dot_vector_matrix = "no"
+	>> success_title = "@jrc03c/dot/tests"
+	>> success_message = "dot(vector, matrix) passed!"
+	*program: @jrc03c/show-success
+
 -- matrix * vector
->> a = [[-5, 6, -7], [8, -9, 10] , [-11, 12, -13], [14, -15, 16]]
->> b = [2, -3, 4]
->> cTrue = [(2 * -5) + (-3 * 6) + (4 * -7), (2 * 8) + (-3 * -9) + (4 * 10), (2 * -11) + (-3 * 12) + (4 * -13), (2 * 14) + (-3 * -15) + (4 * 16)]
+>> failed_dot_matrix_vector = "no"
+>> a = [ [ -5, 2, 12, -1, 6, -14, -16, 6, -1, -2 ], [ 5, 24, 7, 10, -21, -19, 5, -5, -1, -1 ], [ 13, -7, 7, -9, -4, 26, -2, 4, 21, 16 ], [ -7, 4, 2, -22, 5, -2, -1, 0, -2, -1 ], [ 9, -8, -3, 9, -14, -15, -5, 4, 6, 0 ] ] 
+>> b = [ 12, 10, 2, -11, 13, -3, -4, -1, -6, -10 ]
+>> cTrue = [ 199, -11, -213, 299, -234 ]
+*program: @jrc03c/dot
 
 *if: not (c.size = cTrue.size)
+	>> failed_dot_matrix_vector = "yes"
 	>> error_title = "@jrc03c/dot/tests"
 	>> error_message = "The dot product of a matrix and a vector did not end up with the expected length! (expected = {cTrue.size}, received = {c.size})"
 	*program: @jrc03c/show-error
 
 *for: i, val in c
 	*if: not (val = cTrue[i])
+		>> failed_dot_matrix_vector = "yes"
 		>> error_title = "@jrc03c/dot/tests"
 		>> error_message = "The dot product of a matrix and a vector did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
 		*program: @jrc03c/show-error
 
--- matrix * matrix
->> a = [[5, 3, 13, 10, 12], [8, 7, 2, 6, 1], [14, 11, 0, 9, 4]]
->> b = [[7, 19, 5, 1], [18, 17, 2, 11], [13, 14, 4, 6], [15, 8, 10, 3], [0, 9, 12, 16]]
->> cTrue = [[408, 516, 327, 338], [298, 356, 134, 131], [431, 561, 230, 226]]
+*if: failed_dot_matrix_vector = "no"
+	>> success_title = "@jrc03c/dot/tests"
+	>> success_message = "dot(matrix, vector) passed!"
+	*program: @jrc03c/show-success
 
+-- matrix * matrix
+>> failed_dot_matrix_matrix = "no"
+>> a = [ [ -11, -1, -33, -9, 14 ], [ 13, 0, 0, -12, -4 ], [ -2, -7, 2, 1, 2 ], [ -8, 1, -10, -1, 7 ], [ 7, -21, 2, 8, -9 ], [ 7, -10, 2, 5, -9 ], [ 2, -3, -7, 12, 26 ], [ -11, 6, -2, -2, 7 ], [ -2, 2, -7, 15, -11 ], [ -4, -4, 6, -4, -1 ] ] 
+>> b = [ [ 8, 12, 15, -15, -6, 13, 7, -14 ], [ -2, 1, 1, -6, 1, 6, 10, -2 ], [ -9, 18, -21, 21, 5, -9, -7, 0 ], [ 2, 2, -4, 2, -5, -0, -3, 13 ], [ 2, -22, -1, -2, -17, -8, 10, -24 ] ] 
+>> cTrue = [ [ 221, -1053, 549, -568, -293, 36, 311, -297 ], [ 72, 220, 247, -211, 50, 201, 87, -242 ], [ -14, -37, -85, 112, -24, -102, -81, 7 ], [ 36, -431, 88, -112, -115, -64, 97, -71 ], [ 78, 313, 19, 97, 60, 19, -289, 264 ], [ 50, 318, 42, 25, 86, 85, -170, 203 ], [ 161, -653, 100, -187, -552, -137, 257, -490 ], [ -72, -320, -116, 69, -47, -145, 73, -52 ], [ 51, 124, 70, -77, 91, 137, -100, 483 ], [ -88, 70, -173, 204, 87, -122, -108, 36 ] ] 
+>> should_transpose_b = "yes"
 *program: @jrc03c/dot
 
 *if: not (c.size = cTrue.size)
+	>> failed_dot_matrix_matrix = "yes"
 	>> error_title = "@jrc03c/dot"
 	>> error_message = "The dot product of two matrices did not end up with the expected length! (expected: {cTrue.size}, received: {c.size})"
 	*program: @jrc03c/show-error
@@ -64,15 +93,21 @@
 	>> cTrueRow = cTrue[i]
 
 	*if: not (cRow.size = cTrueRow.size)
+		>> failed_dot_matrix_matrix= "yes"
 		>> error_title = "@jrc03c/dot"
 		>> error_message = "The dot product of two matrices did not end up with the expected width! (expected: {cTrueRow.size}, received: {cRow.size})"
 		*program: @jrc03c/show-error
 
 	*for: j, val in cRow
 		*if: not (val = cTrueRow[j])
+			>> failed_dot_matrix_matrix = "yes"
 			>> error_title = "@jrc03c/dot"
 			>> error_message = "The dot product of two matrices did not contain the correct values! (expected: [{cTrue}], received: [{c}])"
 			*program: @jrc03c/show-error
 
-All tests passed!
+*if: failed_dot_matrix_matrix = "no"
+	>> success_title = "@jrc03c/dot/tests"
+	>> success_message = "dot(matrix, matrix) passed!"
+	*program: @jrc03c/show-success
+
 *button: Okay
