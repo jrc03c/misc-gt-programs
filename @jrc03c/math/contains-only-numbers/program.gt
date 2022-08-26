@@ -32,9 +32,6 @@
 	>> contains_only_numbers = "no"
 	*goto: clean-up
 
-*if: not index
-	>> index = []
-
 >> i = 1
 
 *while: i <= collection.size

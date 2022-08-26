@@ -277,6 +277,7 @@
 >> b_row = ""
 >> c_row = ""
 >> c_temp = ""
+>> contains_only_numbers = ""
 >> error_message = ""
 >> error_title = ""
 >> i = ""
