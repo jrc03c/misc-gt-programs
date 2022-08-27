@@ -209,52 +209,30 @@
 
 *if: a_is_a_matrix = "yes" and b_is_a_matrix = "yes"
 	-- if the row sizes aren't compatible...
-	*if: not (a[1].size = b[1].size)
-		-- but if the tranposed row sizes would be compatible...
-		*if: a[1].size = b.size
-			-- and if we already transposed `b`, then warn the user that they needn't
-			-- have asked us to transpose `b` in the first place
-			*if: should_transpose_b = "yes"
-				>> warning_title = "@jrc03c/dot"
-				>> warning_message = "You asked us to transpose matrix `b`, but the shape of `b` was actually compatible with `a` in its original orientation!"
-				*program: @jrc03c/show-warning
-
-				>> matrix_in = b
-				*program: @jrc03c/matrix-transpose
-				>> b = matrix_out
-				>> should_transpose_b = "no"
-
-				*program: @jrc03c/dot
-				*goto: clean-up
-
-			-- or, if we didn't already transpose `b`, then throw an error
-			*if: should_transpose_b = "no"
-				>> error_title = "@jrc03c/dot"
-				>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
-				*program: @jrc03c/show-error
-
-				>> c = ""
-				*goto: clean-up
-
-		-- otherwise, throw an error
-		*if: not (a[1].size = b.size)
-			>> error_title = "@jrc03c/dot"
-			>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
-			*program: @jrc03c/show-error
-		
-			>> c = ""
-			*goto: clean-up
+	*if: not (a[1].size = b.size)
+		>> error_title = "@jrc03c/dot"
+		>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
+		*program: @jrc03c/show-error
+	
+		>> c = ""
+		*goto: clean-up
 
 	>> c = []
-
+	>> start = 1
+	>> stop = b[1].size + 1
+	>> step = 1
+	*program: @jrc03c/range
+	>> b_col_range = []
+	>> b_col_range.combine(range)
+	
 	*for: i, a_row in a
 		>> c_row = []
 
-		*for: j, b_row in b
+		*for: j, none in b_col_range
 			>> c_temp = 0
 
-			*for: k, a_value in a_row
-				>> c_temp = c_temp + a_value * b_row[k]
+			*for: k, b_row in b
+				>> c_temp = c_temp + a_row[k] * b_row[j]
 
 			>> c_row.add(c_temp)
 
@@ -272,6 +250,7 @@
 >> a_row = ""
 >> a_value = ""
 >> b = ""
+>> b_col_range = ""
 >> b_is_a_matrix = ""
 >> b_is_a_vector = ""
 >> b_row = ""
@@ -288,6 +267,8 @@
 >> matrix = ""
 >> matrix_in = ""
 >> matrix_out = ""
+>> none = ""
+>> range = ""
 >> row = ""
 >> should_transpose_a = ""
 >> should_transpose_b = ""

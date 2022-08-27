@@ -8,7 +8,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 
 ### [`@jrc03c/check-if-matrix`](https://www.guidedtrack.com/programs/20507/edit)
 
-Checks if `matrix` is a matrix (i.e., a 2-dimensional collection). If it is, then `is_a_matrix` will be set to "yes"; otherwise, it will be set to "no".
+Checks if `matrix` is a matrix (i.e., a non-jagged 2-dimensional collection). If it is, then `is_a_matrix` will be set to "yes"; otherwise, it will be set to "no".
 
 ### [`@jrc03c/check-if-vector`](https://www.guidedtrack.com/programs/20523/edit)
 
