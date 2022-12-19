@@ -5,37 +5,41 @@
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
+*label: start
+
 *question: Would you like to run the automated tests or test individual email addresses manually?
 	*throwaway
-	Run the automated tests
-		>> test_mode = "automatic"
-	Test individual email addresses manually
+	🔎 Test individual email addresses manually
 		>> test_mode = "manual"
-
+	🤖 Run the automated tests
+		>> test_mode = "automatic"
 
 *if: test_mode = "manual"
-	*while: 0 < 1
-		*clear
+	*label: manual
+	*clear
 
-		*question: Email address to test:
-			*type: text
-			*save: email
+	*question: Email address to test:
+		*type: text
+		*save: email
 
-		Validating...
+	*program: @jrc03c/validate-email
 
-		*program: @jrc03c/validate-email
+	*if: email_is_valid = "yes"
+		>> success_title = "Valid!"
+		>> success_message = "The email address {email} is valid!"
+		*program: @jrc03c/show-success
 
-		*if: email_is_valid = "yes"
-			*component
-				*classes: alert alert-success
-				The email address "{email}" is valid!
+	*if: email_is_valid = "no"
+		>> error_title = "Invalid!"
+		>> error_message = "The email address {email} is invalid! {email_validation_error_message}"
+		>> error_is_fatal = "no"
+		*program: @jrc03c/show-error
 
-		*if: email_is_valid = "no"
-			*component
-				*classes: alert alert-danger
-				The email address "{email}" is invalid! {email_validation_error_message}
-
-		*button: Validate another address
+	*question: {""}
+		🔎 Validate another address
+			*goto: manual
+		🔁 Start over
+			*goto: start
 
 *if: test_mode = "automatic"
 	>> tests = []
@@ -77,4 +81,6 @@
 			>> error_is_fatal = "no"
 			*program: @jrc03c/show-error
 
-	*button: Okay
+	*button: Start over
+
+*goto: start

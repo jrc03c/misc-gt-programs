@@ -31,10 +31,10 @@
 >> valid_extensions = {{ extensions }}
 
 *if: not email
-	*page
-		*component
-			*classes: alert alert-warning
-			ERROR: An email address is required for validation!
+	>> error_title = "Email address validation error"
+	>> error_message = "No email address was provided for validation!"
+	>> error_is_fatal = "yes"
+	*program: @jrc03c/show-error
 
 -- check that the email address isn't longer than 254 characters
 *if: email.size > 254
