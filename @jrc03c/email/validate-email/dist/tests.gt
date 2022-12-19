@@ -1,0 +1,80 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/validate-email/tests
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/21486
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
+*question: Would you like to run the automated tests or test individual email addresses manually?
+	*throwaway
+	Run the automated tests
+		>> test_mode = "automatic"
+	Test individual email addresses manually
+		>> test_mode = "manual"
+
+
+*if: test_mode = "manual"
+	*while: 0 < 1
+		*clear
+
+		*question: Email address to test:
+			*type: text
+			*save: email
+
+		Validating...
+
+		*program: @jrc03c/validate-email
+
+		*if: email_is_valid = "yes"
+			*component
+				*classes: alert alert-success
+				The email address "{email}" is valid!
+
+		*if: email_is_valid = "no"
+			*component
+				*classes: alert alert-danger
+				The email address "{email}" is invalid! {email_validation_error_message}
+
+		*button: Validate another address
+
+*if: test_mode = "automatic"
+	>> tests = []
+	>> tests.add(["someone@example.com", "yes" ])
+	>> tests.add(["s.o.m.e.o.n.e@e.x.a.m.p.l.e.com", "yes" ])
+	>> tests.add(["someone+test@example.com", "yes" ])
+	>> tests.add(["someone@example+test.com", "yes" ])
+	>> tests.add(["someone@example", "no" ])
+	>> tests.add(["someone@雨.com", "yes" ])
+	>> tests.add(["雨@example.com", "yes" ])
+	>> tests.add(["雨@雨.雨", "no" ])
+	>> tests.add(["someone@1.2.3.4", "no" ])
+	>> tests.add(["@example.com", "no" ])
+	>> tests.add(["someone@", "no" ])
+	>> tests.add(["someone@example.thisshouldfail", "no" ])
+	>> tests.add(["someoneexamplecom", "no" ])
+	>> tests.add(["someone.example@com", "no" ])
+	>> tests.add(["someone@123.456.789", "no" ])
+	>> tests.add(["SOMEONE@EXAMPLE.COM", "yes" ])
+	>> tests.add(["someone@.com", "no" ])
+	>> tests.add(["someone@example test.com", "no" ])
+	>> tests.add(["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com", "no" ])
+	>> tests.add(["spaces are not allowed@gmail.com", "no"])
+
+	*for: i, test in tests
+		>> email = test[1]
+		>> should_be_valid = test[2]
+
+		*program: @jrc03c/validate-email
+
+		*if: (should_be_valid = "yes" and email_is_valid = "yes") or (should_be_valid = "no" and email_is_valid = "no")
+			>> success_title = "PASSED"
+			>> success_message = "<div>Email: {email}</div><div>Should be valid: {should_be_valid}</div><div>Actually is valid: {email_is_valid}</div>"
+			*program: @jrc03c/show-success
+
+		*if: (should_be_valid = "yes" and email_is_valid = "no") or (should_be_valid = "no" and email_is_valid = "yes")
+			>> error_title = "FAILED"
+			>> error_message = "<div>Email: {email}</div><div>Should be valid: {should_be_valid}</div><div>Actually is valid: {email_is_valid}</div>"
+			>> error_is_fatal = "no"
+			*program: @jrc03c/show-error
+
+	*button: Okay

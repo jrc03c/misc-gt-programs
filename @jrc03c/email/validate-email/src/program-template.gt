@@ -1,0 +1,113 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/validate-email
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/21486
+-- tests  : https://www.guidedtrack.com/programs/21487
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `email` = the email address you want to check
+-- outputs:
+--     `email_is_valid` = "yes" if `email` is a valid address; "no" if not
+--     `email_validation_error_message` = a message describing why validation
+--         failed (if it did)
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+-- RULES (given the form "handle@domain.extension")
+-------------------------------------------------------------------------------
+-- valid top-level domain extensions list: http://data.iana.org/TLD/tlds-alpha-by-domain.txt
+-- the address must contain exactly one "@"
+-- the address must contain at least one "."
+-- the handle must contain at least one character
+-- the domain must contain at least one character
+-- any characters are valid in the handle except spaces
+-- any characters are valid in the domain except spaces
+-- the extension must be in the list of top level domains (unless the "domain" is an IP address? would that be a valid email address?)
+-------------------------------------------------------------------------------
+
+>> email_is_valid = "no"
+>> email_validation_error_message = ""
+>> valid_extensions = {{ extensions }}
+
+*if: not email
+	*page
+		*component
+			*classes: alert alert-warning
+			ERROR: An email address is required for validation!
+
+-- check that the email address isn't longer than 254 characters
+*if: email.size > 254
+	>> email_validation_error_message = "This email address is too long. Addresses must be no longer than 254 characters!"
+	*goto: cleanup
+
+-- check that there are no spaces in the address
+*if: email.count(" ") > 0
+	>> email_validation_error_message = "Email addresses must not contain spaces!"
+	*goto: cleanup
+
+-- break address into handle and domain
+>> email_parts = email.split("@")
+
+*if: not (email_parts.size = 2)
+	>> email_validation_error_message = "Email addresses must be in the form `user@domain.extension`!"
+	*goto: cleanup
+
+>> handle = email_parts[1]
+>> domain = email_parts[2]
+
+-- check that the handle is at least one character in length
+*if: handle.size < 1
+	>> email_validation_error_message = "Email addresses must be in the form `user@domain.extension`!"
+	*goto: cleanup
+
+-- check that the domain is at least 3 characters in length (char + "." + char)
+*if: domain.size < 3
+	>> email_validation_error_message = "Email addresses must be in the form `user@domain.extension`!"
+	*goto: cleanup
+
+-- break domain into subdomain(s) + domain and extension
+>> domain_parts = domain.split(".")
+
+*if: domain_parts.size < 2
+	>> email_validation_error_message = "Email addresses must be in the form `user@domain.extension`!"
+	*goto: cleanup
+
+>> extension = domain_parts[domain_parts.size]
+>> subdomain = ""
+
+*for: i, part in domain_parts
+	*if: i < domain_parts.size
+		>> subdomain = "{subdomain}{part}"
+
+-- confirm that the subdomain is at least one character in length
+*if: subdomain.size < 1
+	>> email_validation_error_message = "Email addresses must be in the form `user@domain.extension`!"
+	*goto: cleanup
+
+-- convert extension to lowercase
+>> extension = extension.lowercase
+
+-- confirm that the extension is in the list of valid top-level domain extensions
+>> extension_was_found = valid_extensions.find(extension)
+
+*if: not (extension_was_found)
+	>> email_validation_error_message = "The domain in this email address is invalid."
+	*goto: cleanup
+
+>> email_is_valid = "yes"
+
+*label: cleanup
+
+>> domain = ""
+>> domain_parts = ""
+>> email_parts = ""
+>> extension = ""
+>> extension_was_found = ""
+>> handle = ""
+>> i = ""
+>> part = ""
+>> subdomain = ""
+>> valid_extensions = ""
+
+*return
