@@ -1,0 +1,35 @@
+*label: start
+
+*question: Your message to ChatGPT:
+	*type: paragraph
+	*save: user_message
+
+>> payload = {}
+>> payload["model"] = "gpt-4"
+>> payload["messages"] = [ { "role" -> "user", "content" -> user_message } ]
+
+Thinking...
+
+*service: ChatGPT OpenAI API
+	*path: /chat/completions
+	*method: POST
+	*send: payload
+	*success
+		>> chatgpt_response = it["choices"][1]["message"]["content"]
+		>> error = 0
+	*error
+		>> error = it
+
+*clear
+
+*if: error = 0
+
+	*{"YOU:"}* {user_message}
+
+	*{"CHATGPT:"}* {chatgpt_response}
+
+*if: not (error = 0)
+
+	*{"ERROR:"}* {error}
+
+*goto: start
