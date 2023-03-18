@@ -1,0 +1,31 @@
+*label: start
+
+*question: Your message to ChatGPT:
+	*type: paragraph
+	*save: prompt_for_chatgpt
+
+>> model_for_chatgpt = "gpt-4"
+
+Thinking...
+
+*program: ChatGPT API (public)
+
+*clear
+
+*if: success_chatgpt = 1
+
+	*{"YOU:"}*
+	
+	{prompt_for_chatgpt}
+
+	*{"CHATGPT:"}*
+	
+	{response_from_chatgpt}
+
+*if: success_chatgpt = 0
+
+	*{"ERROR:"}*
+	
+	{error_from_chatgpt}
+
+*goto: start

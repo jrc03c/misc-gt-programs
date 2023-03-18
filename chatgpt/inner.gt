@@ -1,0 +1,31 @@
+*if: not prompt_for_chatgpt
+	*question: Your message to send to ChatGPT:
+		*type: paragraph
+		*save: prompt_for_chatgpt
+		
+*if: not model_for_chatgpt
+	*question: Model:
+		*save: model_for_chatgpt
+		gpt-4
+		gpt-4-0314
+		gpt-4-32k
+		gpt-4-32k-0314
+		gpt-3.5-turbo
+		gpt-3.5-turbo-0301
+
+>> payload = {}
+>> payload["model"] = model_for_chatgpt
+>> payload["messages"] = [ { "role" -> "user", "content" -> prompt_for_chatgpt } ]
+
+*service: ChatGPT OpenAI API
+	*path: /chat/completions
+	*method: POST
+	*send: payload
+	*success
+		>> response_from_chatgpt = it["choices"][1]["message"]["content"]
+		>> success_chatgpt = 1
+	*error
+		>> error_code_chatgpt = it["code"]
+		>> error_type_chatgpt = it["error"]
+		>> error_from_chatgpt = "{error_code_chatgpt}: {error_type_chatgpt}"
+		>> success_chatgpt = 0
