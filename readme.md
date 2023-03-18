@@ -4,6 +4,12 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 
 # Index
 
+## Email
+
+### [`@jrc03c/validate-email`](https://www.guidedtrack.com/programs/21486/edit)
+
+Checks if an email address is valid.
+
 ## Math
 
 ### [`@jrc03c/check-if-matrix`](https://www.guidedtrack.com/programs/20507/edit)
