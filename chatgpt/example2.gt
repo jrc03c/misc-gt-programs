@@ -1,6 +1,6 @@
 *label: Start
 
-*question: Describe a life problem below. ChatGPT will respond with an open-ended question that an empathetic and kind person would ask that will help you reflect on your feelings, beliefs, and behaviors.
+*question: Describe a life problem below. ChatGPT will respond with an open-ended question that an empathetic and kind person would ask that will help you reflect on your feelings, beliefs, and behaviors. 🫶
 	*type: paragraph
 	*save: user_input_chatgpt
 
@@ -26,6 +26,8 @@ Thinking...
 
 	{error_from_chatgpt}
 
-*button: Start over
-
-*goto: Start
+*question: {""}
+	🔁 Generate another response for the same prompt
+		*goto: API Call
+	🏁 Start over
+		*goto: Start

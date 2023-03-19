@@ -1,6 +1,6 @@
 *label: Start
 
-*question: Type a question below. ChatGPT will return answers that Confucius, Buddha, and Marcus Aurelius might have given to your question.
+*question: Type a question below. ChatGPT will return answers that Confucius, Buddha, and Marcus Aurelius might have given to your question. 📜
 	*type: paragraph
 	*save: user_input_chatgpt
 
@@ -26,6 +26,8 @@ Thinking...
 
 	{error_from_chatgpt}
 
-*button: Start over
-
-*goto: Start
+*question: {""}
+	🔁 Generate another response for the same prompt
+		*goto: API Call
+	🏁 Start over
+		*goto: Start

@@ -1,12 +1,14 @@
 *label: Start
 
-*question: Type some text below. ChatGPT will then shorten it while accurately preserving the meaning so that it can be used as a tweet that fits into the 280-character limit on Twitter. 
+*question: Type some text below. ChatGPT will then shorten it while accurately preserving the meaning so that it can be used as a tweet that fits into the 280-character limit on Twitter. 🐦
 	*type: paragraph
 	*save: user_input_chatgpt
 
 >> prompt_for_chatgpt = "Shorten this text while accurately preserving the meaning so that it can be used as a tweet that fits into the 280 character limit on Twitter: “{user_input_chatgpt}”"
 
 >> model_for_chatgpt = "gpt-4"
+
+*label: API Call
 
 Thinking...
 
@@ -26,6 +28,8 @@ Thinking...
 
 	{error_from_chatgpt}
 
-*button: Start over
-
-*goto: Start
+*question: {""}
+	🔁 Generate another response for the same prompt
+		*goto: API Call
+	🏁 Start over
+		*goto: Start
