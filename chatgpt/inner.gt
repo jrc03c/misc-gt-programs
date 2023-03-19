@@ -1,3 +1,5 @@
+-- ChatGPT API: https://platform.openai.com/docs/api-reference/chat
+
 *if: not prompt_for_chatgpt
 	*question: Your message to send to ChatGPT:
 		*type: paragraph

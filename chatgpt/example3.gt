@@ -1,0 +1,31 @@
+*label: Start
+
+*question: Type a question below. ChatGPT will return answers that Confucius, Buddha, and Marcus Aurelius might have given to your question.
+	*type: paragraph
+	*save: user_input_chatgpt
+
+>> prompt_for_chatgpt = "Respond to this question: “{user_input_chatgpt}” with three bulleted lines. The first bulleted line should have what Confucius might say in response to this question. The second bulleted line should have what Buddha might say in response to this question. The third bulleted line should have what Marcus Aurelius might say in response to this question. Output nothing other than these three responses, each starting with a bullet point. Start the first bulleted line with “Confucius might say:”, start the second bulleted line with “Buddha might say:”, and start the third bulleted line with “Marcus Aurelius might say:”."
+
+>> model_for_chatgpt = "gpt-4"
+
+Thinking...
+
+*program: ChatGPT API (public)
+
+*clear
+
+*if: success_chatgpt = 1
+
+	*{"RESPONSE FROM CHATGPT:"}*
+
+	{response_from_chatgpt}
+
+*if: success_chatgpt = 0
+
+	*{"ERROR FROM THE CHATGPT API:"}*
+
+	{error_from_chatgpt}
+
+*button: Start over
+
+*goto: Start

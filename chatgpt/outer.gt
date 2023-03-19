@@ -1,4 +1,54 @@
-*label: start
+-----------
+-- START --
+-----------
+
+*label: Start
+
+*header: GuidedTrack + ChatGPT
+
+*question: Welcome to this program demonstrating how it's possible to use the ChatGPT API in GuidedTrack programs! What would you like to do?
+	I'd like to learn how to create a program like this for myself.
+		*goto: Instructions
+	I'd like to try sending some messages to ChatGPT through this demo program.
+		*goto: Demo
+
+------------------
+-- INSTRUCTIONS --
+------------------
+
+*label: Instructions
+
+*header: Getting started with the ChatGPT API
+
+*{"Step #1:"}* If you've never used the ChatGPT API before, you'll first need to [sign up for an account at OpenAI|https://platform.openai.com].
+
+*{"Step #2:"}* Next, you'll need to go to [your account's "API keys" page|https://platform.openai.com/account/api-keys] and create a new secret key. Note that /you'll only be shown this key one time/, so make sure you copy it to a safe place before leaving the page!
+
+*{"Step #3:"}* Create a new GuidedTrack program.
+
+*{"Step #4:"}* In your new GuidedTrack program, head to the "Settings" tab and then to the "Services" sub-tab. Click the "New Service" button to start creating a new service. The *Name* of the service can be anything you want, but we recommend making it something obvious like "ChatGPT API". The *URL* of the service is [https://api.openai.com/v1|https://api.openai.com/v1]. The *Username* can be anything, but it /cannot/ be blank. And the *Password* is the secret key you created back in Step #2. Once all of that information has been entered, click the "Save" button. Then return to the "Edit" tab of your program.
+
+*{"Step #5:"}* Set up a [{"*service"}|https://docs.guidedtrack.com/api/#service-servicename] call with these parameters:
+
+*list
+	{"*service:"} (the name you gave to your new service in Step #4)
+	{"*path:"} / chat / completions (without spaces)
+	{"*method:"} POST
+	{"*send"}: (an association with "model" and "messages" keys as defined in [the ChatGPT API docs|https://platform.openai.com/docs/api-reference/chat])
+	
+(Note that the name "ChatGPT API" was the name we proposed for the new service we created. But if you named yours something else, then you'll need to use that name in your {"*service"} call.)
+
+And that's all! You can play with this demo program and inspect its source code ([here|https://www.guidedtrack.com/programs/22136/edit] and [here|https://www.guidedtrack.com/programs/22138/edit]) if you like, since it implements the instructions listed above! For more information, check out [the ChatGPT API documentation|https://platform.openai.com/docs/api-reference/chat] and [the GuidedTrack documentation|https://docs.guidedtrack.com]!
+
+*button: Cool!
+
+*goto: Start
+
+----------
+-- DEMO --
+----------
+
+*label: Demo
 
 *question: Your message to ChatGPT:
 	*type: paragraph
@@ -28,4 +78,6 @@ Thinking...
 	
 	{error_from_chatgpt}
 
-*goto: start
+*button: Cool!
+
+*goto: Start
