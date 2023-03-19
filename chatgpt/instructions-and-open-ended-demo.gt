@@ -34,7 +34,7 @@
 	{"*service:"} (the name you gave to your new service in Step #4)
 	{"*path:"} / chat / completions (without spaces)
 	{"*method:"} POST
-	{"*send"}: (an association with "model" and "messages" keys as defined in [the ChatGPT API docs|https://platform.openai.com/docs/api-reference/chat])
+	{"*send"}: (an association with "model" and "messages" keys as defined in the "Request body" section of [the ChatGPT API docs|https://platform.openai.com/docs/api-reference/chat])
 	
 (Note that the name "ChatGPT API" was the name we proposed for the new service we created. But if you named yours something else, then you'll need to use that name in your {"*service"} call.)
 
@@ -50,7 +50,18 @@ And that's all! You can play with this demo program and inspect its source code 
 
 *label: Demo
 
-*question: Your message to ChatGPT:
+*if: not question
+	>> question = "Your message to ChatGPT:"
+
+*if: response_from_chatgpt
+	*if: response_from_chatgpt.size > 0
+		{response_from_chatgpt}
+
+*if: error_from_chatgpt
+	*if: error_from_chatgpt.size > 0
+		{error_from_chatgpt}
+
+*question: {question}
 	*type: paragraph
 	*save: prompt_for_chatgpt
 
@@ -63,21 +74,13 @@ Thinking...
 *clear
 
 *if: success_chatgpt = 1
-
-	*{"YOU:"}*
-	
-	{prompt_for_chatgpt}
-
-	*{"CHATGPT:"}*
-	
-	{response_from_chatgpt}
+	>> response_from_chatgpt = "*CHATGPT:* {response_from_chatgpt}"
+	>> error_from_chatgpt = ""
 
 *if: success_chatgpt = 0
+	>> response_from_chatgpt = ""
+	>> error_from_chatgpt = "*ERROR:* {error_from_chatgpt}"
 
-	*{"ERROR:"}*
-	
-	{error_from_chatgpt}
+>> question = "*YOU:*"
 
-*button: Cool!
-
-*goto: Start
+*goto: Demo

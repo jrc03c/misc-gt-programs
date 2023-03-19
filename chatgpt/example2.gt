@@ -1,6 +1,16 @@
+>> question = "Describe a life problem below. ChatGPT will respond with an open-ended question that an empathetic and kind person would ask that will help you reflect on your feelings, beliefs, and behaviors. 🫶"
+
 *label: Start
 
-*question: Describe a life problem below. ChatGPT will respond with an open-ended question that an empathetic and kind person would ask that will help you reflect on your feelings, beliefs, and behaviors. 🫶
+*if: response_from_chatgpt
+	*if: response_from_chatgpt.size > 0
+		{response_from_chatgpt}
+
+*if: error_from_chatgpt
+	*if: error_from_chatgpt.size > 0
+		{error_from_chatgpt}
+
+*question: {question}
 	*type: paragraph
 	*save: user_input_chatgpt
 
@@ -15,19 +25,13 @@ Thinking...
 *clear
 
 *if: success_chatgpt = 1
-
-	*{"RESPONSE FROM CHATGPT:"}*
-
-	{response_from_chatgpt}
+	>> response_from_chatgpt = "*CHATGPT:* {response_from_chatgpt}"
+	>> error_from_chatgpt = ""
 
 *if: success_chatgpt = 0
+	>> response_from_chatgpt = ""
+	>> error_from_chatgpt = "*ERROR:* {error_from_chatgpt}"
 
-	*{"ERROR FROM THE CHATGPT API:"}*
+>> question = "*YOU:*"
 
-	{error_from_chatgpt}
-
-*question: {""}
-	🔁 Generate another response for the same prompt
-		*goto: API Call
-	🏁 Start over
-		*goto: Start
+*goto: Start
