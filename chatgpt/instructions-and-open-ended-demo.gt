@@ -81,6 +81,6 @@ Thinking...
 	>> response_from_chatgpt = ""
 	>> error_from_chatgpt = "*ERROR:* {error_from_chatgpt}"
 
->> question = "*YOU:*"
+>> question = "*YOUR NEW QUESTION:*"
 
 *goto: Demo
