@@ -65,7 +65,7 @@ And that's all! You can play with this demo program and inspect its source code 
 	*type: paragraph
 	*save: prompt_for_chatgpt
 
->> model_for_chatgpt = "gpt-4"
+>> model_for_chatgpt = "gpt-3.5-turbo"
 
 Thinking...
 

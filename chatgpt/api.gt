@@ -15,6 +15,19 @@
 		gpt-3.5-turbo
 		gpt-3.5-turbo-0301
 
+>> max_words_chatgpt = 192
+>> words_chatgpt = prompt_for_chatgpt.split(" ")
+
+*if: words_chatgpt.size > max_words_chatgpt
+	>> prompt_for_chatgpt = ""
+	>> i = 1
+
+	*while: i <= max_words_chatgpt
+		>> prompt_for_chatgpt = "{prompt_for_chatgpt} {words_chatgpt[i]}"
+		>> i = i + 1
+
+	>> prompt_for_chatgpt = "{prompt_for_chatgpt}..."
+
 >> payload = {}
 >> payload["model"] = model_for_chatgpt
 >> payload["messages"] = [ { "role" -> "user", "content" -> prompt_for_chatgpt } ]

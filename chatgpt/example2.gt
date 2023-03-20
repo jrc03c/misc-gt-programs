@@ -16,7 +16,7 @@
 
 >> prompt_for_chatgpt = "Suppose that someone says the following: “{user_input_chatgpt}” What is an open-ended question that an empathetic and kind person respond to this statement with so as to help the person that said the original statement reflect on their feelings, beliefs, and behaviors? Only respond with a single question as your output, nothing else. You should never say anything but a single line of text in the form of a question that ends in a question mark."
 
->> model_for_chatgpt = "gpt-4"
+>> model_for_chatgpt = "gpt-3.5-turbo"
 
 Thinking...
 
