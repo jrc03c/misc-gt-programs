@@ -1,0 +1,27 @@
+-- >> texts = []
+-- >> delimiter = ""
+
+*while: texts.size > 1
+	>> temp = []
+	>> i = 1
+	>> is_even = 0
+	>> joined = ""
+
+	*while: i <= texts.size
+		*if: is_even = 1
+			>> joined = "{joined}{delimiter}{texts[i]}"
+			>> temp.add(joined)
+			>> joined = ""
+
+		*if: is_even = 0
+			>> joined = texts[i]
+
+		>> is_even = 1 - is_even
+		>> i = i + 1
+
+	*if: joined.size > 0
+		>> temp.add(joined)
+
+	>> texts = temp
+
+>> out = texts[1]
