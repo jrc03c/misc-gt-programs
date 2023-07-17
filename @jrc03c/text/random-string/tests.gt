@@ -1,0 +1,257 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/random-string/tests
+-------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/23237/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
+>> error_is_fatal = "no"
+>> results = []
+>> next_label = ""
+
+-------------------------------------------------------------------------------
+-- test that negative string lengths are rejected
+-------------------------------------------------------------------------------
+
+*label: test1Label
+
+>> result = {}
+>> result["description"] = "test that negative string lengths are rejected"
+>> result["status"] = "passed"
+
+>> random_string_length = -1
+>> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
+
+*program: @jrc03c/random-string
+
+*if: random_string
+	*if: random_string.size > 0
+		>> result["status"] = "failed"
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test2Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that fractional string lengths are rejected
+-------------------------------------------------------------------------------
+
+*label: test2Label
+
+>> result = {}
+>> result["description"] = "test that fractional string lengths are rejected"
+>> result["status"] = "passed"
+
+>> random_string_length = 234.567
+>> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
+
+*program: @jrc03c/random-string
+
+*if: random_string
+	*if: random_string.size > 0
+		>> result["status"] = "failed"
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test3Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that non-numerical string lengths are rejected
+-------------------------------------------------------------------------------
+
+*label: test3Label
+
+>> result = {}
+>> result["description"] = "test that non-numerical string lengths are rejected"
+>> result["status"] = "passed"
+
+>> random_string_length = "nope!"
+>> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
+
+*program: @jrc03c/random-string
+
+*if: random_string
+	*if: random_string.size > 0
+		>> result["status"] = "failed"
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test4Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that empty character sets (as strings) are rejected
+-------------------------------------------------------------------------------
+
+*label: test4Label
+
+>> result = {}
+>> result["description"] = "test that empty character sets (as strings) are rejected"
+>> result["status"] = "passed"
+
+>> random_string_length = 32
+>> random_string_charset = ""
+
+*program: @jrc03c/random-string
+
+*if: random_string
+	*if: random_string.size > 0
+		>> result["status"] = "failed"
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test5Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that empty character sets (as arrays) are rejected
+-------------------------------------------------------------------------------
+
+*label: test5Label
+
+>> result = {}
+>> result["description"] = "test that empty character sets (as arrays) are rejected"
+>> result["status"] = "passed"
+
+>> random_string_length = 32
+>> random_string_charset = []
+
+*program: @jrc03c/random-string
+
+*if: random_string
+	*if: random_string.size > 0
+		>> result["status"] = "failed"
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test6Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that character set arrays contain only strings
+-------------------------------------------------------------------------------
+
+*label: test6Label
+
+>> result = {}
+>> result["description"] = "test that character set arrays contain only strings"
+>> result["status"] = "passed"
+
+>> random_string_length = 32
+>> random_string_charset = [0, "one", {}, []]
+
+*program: @jrc03c/random-string
+
+*if: random_string
+	*if: random_string.size > 0
+		>> result["status"] = "failed"
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test7Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that strings of given lengths are generated correctly
+-------------------------------------------------------------------------------
+
+*label: test7Label
+
+>> result = {}
+>> result["description"] = "test that strings of given lengths are generated correctly"
+>> result["status"] = "passed"
+
+>> random_string_length = 1
+
+*while: random_string_length <= 100
+	>> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
+
+	*program: @jrc03c/random-string
+	
+	*if: not (random_string.size = random_string_length)
+		>> result["status"] = "failed"
+		>> random_string_length = random_string_length + 100
+
+	>> random_string_length = random_string_length + 1
+	*wait: 0.01.seconds
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "test8Label"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- test that strings of given character sets are generated correctly
+-------------------------------------------------------------------------------
+
+*label: test8Label
+
+>> result = {}
+>> result["description"] = "that strings of given character sets are generated correctly"
+>> result["status"] = "passed"
+
+>> charsets = []
+>> charsets.add("abcde")
+>> charsets.add("VWXYZ")
+>> charsets.add("13579")
+>> charsets.add("~!@#$")
+
+*for: i, charset in charsets
+	>> random_string_length = 32
+	>> random_string_charset = charset
+
+	*program: @jrc03c/random-string
+	
+	>> chars = random_string.split("")
+
+	*for: j, char in chars
+		>> index = charset.find(char)
+
+		*if: not index or index < 0 or index > charset.size
+			>> result["status"] = "failed"
+
+	*wait: 0.01.seconds
+
+>> results.add(result)
+*clear
+*wait: 0.1.seconds
+>> next_label = "endLabel"
+*goto: showTestResultsLabel
+
+-------------------------------------------------------------------------------
+-- show test results
+-------------------------------------------------------------------------------
+
+*label: showTestResultsLabel
+
+*for: i, result in results
+	*if: result["status"] = "passed"
+		>> success_message = result["status"]
+		>> success_message = result["description"]
+		*program: @jrc03c/show-success
+
+	*if: result["status"] = "failed"
+		>> error_title = result["status"]
+		>> error_message = result["description"]
+		*program: @jrc03c/show-error
+
+*if: next_label = "endLabel"
+	Finished!
+
+*if: not (next_label = "endLabel")
+	Still running...
+
+*goto: {next_label}
+
+*label: endLabel
+
+*button: Okay
