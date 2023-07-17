@@ -1,9 +1,10 @@
 -------------------------------------------------------------------------------
 -- @jrc03c/random-string
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/23237/edit
--- tests  : https://www.guidedtrack.com/programs/23238/edit
--- author : Josh Castle (joshrcastle@gmail.com)
+-- url        : https://www.guidedtrack.com/programs/23237/edit
+-- unit tests : https://www.guidedtrack.com/programs/23238/edit
+-- playground : https://www.guidedtrack.com/programs/23244/edit
+-- author     : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- Returns `random_string`, a random string of a given length.
 --
@@ -73,7 +74,7 @@
 		>> error_message = "The `random_string_charset` variable must be a non-empty string (text) or a non-empty array (collection)! (Its current value is: {random_string_charset})"
 		*program: @jrc03c/show-error
 		*return
-	
+
 >> random_string = ""
 
 *while: random_string.size < random_string_length

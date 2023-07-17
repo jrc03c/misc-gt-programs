@@ -1,0 +1,34 @@
+>> default_length = 32
+>> default_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
+>> error_is_fatal = "no"
+
+*while: 0 < 1
+	*page
+		*question: random_string_length
+			*type: number
+			*default: default_length
+			*save: random_string_length
+			*blank
+
+		*question: random_string_charset
+			*default: default_charset
+			*save: random_string_charset
+			*blank
+
+	*if: not random_string_length
+		>> random_string_length = default_length
+
+	*if: random_string_length = ""
+		>> random_string_length = default_length
+
+	*if: not random_string_charset
+		>> random_string_charset = default_charset
+
+	*if: random_string_charset = ""
+		>> random_string_charset = default_charset
+
+	>> random_string = ""
+	*program: @jrc03c/random-string
+	RESULT: {random_string}
+	LENGTH: {random_string.size}
+	*button: Start over
