@@ -17,14 +17,14 @@
 --     `step` = the distance between each term; defaults to 1 if undefined
 --
 -- outputs:
---     `range` = the transposed matrix
+--     `range` = the resulting array of values
 -------------------------------------------------------------------------------
 
 *if: not start
 	>> error_title = "@jrc03c/range"
 	>> error_message = "You must define a number variable called `start` before invoking this program!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
@@ -34,7 +34,7 @@
 	>> error_title = "@jrc03c/range"
 	>> error_message = "The variable called `start` must hold a number value, instead it was a(n) {start_type}!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
@@ -42,7 +42,7 @@
 	>> error_title = "@jrc03c/range"
 	>> error_message = "You must define a number variable called `stop` before invoking this program!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
@@ -52,7 +52,7 @@
 	>> error_title = "@jrc03c/range"
 	>> error_message = "The variable called `stop` must hold a number value, but instead it was a(n) {stop_type}!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
@@ -65,7 +65,7 @@
 	>> error_title = "@jrc03c/range"
 	>> error_message = "The variable called `step` must hold a non-zero number value (or be undefined), but instead it was a(n) {step_type}!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
@@ -73,7 +73,7 @@
 	>> error_title = "@jrc03c/range"
 	>> error_message = "The variable called `step` must hold a non-zero number value (or be undefined), but its value was {step}!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
@@ -81,7 +81,7 @@
 	>> error_title = "@jrc03c/range"
 	>> error_message = "The `step` value you provided ({step}) does not match the direction from `start` ({start}) to `stop` ({stop})!"
 	*program: @jrc03c/show-error
-	
+
 	>> range = ""
 	*goto: clean-up
 
