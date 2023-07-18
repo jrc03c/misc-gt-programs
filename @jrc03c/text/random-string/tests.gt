@@ -94,7 +94,7 @@
 >> result["description"] = "test that empty character sets (as strings) are rejected"
 >> result["status"] = "passed"
 
->> random_string_length = 32
+>> random_string_length = 8
 >> random_string_charset = ""
 
 *program: @jrc03c/random-string
@@ -119,7 +119,7 @@
 >> result["description"] = "test that empty character sets (as arrays) are rejected"
 >> result["status"] = "passed"
 
->> random_string_length = 32
+>> random_string_length = 8
 >> random_string_charset = []
 
 *program: @jrc03c/random-string
@@ -144,7 +144,7 @@
 >> result["description"] = "test that character set arrays contain only strings"
 >> result["status"] = "passed"
 
->> random_string_length = 32
+>> random_string_length = 8
 >> random_string_charset = [0, "one", {}, []]
 
 *program: @jrc03c/random-string
@@ -206,7 +206,7 @@
 >> charsets.add("~!@#$")
 
 *for: i, charset in charsets
-	>> random_string_length = 32
+	>> random_string_length = 8
 	>> random_string_charset = charset
 
 	*program: @jrc03c/random-string

@@ -22,7 +22,7 @@
 
 -- if no length was given, then define a default length
 *if: not random_string_length
-	>> random_string_length = 32
+	>> random_string_length = 8
 
 -- confirm that the length is a number
 *if: not (random_string_length.type = "number")

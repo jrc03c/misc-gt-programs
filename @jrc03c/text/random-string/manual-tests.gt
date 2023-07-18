@@ -1,4 +1,4 @@
->> default_length = 32
+>> default_length = 8
 >> default_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
 >> error_is_fatal = "no"
 
