@@ -1,0 +1,14 @@
+>> parsed_datetime = ""
+>> error_is_fatal = "no"
+
+*while: 0 < 1
+	*clear
+	
+	*question: ISO date string to parse:
+		*save: date_string
+
+	*program: @jrc03c/parse-iso-date-string
+
+	*Parsed date:* {parsed_datetime}
+
+	*button: Okay
