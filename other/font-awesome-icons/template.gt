@@ -1,0 +1,65 @@
+*html
+	<style>
+		.answer_icon {
+			margin: 0 !important;
+		}
+
+		.answer-icon-rows-container {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-content: stretch;
+			align-items: stretch;
+			width: fit-content;
+			margin: 0 auto;
+		}
+
+		.answer-icon-row {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-content: center;
+			align-items: center;
+			width: fit-content;
+		}
+
+		.answer-icon-row-left,
+		.answer-icon-row-right {
+			box-sizing: border-box;
+		}
+
+		.answer-icon-row-left {
+			text-align: center;
+			margin-right: 0.5em;
+			min-width: 3em;
+		}
+
+		.answer-icon-row-right {
+			text-align: left;
+			margin-left: 0.5em;
+			width: 100%;
+			flex-shrink: 999999;
+		}
+	</style>
+
+	<p class="text-center">
+		Here's how various icons are displayed in GuidedTrack programs.
+	</p>
+
+	<div class="answer-icon-rows-container">
+		{% for icon in icons %}
+		<div class="answer-icon-row">
+			<div class="answer-icon-row-left">
+				<i class="fa {{ icon }} answer_icon"></i>
+			</div>
+
+			<div class="answer-icon-row-right">
+				{{ icon }}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+*button: Okay
