@@ -1,0 +1,24 @@
+>> delimiter = ","
+>> conjunction = "and"
+
+*while: 0 < 1
+	*page
+		*question: Values:
+			*multiple
+			*save: list
+		
+		*question: Delimiter:
+			*save: delimiter
+			*default: "{delimiter}"
+			
+		*question: Conjunction:
+			*save: conjunction
+			*default: "{conjunction}"
+		
+	*program: @jrc03c/english-list-join
+	
+	Here's the list joined together:
+	
+	{joined}
+	
+	*button: Start over
