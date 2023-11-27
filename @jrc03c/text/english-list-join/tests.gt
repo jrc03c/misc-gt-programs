@@ -5,3 +5,116 @@
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
+*html
+	<h1>All of these tests should pass:</h1>
+
+>> error_is_fatal = "no"
+
+-----
+
+>> list = [2, 3, 4, 5, 6]
+>> delimiter = ","
+>> conjunction = "and"
+>> joined_true = "2, 3, 4, 5, and 6"
+*program: @jrc03c/english-list-join
+
+*if: joined = joined_true
+	>> success_message = "Joined multiple numerical values with the default delimiter and conjunction!"
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = "The test failed given these parameters: list = '[{list}]', delimiter = '{delimiter}', and conjunction = '{conjunction}'! The returned value was: '{joined}'"
+	*program: @jrc03c/show-error
+
+-----
+
+>> list = ["foo", "bar", "baz"]
+>> delimiter = ";"
+>> conjunction = "buuuuut"
+>> joined_true = "foo; bar; buuuuut baz"
+*program: @jrc03c/english-list-join
+
+*if: joined = joined_true
+	>> success_message = "Joined multiple string values with a non-default delimiter and a non-default conjunction!"
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = "The test failed given these parameters: list = '[{list}]', delimiter = '{delimiter}', and conjunction = '{conjunction}'! The returned value was: '{joined}'"
+	*program: @jrc03c/show-error
+
+-----
+
+>> list = ["yes", "no"]
+>> delimiter = "~"
+>> conjunction = "..."
+>> joined_true = "yes ... no"
+*program: @jrc03c/english-list-join
+
+*if: joined = joined_true
+	>> success_message = "Joined two string values!"
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = "The test failed given these parameters: list = '[{list}]', delimiter = '{delimiter}', and conjunction = '{conjunction}'! The returned value was: '{joined}'"
+	*program: @jrc03c/show-error
+
+-----
+
+>> list = ["Hello, world!"]
+>> delimiter = "&&&"
+>> conjunction = "***"
+>> joined_true = "Hello, world!"
+*program: @jrc03c/english-list-join
+
+*if: joined = joined_true
+	>> success_message = "Joined one string value!"
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = "The test failed given these parameters: list = '[{list}]', delimiter = '{delimiter}', and conjunction = '{conjunction}'! The returned value was: '{joined}'"
+	*program: @jrc03c/show-error
+
+-----
+
+>> list = []
+>> delimiter = ""
+>> conjunction = ""
+>> joined_true = ""
+*program: @jrc03c/english-list-join
+
+*if: joined = joined_true
+	>> success_message = "Joined zero values!"
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = "The test failed given these parameters: list = '[{list}]', delimiter = '{delimiter}', and conjunction = '{conjunction}'! The returned value was: '{joined}'"
+	*program: @jrc03c/show-error
+
+-----
+
+>> list = [234, "yes", { "foo" -> "bar" }, calendar::now, 5.seconds]
+>> delimiter = ""
+>> conjunction = ""
+*program: @jrc03c/english-list-join
+
+*if: joined.type = "string"
+	>> success_message = "Joined mixed value types!"
+	*program: @jrc03c/show-success
+
+*if: not (joined.type = "string")
+	>> error_message = "The test failed given these parameters: list = '[{list}]', delimiter = '{delimiter}', and conjunction = '{conjunction}'! The returned value was: '{joined}'"
+	*program: @jrc03c/show-error
+
+-----
+
+*html
+	<br>
+	<h1>All of these tests should fail:</h1>
+
+>> wrongs = [234, "nope", { "foo" -> "bar" }, calendar::now, 5.seconds]
+
+*for: wrong in wrongs
+	>> list = wrong
+	>> delimiter = ","
+	>> conjunction = "and"
+	*program: @jrc03c/english-list-join

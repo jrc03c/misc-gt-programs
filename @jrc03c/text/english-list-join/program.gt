@@ -31,19 +31,19 @@
 *if: not list
 	>> error_title = "@jrc03c/english-list-join"
 	>> error_message = "No variable called `list` was defined!"
-	>> error_is_fatal = "yes"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not (list.type = "collection")
 	>> error_title = "@jrc03c/english-list-join"
-	>> error_message = "A called `list` was defined, but its value was not a collection! (Instead, it was a(n) {list.type}.)"
-	>> error_is_fatal = "yes"
+	>> error_message = "A variable called `list` was defined, but its value was not a collection! (Instead, it was a(n) {list.type}.)"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not delimiter
 	>> delimiter = ","
 
-*if: not (delimiter.type = "text")
+*if: not (delimiter.type = "string")
 	>> delimiter = delimiter.text
 
 *if: delimiter.size = 0
@@ -52,7 +52,7 @@
 *if: not conjunction
 	>> conjunction = "and"
 
-*if: not (conjunction.type = "text")
+*if: not (conjunction.type = "string")
 	>> conjunction = conjunction.text
 
 >> joined = ""
@@ -61,7 +61,7 @@
 	*return
 	
 *if: list.size = 1
-	>> joined = list[1]
+	>> joined = list[1].text
 	*return
 	
 *if: list.size = 2
@@ -74,7 +74,7 @@
 			>> joined = "{joined}{delimiter} {v}"
 			
 		*if: joined.size = 0
-			>> joined = v
+			>> joined = v.text
 		
 	*if: not (i < list.size)
 		>> joined = "{joined}{delimiter} {conjunction} {v}"
