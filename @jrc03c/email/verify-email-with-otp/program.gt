@@ -1,0 +1,86 @@
+>> email = ""
+>> email_is_valid = "yes"
+
+*label: EMAIL
+
+*if: (email.size > 0) and (email_is_valid = "no")
+	>> warning_message = "Please enter a valid email address!"
+	*program: @jrc03c/show-warning
+
+*question: What is your email address?
+	*tip: NOTE: After you enter this email address and we validate it, we'll send you a one-time passcode. You'll need to use that passcode to complete this program, so please make sure that you can successfully access the account associated with this email address before continuing.
+	*save: email
+
+*program: @jrc03c/validate-email
+
+*if: email_is_valid = "no"
+	*goto: EMAIL
+
+*program: @jrc03c/random-string
+>> otp = random_string
+
+*html
+	<div class="prompt">
+		Sending your one-time passcode... 💌
+	</div>
+
+*if: not verify_email_with_otp_subject
+	>> verify_email_with_otp_subject = "Your one-time passcode"
+
+*email
+	*to: {email}
+	*subject: Your one-time passcode
+	*body
+		Passcode: {otp}
+
+*wait: 2.seconds
+*clear
+
+*html
+	<div class="prompt">
+		<b>Sent! ⚡</b>
+	</div>
+
+>> tries = 3
+
+*label: OTP
+
+*if: tries < 3
+	>> attempts = "attempts"
+
+	*if: tries = 1
+		>> attempts = "attempt"
+
+	>> warning_message = "Incorrect passcode! You have {tries} more {attempts}."
+	*program: @jrc03c/show-warning
+
+*question: Please enter your one-time passcode here:
+	*save: temp_otp
+
+*if: temp_otp = otp
+	*if: dest
+		Redirecting you now...
+		*goto: {dest}
+
+	*goto: END
+
+>> tries = tries - 1
+
+*if: tries > 0
+	*goto: OTP
+
+>> error_is_fatal = "yes"
+>> error_message = "You were unable to provide the correct passcode in three attempts! Please try again later."
+
+*program: @jrc03c/show-error
+
+*label: END
+
+*html
+	<div class="prompt">
+		<b>Correct!</b>
+	</div>
+
+	<br>
+
+You're all done! Thanks for verifying your email address!
