@@ -6,7 +6,9 @@
 -------------------------------------------------------------------------------
 
 *html
-	<h1>All of these tests should pass:</h1>
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should pass:
+	</h1>
 
 >> error_is_fatal = "no"
 
@@ -92,7 +94,7 @@
 
 -----
 
->> list = [234, "yes", { "foo" -> "bar" }, calendar::now, 5.seconds]
+>> list = [["hello", "world"], 234, "yes", { "foo" -> "bar" }, calendar::now, 5.seconds]
 >> delimiter = ""
 >> conjunction = ""
 *program: @jrc03c/english-list-join
@@ -108,8 +110,11 @@
 -----
 
 *html
-	<br>
-	<h1>All of these tests should fail:</h1>
+	<br><hr><br>
+	
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should fail:
+	</h1>
 
 >> wrongs = [234, "nope", { "foo" -> "bar" }, calendar::now, 5.seconds]
 
@@ -118,3 +123,8 @@
 	>> delimiter = ","
 	>> conjunction = "and"
 	*program: @jrc03c/english-list-join
+	
+*html
+	<br><hr><br>
+	
+*button: Okay
