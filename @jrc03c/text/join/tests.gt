@@ -1,0 +1,152 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/join/tests
+-------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/22162/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
+*html
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should pass:
+	</h1>
+
+>> error_is_fatal = "no"
+>> description = "Join single-character strings by a single-character delimiter."
+>> list = ["a", "b", "c"]
+>> delimiter = ";"
+>> joined_true = "a;b;c"
+*program: @jrc03c/join
+
+*if: joined = joined_true
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = description
+	*program: @jrc03c/show-error
+
+*wait: 0.1.seconds
+
+-----
+
+>> description = "Join multiple-character strings by a single-character delimiter."
+>> list = ["abc", "def", "ghi"]
+>> delimiter = "?"
+>> joined_true = "abc?def?ghi"
+*program: @jrc03c/join
+
+*if: joined = joined_true
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = description
+	*program: @jrc03c/show-error
+
+*wait: 0.1.seconds
+	
+-----
+
+>> description = "Join single-character strings by a multi-character delimiter."
+>> list = ["!", "@", "#"]
+>> delimiter = "..."
+>> joined_true = "!...@...#"
+*program: @jrc03c/join
+
+*if: joined = joined_true
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = description
+	*program: @jrc03c/show-error
+	
+*wait: 0.1.seconds
+
+-----
+
+>> description = "Join multi-character strings by a multi-character delimiter."
+>> list = ["Hell", "hath", "no", "fury"]
+>> delimiter = " ^ "
+>> joined_true = "Hell ^ hath ^ no ^ fury"
+*program: @jrc03c/join
+
+*if: joined = joined_true
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (joined = joined_true)
+	>> error_message = description
+	*program: @jrc03c/show-error
+
+*wait: 0.1.seconds
+
+-----
+
+>> counter = 0
+
+*while: counter < 10
+	*program: @jrc03c/random
+	*program: @jrc03c/random-string
+	>> description = "Join randomly-generated strings with a randomly-generated delimiter (#{counter + 1})."
+	>> j = 0
+	>> list = []
+	>> delimiter = random_string
+	>> joined_true = ""
+	
+	*while: j < r * 10 + 3
+		*program: @jrc03c/random-string
+		>> list.add(random_string)
+		
+		*if: joined_true.size > 0
+			>> joined_true = "{joined_true}{delimiter}{random_string}"
+			
+		*if: joined_true.size = 0
+			>> joined_true = random_string
+			
+		>> j = j + 1
+
+	*program: @jrc03c/join
+	
+	*if: joined = joined_true
+		>> success_message = description
+		*program: @jrc03c/show-success
+	
+	*if: not (joined = joined_true)
+		>> error_message = description
+		*program: @jrc03c/show-error
+
+	>> counter = counter + 1
+	*wait: 0.1.seconds
+	
+-----
+
+*html
+	<br><hr><br>
+	
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should fail:
+	</h1>
+	
+>> wrong_lists = []
+>> wrong_lists.add(234)
+>> wrong_lists.add("foo")
+>> wrong_lists.add({ "hello" -> "world" })
+>> wrong_lists.add(calendar::now)
+>> wrong_lists.add(60.seconds)
+
+*for: i, list in wrong_lists
+	>> joined = ""
+	>> delimiter = "?"
+	*program: @jrc03c/join
+	
+	*if: joined.size > 0
+		>> warning_message = "This should've failed, but it didn't! (joined = '{joined}')"
+		*program: @jrc03c/show-warning
+	
+	*wait: 0.1.seconds
+
+*html
+	<br><hr><br>
+
+*button: Done!

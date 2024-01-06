@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/join
+-------------------------------------------------------------------------------
+-- url        : https://www.guidedtrack.com/programs/22162/edit
+-- unit tests : https://www.guidedtrack.com/programs/22163/edit
+-- playground : https://www.guidedtrack.com/programs/26292/edit
+-- author     : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- Joins a list of values using some delimiter. Returns a string.
+--
+-- inputs:
+--     `list` = the list of values to join
+--
+--     `delimiter` = a string that separates each pair of values; the default is
+--         a comma and a space (", ")
+--
+-- outputs:
+--     `joined` = the generated string in which all values have been joined by
+--         the delimiter
+-------------------------------------------------------------------------------
+
+*if: not list
+	>> error_title = "@jrc03c/join"
+	>> error_message = "No variable called `list` was defined!"
+	*program: @jrc03c/show-error
+	*return
+
+*if: not (list.type = "collection")
+	>> error_title = "@jrc03c/join"
+	>> error_message = "A variable called `list` was defined, but its value was not a collection! (Instead, it was a(n) {list.type}.)"
+	*program: @jrc03c/show-error
+	*return
+
+*if: not delimiter
+	>> delimiter = ", "
+
+*if: not (delimiter.type = "string")
+	>> delimiter = delimiter.text
+
+>> joined = ""
+
+*for: i, v in list
+	>> v = v.text
+
+	*if: i = list.size
+		>> joined = "{joined}{v}"
+
+	*if: i < list.size
+		>> joined = "{joined}{v}{delimiter}"

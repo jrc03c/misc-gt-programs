@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/join/manual-tests
+-------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/22162/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
+*label: start
+
+*question: Strings to join:
+	*multiple
+	*save: list
+	
+*question: Delimiter:
+	*save: delimiter
+	
+*program: @jrc03c/join
+
+RESULT:
+
+{joined}
+
+*button: Okay
+
+*goto: start
