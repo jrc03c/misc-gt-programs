@@ -1,0 +1,7144 @@
+>> progress = 0
+>> progress_step = 100 / 337
+
+>> strong_athletic_coaching_score = 0
+>> strong_business_score = 0
+>> strong_creative_arts_score = 0
+>> strong_creative_writing_score = 0
+>> strong_engineering_score = 0
+>> strong_family_activity_score = 0
+>> strong_finance_score = 0
+>> strong_human_relations_management_score = 0
+>> strong_information_technology_score = 0
+>> strong_law_score = 0
+>> strong_life_science_score = 0
+>> strong_management_score = 0
+>> strong_manual_labor_score = 0
+>> strong_mathematics_score = 0
+>> strong_medical_service_score = 0
+>> strong_office_work_score = 0
+>> strong_outdoor_agriculture_score = 0
+>> strong_performing_arts_score = 0
+>> strong_personal_service_score = 0
+>> strong_physical_risk_taking_score = 0
+>> strong_physical_science_score = 0
+>> strong_politics_score = 0
+>> strong_professional_advising_score = 0
+>> strong_protective_score = 0
+>> strong_religious_activities_score = 0
+>> strong_sales_score = 0
+>> strong_skilled_trades_score = 0
+>> strong_social_sciences_score = 0
+>> strong_social_service_score = 0
+>> strong_teaching_score = 0
+>> strong_technical_writing_score = 0
+
+*header: Basic Interest Markers Inventory
+
+This survey contains a list of activities to help you explore your career interests. Please indicate how much you would like to do each activity by selecting the description that most closely represents how you feel about it. At the end, we'll show you your scores as well as a list of careers that might interest you!
+
+The survey usually takes about 30 minutes to complete.
+
+*button: Begin survey
+
+*randomize: all
+
+	*question: Acquire the latest electronic technology
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Act in a movie
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Act in a play
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Act in a television commercial
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Administer city government
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Advise people in meeting their professional goals
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Analyze a person's credit history
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Analyze financial information
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Analyze problems in aircraft design
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Analyze the effects of discrimination on minority groups
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Appear in a talent show
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Apply mathematical techniques to practical problems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Apply professional skills in a consulting role
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Arbitrate legal disputes between parties
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Argue for or against an idea
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Arrange business loans
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Arrange play dates for your child
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Arrange transportation for your child's and friend's play activities
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Arrange travel plans and accommodations
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Assess employee opinions of the company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Assess organizational development needs
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Assist people in planning for retirement
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Assist people with disabilities to find employment
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Attend a religious ceremony
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Be a sales representative for a retail business
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Be on a team of writers for a situational comedy
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Breed animals in a laboratory
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Calculate the probability of winning a contest
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Care for and plant trees
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Clean offices
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Clean up trash or debris
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Coach a sports team
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_athletic_coaching_score = strong_athletic_coaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Coach people to prepare them for an interview
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Collect plant samples
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Compare cultural differences among groups
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Compose short stories
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct a workshop on time management
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct an orchestra
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct career planning workshops
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct religious ceremonies
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct research with growing bacteria
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct seminars
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct social science experiments
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Conduct surveillance of suspects
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Construct wooden cabinets
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Convince people about the usefulness of a new gadget
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Cook for your friends and family
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Coordinate the activities of all departments in a bank
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Counsel clients with personal problems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Counsel families in crisis
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Create a budget
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Create a computer database
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Create a sculpture
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Create an effective classroom atmosphere
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Create manufacturer's catalogs
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Debate the merits of political candidates
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Defend a client against a legal charge (in a courtroom)
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Deliver office furniture
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Describe features and benefits of a product or service you sell
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Describe the structure of an organic compound
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design a computer system for an organization
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design a creative work of art
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design a diagnostic routine for a power plant
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design a highway overpass
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design a piece of artistic furniture
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design a technology system for distance learning
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design an active learning activity
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design an office filing system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design costumes for a movie or play
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design electronic systems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design structures that can withstand heavy stresses
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Design tests to evaluate students' learning
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Determine customer needs
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Determine the cause of an illness
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop a lecture
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop a portfolio of artwork
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop a script for a movie
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop a theory about human behavior
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop business systems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop mathematical formulas
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop more user-friendly machines
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop my spirituality
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop procedures to improve office efficiency
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop relationship with external suppliers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Develop strategies for advertising campaigns and sales promotions
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Diagnose malfunctions in automotive engines
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Diagnose mental illness
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Dig a hole for a fence
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct activities to improve office communication
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct all sales activities for a company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct and coordinate the work activities of subordinates
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct the business affairs of a university
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct the operations of a medium size company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct the performance of actors
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Direct traffic after an accident
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Discover uncharted territories
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Dissect an animal
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Do work that is dangerous and exciting
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Drive a nail into wood
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Edit a newspaper article
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Escort individuals for their own protection
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Evaluate the quality of an investment
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Examine a patient in a clinic
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Explain a religious text to people
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Explain a sport to other people
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_athletic_coaching_score = strong_athletic_coaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Explain how viruses infect the human body
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Explain new company policies to workers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Explain products to customers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Facilitate relationships between management and employees
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Facilitate students' discussions
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Feed and groom livestock
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Feed and water animals in a zoo
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Feed items into a machine
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Find precedents related to a legal case
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Fit and alter clothes for a customer
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Gather evidence for a trial
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Give a speech supporting your candidate
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Graph an equation
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Greet guests and answer questions about activities in a hotel
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Guard a government building
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Harvest trees for timber
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Have some adventure during every work day
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help a client plan a vacation to Europe
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help a client plan an exercise program
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help children from disadvantaged background adjust to school
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help children understand religious teachings
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help families to adopt a child
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help people find community resources
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help people overcome social problems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Help the homeless find shelter
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Identify and classify bacteria
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Implementing quality review procedures in a company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Improve a system for handling employee reimbursements
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Improve computer network efficiency
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Improve the efficiency of an assembly process
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Increase sales in your sales territory
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Influence voters to support your ideas
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Install a crop irrigation system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Install a new computer system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Install the electrical wiring in a house
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Install the piping and fixtures of a drainage system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Interact with students in a classroom setting
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: International travel to countries where there is armed conflict
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Interpret religious writings
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Interpret the constitutionality of a law
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Investigate cultural practices
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Investigate employees' job satisfaction
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Investigate human gene structure
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Investigate the molecular structure of substances
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Keep the home looking comfortable
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Keep up-to-date on the latest software
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Lead a tour to points of interest in a large city
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn about a new branch of mathematics
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn about human behavior
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn about money management
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn about soil and climate requirements of specialty crops
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn about the life cycle of an animal species
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn about the needs of the marketplace
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn fire-fighting techniques
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn how to operate power tools
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Learn new sales tactics
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Load and unload freight materials
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Maintain a website for an organization
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Maintain manufacturing equipment in an industrial plant
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Maintain network hardware and software
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Maintain the attractiveness of the house
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Maintain the main generator in a power plant
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Make inspections to be sure that laws are not broken
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Measure the speed of electrons
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Meet the needs of my partner and children
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Meet with workers to mediate disagreements
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Modify an equipment design to reduce sound level
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Modify existing software
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Negotiate a business deal
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Obtain a license to practice law
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Offer feedback on student papers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Operate commonly-used office machines
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Order and maintain an inventory of office supplies
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Organize a diversity workshop for a company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Organize a social support group
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Organize activities to raise employees' morale
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Organize files and documents
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Parachute jump from an airplane
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Participate in a musical performance
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Participate in a prayer group
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Participate in an art show
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Participate in competitive sports
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_athletic_coaching_score = strong_athletic_coaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Participate in extreme sports
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Participate in high-speed chases
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Patrol an area to maintain security
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Patrol borders to stop illegal immigration
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Perform magic tricks on stage
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Perform office work
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Perform surgery
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Persuade customers to spend money
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Persuade people to vote for your candidate
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Plan and coordinate a convention for a professional association
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Plan and direct training and staff development for a business
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Plan and edit technical manuals
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Plan parties for weddings and other special occasions
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Plan the expansion of a company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Plan the food and drinks for a business meeting
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Play with your children
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Pray
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Prepare a manual for a computer program
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Prepare exciting meals for your family
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Prepare legal documents
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Prepare payrolls
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Prescribe medication to relieve pain
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Present arguments to a jury
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Project future expenditure
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Promote sales of medical equipment to physicians
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Protect crops from diseases and pests
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide a client with a manicure
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide a comfortable home for my family
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide advice about investments
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide childcare services
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide consultation for colleagues
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide customer service
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide first aid
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide human relations training
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide personal services to airplane passengers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide physical fitness training
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_athletic_coaching_score = strong_athletic_coaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide physical therapy
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide services to individuals with disabilities
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide skill development training
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Provide spiritual guidance
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Raise livestock on a farm
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Read a religious text
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Read a story to your child
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Recommend changes in how a company operates
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_professional_advising_score = strong_professional_advising_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Record meeting minutes
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Redecorate the living room
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Redesign an engine to improve fuel efficiency
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Referee a sporting event
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_athletic_coaching_score = strong_athletic_coaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Repair the engine of an automobile
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Replace defective telephone lines
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Rescue someone stranded on a mountain
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Research case law
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Research new drugs to cure cancer
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Respond to emergency calls for help
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Review organizational policy matters on equal employment opportunity
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Review the interpersonal relationship literature
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Rule on the admissibility of evidence in court
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Run for a political office
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Schedule, maintain, and update appointments
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Scuba-dive among unexplored coral reefs
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Search for explosives in an airport
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Search for new solar systems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Sell a new product to consumers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Sell commercial property
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Sell services and equipment
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Separate items by weight or size
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Serve as a president of a university
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Serve beverages in a club
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Set prices on goods based on forecasts of customer demand
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Set up an office in a new city
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Set up business transactions between companies
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Sing on a stage
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Sketch a picture
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Solve an algebraic equation
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Solve geometric proofs
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Stack lumber in piles
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Structure an employee disciplinary action
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study child-rearing problems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study class structures of a society
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study creative writing
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study how plants grow
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study how to generate business profits
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study intersections among people in a group
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_sciences_score = strong_social_sciences_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study one of the performing arts
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study painting
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study rock and mineral formations
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study the diet of an animal species
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study the laws of gravity
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study the movement of planets
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study the nature of quantum physics
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Study why earthquakes occur
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Style hair in a salon
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Supervise high school students' research projects
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a class about religion
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a course in advance mathematics
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a course in athletic training
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_athletic_coaching_score = strong_athletic_coaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a course in the physical sciences
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a course on network administration
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a film-making course
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a person into custody on an arrest warrant
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_protective_score = strong_protective_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a screen test for a movie
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_performing_arts_score = strong_performing_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take a teacher development workshop
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take care of children at home
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take the family on a picnic
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Take the family on a vacation
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_family_activity_score = strong_family_activity_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Test a new cooling system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Test chemical reactions
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Think of ideas to increase the sales for a company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Track the migratory patterns of birds
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Train to be a member of a religious ministry
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Transport people's belongings from one place to another
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Treat injured animals
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_medical_service_score = strong_medical_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Understand applications of calculus
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Understand economics principles
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Understand the qualities of an effective business
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Understand the role of finance in business
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use building materials to construct a wall
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use computers to archive historical documents
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_information_technology_score = strong_information_technology_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use hands to lift, carry, and pull objects
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use mathematical theorems to solve problems
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_mathematics_score = strong_mathematics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use meteorological information to predict the weather
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use tools to repair factory equipment
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use vacuums and shovels to clean working areas
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Visit an art gallery
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Volunteer for a community service center
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Wait on tables in a neighborhood restaurant
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Weld together metal components of products
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work in a political campaign
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work in a position that offers a commission based on sales
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_sales_score = strong_sales_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work in the outdoors
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work on a commercial fishing vessel
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work on a dairy farm
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work to improve the legal system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_law_score = strong_law_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work with clients to meet romantic partners
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Work with financial data
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a celebrity biography
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a manual on how to operate a cell phone
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a novel
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a play for a theater
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a script for a TV drama
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a true-life story
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write a user guide on practically anything
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write an original musical piece
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write children books
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write complex technical information in an understandable way
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write directions for how to operate a VCR
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write instructional manual for a piece of equipment
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write instructions on how to assemble a toy
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write legislation
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Write operating documents for an organization
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_technical_writing_score = strong_technical_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+*progress: 100%
+
+*header: Results
+
+*html
+	<div id="results-container"></div>
+
+*trigger: show-results
+	*send: { "strong_athletic_coaching_score" -> strong_athletic_coaching_score, "strong_business_score" -> strong_business_score, "strong_creative_arts_score" -> strong_creative_arts_score, "strong_creative_writing_score" -> strong_creative_writing_score, "strong_engineering_score" -> strong_engineering_score, "strong_family_activity_score" -> strong_family_activity_score, "strong_finance_score" -> strong_finance_score, "strong_human_relations_management_score" -> strong_human_relations_management_score, "strong_information_technology_score" -> strong_information_technology_score, "strong_law_score" -> strong_law_score, "strong_life_science_score" -> strong_life_science_score, "strong_management_score" -> strong_management_score, "strong_manual_labor_score" -> strong_manual_labor_score, "strong_mathematics_score" -> strong_mathematics_score, "strong_medical_service_score" -> strong_medical_service_score, "strong_office_work_score" -> strong_office_work_score, "strong_outdoor_agriculture_score" -> strong_outdoor_agriculture_score, "strong_performing_arts_score" -> strong_performing_arts_score, "strong_personal_service_score" -> strong_personal_service_score, "strong_physical_risk_taking_score" -> strong_physical_risk_taking_score, "strong_physical_science_score" -> strong_physical_science_score, "strong_politics_score" -> strong_politics_score, "strong_professional_advising_score" -> strong_professional_advising_score, "strong_protective_score" -> strong_protective_score, "strong_religious_activities_score" -> strong_religious_activities_score, "strong_sales_score" -> strong_sales_score, "strong_skilled_trades_score" -> strong_skilled_trades_score, "strong_social_sciences_score" -> strong_social_sciences_score, "strong_social_service_score" -> strong_social_service_score, "strong_teaching_score" -> strong_teaching_score, "strong_technical_writing_score" -> strong_technical_writing_score }
+
+*wait: 5.seconds
+
+*button: Continue
+
+*header: All done!
+
+Thanks for taking this inventory! Good luck finding a career path!
+
+*Credits*
+
+*html
+	<div>This survey was built by <a href="mailto:jrc03c@pm.me">Josh Castle</a> based on the paper <a href="https://psycnet.apa.org/record/2008-09604-014">"Development and initial validation of public domain Basic Interest Markers"</a> by Hsin-Ya Liao, Patrick Ian Armstrong, and James Rounds.

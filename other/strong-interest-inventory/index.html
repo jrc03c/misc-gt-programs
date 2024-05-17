@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <script src="https://www.guidedtrack.com/assets/jquery_gt.js"></script>
+    <script src="https://www.guidedtrack.com/assets/bootstrap.min.js"></script>
+    <script src="https://www.guidedtrack.com/assets/gt_interpreter.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://www.guidedtrack.com/assets/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://www.guidedtrack.com/assets/guidedtrack.css" />
+    <style>
+      h3 {
+        font-weight: bold !important;
+        color: black !important;
+      }
+
+      canvas {
+        border-radius: 8px !important;
+      }
+
+      .answer_icon.jc-plus-2::before,
+      .answer_icon.jc-plus-1::before,
+      .answer_icon.jc-0::before,
+      .answer_icon.jc-minus-1::before,
+      .answer_icon.jc-minus-2::before {
+        width: 1.5em;
+        font-style: normal;
+        font-family: monospace;
+        display: inline-block;
+        text-align: right;
+      }
+
+      .answer_icon.jc-plus-2::before {
+        content: "+2";
+      }
+
+      .answer_icon.jc-plus-1::before {
+        content: "+1";
+      }
+
+      .answer_icon.jc-0::before {
+        content: " 0";
+      }
+
+      .answer_icon.jc-minus-1::before {
+        content: "-1";
+      }
+
+      .answer_icon.jc-minus-2::before {
+        content: "-2";
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="guidedtrack program_container"
+      id="svbgpbc"
+      data-environment="production">
+      <div id="program_navigation" role="banner">
+        <div id="back-button"></div>
+        <div class="navigation_container" role="navigation"></div>
+        <div id="run-menu" role="navigation"></div>
+        <div
+          class="points"
+          role="complementary"
+          aria-label="points"
+          aria-live="assertive">
+          <div class="total"></div>
+          <div class="change"></div>
+        </div>
+      </div>
+      <div
+        class="maintain"
+        role="status"
+        aria-label="note"
+        aria-live="polite"></div>
+      <div class="main" role="main" aria-live="polite" aria-live="polite"></div>
+    </div>
+
+    <script>
+      function titleify(text) {
+        return text
+          .split(/^strong_/g)[1]
+          .split(/_score$/g)[0]
+          .replaceAll("_", " ")
+          .split(" ")
+          .map(word => word[0].toUpperCase() + word.slice(1))
+          .join(" ")
+      }
+
+      $(window).on("show-results", (event, scores) => {
+        let container
+
+        const interval = setInterval(() => {
+          container = document.querySelector("#results-container")
+
+          if (!container) {
+            return
+          }
+
+          clearInterval(interval)
+
+          Object.keys(scores).forEach(key => {
+            scores[key] = scores[key] || 0
+          })
+
+          const barHeight = 48
+          const barPadding = 4
+
+          const width = container.getBoundingClientRect().width
+
+          const height =
+            (barHeight + 2 * barPadding) * Object.keys(scores).length
+
+          const canvas = document.createElement("canvas")
+          canvas.width = width
+          canvas.height = height
+          container.appendChild(canvas)
+
+          const context = canvas.getContext("2d")
+          context.fillStyle = "rgb(235, 235, 235)"
+          context.fillRect(0, 0, width, height)
+
+          const sortedScores = Object.keys(scores)
+            .map(key => ({ category: key, score: scores[key] }))
+            .toSorted((a, b) => b.score - a.score)
+
+          const maxScore = Math.max(...sortedScores.map(item => item.score))
+
+          context.textAlign = "left"
+          context.textBaseline = "middle"
+          context.font = "14px sans-serif"
+
+          sortedScores.forEach((item, i) => {
+            const x = 0
+            const y = i * (barHeight + 2 * barPadding) + barPadding
+            const w = (width * item.score) / maxScore
+            const h = barHeight
+
+            context.save()
+            context.translate(x, y)
+
+            context.fillStyle = `hsl(${(45 + (360 * i) / sortedScores.length) % 360}deg, ${50 + (50 * item.score) / maxScore}%, ${65 + 20 * (1 - item.score / maxScore)}%)`
+
+            context.fillRect(0, 0, w, h)
+
+            context.fillStyle = "black"
+
+            context.fillText(
+              titleify(item.category) + " : " + item.score,
+              barPadding * 2,
+              h / 2,
+            )
+
+            context.restore()
+          })
+        }, 100)
+      })
+    </script>
+  </body>
+</html>

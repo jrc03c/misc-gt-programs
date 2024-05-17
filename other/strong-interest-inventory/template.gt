@@ -1,0 +1,61 @@
+>> progress = 0
+>> progress_step = 100 / {{ questions.length }}
+
+{% for category in categories %}
+>> strong_{{ category }}_score = 0
+{% endfor %}
+
+*header: Basic Interest Markers Inventory
+
+This survey contains a list of activities to help you explore your career interests. Please indicate how much you would like to do each activity by selecting the description that most closely represents how you feel about it. At the end, we'll show you your scores as well as a list of careers that might interest you!
+
+The survey usually takes about 30 minutes to complete.
+
+*button: Begin survey
+
+*randomize: all
+{% for question in questions %}
+	*question: {{ question.text }}
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_{{ question.category }}_score = strong_{{ question.category }}_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+{% endfor %}
+
+*progress: 100%
+
+*header: Results
+
+*html
+	<div id="results-container"></div>
+
+*trigger: show-results
+	*send: {{ categories_scores_dict }}
+
+*wait: 5.seconds
+
+*button: Continue
+
+*header: All done!
+
+Thanks for taking this inventory! Good luck finding a career path!
+
+*Credits*
+
+*html
+	<div>This survey was built by <a href="mailto:jrc03c@pm.me">Josh Castle</a> based on the paper <a href="https://psycnet.apa.org/record/2008-09604-014">"Development and initial validation of public domain Basic Interest Markers"</a> by Hsin-Ya Liao, Patrick Ian Armstrong, and James Rounds.
