@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@jrc03c/gt-helpers": "^0.0.5",
+    "@jrc03c/js-math-tools": "^0.0.63",
+    "@jrc03c/js-text-tools": "^0.0.34",
+    "@jrc03c/watch": "^0.0.12",
+    "eslint": "^9.2.0",
+    "prettier": "^3.2.5"
+  }
+}

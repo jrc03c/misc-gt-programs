@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "@jrc03c/gt-helpers": "github:jrc03c/gt-helpers",
-    "@jrc03c/watch": "^0.0.11"
-  }
-}
