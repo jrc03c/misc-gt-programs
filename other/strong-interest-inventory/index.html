@@ -189,15 +189,6 @@
           })
         }, 100)
       })
-
-      setInterval(() => {
-        const answers = Array.from(document.querySelectorAll("li.answer"))
-
-        if (answers && answers.length > 0) {
-          const answer = answers[Math.floor(Math.random() * answers.length)]
-          answer.dispatchEvent(new MouseEvent("click"))
-        }
-      }, 100)
     </script>
   </body>
 </html>
