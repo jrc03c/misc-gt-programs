@@ -27,7 +27,7 @@ async function rebuild() {
     const questions = sort(
       set(
         Object.keys(strong).map(key => {
-          return strong[key].map(text => {
+          return strong[key].items.map(text => {
             return {
               text,
               category: snakeify(key.split(":")[0]),
