@@ -30,31 +30,50 @@
       .answer_icon.jc-0::before,
       .answer_icon.jc-minus-1::before,
       .answer_icon.jc-minus-2::before {
-        width: 1.5em;
+        width: 3em;
+        height: 3em;
+        border-radius: 100%;
         font-style: normal;
         font-family: monospace;
         display: inline-block;
         text-align: right;
+        color: black;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
       }
 
       .answer_icon.jc-plus-2::before {
         content: "+2";
+        /* color: hsl(210deg, 100%, 50%); */
+        background-color: hsl(210deg, 100%, 60%);
       }
 
       .answer_icon.jc-plus-1::before {
         content: "+1";
+        /* color: hsl(240deg, 100%, 50%); */
+        background-color: hsl(120deg, 100%, 60%);
       }
 
       .answer_icon.jc-0::before {
         content: " 0";
+        /* color: hsl(270deg, 100%, 50%); */
+        background-color: hsl(60deg, 100%, 60%);
       }
 
       .answer_icon.jc-minus-1::before {
         content: "-1";
+        /* color: hsl(315deg, 100%, 50%); */
+        background-color: hsl(45deg, 100%, 60%);
       }
 
       .answer_icon.jc-minus-2::before {
         content: "-2";
+        /* color: hsl(0deg, 100%, 50%); */
+        background-color: hsl(0deg, 100%, 60%);
       }
     </style>
   </head>
@@ -95,6 +114,10 @@
           .join(" ")
       }
 
+      function lerp(a, b, f) {
+        return a + f * (b - a)
+      }
+
       $(window).on("show-results", (event, scores) => {
         let container
 
@@ -111,6 +134,7 @@
             scores[key] = scores[key] || 0
           })
 
+          // draw scores bar chart
           const barHeight = 48
           const barPadding = 4
 
@@ -132,7 +156,9 @@
             .map(key => ({ category: key, score: scores[key] }))
             .toSorted((a, b) => b.score - a.score)
 
-          const maxScore = Math.max(...sortedScores.map(item => item.score))
+          const scoreMax = Math.max(...sortedScores.map(item => item.score))
+          const scoreMin = Math.min(...sortedScores.map(item => item.score))
+          const scoreRange = scoreMax - scoreMin
 
           context.textAlign = "left"
           context.textBaseline = "middle"
@@ -141,16 +167,16 @@
           sortedScores.forEach((item, i) => {
             const x = 0
             const y = i * (barHeight + 2 * barPadding) + barPadding
-            const w = (width * item.score) / maxScore
+            const w = Math.max((width * item.score) / scoreMax, barPadding)
             const h = barHeight
 
             context.save()
             context.translate(x, y)
 
-            context.fillStyle = `hsl(${(45 + (360 * i) / sortedScores.length) % 360}deg, ${50 + (50 * item.score) / maxScore}%, ${65 + 20 * (1 - item.score / maxScore)}%)`
-
+            const f = lerp(0, 4, (item.score - scoreMin) / scoreRange)
+            const hue = 13.125 * f * f
+            context.fillStyle = `hsl(${hue}deg, 100%, 67%)`
             context.fillRect(0, 0, w, h)
-
             context.fillStyle = "black"
 
             context.fillText(
@@ -163,6 +189,15 @@
           })
         }, 100)
       })
+
+      setInterval(() => {
+        const answers = Array.from(document.querySelectorAll("li.answer"))
+
+        if (answers && answers.length > 0) {
+          const answer = answers[Math.floor(Math.random() * answers.length)]
+          answer.dispatchEvent(new MouseEvent("click"))
+        }
+      }, 100)
     </script>
   </body>
 </html>
