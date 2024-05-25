@@ -30,9 +30,9 @@
       .answer_icon.jc-0::before,
       .answer_icon.jc-minus-1::before,
       .answer_icon.jc-minus-2::before {
-        width: 3em;
-        height: 3em;
-        border-radius: 100%;
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 4px;
         font-style: normal;
         font-family: monospace;
         display: inline-block;
@@ -44,36 +44,37 @@
         justify-content: center;
         align-content: center;
         align-items: center;
+        margin-right: 0.5em;
       }
 
       .answer_icon.jc-plus-2::before {
         content: "+2";
-        /* color: hsl(210deg, 100%, 50%); */
-        background-color: hsl(210deg, 100%, 60%);
+        background-color: hsl(210deg, 100%, 75%);
+        border: 1px solid hsl(210deg, 100%, 25%);
       }
 
       .answer_icon.jc-plus-1::before {
         content: "+1";
-        /* color: hsl(240deg, 100%, 50%); */
-        background-color: hsl(120deg, 100%, 60%);
+        background-color: hsl(120deg, 100%, 75%);
+        border: 1px solid hsl(120deg, 100%, 25%);
       }
 
       .answer_icon.jc-0::before {
         content: " 0";
-        /* color: hsl(270deg, 100%, 50%); */
-        background-color: hsl(60deg, 100%, 60%);
+        background-color: hsl(60deg, 100%, 75%);
+        border: 1px solid hsl(60deg, 100%, 25%);
       }
 
       .answer_icon.jc-minus-1::before {
         content: "-1";
-        /* color: hsl(315deg, 100%, 50%); */
-        background-color: hsl(45deg, 100%, 60%);
+        background-color: hsl(45deg, 100%, 75%);
+        border: 1px solid hsl(45deg, 100%, 25%);
       }
 
       .answer_icon.jc-minus-2::before {
         content: "-2";
-        /* color: hsl(0deg, 100%, 50%); */
-        background-color: hsl(0deg, 100%, 60%);
+        background-color: hsl(0deg, 100%, 75%);
+        border: 1px solid hsl(0deg, 100%, 25%);
       }
     </style>
   </head>
