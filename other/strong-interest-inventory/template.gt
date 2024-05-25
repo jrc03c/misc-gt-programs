@@ -55,7 +55,11 @@ The survey usually takes about 30 minutes to complete.
 
 Thanks for taking this inventory! Good luck finding a career path!
 
-*Credits*
-
 *html
-	<div>This survey was built by <a href="mailto:jrc03c@pm.me">Josh Castle</a> based on the paper <a href="https://psycnet.apa.org/record/2008-09604-014">"Development and initial validation of public domain Basic Interest Markers"</a> by Hsin-Ya Liao, Patrick Ian Armstrong, and James Rounds.
+	<div style="color: rgb(192, 192, 192);">
+		<p><b>Credits</b></p>
+
+		<div>
+			This survey was built by <a href="mailto:jrc03c@pm.me">Josh Castle</a> based on the paper <a href="https://psycnet.apa.org/record/2008-09604-014">"Development and initial validation of public domain Basic Interest Markers"</a> by Hsin-Ya Liao, Patrick Ian Armstrong, and James Rounds.
+		</div>
+	</div>
