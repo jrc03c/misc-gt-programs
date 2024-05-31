@@ -9,6 +9,7 @@ from numpy import array
 from pyds import set, sort
 from sklearn.cluster import KMeans
 from sklearn.manifold import TSNE
+from tqdm import tqdm as progress
 
 
 def load_json(path):
@@ -38,8 +39,8 @@ for key in strong.keys():
 
 items = sort(set(items))
 
-if os.path.exists(os.path.join(dir, "embeddings.json")):
-    embeddings = load_json(os.path.join(dir, "embeddings.json"))
+if os.path.exists(os.path.join(dir, "cluster/embeddings.json")):
+    embeddings = load_json(os.path.join(dir, "cluster/embeddings.json"))
 
 else:
     voyage = voyageai.Client(api_key=VOYAGEAI_API_KEY)
@@ -55,61 +56,63 @@ else:
         index += len(results.embeddings)
         time.sleep(3)
 
-    save_json(os.path.join(dir, "embeddings.json"), embeddings)
+    save_json(os.path.join(dir, "cluster/embeddings.json"), embeddings)
 
-# ks = list(range(1, 31))
-# scores = []
+if True:
+    ks = list(range(1, 31))
+    scores = []
 
-# for k in progress(ks):
-#     model = KMeans(n_clusters=k)
-#     model.fit(embeddings)
-#     score = model.score(embeddings)
-#     scores.append(score)
+    for k in progress(ks):
+        model = KMeans(n_clusters=k)
+        model.fit(embeddings)
+        score = model.score(embeddings)
+        scores.append(score)
 
-# plot.plot(ks, scores)
-# plot.xlabel("k")
-# plot.ylabel("score")
-# plot.savefig(os.path.join(dir, "cluster-scores.png"))
-# plot.clf()
+    plot.plot(ks, scores)
+    plot.xlabel("k")
+    plot.ylabel("score")
+    plot.savefig(os.path.join(dir, "cluster/cluster-scores.png"))
+    plot.clf()
 
-# df = pd.DataFrame({"k": ks, "score": scores})
-# df.to_csv(os.path.join(dir, "cluster-scores.csv"), index=False)
-# print(df)
+    df = pd.DataFrame({"k": ks, "score": scores})
+    df.to_csv(os.path.join(dir, "cluster/cluster-scores.csv"), index=False)
+    print(df)
 
-k = 17
-kmeans = KMeans(n_clusters=k, n_init=250)
-kmeans.fit(embeddings)
-labels = kmeans.predict(embeddings)
+if True:
+    k = 17
+    kmeans = KMeans(n_clusters=k, n_init=250)
+    kmeans.fit(embeddings)
+    labels = kmeans.predict(embeddings)
 
-tsne = TSNE(n_components=2)
-embeddings_2d = tsne.fit_transform(array(embeddings))
+    tsne = TSNE(n_components=2)
+    embeddings_2d = tsne.fit_transform(array(embeddings))
 
-data = []
+    data = []
 
-for i in range(0, len(items)):
-    data.append(
-        {
-            "item": items[i],
-            "embedding": embeddings[i],
-            "2d": embeddings_2d[i],
-            "label": labels[i],
-        }
-    )
+    for i in range(0, len(items)):
+        data.append(
+            {
+                "item": items[i],
+                "embedding": embeddings[i],
+                "2d": embeddings_2d[i],
+                "label": labels[i],
+            }
+        )
 
-for label in sort(set(labels)):
-    objs = list(filter(lambda obj: obj["label"] == label, data))
-    points = [obj["2d"] for obj in objs]
-    xs = [p[0] for p in points]
-    ys = [p[1] for p in points]
-    plot.scatter(xs, ys, label=str(label))
+    for label in sort(set(labels)):
+        objs = list(filter(lambda obj: obj["label"] == label, data))
+        points = [obj["2d"] for obj in objs]
+        xs = [p[0] for p in points]
+        ys = [p[1] for p in points]
+        plot.scatter(xs, ys, label=str(label))
 
-plot.legend()
-plot.title("clusters")
-plot.savefig(os.path.join(dir, "clusters.png"))
-plot.show()
+    plot.legend()
+    plot.title("clusters")
+    plot.savefig(os.path.join(dir, "cluster/clusters.png"))
+    plot.show()
 
-xs = [p[0] for p in embeddings_2d]
-ys = [p[1] for p in embeddings_2d]
-df = pd.DataFrame({"item": items, "x": xs, "y": ys, "label": labels})
-df.to_csv(os.path.join(dir, "clusters-2d.csv"), index=False)
-print(df)
+    xs = [p[0] for p in embeddings_2d]
+    ys = [p[1] for p in embeddings_2d]
+    df = pd.DataFrame({"item": items, "x": xs, "y": ys, "label": labels})
+    df.to_csv(os.path.join(dir, "cluster/clusters-2d.csv"), index=False)
+    print(df)
