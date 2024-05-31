@@ -16,7 +16,7 @@
       "Develop business systems",
       "Learn about the needs of the marketplace",
       "Think of ideas to increase the sales for a company",
-      "Implementing quality review procedures in a company",
+      "Implement quality review procedures in a company",
       "Develop strategies for advertising campaigns and sales promotions",
       "Set prices on goods based on forecasts of customer demand",
       "Plan the expansion of a company",
@@ -39,7 +39,9 @@
       "Write an original musical piece",
       "Visit an art gallery",
       "Create a sculpture",
-      "Study painting"
+      "Study painting",
+      "Perform in a ballet",
+      "Teach dance at a dance studio"
     ],
     "description": "Involves artistic expression through mediums such as painting, sculpture, photography, graphic design, and other visual arts. Includes such jobs as fine artists, illustrators, graphic designers, photographers, and art directors."
   },
@@ -54,19 +56,19 @@
       "Compose short stories",
       "Write a true-life story",
       "Write a play for a theater",
-      "Be on a team of writers for a situational comedy",
+      "Write with a team for a comedy show",
       "Write children books"
     ],
     "description": "Focuses on the craft of storytelling, poetry, scriptwriting, and other forms of creative written expression. Includes such jobs as novelists, poets, screenwriters, playwrights, and copywriters."
   },
   "Engineering: Developing and using technology to produce and maintain things": {
     "items": [
-      "Modify an equipment design to reduce sound level",
+      "Modify an equipment design to reduce sound volume",
       "Develop more user-friendly machines",
       "Redesign an engine to improve fuel efficiency",
       "Maintain the main generator in a power plant",
       "Test a new cooling system",
-      "Design electronic systems",
+      "Build a robot that can perform useful tasks",
       "Improve the efficiency of an assembly process",
       "Design structures that can withstand heavy stresses",
       "Analyze problems in aircraft design",
@@ -82,9 +84,9 @@
       "Play with your children",
       "Maintain the attractiveness of the house",
       "Prepare exciting meals for your family",
-      "Meet the needs of my partner and children",
+      "Meet the needs of a partner or children",
       "Arrange transportation for your child's and friend's play activities",
-      "Provide a comfortable home for my family",
+      "Provide a comfortable family home",
       "Take the family on a picnic",
       "Arrange play dates for your child",
       "Cook for your friends and family",
@@ -199,10 +201,10 @@
       "Stack lumber in piles",
       "Dig a hole for a fence",
       "Clean up trash or debris",
-      "Feed items into a machine",
-      "Separate items by weight or size",
+      "Drive a forklift to move heavy items",
+      "Organize donated clothes into groups by type, size, and color",
       "Feed and groom livestock",
-      "Use hands to lift, carry, and pull objects",
+      "Use bodily strength to lift, carry, and pull objects",
       "Use vacuums and shovels to clean working areas"
     ],
     "description": "Refers to physically demanding jobs that require hands-on work, such as construction, manufacturing, or maintenance tasks. Includes such jobs as construction workers, factory workers, mechanics, and maintenance technicians."
@@ -256,9 +258,9 @@
     "items": [
       "Perform office work",
       "Develop procedures to improve office efficiency",
-      "Operate commonly-used office machines",
+      "Use standard office software to create documents, spreadsheets, or slideshows",
       "Improve a system for handling employee reimbursements",
-      "Order and maintain an inventory of office supplies",
+      "Manage a fleet of vehicles for a company",
       "Provide customer service",
       "Design an office filing system",
       "Record meeting minutes",
@@ -299,7 +301,10 @@
       "Help a client plan a vacation to Europe",
       "Lead a tour to points of interest in a large city",
       "Fit and alter clothes for a customer",
-      "Work with clients to meet romantic partners"
+      "Work with clients to meet romantic partners",
+      "Prepare specialized dishes as a chef in a high-end restaurant",
+      "Manage a hotel",
+      "Tend a hotel bar"
     ],
     "description": "Provides services to individuals or customers, such as hairstyling, cosmetology, personal training, or hospitality services. Includes such jobs as hairstylists, cosmetologists, personal trainers, and hospitality workers."
   },
@@ -313,7 +318,12 @@
       "Participate in high-speed chases",
       "Parachute jump from an airplane",
       "Rescue someone stranded on a mountain",
-      "Participate in extreme sports"
+      "Participate in extreme sports",
+      "Practice improving accuracy with firearms",
+      "Command a group of soldiers",
+      "Fly a helicopter in search-and-rescue missions",
+      "Explore shipwrecks at the bottom of the sea",
+      "Use signals and human intelligence to track terrorists"
     ],
     "description": "Involves physically demanding or dangerous activities, such as firefighting, law enforcement, military service, or extreme sports. Includes such jobs as firefighters, police officers, military personnel, and athletes in extreme sports."
   },
@@ -383,14 +393,14 @@
       "Read a religious text",
       "Help children understand religious teachings",
       "Provide spiritual guidance",
-      "Develop my spirituality",
+      "Cultivate personal spirituality",
       "Train to be a member of a religious ministry",
       "Interpret religious writings",
       "Conduct religious ceremonies",
       "Participate in a prayer group",
       "Attend a religious ceremony",
       "Explain a religious text to people",
-      "Pray",
+      "Pray, meditate, or practice other personal religious or spiritual rituals",
       "Take a class about religion"
     ],
     "description": "Encompasses various roles and responsibilities within religious organizations, such as ministry, counseling, or education. Includes such jobs as clergy members, religious educators, and counselors."
@@ -415,14 +425,14 @@
   },
   "Skilled Trades: Building, repairing, using tools and materials": {
     "items": [
-      "Install the piping and fixtures of a drainage system",
+      "Repair the piping and fixtures of a drainage system",
       "Use tools to repair factory equipment",
       "Repair the engine of an automobile",
       "Construct wooden cabinets",
       "Diagnose malfunctions in automotive engines",
       "Maintain manufacturing equipment in an industrial plant",
-      "Install the electrical wiring in a house",
-      "Replace defective telephone lines",
+      "Learn how to install electrical wiring in a house",
+      "Replace defective broadband network lines in a neighborhood",
       "Learn how to operate power tools",
       "Use building materials to construct a wall",
       "Weld together metal components of products"
@@ -457,7 +467,8 @@
       "Help children from disadvantaged background adjust to school",
       "Counsel clients with personal problems",
       "Provide services to individuals with disabilities",
-      "Help people overcome social problems"
+      "Help people overcome social problems",
+      "Investigate reports of child abuse"
     ],
     "description": "Provides support, resources, and assistance to individuals, families, or communities in need, often through non-profit organizations or government agencies. Includes such jobs as social workers, counselors, community organizers, and case managers."
   },
@@ -472,7 +483,8 @@
       "Design an active learning activity",
       "Conduct seminars",
       "Offer feedback on student papers",
-      "Supervise high school students' research projects"
+      "Supervise high school students' research projects",
+      "Administer tests to children to identify specific learning differences or difficulties"
     ],
     "description": "Involves the instruction, guidance, and facilitation of learning for students in various educational settings and subject areas. Includes such jobs as teachers, professors, instructors, and tutors."
   },
@@ -480,9 +492,9 @@
     "items": [
       "Write complex technical information in an understandable way",
       "Write instructional manual for a piece of equipment",
-      "Write directions for how to operate a VCR",
+      "Write directions for how to operate a 3D printer",
       "Plan and edit technical manuals",
-      "Write a manual on how to operate a cell phone",
+      "Write a manual on how to get started investing in cryptocurrency",
       "Write instructions on how to assemble a toy",
       "Prepare a manual for a computer program",
       "Write a user guide on practically anything",
@@ -490,5 +502,45 @@
       "Write operating documents for an organization"
     ],
     "description": "Focuses on the creation of clear, concise, and accurate documentation for technical subjects, such as manuals, instructions, or specifications. Includes such jobs as technical writers, documentation specialists, and user experience writers."
+  },
+  "Shipping, transportation, & logistics: Moving things and people from A to B": {
+    "items": [
+      "Help people figure out how to mail packages",
+      "Drive a large truck to transport goods",
+      "Drive a passenger train",
+      "Pilot a commercial airplane",
+      "Drive a public transit bus"
+    ],
+    "description": "Encompasses the movement of goods, materials, and people by various modes of transportation, as well as the planning, implementation, and management of supply chains and logistics operations. Includes such jobs as truck drivers, pilots, logistics coordinators, supply chain managers, and shipping/receiving clerks."
+  },
+  "Ecology & conservation: Managing and preserving our natural environment": {
+    "items": [
+      "Research alternative energy sources",
+      "Find cheap ways to desalinate water for distribution in developing nations",
+      "Plant trees to reforest areas that have been over-harvested or destroyed by wildfires"
+    ],
+    "description": "Focuses on the study of ecosystems, the relationships between organisms and their environments, and the protection and preservation of natural resources and biodiversity. Includes such jobs as ecologists, conservation scientists, wildlife biologists, park rangers, and environmental educators."
+  },
+  "Data science & analytics: Recording and analyzing data": {
+    "items": [
+      "Track how customers move between pages on a website",
+      "Test different versions of a website to find the one that most appeals to customers"
+    ],
+    "description": "Involves the collection, organization, analysis, and interpretation of large datasets to uncover insights and trends that can inform decision-making. Includes such jobs as data scientists, data analysts, business intelligence analysts, and data engineers."
+  },
+  "Journalism: Investigating and reporting on important people and events": {
+    "items": [
+      "Investigate and report on political corruption in a city",
+      "Travel to foreign countries to report on current events",
+      "Host a news show"
+    ],
+    "description": "Covers the gathering, investigation, and dissemination of news and information through various media platforms, such as print, broadcast, and digital. Includes such jobs as reporters, news anchors, editors, columnists, and photojournalists."
+  },
+  "Finance: Managing and investing money": {
+    "items": [
+      "Invest money in startups to help them grow",
+      "Study stock market trends"
+    ],
+    "description": "Deals with the management of money, investments, banking, and financial planning for individuals, businesses, or organizations. Includes such jobs as financial analysts, accountants, bankers, investors, financial advisors, and loan officers."
   }
 }
