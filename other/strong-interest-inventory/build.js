@@ -22,15 +22,19 @@ async function rebuild() {
 
     const categories = set(
       sort(Object.keys(strong).map(key => snakeify(key.split(":")[0]))),
-    )
+    ).map(cat => ({ name: cat, itemCount: 0 }))
 
     const questions = sort(
       set(
         Object.keys(strong).map(key => {
+          const category = snakeify(key.split(":")[0])
+
           return strong[key].items.map(text => {
+            categories.find(c => c.name === category).itemCount++
+
             return {
               text,
-              category: snakeify(key.split(":")[0]),
+              category,
             }
           })
         }),
@@ -38,7 +42,7 @@ async function rebuild() {
       (a, b) => (a.text < b.text ? -1 : 1),
     )
 
-    const categories_scores_dict = `{ ${categories.map(c => `"strong_${c}_score" -> strong_${c}_score`).join(", ")} }`
+    const categories_scores_dict = `{ ${categories.map(c => `"strong_${c.name}_score" -> strong_${c.name}_score`).join(", ")} }`
 
     const data = { categories, questions, categories_scores_dict }
     let rendered = await gt.template.liquidBuild(template, data)

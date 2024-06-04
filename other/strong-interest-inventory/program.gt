@@ -1,15 +1,18 @@
 >> progress = 0
->> progress_step = 100 / 337
+>> progress_step = 100 / 364
 
 >> strong_athletic_coaching_score = 0
 >> strong_business_score = 0
 >> strong_creative_arts_score = 0
 >> strong_creative_writing_score = 0
+>> strong_data_science_analytics_score = 0
+>> strong_ecology_conservation_score = 0
 >> strong_engineering_score = 0
 >> strong_family_activity_score = 0
 >> strong_finance_score = 0
 >> strong_human_relations_management_score = 0
 >> strong_information_technology_score = 0
+>> strong_journalism_score = 0
 >> strong_law_score = 0
 >> strong_life_science_score = 0
 >> strong_management_score = 0
@@ -27,6 +30,7 @@
 >> strong_protective_score = 0
 >> strong_religious_activities_score = 0
 >> strong_sales_score = 0
+>> strong_shipping_transportation_logistics_score = 0
 >> strong_skilled_trades_score = 0
 >> strong_social_sciences_score = 0
 >> strong_social_service_score = 0
@@ -145,6 +149,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_management_score = strong_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Administer tests to children to identify specific learning differences or difficulties
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_teaching_score = strong_teaching_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -568,27 +593,6 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Be on a team of writers for a situational comedy
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_creative_writing_score = strong_creative_writing_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
 	*question: Breed animals in a laboratory
 		Strongly like
 			*icon: jc-plus-2
@@ -607,6 +611,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Build a robot that can perform useful tasks
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_engineering_score = strong_engineering_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -754,6 +779,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Command a group of soldiers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -1198,6 +1244,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Cultivate personal spirituality
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_religious_activities_score = strong_religious_activities_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Debate the merits of political candidates
 		Strongly like
 			*icon: jc-plus-2
@@ -1492,27 +1559,6 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Design electronic systems
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_engineering_score = strong_engineering_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
 	*question: Design structures that can withstand heavy stresses
 		Strongly like
 			*icon: jc-plus-2
@@ -1741,27 +1787,6 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_engineering_score = strong_engineering_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
-	*question: Develop my spirituality
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_religious_activities_score = strong_religious_activities_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -2101,6 +2126,48 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Drive a forklift to move heavy items
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Drive a large truck to transport goods
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_shipping_transportation_logistics_score = strong_shipping_transportation_logistics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Drive a nail into wood
 		Strongly like
 			*icon: jc-plus-2
@@ -2119,6 +2186,48 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Drive a passenger train
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_shipping_transportation_logistics_score = strong_shipping_transportation_logistics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Drive a public transit bus
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_shipping_transportation_logistics_score = strong_shipping_transportation_logistics_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -2311,6 +2420,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Explore shipwrecks at the bottom of the sea
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Facilitate relationships between management and employees
 		Strongly like
 			*icon: jc-plus-2
@@ -2395,7 +2525,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Feed items into a machine
+	*question: Find cheap ways to desalinate water for distribution in developing nations
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -2412,7 +2542,7 @@ The survey usually takes about 30 minutes to complete.
 			*icon: jc-minus-2
 			>> answer = 0
 
-	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> strong_ecology_conservation_score = strong_ecology_conservation_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -2455,6 +2585,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Fly a helicopter in search-and-rescue missions
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -2710,6 +2861,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Help people figure out how to mail packages
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_shipping_transportation_logistics_score = strong_shipping_transportation_logistics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Help people find community resources
 		Strongly like
 			*icon: jc-plus-2
@@ -2773,6 +2945,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Host a news show
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_journalism_score = strong_journalism_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Identify and classify bacteria
 		Strongly like
 			*icon: jc-plus-2
@@ -2794,7 +2987,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Implementing quality review procedures in a company
+	*question: Implement quality review procedures in a company
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -2962,48 +3155,6 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Install the electrical wiring in a house
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
-	*question: Install the piping and fixtures of a drainage system
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
 	*question: Interact with students in a classroom setting
 		Strongly like
 			*icon: jc-plus-2
@@ -3088,6 +3239,48 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Invest money in startups to help them grow
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Investigate and report on political corruption in a city
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_journalism_score = strong_journalism_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Investigate cultural practices
 		Strongly like
 			*icon: jc-plus-2
@@ -3148,6 +3341,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_life_science_score = strong_life_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Investigate reports of child abuse
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_social_service_score = strong_social_service_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -3382,6 +3596,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Learn how to install electrical wiring in a house
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Learn how to operate power tools
 		Strongly like
 			*icon: jc-plus-2
@@ -3571,6 +3806,48 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Manage a fleet of vehicles for a company
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Manage a hotel
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Measure the speed of electrons
 		Strongly like
 			*icon: jc-plus-2
@@ -3592,7 +3869,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Meet the needs of my partner and children
+	*question: Meet the needs of a partner or children
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -3634,7 +3911,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Modify an equipment design to reduce sound level
+	*question: Modify an equipment design to reduce sound volume
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -3739,48 +4016,6 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Operate commonly-used office machines
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_office_work_score = strong_office_work_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
-	*question: Order and maintain an inventory of office supplies
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_office_work_score = strong_office_work_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
 	*question: Organize a diversity workshop for a company
 		Strongly like
 			*icon: jc-plus-2
@@ -3841,6 +4076,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_human_relations_management_score = strong_human_relations_management_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Organize donated clothes into groups by type, size, and color
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -4054,6 +4310,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Perform in a ballet
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Perform magic tricks on stage
 		Strongly like
 			*icon: jc-plus-2
@@ -4156,6 +4433,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_politics_score = strong_politics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Pilot a commercial airplane
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_shipping_transportation_logistics_score = strong_shipping_transportation_logistics_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -4285,6 +4583,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Plant trees to reforest areas that have been over-harvested or destroyed by wildfires
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_ecology_conservation_score = strong_ecology_conservation_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Play with your children
 		Strongly like
 			*icon: jc-plus-2
@@ -4306,7 +4625,28 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Pray
+	*question: Practice improving accuracy with firearms
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Pray, meditate, or practice other personal religious or spiritual rituals
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -4408,6 +4748,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_office_work_score = strong_office_work_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Prepare specialized dishes as a chef in a high-end restaurant
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -4537,7 +4898,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Provide a comfortable home for my family
+	*question: Provide a comfortable family home
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -4999,7 +5360,28 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Replace defective telephone lines
+	*question: Repair the piping and fixtures of a drainage system
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_skilled_trades_score = strong_skilled_trades_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Replace defective broadband network lines in a neighborhood
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -5038,6 +5420,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Research alternative energy sources
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_ecology_conservation_score = strong_ecology_conservation_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -5332,27 +5735,6 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_sales_score = strong_sales_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
-	*question: Separate items by weight or size
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_manual_labor_score = strong_manual_labor_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -5776,6 +6158,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Study stock market trends
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_finance_score = strong_finance_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Study the diet of an animal species
 		Strongly like
 			*icon: jc-plus-2
@@ -6175,6 +6578,48 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Teach dance at a dance studio
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_arts_score = strong_creative_arts_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Tend a hotel bar
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_personal_service_score = strong_personal_service_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Test a new cooling system
 		Strongly like
 			*icon: jc-plus-2
@@ -6217,6 +6662,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Test different versions of a website to find the one that most appeals to customers
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_data_science_analytics_score = strong_data_science_analytics_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Think of ideas to increase the sales for a company
 		Strongly like
 			*icon: jc-plus-2
@@ -6235,6 +6701,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_business_score = strong_business_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Track how customers move between pages on a website
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_data_science_analytics_score = strong_data_science_analytics_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -6298,6 +6785,27 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Travel to foreign countries to report on current events
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_journalism_score = strong_journalism_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -6406,6 +6914,27 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Use bodily strength to lift, carry, and pull objects
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_manual_labor_score = strong_manual_labor_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 	*question: Use building materials to construct a wall
 		Strongly like
 			*icon: jc-plus-2
@@ -6448,27 +6977,6 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Use hands to lift, carry, and pull objects
-		Strongly like
-			*icon: jc-plus-2
-			>> answer = 4
-		Like
-			*icon: jc-plus-1
-			>> answer = 3
-		Neutral
-			*icon: jc-0
-			>> answer = 2
-		Dislike
-			*icon: jc-minus-1
-			>> answer = 1
-		Strongly dislike
-			*icon: jc-minus-2
-			>> answer = 0
-
-	>> strong_manual_labor_score = strong_manual_labor_score + answer
-	>> progress = progress + progress_step
-	*progress: {progress}%
-
 	*question: Use mathematical theorems to solve problems
 		Strongly like
 			*icon: jc-plus-2
@@ -6508,6 +7016,48 @@ The survey usually takes about 30 minutes to complete.
 			>> answer = 0
 
 	>> strong_physical_science_score = strong_physical_science_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use signals and human intelligence to track terrorists
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_physical_risk_taking_score = strong_physical_risk_taking_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
+	*question: Use standard office software to create documents, spreadsheets, or slideshows
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_office_work_score = strong_office_work_score + answer
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
@@ -6826,7 +7376,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Write a manual on how to operate a cell phone
+	*question: Write a manual on how to get started investing in cryptocurrency
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -7015,7 +7565,7 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
-	*question: Write directions for how to operate a VCR
+	*question: Write directions for how to operate a 3D printer
 		Strongly like
 			*icon: jc-plus-2
 			>> answer = 4
@@ -7120,7 +7670,64 @@ The survey usually takes about 30 minutes to complete.
 	>> progress = progress + progress_step
 	*progress: {progress}%
 
+	*question: Write with a team for a comedy show
+		Strongly like
+			*icon: jc-plus-2
+			>> answer = 4
+		Like
+			*icon: jc-plus-1
+			>> answer = 3
+		Neutral
+			*icon: jc-0
+			>> answer = 2
+		Dislike
+			*icon: jc-minus-1
+			>> answer = 1
+		Strongly dislike
+			*icon: jc-minus-2
+			>> answer = 0
+
+	>> strong_creative_writing_score = strong_creative_writing_score + answer
+	>> progress = progress + progress_step
+	*progress: {progress}%
+
 *progress: 100%
+
+>> strong_athletic_coaching_score = strong_athletic_coaching_score / 6
+>> strong_business_score = strong_business_score / 12
+>> strong_creative_arts_score = strong_creative_arts_score / 13
+>> strong_creative_writing_score = strong_creative_writing_score / 11
+>> strong_data_science_analytics_score = strong_data_science_analytics_score / 2
+>> strong_ecology_conservation_score = strong_ecology_conservation_score / 3
+>> strong_engineering_score = strong_engineering_score / 11
+>> strong_family_activity_score = strong_family_activity_score / 14
+>> strong_finance_score = strong_finance_score / 14
+>> strong_human_relations_management_score = strong_human_relations_management_score / 11
+>> strong_information_technology_score = strong_information_technology_score / 12
+>> strong_journalism_score = strong_journalism_score / 3
+>> strong_law_score = strong_law_score / 11
+>> strong_life_science_score = strong_life_science_score / 10
+>> strong_management_score = strong_management_score / 9
+>> strong_manual_labor_score = strong_manual_labor_score / 13
+>> strong_mathematics_score = strong_mathematics_score / 10
+>> strong_medical_service_score = strong_medical_service_score / 10
+>> strong_office_work_score = strong_office_work_score / 11
+>> strong_outdoor_agriculture_score = strong_outdoor_agriculture_score / 10
+>> strong_performing_arts_score = strong_performing_arts_score / 11
+>> strong_personal_service_score = strong_personal_service_score / 17
+>> strong_physical_risk_taking_score = strong_physical_risk_taking_score / 14
+>> strong_physical_science_score = strong_physical_science_score / 12
+>> strong_politics_score = strong_politics_score / 8
+>> strong_professional_advising_score = strong_professional_advising_score / 10
+>> strong_protective_score = strong_protective_score / 11
+>> strong_religious_activities_score = strong_religious_activities_score / 12
+>> strong_sales_score = strong_sales_score / 13
+>> strong_shipping_transportation_logistics_score = strong_shipping_transportation_logistics_score / 5
+>> strong_skilled_trades_score = strong_skilled_trades_score / 11
+>> strong_social_sciences_score = strong_social_sciences_score / 10
+>> strong_social_service_score = strong_social_service_score / 13
+>> strong_teaching_score = strong_teaching_score / 11
+>> strong_technical_writing_score = strong_technical_writing_score / 10
 
 *header: Results
 
@@ -7128,7 +7735,7 @@ The survey usually takes about 30 minutes to complete.
 	<div id="results-container"></div>
 
 *trigger: show-results
-	*send: { "strong_athletic_coaching_score" -> strong_athletic_coaching_score, "strong_business_score" -> strong_business_score, "strong_creative_arts_score" -> strong_creative_arts_score, "strong_creative_writing_score" -> strong_creative_writing_score, "strong_engineering_score" -> strong_engineering_score, "strong_family_activity_score" -> strong_family_activity_score, "strong_finance_score" -> strong_finance_score, "strong_human_relations_management_score" -> strong_human_relations_management_score, "strong_information_technology_score" -> strong_information_technology_score, "strong_law_score" -> strong_law_score, "strong_life_science_score" -> strong_life_science_score, "strong_management_score" -> strong_management_score, "strong_manual_labor_score" -> strong_manual_labor_score, "strong_mathematics_score" -> strong_mathematics_score, "strong_medical_service_score" -> strong_medical_service_score, "strong_office_work_score" -> strong_office_work_score, "strong_outdoor_agriculture_score" -> strong_outdoor_agriculture_score, "strong_performing_arts_score" -> strong_performing_arts_score, "strong_personal_service_score" -> strong_personal_service_score, "strong_physical_risk_taking_score" -> strong_physical_risk_taking_score, "strong_physical_science_score" -> strong_physical_science_score, "strong_politics_score" -> strong_politics_score, "strong_professional_advising_score" -> strong_professional_advising_score, "strong_protective_score" -> strong_protective_score, "strong_religious_activities_score" -> strong_religious_activities_score, "strong_sales_score" -> strong_sales_score, "strong_skilled_trades_score" -> strong_skilled_trades_score, "strong_social_sciences_score" -> strong_social_sciences_score, "strong_social_service_score" -> strong_social_service_score, "strong_teaching_score" -> strong_teaching_score, "strong_technical_writing_score" -> strong_technical_writing_score }
+	*send: { "strong_athletic_coaching_score" -> strong_athletic_coaching_score, "strong_business_score" -> strong_business_score, "strong_creative_arts_score" -> strong_creative_arts_score, "strong_creative_writing_score" -> strong_creative_writing_score, "strong_data_science_analytics_score" -> strong_data_science_analytics_score, "strong_ecology_conservation_score" -> strong_ecology_conservation_score, "strong_engineering_score" -> strong_engineering_score, "strong_family_activity_score" -> strong_family_activity_score, "strong_finance_score" -> strong_finance_score, "strong_human_relations_management_score" -> strong_human_relations_management_score, "strong_information_technology_score" -> strong_information_technology_score, "strong_journalism_score" -> strong_journalism_score, "strong_law_score" -> strong_law_score, "strong_life_science_score" -> strong_life_science_score, "strong_management_score" -> strong_management_score, "strong_manual_labor_score" -> strong_manual_labor_score, "strong_mathematics_score" -> strong_mathematics_score, "strong_medical_service_score" -> strong_medical_service_score, "strong_office_work_score" -> strong_office_work_score, "strong_outdoor_agriculture_score" -> strong_outdoor_agriculture_score, "strong_performing_arts_score" -> strong_performing_arts_score, "strong_personal_service_score" -> strong_personal_service_score, "strong_physical_risk_taking_score" -> strong_physical_risk_taking_score, "strong_physical_science_score" -> strong_physical_science_score, "strong_politics_score" -> strong_politics_score, "strong_professional_advising_score" -> strong_professional_advising_score, "strong_protective_score" -> strong_protective_score, "strong_religious_activities_score" -> strong_religious_activities_score, "strong_sales_score" -> strong_sales_score, "strong_shipping_transportation_logistics_score" -> strong_shipping_transportation_logistics_score, "strong_skilled_trades_score" -> strong_skilled_trades_score, "strong_social_sciences_score" -> strong_social_sciences_score, "strong_social_service_score" -> strong_social_service_score, "strong_teaching_score" -> strong_teaching_score, "strong_technical_writing_score" -> strong_technical_writing_score }
 
 *wait: 5.seconds
 

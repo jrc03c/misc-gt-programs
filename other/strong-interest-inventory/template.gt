@@ -2,7 +2,7 @@
 >> progress_step = 100 / {{ questions.length }}
 
 {% for category in categories %}
->> strong_{{ category }}_score = 0
+>> strong_{{ category.name }}_score = 0
 {% endfor %}
 
 *header: Basic Interest Markers Inventory
@@ -38,6 +38,9 @@ The survey usually takes about 30 minutes to complete.
 {% endfor %}
 
 *progress: 100%
+
+{% for category in categories %}
+>> strong_{{ category.name }}_score = strong_{{ category.name }}_score / {{ category.itemCount }}{% endfor %}
 
 *header: Results
 
