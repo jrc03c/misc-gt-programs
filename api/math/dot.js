@@ -21,8 +21,6 @@ module.exports = (request, response) => {
     return response.status(500).send({ error: e.toString() })
   }
 
-  return response.send(body)
-
   const { a, b } = body
 
   if (!a || !isArray(a) || shape(a).length === 0 || shape(a).length > 2) {
