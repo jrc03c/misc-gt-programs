@@ -10,6 +10,9 @@
 -- outputs:
 --     `matrix` = the transposed matrix
 -------------------------------------------------------------------------------
+-- NOTE: A random `*trigger` keyword have been added as a workaround to avoid
+-- the "Maximum call stack size exceeded" JS error.
+-------------------------------------------------------------------------------
 
 *if: not matrix
 	>> matrix = ""
@@ -42,6 +45,8 @@
 
 *for: i, row in orig
 	*for: j, value in row
+		*trigger: 9af1bd3b
+
 		*if: j > matrix.size
 			>> matrix.add([])
 			

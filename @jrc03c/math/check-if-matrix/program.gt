@@ -10,7 +10,7 @@
 -- outputs:
 --     `is_a_matrix` = "yes" if `matrix` is a matrix; "no" if not
 -------------------------------------------------------------------------------
--- NOTE: A random `*trigger` keywords have been added as a workaround to avoid
+-- NOTE: A random `*trigger` keyword have been added as a workaround to avoid
 -- the "Maximum call stack size exceeded" JS error.
 -------------------------------------------------------------------------------
 
