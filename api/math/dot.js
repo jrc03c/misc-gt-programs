@@ -7,19 +7,29 @@ const {
 } = require("@jrc03c/js-math-tools")
 
 module.exports = (request, response) => {
+  console.log("Checking if method is POST...")
+  
   if (request.method !== "POST") {
     return response.status(405).send({
       error: `This endpoint only accepts POST requests (but you send a ${request.method} request)!`,
     })
   }
 
+  console.log("Parsing body...")
+  
   let body
 
   try {
-    body = JSON.parse(request.body)
+    if (typeof request.body === "string"){
+  	  body = JSON.parse(request.body)
+    } else {
+      body = request.body
+    }
   } catch (e) {
     return response.status(500).send({ error: e.toString() })
   }
+
+  console.log("Checking 'a' and 'b'...")
 
   const { a, b } = body
 
@@ -59,8 +69,10 @@ module.exports = (request, response) => {
     })
   }
 
+  console.log("Computing dot product...")
+
   try {
-    return response.send({ c: dot(a, b) })
+    return response.send(JSON.stringify(dot(a, b)))
   } catch (e) {
     return response.status(500).send({ error: e.toString() })
   }
