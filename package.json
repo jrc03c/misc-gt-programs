@@ -2,6 +2,7 @@
   "devDependencies": {
     "@eslint/js": "^9.2.0",
     "@jrc03c/gt-helpers": "^0.0.5",
+    "@jrc03c/js-data-science-helpers": "^0.0.70",
     "@jrc03c/js-math-tools": "^0.0.63",
     "@jrc03c/js-text-tools": "^0.0.34",
     "@jrc03c/watch": "^0.0.12",
