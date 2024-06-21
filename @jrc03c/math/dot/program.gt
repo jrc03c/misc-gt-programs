@@ -21,6 +21,9 @@
 -- outputs:
 --     `c` = the dot product of `a` and `b`
 -------------------------------------------------------------------------------
+-- NOTE: Random `*trigger` keywords have been added throughout as a workaround
+-- to avoid the "Maximum call stack size exceeded" JS error.
+-------------------------------------------------------------------------------
 
 ------------------
 -- BASIC CHECKS --
@@ -149,6 +152,7 @@
 	>> c = 0
 
 	*for: i, a_value in a
+		*trigger: 6487af93
 		>> c = c + a_value * b[i]
 
 	*goto: clean-up
@@ -172,6 +176,7 @@
 		>> c_temp = 0
 
 		*for: j, val in row
+			*trigger: c1c022fd
 			>> c_temp = c_temp + val * a[j]
 
 		>> c.add(c_temp)
@@ -197,6 +202,7 @@
 		>> c_temp = 0
 
 		*for: j, val in row
+			*trigger: ddfc1g53
 			>> c_temp = c_temp + val * b[j]
 
 		>> c.add(c_temp)
@@ -232,6 +238,7 @@
 			>> c_temp = 0
 
 			*for: k, b_row in b
+				*trigger: 6806643b
 				>> c_temp = c_temp + a_row[k] * b_row[j]
 
 			>> c_row.add(c_temp)
