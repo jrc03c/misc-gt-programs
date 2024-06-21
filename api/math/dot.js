@@ -13,7 +13,7 @@ module.exports = (request, response) => {
     })
   }
 
-  return response.send(request.body)
+  return response.send(typeof request.body)
 
   const { a, b } = request.body
 
