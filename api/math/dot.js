@@ -60,7 +60,7 @@ module.exports = (request, response) => {
   }
 
   try {
-    return response.send({ c: dot(a, b) })
+    return response.send(JSON.stringify(dot(a, b)))
   } catch (e) {
     return response.status(500).send({ error: e.toString() })
   }
