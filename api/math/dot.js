@@ -13,6 +13,8 @@ module.exports = (request, response) => {
     })
   }
 
+  return response.send(request.body)
+
   const { a, b } = request.body
 
   if (!a || !isArray(a) || shape(a).length === 0 || shape(a).length > 2) {
