@@ -8,6 +8,7 @@
     "@jrc03c/watch": "^0.0.12",
     "eslint": "^9.2.0",
     "globals": "^15.2.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "vercel": "^34.2.7"
   }
 }
