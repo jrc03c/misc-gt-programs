@@ -20,7 +20,7 @@ module.exports = (request, response) => {
       typeof a === "object" ? (a === null ? "null" : a.prototype) : typeof a
 
     return response.status(400).send({
-      error: `The request body must have a property called 'a' whose value is a vector or matrix! The 'a' property on your request's body has a value of ${JSON.stringify(a)} and is of type \`${type}\`.`,
+      error: `The request body must have a property called 'a' whose value is a vector or matrix! The 'a' property on your request's body has a value of \`${JSON.stringify(a)}\` and is of type \`${type}\`.`,
     })
   }
 
@@ -29,7 +29,7 @@ module.exports = (request, response) => {
       typeof b === "object" ? (b === null ? "null" : b.prototype) : typeof b
 
     return response.status(400).send({
-      error: `The request body must have a property called 'b' whose value is a vector or matrix! The 'b' property on your request's body has a value of ${JSON.stringify(b)} and is of type \`${type}\`.`,
+      error: `The request body must have a property called 'b' whose value is a vector or matrix! The 'b' property on your request's body has a value of \`${JSON.stringify(b)}\` and is of type \`${type}\`.`,
     })
   }
 
