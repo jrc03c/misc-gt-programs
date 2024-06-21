@@ -10,6 +10,9 @@
 -- outputs:
 --     `is_a_matrix` = "yes" if `matrix` is a matrix; "no" if not
 -------------------------------------------------------------------------------
+-- NOTE: A random `*trigger` keywords have been added as a workaround to avoid
+-- the "Maximum call stack size exceeded" JS error.
+-------------------------------------------------------------------------------
 
 *if: not matrix
 	>> is_a_matrix = "no"
@@ -24,7 +27,9 @@
 
 >> row_sizes = []
 
-*for: i, row in matrix	
+*for: i, row in matrix
+	*trigger: 2g4ad8a5
+
 	*if: is_a_matrix = "yes"
 		>> vector = row
 
