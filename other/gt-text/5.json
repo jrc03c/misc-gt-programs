@@ -1,0 +1,19 @@
+{
+  "Alltel": "{number}@message.alltel.com",
+  "AT&T": "{number}@message.alltel.com",
+  "Bell Canada": "{number}@txt.bellmobility.ca",
+  "Boost Mobile": "{number}@myboostmobile.com",
+  "Cellular South": "{number}@csouth1.com",
+  "Centennial Wireless": "{number}@cwemail.com",
+  "Cincinnati Bell": "{number}@gocbw.com",
+  "Metro PCS": "{number}@mymetropcs.com",
+  "Qwest": "{number}@qwestmp.com",
+  "Rogers": "{number}@pcs.rogers.com",
+  "Sprint Nextel": "{number}@messaging.nextel.com",
+  "Suncom": "{number}@tms.suncom.com",
+  "T-Mobile": "{number}@tmomail.net",
+  "Telus": "{number}@msg.telus.com",
+  "US Cellular": "{number}@email.uscc.net",
+  "Verizon": "{number}@vtext.com",
+  "Virgin Mobile USA": "{number}@vmobl.com"
+}

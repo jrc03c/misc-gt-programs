@@ -1,0 +1,85 @@
+{
+  "(Unknown)": {
+    "Cricket": "number@sms.mycricket.com",
+    "Globalstar (satellite)": "number@msg.globalstarusa.com",
+    "Helio": "number@myhelio.com",
+    "Iridium": "number@msg.iridium.com[6]",
+    "i wireless (T-Mobile)": "number.iws@iwspcs.net",
+    "i-wireless (Sprint PCS)": "number@iwirelesshometext.com",
+    "MetroPCS": "number@mymetropcs.com",
+    "Movicom": "number@movimensaje.com.ar",
+    "Suncom": "number@tms.suncom.com",
+    "Tracfone (prepaid)": "number@mmst5.tracfone.com"
+  },
+  "Alaska": { "General Communications Inc.": "number@mobile.gci.net" },
+  "Andhra Pradesh, India": { "Airtel": "number@airtelap.com" },
+  "Argentina": {
+    "CTI Móvil (Now Claro)": "number@sms.ctimovil.com.ar",
+    "Nextel": "number@nextel.net.ar"
+  },
+  "Aruba": { "Setar Mobile": "+297number@mas.aw" },
+  "Austria": { "T-Mobile": "number@sms.t-mobile.at" },
+  "Brasil": { "Claro (Brasil)": "number@clarotorpedo.com.br" },
+  "Canada": {
+    "Bell Mobility & Solo Mobile": "number@txt.bell.ca",
+    "Bell Mobility Alternative": "number@txt.bellmobility.ca",
+    "Fido": "number@fido.ca",
+    "Koodo Mobile": "number@msg.telus.com",
+    "MTS Mobility": "number@text.mtsmobility.com",
+    "PC Telecom": "number@mobiletxt.ca",
+    "Rogers Wireless": "number@pcs.rogers.com",
+    "SaskTel": "number@sms.sasktel.com",
+    "Telus Mobility": "number@msg.telus.com",
+    "Virgin Mobile": "number@vmobile.ca"
+  },
+  "Colombia": {
+    "Comcel": "number@comcel.com.co",
+    "Movistar": "number@movistar.com.co",
+    "Tigo (Formerly Ola)": "number@sms.tigo.com.co"
+  },
+  "Croatia": { "T-Mobile": "+385number@sms.t-mobile.hr" },
+  "France": { "Bouygues Télécom": "number@mms.bouyguestelecom.fr" },
+  "Karnataka, India": { "Airtel": "number@airtelkkk.com" },
+  "Mauritius": { "Emtel": "number@emtelworld.net" },
+  "Mumbai, India": { "Loop (BPL Mobile)": "number@bplmobile.com" },
+  "México": { "Nextel": "number@msgnextel.com.mx" },
+  "Nepal": { "Mero Mobile": "+977number@sms.spicenepal.com" },
+  "Nicaragua": { "Claro (Nicaragua)": "number@ideasclaro-ca.com" },
+  "Poland": {
+    "Orange Polska": "number@orange.pl",
+    "Plus": "+48number@text.plusgsm.pl"
+  },
+  "South Africa": { "MTN": "number@sms.co.za" },
+  "Sri Lanka": { "Mobitel": "number@sms.mobitel.lk" },
+  "Switzerland": { "Sunrise Communications": "number@gsm.sunrise.ch" },
+  "USA": {
+    "Alaska Communications Systems": "number@msg.acsalaska.net",
+    "Alltel Wireless (presently merging with Verizon Wireless)": "number@message.Alltel.com",
+    "Alltel Wireless Alternative": "number@text.wireless.alltel.com",
+    "AT&T Enterprise Paging": "number@page.att.net",
+    "AT&T Mobility (formerly Cingular)": "number@txt.att.net ",
+    "AT&T Wireless": "number@txt.att.net",
+    "Boost Mobile": "number@boostmobile.com",
+    "Cellular One (Dobson)": "number@mobile.celloneusa.com",
+    "Cincinnati Bell": "number@gocbw.com",
+    "Cingular (GoPhone prepaid)": "number@cingulartext.com",
+    "Cingular (Now AT&T)": "number@cingularme.com",
+    "Cingular (Postpaid)": "number@cingular.com",
+    "Older AT&T Wireless": "number@mmode.com",
+    "Qwest Wireless": "number@qwestmp.com",
+    "Sprint (Nextel)": "number@page.nextel.com",
+    "Sprint (PCS)": "number@messaging.sprintpcs.com",
+    "Syringa Wireless": "number@rinasms.com",
+    "T-Mobile": "+1number@tmomail.net",
+    "Unicel": "number@utext.com",
+    "US Cellular": "number@email.uscc.net",
+    "Verizon": "number@vtext.com",
+    "Viaero": "number@viaerosms.com",
+    "Virgin Mobile": "number@vmobl.com"
+  },
+  "USA, Puerto Rico, and the U.S. Virgin Islands": {
+    "Centennial Wireless": "number@cwemail.com"
+  },
+  "United States": { "Nextel ": "number@messaging.nextel.com" },
+  "[18 circles], India": { "Aircel": "number@aircel.co.in" }
+}
