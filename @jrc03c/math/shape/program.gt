@@ -1,0 +1,51 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/shape
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/30086
+-- tests  : https://www.guidedtrack.com/programs/30087
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `x` = a n-dimensional collection
+--
+-- outputs:
+--     `shape` = a collection of integers representing the lengths at each
+--         dimension of `x`
+-------------------------------------------------------------------------------
+-- NOTE: This program only looks at the first item in each collection and does
+-- not take into account the possibility that a collection might contain a mix
+-- of collection and non-collection values!
+-------------------------------------------------------------------------------
+
+*if: not x
+	>> error_title = "@jrc03c/shape"
+	>> error_message = "The variable `x` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not (x.type = "collection")
+	>> error_title = "@jrc03c/shape"
+	>> error_message = "The variable `x` can only be a collection!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+>> shape = []
+>> temp = x
+
+*while: temp.type = "collection"
+	>> shape.add(temp.size)
+	
+	*if: temp.size > 0
+		>> temp = temp[1]
+
+	*if: temp.type = "collection"
+		*if: temp.size = 0
+			>> temp = ""
+
+-------------------------------------------------------------------------------
+
+*label: cleanup
+
+>> error_message = ""
+>> error_title = ""
+>> temp = ""

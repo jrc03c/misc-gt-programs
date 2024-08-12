@@ -10,11 +10,12 @@
 --
 -- inputs:
 --     `random_string_length` = the length of the string to be generated; must
---         a positive integer
+--         a positive integer; default is 8
 --
 --     `random_string_charset` = the set of characters to use to generate the
---         random string; can be either a non-empty string (text) or a non-empty
---         array (collection) of strings
+--         random string; can be either a non-empty string (text) or a
+--         non-empty array (collection) of strings; default is:
+--         "abcdefghijklmnopqrstuvwxyz1234567890"
 --
 -- outputs:
 --     `random_string` = the generated string
