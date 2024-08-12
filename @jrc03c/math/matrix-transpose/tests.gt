@@ -23,13 +23,13 @@
 >> failed = "no"
 *program: @jrc03c/matrix-transpose
 
-*if: not (matrix.size = matrix_true.size)
+*if: not (matrix_transposed.size = matrix_true.size)
 	>> failed = "yes"
 	>> error_title = "@jrc03c/matrix-transpose/tests"
-	>> error_message = "The predicted matrix didn't have the same number of rows as the true matrix! (matrix.size = {matrix.size}, matrix_true.size = {matrix_true.size})"
+	>> error_message = "The predicted matrix didn't have the same number of rows as the true matrix! (matrix_transposed.size = {matrix_transposed.size}, matrix_true.size = {matrix_true.size})"
 	*program: @jrc03c/show-error
 
-*for: i, row in matrix
+*for: i, row in matrix_transposed
 	>> row_true = matrix_true[i]
 
 	*if: not (row.size = row_true.size)
@@ -63,9 +63,10 @@
 *for: i, value in wrongs
 	>> orig_value = value
 	>> matrix = value
+	>> matrix_transposed = ""
 	*program: @jrc03c/matrix-transpose
 
-	*if: not (matrix = "")
+	*if: not (matrix_transposed = "")
 		>> success_title = "@jrc03c/matrix-transpose/tests"
 		>> success_message = "The value {orig_value} was transposed successfully, which SHOULD NOT happen!"
 		*program: @jrc03c/show-success

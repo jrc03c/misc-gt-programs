@@ -41,16 +41,16 @@
 	*program: @jrc03c/show-error
 	*goto: clean-up
 
->> matrix = []
+>> matrix_transposed = []
 
 *for: i, row in orig
 	*for: j, value in row
 		*trigger: 9af1bd3b
 
-		*if: j > matrix.size
-			>> matrix.add([])
+		*if: j > matrix_transposed.size
+			>> matrix_transposed.add([])
 			
-		>> matrix[j].add(value)
+		>> matrix_transposed[j].add(value)
 		
 -------------------------------------------------------------------------------
 
