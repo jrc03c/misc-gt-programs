@@ -1,3 +1,19 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/flatten
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/30091
+-- tests  : https://www.guidedtrack.com/programs/30092
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `x` = a n-dimensional collection
+--
+-- outputs:
+--     `x_flat` = a 1-dimensional collection containing all of the original
+--         values from `x` in the order in which they appear to a depth-first
+--         search
+-------------------------------------------------------------------------------
+
 *if: not x
 	>> error_title = "@jrc03c/flatten"
 	>> error_message = "The variable `x` is undefined!"
