@@ -1,0 +1,62 @@
+*if: not x
+	>> error_title = "@jrc03c/flatten"
+	>> error_message = "The variable `x` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not (x.type = "collection")
+	>> error_title = "@jrc03c/flatten"
+	>> error_message = "The variable `x` must be a collection!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+>> x_flat = []
+>> ancestry = []
+>> arr = x
+>> index = 1
+>> is_still_going = "yes"
+
+*while: is_still_going = "yes"
+	>> should_pop = "yes"
+	>> break = "no"
+
+	*while: index <= arr.size and break = "no"
+		>> v = arr[index]
+
+		*if: v.type = "collection"
+			>> ancestry.add({ "index" -> index + 1, "array" -> arr })
+			>> should_pop = "no"
+			>> arr = v
+			>> index = 1
+			>> break = "yes"
+
+		*if: not (v.type = "collection")
+			>> x_flat.add(v)
+
+		*if: break = "no"
+			>> index = index + 1
+
+	*if: break = "no" and should_pop = "yes"
+		*if: ancestry.size = 0
+			>> is_still_going = "no"
+
+		*if: ancestry.size > 0
+			>> last = ancestry[ancestry.size]
+			>> ancestry.remove(ancestry.size)
+			>> arr = last["array"]
+			>> index = last["index"]
+
+-------------------------------------------------------------------------------
+
+*label: cleanup
+
+>> ancestry = ""
+>> arr = ""
+>> break = ""
+>> error_message = ""
+>> error_title = ""
+>> index = ""
+>> is_still_going = ""
+>> last = ""
+>> should_pop = ""
+>> v = ""

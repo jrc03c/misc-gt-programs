@@ -1,0 +1,121 @@
+*html
+	<style>
+		h1 {
+			color: black !important;
+			font-weight: 700 !important;
+		}
+	</style>
+
+	<h1>All of these tests should pass:</h1>
+
+>> error_is_fatal = "no"
+
+-----
+
+>> x = [-0.5648540755681996,-0.726072629134633,1.6485052332013148,-1.4259181018617255,1.8515045621262691]
+>> x_flat_true = [-0.5648540755681996,-0.726072629134633,1.6485052332013148,-1.4259181018617255,1.8515045621262691]
+>> failed = "no"
+
+*program: @jrc03c/flatten
+
+*for: i, v in x_flat_true
+	*if: not (v = x_flat[i])
+		>> failed = "yes"
+
+*if: failed = "yes"
+	>> error_title = "@jrc03c/flatten/tests"
+	>> error_message = "Failed to flatten a vector!"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_title = "@jrc03c/flatten/tests"
+	>> success_message = "Passed!"
+	*program: @jrc03c/show-success
+
+-----
+
+>> x = [[2.521696250282885,0.058271023845144376,-0.16070311705172105],[0.7708320543078734,0.08955060487646847,-0.6318666272644913],[-1.3816167220526057,0.47531716919362993,1.4424751070657702],[1.4188018613757678,0.5056451851646719,-0.5722137323061096]]
+>> x_flat_true = [2.521696250282885,0.058271023845144376,-0.16070311705172105,0.7708320543078734,0.08955060487646847,-0.6318666272644913,-1.3816167220526057,0.47531716919362993,1.4424751070657702,1.4188018613757678,0.5056451851646719,-0.5722137323061096]
+>> failed = "no"
+
+*program: @jrc03c/flatten
+
+*for: i, v in x_flat_true
+	*if: not (v = x_flat[i])
+		>> failed = "yes"
+
+*if: failed = "yes"
+	>> error_title = "@jrc03c/flatten/tests"
+	>> error_message = "Failed to flatten a matrix!"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_title = "@jrc03c/flatten/tests"
+	>> success_message = "Passed!"
+	*program: @jrc03c/show-success
+
+-----
+
+>> x = [[[-1.0032859021196527,0.38900885957872566,-0.41178539490799626,2.2885421039943696],[-0.520361139227377,-1.215337554930778,0.8803282677665003,0.12270286913964316],[-2.0852734425701267,1.3761615074644107,0.25846676774060673,-1.0827606397657108]],[[0.13903372522266902,-0.7487060252460945,0.20934054529901447,-0.09990259135928481],[1.9761155131515176,-0.35276157747609327,1.7078867151675297,-1.1796935220424933],[-0.3998983892361051,0.7170037108060167,1.1349855780452736,-0.17889253247055265]]]
+>> x_flat_true = [-1.0032859021196527,0.38900885957872566,-0.41178539490799626,2.2885421039943696,-0.520361139227377,-1.215337554930778,0.8803282677665003,0.12270286913964316,-2.0852734425701267,1.3761615074644107,0.25846676774060673,-1.0827606397657108,0.13903372522266902,-0.7487060252460945,0.20934054529901447,-0.09990259135928481,1.9761155131515176,-0.35276157747609327,1.7078867151675297,-1.1796935220424933,-0.3998983892361051,0.7170037108060167,1.1349855780452736,-0.17889253247055265]
+>> failed = "no"
+
+*program: @jrc03c/flatten
+
+*for: i, v in x_flat_true
+	*if: not (v = x_flat[i])
+		>> failed = "yes"
+
+*if: failed = "yes"
+	>> error_title = "@jrc03c/flatten/tests"
+	>> error_message = "Failed to flatten a tensor!"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_title = "@jrc03c/flatten/tests"
+	>> success_message = "Passed!"
+	*program: @jrc03c/show-success
+
+-----
+
+>> x = [1, [2, [3, 4, 5], [6]], 7, [[[8], 9], 10]]
+>> x_flat_true = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>> failed = "no"
+
+*program: @jrc03c/flatten
+
+*for: i, v in x_flat_true
+	*if: not (v = x_flat[i])
+		>> failed = "yes"
+
+*if: failed = "yes"
+	>> error_title = "@jrc03c/flatten/tests"
+	>> error_message = "Failed to flatten a jagged array!"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_title = "@jrc03c/flatten/tests"
+	>> success_message = "Passed!"
+	*program: @jrc03c/show-success
+
+-----
+
+*html
+	<style>
+		h1 {
+			color: black !important;
+			font-weight: 700 !important;
+		}
+	</style>
+
+	<hr>
+	<h1>All of these tests should fail:</h1>
+
+-----
+
+>> wrongs = [234, "hello", calendar::now, {"yes" -> "no"}]
+
+*for: i, x in wrongs
+	*program: @jrc03c/flatten
+	
+*button: Okay
