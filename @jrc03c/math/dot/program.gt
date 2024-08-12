@@ -127,14 +127,14 @@
 
 -- if either variable is a matrix and needs to be transposed, then do that now
 *if: a_is_a_matrix = "yes" and should_transpose_a = "yes"
-	>> matrix_in = a
+	>> matrix = a
 	*program: @jrc03c/matrix-transpose
-	>> a = matrix_out
+	>> a = matrix_transposed
 
 *if: b_is_a_matrix = "yes" and should_transpose_b = "yes"
-	>> matrix_in = b
+	>> matrix = b
 	*program: @jrc03c/matrix-transpose
-	>> b = matrix_out
+	>> b = matrix_transposed
 
 ---------------------
 -- VECTOR * VECTOR --
@@ -274,6 +274,7 @@
 >> matrix = ""
 >> matrix_in = ""
 >> matrix_out = ""
+>> matrix_transposed = ""
 >> none = ""
 >> range = ""
 >> row = ""
