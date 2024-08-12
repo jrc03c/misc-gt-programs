@@ -1,0 +1,97 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/r-squared
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/30093
+-- tests  : https://www.guidedtrack.com/programs/30094
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `y_true` = an n-dimensional collection of numbers
+--
+--     `y_pred` = an n-dimensional collection of numbers
+--
+-- outputs:
+--     `r_squared` = the R^2 score of `y_true` vs. `y_pred`
+-------------------------------------------------------------------------------
+
+*if: not y_true
+	>> error_title = "@jrc03c/r-squared"
+	>> error_message = "The variable `y_true` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not (y_true.type = "collection")
+	>> error_title = "@jrc03c/r-squared"
+	>> error_message = "The variable `y_true` must be a collection!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not y_pred
+	>> error_title = "@jrc03c/r-squared"
+	>> error_message = "The variable `y_pred` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not (y_pred.type = "collection")
+	>> error_title = "@jrc03c/r-squared"
+	>> error_message = "The variable `y_pred` must be a collection!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+>> x = y_true
+*program: @jrc03c/shape
+>> y_true_shape = shape
+
+>> x = y_pred
+*program: @jrc03c/shape
+>> y_pred_shape = shape
+
+>> shapes_are_the_same = "yes"
+
+*for: i, v in y_true_shape
+	*if: not (v = y_pred_shape[i])
+		>> shapes_are_the_same = "no"
+
+*if: shapes_are_the_same = "no"
+	>> error_title = "@jrc03c/r-squared"
+	>> error_message = "The variables `y_true` and `y_pred` do not have the same shape! ([{y_true_shape}] vs. [{y_pred_shape}])"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+>> x = y_true
+*program: @jrc03c/flatten
+>> y_true_flat = x_flat
+
+>> x = y_pred
+*program: @jrc03c/flatten
+>> y_pred_flat = x_flat
+
+>> y_true_mean = y_true_flat.mean
+>> num = 0
+>> den = 0
+
+*for: i, v in y_true_flat
+	>> num = num + (v - y_pred_flat[i]) ^ 2
+	>> den = den + (v - y_true_mean) ^ 2
+
+>> r_squared = 1 - num / den
+
+-------------------------------------------------------------------------------
+
+*label: cleanup
+
+>> den = ""
+>> error_message = ""
+>> error_title = ""
+>> i = ""
+>> num = ""
+>> shape = ""
+>> shapes_are_the_same = ""
+>> v = ""
+>> x = ""
+>> x_flat = ""
+>> y_pred_flat = ""
+>> y_pred_shape = ""
+>> y_true_flat = ""
+>> y_true_mean = ""
+>> y_true_shape = ""
