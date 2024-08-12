@@ -8,7 +8,7 @@
 -- inputs:
 --     `matrix` = the matrix to transpose
 -- outputs:
---     `matrix` = the transposed matrix
+--     `matrix_transposed` = the transposed matrix
 -------------------------------------------------------------------------------
 -- NOTE: A random `*trigger` keyword have been added as a workaround to avoid
 -- the "Maximum call stack size exceeded" JS error.
