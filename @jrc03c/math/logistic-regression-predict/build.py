@@ -11,20 +11,6 @@ def float_string(x):
     return "{:.12f}".format(x)
 
 
-dir = (os.path.sep).join(__file__.split(os.path.sep)[:-1])
-
-x = np.random.normal(size=[25, 3])
-y = np.round(np.random.random(size=x.shape[0]))
-
-logreg = LogisticRegression()
-logreg.fit(x, y)
-y_true = logreg.predict_proba(x)
-
-if y_true.shape[1] > 1:
-    y_true = [v[-1] for v in y_true]
-
-y_true = pyds.flatten(y_true)
-
 unit_test_template = ptt.unindent("""
 	>> x = {{ x }}
 	>> coefficients = {{ coefficients }}
@@ -66,6 +52,20 @@ unit_test_template = ptt.unindent("""
 		y_pred: {y_pred}
 """)
 
+dir = (os.path.sep).join(__file__.split(os.path.sep)[:-1])
+
+x = np.random.normal(size=[25, 3])
+y = np.round(np.random.random(size=x.shape[0]))
+
+logreg = LogisticRegression()
+logreg.fit(x, y)
+y_true = logreg.predict_proba(x)
+
+if y_true.shape[1] > 1:
+    y_true = [v[-1] for v in y_true]
+
+y_true = pyds.flatten(y_true)
+
 x_string = "[{}]".format(
     (", ").join(
         ["[{}]".format((", ").join([float_string(v) for v in row])) for row in x]
@@ -90,11 +90,9 @@ unit_test_1 = unit_test_1.replace(
 )
 
 y_true_string = "[{}]".format((", ").join([float_string(v) for v in y_true]))
-
 unit_test_1 = unit_test_1.replace("{{ y_true }}", y_true_string)
 
 template = ("\n\n").join(['>> error_is_fatal = "no"', unit_test_1, "*button: Okay"])
-
 lines = template.split("\n")
 out = []
 
@@ -108,6 +106,9 @@ for line in lines:
         out.append(line)
 
 out = ("\n").join(lines)
+
+while "\n\n\n" in out:
+    out = out.replace("\n\n\n", "\n\n")
 
 with open(os.path.join(dir, "tests.gt"), "w") as file:
     file.write(out)
