@@ -13,7 +13,6 @@ def float_string(x):
 
 dir = (os.path.sep).join(__file__.split(os.path.sep)[:-1])
 
-
 x = np.random.normal(size=[25, 3])
 y = np.round(np.random.random(size=x.shape[0]))
 
