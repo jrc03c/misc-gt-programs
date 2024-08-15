@@ -1,0 +1,107 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/logistic-regression-predict
+-------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/30084
+-- tests  : https://www.guidedtrack.com/programs/30085
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+-- inputs:
+--     `coefficients` = a 1- or 2-dimensional collection of numbers
+--
+--     `intercept` = a number or a 1-dimensional collection of numbers
+--
+--     `x` = a 1- or 2-dimensional collection of numbers
+--
+-- outputs:
+--     `y` = a number or a 1-dimensional collection of numbers
+-------------------------------------------------------------------------------
+
+*if: not coefficients
+	>> error_title = "@jrc03c/logistic-regression-predict"
+	>> error_message = "The variable `coefficients` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not intercept
+	>> error_title = "@jrc03c/logistic-regression-predict"
+	>> error_message = "The variable `intercept` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+*if: not x
+	>> error_title = "@jrc03c/logistic-regression-predict"
+	>> error_message = "The variable `x` is undefined!"
+	*program: @jrc03c/show-error
+	*goto: cleanup
+
+>> a = x
+>> b = coefficients
+>> should_transpose_b = "no"
+
+*if: a[1].type = "collection"
+	*if: not (a[1].size = b.size)
+		>> should_transpose_b = "yes"
+
+*if: a[1].type = "collection" and b[1].type = "collection"
+	*if: should_transpose_b = "yes" and not (a[1].size = b[1].size)
+		*program: @jrc03c/shape
+		>> list = shape
+		>> delimiter = ", "
+		*program: @jrc03c/join
+		>> x_shape_string = joined
+
+		>> x_buf = x
+		>> x = coefficients
+		*program: @jrc03c/shape
+		>> list = shape
+		>> delimiter = ", "
+		*program: @jrc03c/join
+		>> coefficients_shape_string = joined
+		>> x = x_buf
+
+		>> error_title = "@jrc03c/logistic-regression-predict"
+		>> error_message = "The shapes of `x` and `coefficients` are incompatible! ([{x_shape_string}] vs. [{coefficients_shape_string}])"
+		*program: @jrc03c/show-error
+		*goto: cleanup
+
+*program: @jrc03c/dot
+
+>> y = c
+
+*if: y.type = "number"
+	>> y = y + intercept
+	>> y = 1 / (1 + 2.718281828459045 ^ -y)
+
+*if: y.type = "collection"
+	*for: i, v in y
+		*if: v.type = "number"
+			>> y[i] = v + intercept
+			>> y[i] = 1 / (1 + 2.718281828459045 ^ -y[i])
+
+		*if: v.type = "collection"
+			>> row = v
+
+			*for: j, v in row
+				>> row[j] = v + intercept
+				>> row[j] = 1 / (1 + 2.718281828459045 ^ -row[j])
+
+			>> y[i] = row
+
+-------------------------------------------------------------------------------
+
+*label: cleanup
+
+>> a = ""
+>> b = ""
+>> c = ""
+>> coefficients_shape_string = ""
+>> delimiter = ""
+>> error_message = ""
+>> error_title = ""
+>> i = ""
+>> j = ""
+>> list = ""
+>> row = ""
+>> should_transpose_b = ""
+>> x_buf = ""
+>> x_shape_string = ""
