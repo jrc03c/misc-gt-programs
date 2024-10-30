@@ -1,0 +1,51 @@
+*events
+	*startup
+		>> new_menu_items = []
+		
+		>> new_menu_item_1 = {}
+		>> new_menu_item_1["label"] = "Home"
+		>> new_menu_item_1["icon"] = "glyphicon-home"
+		>> new_menu_item_1["url"] = "https://clearerthinking.org"
+		>> new_menu_item_1["new_tab"] = 1
+		>> new_menu_items.add(new_menu_item_1)
+		
+		>> new_menu_item_2 = {}
+		>> new_menu_item_2["label"] = "Paths"
+		>> new_menu_item_2["icon"] = "glyphicon-map-marker"
+		>> new_menu_item_2["url"] = "https://programs.clearerthinking.org/create_your_custom_clearer_thinking_plan.html"
+		>> new_menu_item_2["new_tab"] = 0
+		>> new_menu_items.add(new_menu_item_2)
+		
+		>> new_menu_item_3 = {}
+		>> new_menu_item_3["label"] = "Dashboard"
+		>> new_menu_item_3["icon"] = "glyphicon-dashboard"
+		>> new_menu_item_3["url"] = "https://programs.clearerthinking.org/dashboard.html"
+		>> new_menu_item_3["new_tab"] = 0
+		>> new_menu_items.add(new_menu_item_3)
+		
+		>> new_menu_item_4 = {}
+		>> new_menu_item_4["label"] = "View source code"
+		>> new_menu_item_4["icon"] = "fa-code"
+		>> new_menu_item_4["url"] = "https://www.guidedtrack.com/programs/30749/edit"
+		>> new_menu_item_4["new_tab"] = 1
+		>> new_menu_items.add(new_menu_item_4)
+		
+		>> new_menu_item_5 = {}
+		>> new_menu_item_5["label"] = "Something really cool!"
+		>> new_menu_item_5["icon"] = "🔥"
+		>> new_menu_item_5["url"] = "javascript:alert('So cool! 😎')"
+		>> new_menu_item_5["new_tab"] = 0
+		>> new_menu_items.add(new_menu_item_5)
+	
+		*trigger: add-dropdown-menu-items
+			*send: { "new_menu_items" -> new_menu_items }
+
+*label: StartLabel
+
+*header: Welcome!
+
+Hey! Take a look at the three-dot menu above. You'll notice that a few new items have been added! 😁
+
+*button: Okay
+
+*goto: StartLabel
