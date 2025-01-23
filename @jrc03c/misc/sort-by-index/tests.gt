@@ -100,6 +100,38 @@
 
 --------------------------------------------------------------------------------
 
+>> test = "Sort a collection of associations by key 'age' in ascending order"
+>> ascending = "yes"
+
+>> x = [{"name" -> "Fran", "age" -> 56},  {"name" -> "Beatrice", "age" -> 23},  {"name" -> "Cindy", "age" -> 67},  {"name" -> "Alice", "age" -> 45},  {"name" -> "Emily", "age" -> 78},  {"name" -> "Darla", "age" -> 12},  {"name" -> "Georgia", "age" -> 34}]
+
+>> index = "age"
+
+*program: @jrc03c/sort-by-index
+
+>> y_pred = x_sorted
+
+>> y_true = [{"name" -> "Darla", "age" -> 12},  {"name" -> "Beatrice", "age" -> 23},  {"name" -> "Georgia", "age" -> 34},  {"name" -> "Alice", "age" -> 45},  {"name" -> "Fran", "age" -> 56},  {"name" -> "Cindy", "age" -> 67},  {"name" -> "Emily", "age" -> 78}]
+
+>> failed = "no"
+
+*for: i, v in y_true
+	*if: not (v["name"] = y_pred[i]["name"])
+		>> failed = "yes"
+
+	*if: not (v["age"] = y_pred[i]["age"])
+		>> failed = "yes"
+
+*if: failed = "yes"
+	>> error_message = test
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = test
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
 >> test = "Clean up upon completion"
 >> appendage = ""
 >> x = []
@@ -145,7 +177,7 @@
 	<h1 style="color: black"><b>All of these tests should fail:</b></h1>
 
 >> x = []
->> index = 0
+>> index = []
 >> ascending = "yes"
 *program: @jrc03c/sort-by-index
 

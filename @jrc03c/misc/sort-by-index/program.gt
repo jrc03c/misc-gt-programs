@@ -14,6 +14,9 @@
 --         should be sorted in ascending order; can either be "yes" or "no"; the
 --         default is "yes"
 --------------------------------------------------------------------------------
+-- NOTE: This sorting algorithm is hugely inefficient! Please only use it on 
+-- relatively small collections!
+--------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/sort-by-index"
 
@@ -22,12 +25,13 @@
 	*program: @jrc03c/show-error
 
 *if: not index
-	>> error_message = "You must provide a positive integer, `index`, by which to sort the collection!"
+	>> error_message = "You must provide a value, `index`, by which to sort the collection! The value must be either a string representing the key of an association or a positive integer representing a position in a collection."
 	*program: @jrc03c/show-error
 
-*if: index < 1
-	>> error_message = "You must provide a positive integer, `index`, by which to sort the collection! (The value you provided was {index}.)"
-	*program: @jrc03c/show-error
+*if: not (index.type = "number")
+	*if: not(index.type = "string")
+		>> error_message = "You must provide a value, `index`, by which to sort the collection! The value must be either a string representing the key of an association or a positive integer representing a position in a collection. (The value you provided was `{index}`.)"
+		*program: @jrc03c/show-error
 
 *if: not ascending
 	>> ascending = "yes"
