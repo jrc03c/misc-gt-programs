@@ -7,7 +7,7 @@
 -- inputs:
 --     `x` = the collection to sort
 --
---     `index` = a positive integer represending the position in each row of
+--     `index` = a positive integer representing the position in each row of
 --         `x` by which to sort `x`
 --
 --     `ascending` = (optional) a string indicating whether or not the values
