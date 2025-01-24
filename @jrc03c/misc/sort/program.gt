@@ -1,0 +1,88 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/sort
+--------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/31405/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- inputs:
+--     `x` = the collection to sort
+--
+-- outputs:
+--     `x_sorted` = the sorted version of `x`
+--------------------------------------------------------------------------------
+
+>> x_sorted = []
+>> x_sorted.combine(x)
+>> n = x_sorted.size + 1
+>> size = 1
+
+*while: size < n
+	>> start = 0
+	>> stop = n
+	>> step = 2 * size
+	*program: @jrc03c/range
+
+	*for: left in range
+		>> left = left + 1
+		>> mid = [n, left + size].min
+		>> right = [n, left + 2 * size].min
+		>> lsub = []
+		>> rsub = []
+
+		*for: i, v in x_sorted
+			*if: i >= left
+				*if: i < right
+					*if: i < mid
+						>> lsub.add(v)
+
+					*if: i >= mid
+						>> rsub.add(v)
+
+		>> i = 1
+		>> j = 1
+		>> k = left
+
+		*while: i <= lsub.size and j <= rsub.size
+			>> should_update_left = "no"
+
+			*if: lsub[i] <= rsub[j]
+				>> should_update_left = "yes"
+
+			*if: should_update_left = "yes"
+				>> x_sorted[k] = lsub[i]
+				>> i = i + 1
+
+			*if: should_update_left = "no"
+				>> x_sorted[k] = rsub[j]
+				>> j = j + 1
+
+			>> k = k + 1
+
+		*while: i <= lsub.size
+			>> x_sorted[k] = lsub[i]
+			>> i = i + 1
+			>> k = k + 1
+
+		*while: j <= rsub.size
+			>> x_sorted[k] = rsub[j]
+			>> j = j + 1
+			>> k = k + 1
+
+	>> size = size * 2
+
+>> i = ""
+>> j = ""
+>> k = ""
+>> left = ""
+>> lsub = ""
+>> mid = ""
+>> n = ""
+>> range = ""
+>> right = ""
+>> rsub = ""
+>> should_update_left = ""
+>> size = ""
+>> start = ""
+>> step = ""
+>> stop = ""
+>> v = ""
