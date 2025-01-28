@@ -142,4 +142,195 @@
 
 --------------------------------------------------------------------------------
 
+>> title = "Sort a collection of collections by index"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+
+>> x = [[44, 51, 7, 86], [14, 4, 42, 72], [92, 38, 6, 49], [83, 2, 77, 21], [5, 90, 59, 34], [69, 53, 94, 40], [57, 88, 35, 22], [85, 70, 73, 36], [24, 18, 20, 68], [37, 99, 58, 27], [98, 1, 47, 3], [52, 78, 55, 43], [60, 80, 39, 50], [93, 31, 28, 16], [54, 81, 61, 87], [62, 63, 33, 8], [97, 25, 41, 66], [0, 91, 79, 10], [9, 45, 65, 29], [12, 75, 19, 64], [15, 46, 56, 48], [67, 13, 11, 32], [74, 95, 26, 96], [23, 17, 30, 71], [84, 76, 89, 82]]
+
+>> y_true = [[92, 38, 6, 49], [44, 51, 7, 86], [67, 13, 11, 32], [12, 75, 19, 64], [24, 18, 20, 68], [74, 95, 26, 96], [93, 31, 28, 16], [23, 17, 30, 71], [62, 63, 33, 8], [57, 88, 35, 22], [60, 80, 39, 50], [97, 25, 41, 66], [14, 4, 42, 72], [98, 1, 47, 3], [52, 78, 55, 43], [15, 46, 56, 48], [37, 99, 58, 27], [5, 90, 59, 34], [54, 81, 61, 87], [9, 45, 65, 29], [85, 70, 73, 36], [83, 2, 77, 21], [0, 91, 79, 10], [84, 76, 89, 82], [69, 53, 94, 40]]
+
+>> index = 3
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, row1 in y_true
+	*for: j, v1 in row1
+		>> v2 = y_pred[i][j]
+
+		*if: not (v1 = v2)
+			>> failed = "yes"
+			>> fail_value_1 = v1
+			>> fail_value_2 = v2
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead.)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection of associations by index"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+
+>> x = [{"name" -> "Carol", "age" -> 19}, {"name" -> "Dave", "age" -> 93}, {"name" -> "Alice", "age" -> 18}, {"name" -> "Heidi", "age" -> 40}, {"name" -> "Judy", "age" -> 81}, {"name" -> "Ivan", "age" -> 46}, {"name" -> "Frank", "age" -> 1}, {"name" -> "Erin", "age" -> 12}, {"name" -> "Grace", "age" -> 3}, {"name" -> "Bob", "age" -> 31}]
+
+>> y_true = [{"name" -> "Frank", "age" -> 1}, {"name" -> "Grace", "age" -> 3}, {"name" -> "Erin", "age" -> 12}, {"name" -> "Alice", "age" -> 18}, {"name" -> "Carol", "age" -> 19}, {"name" -> "Bob", "age" -> 31}, {"name" -> "Heidi", "age" -> 40}, {"name" -> "Ivan", "age" -> 46}, {"name" -> "Judy", "age" -> 81}, {"name" -> "Dave", "age" -> 93}]
+
+>> index = "age"
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, v1 in y_true
+	>> v2 = y_pred[i]
+
+	*if: not (v1 = v2)
+		>> failed = "yes"
+		>> fail_value_1 = v1
+		>> fail_value_2 = v2
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection in descending order"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+>> x = [2, 4, 6, 5, 3, 1]
+>> y_true = [6, 5, 4, 3, 2, 1]
+>> ascending = "no"
+>> index = ""
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, v1 in y_true
+	>> v2 = y_pred[i]
+
+	*if: not (v1 = v2)
+		>> failed = "yes"
+		>> fail_value_1 = v1
+		>> fail_value_2 = v2
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection of collections by index in descending order"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+
+>> x = [[44, 51, 7, 86], [14, 4, 42, 72], [92, 38, 6, 49], [83, 2, 77, 21], [5, 90, 59, 34], [69, 53, 94, 40], [57, 88, 35, 22], [85, 70, 73, 36], [24, 18, 20, 68], [37, 99, 58, 27], [98, 1, 47, 3], [52, 78, 55, 43], [60, 80, 39, 50], [93, 31, 28, 16], [54, 81, 61, 87], [62, 63, 33, 8], [97, 25, 41, 66], [0, 91, 79, 10], [9, 45, 65, 29], [12, 75, 19, 64], [15, 46, 56, 48], [67, 13, 11, 32], [74, 95, 26, 96], [23, 17, 30, 71], [84, 76, 89, 82]]
+
+>> y_true = [[69, 53, 94, 40], [84, 76, 89, 82], [0, 91, 79, 10], [83, 2, 77, 21], [85, 70, 73, 36], [9, 45, 65, 29], [54, 81, 61, 87], [5, 90, 59, 34], [37, 99, 58, 27], [15, 46, 56, 48], [52, 78, 55, 43], [98, 1, 47, 3], [14, 4, 42, 72], [97, 25, 41, 66], [60, 80, 39, 50], [57, 88, 35, 22], [62, 63, 33, 8], [23, 17, 30, 71], [93, 31, 28, 16], [74, 95, 26, 96], [24, 18, 20, 68], [12, 75, 19, 64], [67, 13, 11, 32], [44, 51, 7, 86], [92, 38, 6, 49]]
+
+>> index = 3
+>> ascending = "no"
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, row1 in y_true
+	*for: j, v1 in row1
+		>> v2 = y_pred[i][j]
+
+		*if: not (v1 = v2)
+			>> failed = "yes"
+			>> fail_value_1 = v1
+			>> fail_value_2 = v2
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead.)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection of associations by index in descending order"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+
+>> x = [{"name" -> "Carol", "age" -> 19}, {"name" -> "Dave", "age" -> 93}, {"name" -> "Alice", "age" -> 18}, {"name" -> "Heidi", "age" -> 40}, {"name" -> "Judy", "age" -> 81}, {"name" -> "Ivan", "age" -> 46}, {"name" -> "Frank", "age" -> 1}, {"name" -> "Erin", "age" -> 12}, {"name" -> "Grace", "age" -> 3}, {"name" -> "Bob", "age" -> 31}]
+
+>> y_true = [{"name" -> "Dave", "age" -> 93}, {"name" -> "Judy", "age" -> 81}, {"name" -> "Ivan", "age" -> 46}, {"name" -> "Heidi", "age" -> 40}, {"name" -> "Bob", "age" -> 31}, {"name" -> "Carol", "age" -> 19}, {"name" -> "Alice", "age" -> 18}, {"name" -> "Erin", "age" -> 12}, {"name" -> "Grace", "age" -> 3}, {"name" -> "Frank", "age" -> 1}]
+
+>> index = "age"
+>> ascending = "no"
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, v1 in y_true
+	>> v2 = y_pred[i]
+
+	*if: not (v1 = v2)
+		>> failed = "yes"
+		>> fail_value_1 = v1
+		>> fail_value_2 = v2
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+*html
+	<br>
+
+	<h1 style="color: black;">
+		All of these tests should fail:
+	</h1>
+
+--------------------------------------------------------------------------------
+
+>> x = "Nope!"
+>> index = 1
+>> ascending = "yes"
+*program: @jrc03c/sort
+
+>> x = [1, 2, 3, 4, 5]
+>> index = -1
+>> ascending = "yes"
+*program: @jrc03c/sort
+
+>> x = [1, 2, 3, 4, 5]
+>> index = -1
+>> ascending = "Nope!"
+*program: @jrc03c/sort
+
 *button: Okay

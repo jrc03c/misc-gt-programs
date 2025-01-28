@@ -7,14 +7,67 @@
 -- inputs:
 --     `x` = the collection to sort
 --
+--     `index` = (optional) a positive integer by which to sort nested
+--         collections or a string by which to sort collections of associations;
+--         by default, no index is used
+--
+--     `ascending` = (optional) a string indicating whether or not the values in
+--         the sorted collection should appear in ascending order or not; can be
+--         "yes" or "no"; the default is "yes"
+--
 -- outputs:
 --     `x_sorted` = the sorted version of `x`
 --------------------------------------------------------------------------------
 
--- NOTE: The "not-a-real-event" event is triggered several times below to avoid throwing a "too much recursion" error.
+-- NOTE: The "not-a-real-event" event is triggered several times below to avoid
+-- throwing a "too much recursion" error.
+
+>> error_title = "@jrc03c/sort"
+
+*if: not x
+	>> error_message = "You must define a collection called `x` for the '@jrc03c/sort' program!"
+	*program: @jrc03c/show-error
+	*return
+
+*if: not (x.type = "collection")
+	>> error_message = "When defining a `x` value for the '@jrc03c/sort' program, the value must be a collection! (The value you provided is a(n) {x.type}.)"
+	*program: @jrc03c/show-error
+	*return
 
 >> x_sorted = []
+
+*if: x.size = 0
+	*return
+
 >> x_sorted.combine(x)
+>> should_sort_by_index = "no"
+
+*if: index
+	*if: index.type = "string"
+		*if: index.size > 0
+			>> should_sort_by_index = "yes"
+
+	*if: index.type = "number"
+		*if: index > 0
+			>> should_sort_by_index = "yes"
+
+		*if: index <= 0
+			>> error_message = "When defining an `index` value for the '@jrc03c/sort' program, the value must be (1) a positive integer representing a position in each child collection of a nested collection, or (2) a string representing the key of an association in a collection of associations! (The value you provided was `{index}`.) You can also set `index` to be an empty string if you don't want to sort by index."
+			*program: @jrc03c/show-error
+			*return
+
+*if: not ascending
+	>> ascending = "yes"
+
+*if: ascending = ""
+	>> ascending = "yes"
+
+*if: not (ascending = "yes")
+	*if: not (ascending = "no")
+		>> error_message = "When defining an `ascending` value for the '@jrc03c/sort' program, the value must be 'yes' or 'no'! (The value you provided was `{ascending}`.)"
+		*program: @jrc03c/show-error
+		*return
+
 >> n = x_sorted.size + 1
 >> size = 1
 
@@ -56,8 +109,23 @@
 		*while: i <= lsub.size and j <= rsub.size
 			>> should_update_left = "no"
 
-			*if: lsub[i] <= rsub[j]
-				>> should_update_left = "yes"
+			*if: should_sort_by_index = "yes"
+				*if: ascending = "yes"
+					*if: lsub[i][index] <= rsub[j][index]
+						>> should_update_left = "yes"
+
+				*if: ascending = "no"
+					*if: lsub[i][index] >= rsub[j][index]
+						>> should_update_left = "yes"
+
+			*if: should_sort_by_index = "no"
+				*if: ascending = "yes"
+					*if: lsub[i] <= rsub[j]
+						>> should_update_left = "yes"
+
+				*if: ascending = "no"
+					*if: lsub[i] >= rsub[j]
+						>> should_update_left = "yes"
 
 			*if: should_update_left = "yes"
 				>> x_sorted[k] = lsub[i]
@@ -85,7 +153,9 @@
 	>> size = size * 2
 	*trigger: not-a-real-event
 
+>> ascending = ""
 >> i = ""
+>> index = ""
 >> j = ""
 >> k = ""
 >> left = ""
@@ -95,6 +165,7 @@
 >> range = ""
 >> right = ""
 >> rsub = ""
+>> should_sort_by_index = ""
 >> should_update_left = ""
 >> size = ""
 >> start = ""
