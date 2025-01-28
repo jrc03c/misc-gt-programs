@@ -1,0 +1,145 @@
+*html
+	<h1 style="color: black;">
+		All of these tests should pass:
+	</h1>
+
+--------------------------------------------------------------------------------
+
+>> error_is_fatal = "no"
+>> error_title = "@jrc03c/sort/tests"
+>> success_title = "@jrc03c/sort/tests"
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a user-defined collection"
+>> failed = "no"
+>> x = [2, 4, 6, 5, 3, 1]
+>> y_true = [1, 2, 3, 4, 5, 6]
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, v in y_true
+	*if: not (v = y_true[i])
+		>> failed = "yes"
+
+*if: failed = "yes"
+	>> error_message = title
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a randomly-generated collection"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+
+>> x = []
+>> x.add(-0.09971624023316393)
+>> x.add(-0.043211834148283154)
+>> x.add(-0.8297439590224034)
+>> x.add(0.34029355960396246)
+>> x.add(0.40038589414187215)
+
+*program: @jrc03c/sort
+
+*for: i, v in x_sorted
+	*if: i < x_sorted.size
+		*if: not (v <= x_sorted[i + 1])
+			>> failed = "yes"
+			>> fail_value_1 = v
+			>> fail_value_2 = x_sorted[i + 1]
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value {fail_value_1} was supposed to be less than or equal to the value {fail_value_2}, but it wasn't!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection that's already in order"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+>> x = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+*program: @jrc03c/sort
+
+*for: i, v in x
+	*if: not (v = x_sorted[i])
+		>> failed = "yes"
+		>> fail_value_1 = v
+		>> fail_value_2 = x_sorted[i]
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection with some repeated values"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+>> x = [8, 0, 4, 1, 5, 9, 7, 2, 6, 3, 7, 5, 4, 6, 5, 7, 4, 6]
+>> y_true = [0, 1, 2, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 9]
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, v in y_true
+	*if: not (v = y_pred[i])
+		>> failed = "yes"
+		>> fail_value_1 = v
+		>> fail_value_2 = y_pred[i]
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+>> title = "Sort a collection with all repeated values"
+>> failed = "no"
+>> fail_value_1 = ""
+>> fail_value_2 = ""
+>> x = [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+>> y_true = [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+
+*program: @jrc03c/sort
+
+>> y_pred = x_sorted
+
+*for: i, v in y_true
+	*if: not (v = y_pred[i])
+		>> failed = "yes"
+		>> fail_value_1 = v
+		>> fail_value_2 = y_pred[i]
+
+*if: failed = "yes"
+	>> error_message = "{title} (The value was supposed to be {fail_value_1}, but it was {fail_value_2} instead!)"
+	*program: @jrc03c/show-error
+
+*if: failed = "no"
+	>> success_message = title
+	*program: @jrc03c/show-success
+
+--------------------------------------------------------------------------------
+
+*button: Okay

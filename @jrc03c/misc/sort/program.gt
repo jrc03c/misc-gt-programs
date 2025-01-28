@@ -11,6 +11,8 @@
 --     `x_sorted` = the sorted version of `x`
 --------------------------------------------------------------------------------
 
+-- NOTE: The "not-a-real-event" event is triggered several times below to avoid throwing a "too much recursion" error.
+
 >> x_sorted = []
 >> x_sorted.combine(x)
 >> n = x_sorted.size + 1
@@ -20,7 +22,14 @@
 	>> start = 0
 	>> stop = n
 	>> step = 2 * size
-	*program: @jrc03c/range
+	-- *program: @jrc03c/range
+	>> range = []
+	>> i = start
+	
+	*while: i < stop
+		>> range.add(i)
+		>> i = i + step
+		*trigger: not-a-real-event
 
 	*for: left in range
 		>> left = left + 1
@@ -37,6 +46,8 @@
 
 					*if: i >= mid
 						>> rsub.add(v)
+						
+			*trigger: not-a-real-event
 
 		>> i = 1
 		>> j = 1
@@ -57,18 +68,22 @@
 				>> j = j + 1
 
 			>> k = k + 1
+			*trigger: not-a-real-event
 
 		*while: i <= lsub.size
 			>> x_sorted[k] = lsub[i]
 			>> i = i + 1
 			>> k = k + 1
+			*trigger: not-a-real-event
 
 		*while: j <= rsub.size
 			>> x_sorted[k] = rsub[j]
 			>> j = j + 1
 			>> k = k + 1
+			*trigger: not-a-real-event
 
 	>> size = size * 2
+	*trigger: not-a-real-event
 
 >> i = ""
 >> j = ""
