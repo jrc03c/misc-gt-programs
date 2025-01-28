@@ -42,6 +42,8 @@
 	>> success_message = "range(0, 100) test passed!"
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 ----------
 
 >> start = -25
@@ -69,6 +71,8 @@
 	>> success_title = "@jrc03c/range/tests"
 	>> success_message = "range(-25, 25, 5) test passed!"
 	*program: @jrc03c/show-success
+
+*wait: 0.1.seconds
 
 ----------
 
@@ -102,6 +106,21 @@
 	>> success_message = "range(-2 * pi, 2 * pi, pi / 4) test passed!"
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
+----------
+
+>> start = 0
+>> stop = 10000
+>> step = 1
+*program: @jrc03c/range
+
+>> success_title = "@jrc03c/range/tests"
+>> success_message = "range(0, 10000, 1) test passed!"
+*program: @jrc03c/show-success
+
+*wait: 0.1.seconds
+
 ----------
 
 *html
@@ -113,15 +132,21 @@
 >> step = 0
 *program: @jrc03c/range
 
+*wait: 0.1.seconds
+
 >> start = 0
 >> stop = 100
 >> step = -10
 *program: @jrc03c/range
 
+*wait: 0.1.seconds
+
 >> start = 100
 >> stop = 0
 >> step = 10
 *program: @jrc03c/range
+
+*wait: 0.1.seconds
 
 >> wrongs = [ [ "hello", [2, 3, 4], { " yes" -> "no" } ], [ "hello", [2, 3, 4], calendar::now ], [ "hello", { " yes" -> "no" }, [2, 3, 4] ], [ "hello", { " yes" -> "no" }, calendar::now ], [ "hello", calendar::now, [2, 3, 4] ], [ "hello", calendar::now, { " yes" -> "no" } ], [ [2, 3, 4], "hello", { " yes" -> "no" } ], [ [2, 3, 4], "hello", calendar::now ], [ [2, 3, 4], { " yes" -> "no" }, "hello" ], [ [2, 3, 4], { " yes" -> "no" }, calendar::now ], [ [2, 3, 4], calendar::now, "hello" ], [ [2, 3, 4], calendar::now, { " yes" -> "no" } ], [ { " yes" -> "no" }, "hello", [2, 3, 4] ], [ { " yes" -> "no" }, "hello", calendar::now ], [ { " yes" -> "no" }, [2, 3, 4], "hello" ], [ { " yes" -> "no" }, [2, 3, 4], calendar::now ], [ { " yes" -> "no" }, calendar::now, "hello" ], [ { " yes" -> "no" }, calendar::now, [2, 3, 4] ], [ calendar::now, "hello", [2, 3, 4] ], [ calendar::now, "hello", { " yes" -> "no" } ], [ calendar::now, [2, 3, 4], "hello" ], [ calendar::now, [2, 3, 4], { " yes" -> "no" } ], [ calendar::now, { " yes" -> "no" }, "hello" ], [ calendar::now, { " yes" -> "no" }, [2, 3, 4] ] ]
 
@@ -130,15 +155,18 @@
 	>> stop = trio[2]
 	>> step = trio[3]
 	*program: @jrc03c/range
+	*wait: 0.1.seconds
 
 	>> start = 0
 	>> stop = trio[2]
 	>> step = trio[3]
 	*program: @jrc03c/range
+	*wait: 0.1.seconds
 
 	>> start = 0
 	>> stop = 100
 	>> step = trio[3]
 	*program: @jrc03c/range
+	*wait: 0.1.seconds
 
 *button: Okay

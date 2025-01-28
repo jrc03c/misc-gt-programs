@@ -20,6 +20,9 @@
 --     `range` = the resulting array of values
 -------------------------------------------------------------------------------
 
+-- NOTE: The "not-a-real-event" event is triggered below to avoid a "too much
+-- recursion" error.
+
 *if: not start
 	>> error_title = "@jrc03c/range"
 	>> error_message = "You must define a number variable called `start` before invoking this program!"
@@ -91,6 +94,7 @@
 *while: i < stop
 	>> range.add(i)
 	>> i = i + step
+	*trigger: not-a-real-event
 
 -------------------------------------------------------------------------------
 
