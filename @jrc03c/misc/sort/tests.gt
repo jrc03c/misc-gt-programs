@@ -1,6 +1,13 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/sort/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/31405/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
 *html
 	<h1 style="color: black;">
-		All of these tests should pass:
+		<b>All of these tests should pass:</b>
 	</h1>
 
 --------------------------------------------------------------------------------
@@ -31,6 +38,8 @@
 *if: failed = "no"
 	>> success_message = title
 	*program: @jrc03c/show-success
+
+*wait: 0.1.seconds
 
 --------------------------------------------------------------------------------
 
@@ -63,6 +72,8 @@
 	>> success_message = title
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 --------------------------------------------------------------------------------
 
 >> title = "Sort a collection that's already in order"
@@ -85,6 +96,8 @@
 *if: failed = "no"
 	>> success_message = title
 	*program: @jrc03c/show-success
+
+*wait: 0.1.seconds
 
 --------------------------------------------------------------------------------
 
@@ -113,6 +126,8 @@
 	>> success_message = title
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 --------------------------------------------------------------------------------
 
 >> title = "Sort a collection with all repeated values"
@@ -139,6 +154,8 @@
 *if: failed = "no"
 	>> success_message = title
 	*program: @jrc03c/show-success
+
+*wait: 0.1.seconds
 
 --------------------------------------------------------------------------------
 
@@ -174,6 +191,8 @@
 	>> success_message = title
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 --------------------------------------------------------------------------------
 
 >> title = "Sort a collection of associations by index"
@@ -207,6 +226,8 @@
 	>> success_message = title
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 --------------------------------------------------------------------------------
 
 >> title = "Sort a collection in descending order"
@@ -237,6 +258,8 @@
 *if: failed = "no"
 	>> success_message = title
 	*program: @jrc03c/show-success
+
+*wait: 0.1.seconds
 
 --------------------------------------------------------------------------------
 
@@ -273,6 +296,8 @@
 	>> success_message = title
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 --------------------------------------------------------------------------------
 
 >> title = "Sort a collection of associations by index in descending order"
@@ -307,13 +332,15 @@
 	>> success_message = title
 	*program: @jrc03c/show-success
 
+*wait: 0.1.seconds
+
 --------------------------------------------------------------------------------
 
 *html
 	<br>
 
 	<h1 style="color: black;">
-		All of these tests should fail:
+		<b>All of these tests should fail:</b>
 	</h1>
 
 --------------------------------------------------------------------------------
@@ -322,15 +349,18 @@
 >> index = 1
 >> ascending = "yes"
 *program: @jrc03c/sort
+*wait: 0.1.seconds
 
 >> x = [1, 2, 3, 4, 5]
 >> index = -1
 >> ascending = "yes"
 *program: @jrc03c/sort
+*wait: 0.1.seconds
 
 >> x = [1, 2, 3, 4, 5]
 >> index = -1
 >> ascending = "Nope!"
 *program: @jrc03c/sort
+*wait: 0.1.seconds
 
 *button: Okay

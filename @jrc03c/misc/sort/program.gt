@@ -2,14 +2,15 @@
 -- @jrc03c/sort
 --------------------------------------------------------------------------------
 -- url    : https://www.guidedtrack.com/programs/31405/edit
+-- tests  : https://www.guidedtrack.com/programs/31407/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 --------------------------------------------------------------------------------
 -- inputs:
 --     `x` = the collection to sort
 --
 --     `index` = (optional) a positive integer by which to sort nested
---         collections or a string by which to sort collections of associations;
---         by default, no index is used
+--         collections, or a string by which to sort collections of
+--         associations; by default, no index is used
 --
 --     `ascending` = (optional) a string indicating whether or not the values in
 --         the sorted collection should appear in ascending order or not; can be
