@@ -1,0 +1,18 @@
+*label: StartLabel
+
+*question: Mailchimp list ID:
+	*save: mailchimp_list_id
+
+*question: Email address:
+	*save: email_address
+
+*program: @jrc03c/mailchimp/subscribe
+
+*if: was_subscribed = "yes"
+	>> success_title = "@jrc03c/mailchimp/subscribe"
+	>> success_message = "The email address '{email_address}' was subscribed to the list '{mailchimp_list_id}'!"
+	*program: @jrc03c/show-success
+
+*button: Start over
+
+*goto: StartLabel

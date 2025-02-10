@@ -1,0 +1,91 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/mailchimp/subscribe
+--------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/31586/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- inputs:
+--     `email_address` = a string representing the email address to be
+--         subscribed
+--
+--     `mailchimp_list_id` = a string representing the ID of the list to which 
+--         the email address will be subscribed
+--
+--     `options` = an association whose key-value pairs will be attached to the
+--         payload object sent in the request to Mailchimp; the default is an
+--         empty association (`{}`); example: the default payload has the key-
+--         value pair `{ "email_type" -> "html" }`, but that could be
+--         overridden in the `option` variable as `{ "email_type" -> "text" }`;
+--         see the Mailchimp API docs linked below for all options
+--
+-- outputs:
+--     `was_subscribed` = "yes" or "no"
+--
+--     `mailchimp_subscribe_error` = an association with response data from
+--         Mailchimp; will be an empty association (`{}`) if the subscription
+--         request succeeds
+--------------------------------------------------------------------------------
+-- SERVICE SETTINGS:
+-- Name: Mailchimp
+-- URL: https://YOUR_ZONE.api.mailchimp.com/3.0
+-- Username: anystring
+-- Password: YOUR_API_KEY
+--------------------------------------------------------------------------------
+-- MAILCHIMP API DOCUMENTATION:
+-- https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/mailchimp/subscribe"
+
+*if: not mailchimp_list_id
+	>> error_message = "You must define a variable called <code>mailchimp_list_id</code> that has a string value representing the ID of the list to which the email address will be subscribed!"
+	*program: @jrc03c/show-error
+	
+*if: not (mailchimp_list_id.type = "string")
+	>> error_message = "The <code>mailchimp_list_id</code> variable must have a string value representing the ID of the list to which the email address will be subscribed! (The value you provided was a(n) {mailchimp_list_id.type}.)"
+	*program: @jrc03c/show-error
+
+*if: not email_address
+	>> error_message = "You must define a variable called <code>email_address</code> that has a string value representing the email address to be added to the Mailchimp list!"
+	*program: @jrc03c/show-error
+	
+*if: not (email_address.type = "string")
+	>> error_message = "The <code>email_address</code> variable must have a string value representing the email address to be added to the Mailchimp list! (The value you provided was a(n) {email_address.type}.)"
+	*program: @jrc03c/show-error
+
+*if: not options
+	>> options = {}
+
+*if: not (options.type = "association")
+	>> error_message = "The <code>options</code> variable must have an association value containing key-value pairs to be attached to the request send to Mailchimp! (The value you provided was a(n) {options.type}.)"
+	*program: @jrc03c/show-error
+
+>> payload = {}
+>> payload["email_address"] = email_address
+>> payload["status"] = "subscribed"
+>> payload["email_type"] = "html"
+
+*for: key in options.keys
+	>> payload[key] = options[key]
+
+>> was_subscribed = "no"
+>> mailchimp_subscribe_error = {}
+
+*service: Mailchimp
+	*path: /lists/{mailchimp_list_id}/members
+	*method: POST
+	*send: payload
+	*success
+		>> was_subscribed = "yes"
+	*error
+		>> mailchimp_subscribe_error = it
+
+*if: was_subscribed = "no"
+	>> error_message = "Uh-oh! Something went wrong during the subscription process!"
+	*program: @jrc03c/show-error
+
+>> error_message = ""
+>> error_title = ""
+>> it = ""
+>> options = ""
+>> payload = ""
