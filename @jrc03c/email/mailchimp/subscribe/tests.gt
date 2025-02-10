@@ -13,6 +13,11 @@
 	>> success_message = "The email address '{email_address}' was subscribed to the list '{mailchimp_list_id}'!"
 	*program: @jrc03c/show-success
 
+*if: was_subscribed = "no"
+	RESPONSE:
+	
+	{mailchimp_subscribe_error}
+
 *button: Start over
 
 *goto: StartLabel
