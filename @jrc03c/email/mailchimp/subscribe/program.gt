@@ -63,6 +63,7 @@
 >> payload = {}
 >> payload["email_address"] = email_address
 >> payload["status"] = "subscribed"
+>> payload["status_if_new"] = "subscribed"
 >> payload["email_type"] = "html"
 
 *for: key in options.keys
@@ -72,8 +73,8 @@
 >> mailchimp_subscribe_error = {}
 
 *service: Mailchimp
-	*path: /lists/{mailchimp_list_id}/members
-	*method: POST
+	*path: /lists/{mailchimp_list_id}/members/{email_address}
+	*method: PUT
 	*send: payload
 	*success
 		>> was_subscribed = "yes"
