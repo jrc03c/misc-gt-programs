@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/mailgun/send/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/31600/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+*label: StartLabel
+
+*page
+	{{ variableQuestions }}
+
+*program: @jrc03c/mailgun/send
+
+*if: was_sent = "yes"
+	>> success_title = "@jrc03c/mailgun/send"
+	>> success_message = "The email was sent!"
+	*program: @jrc03c/show-success
+
+*if: was_sent = "no"
+	>> error_title = "@jrc03c/mailgun/send"
+	>> error_message = mailgun_send_error.text
+	*program: @jrc03c/show-error
+
+*button: Start over
+
+*goto: StartLabel
