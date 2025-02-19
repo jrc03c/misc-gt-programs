@@ -5,5 +5,3 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 # Index
 
 {{ programs }}
-
-> **\*** Needs testing or documentation
