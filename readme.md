@@ -13,7 +13,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 - [@jrc03c/flatten](https://www.guidedtrack.com/programs/30091)
 - [@jrc03c/join](https://www.guidedtrack.com/programs/22162/edit)
 - [@jrc03c/logistic-regression-predict](https://www.guidedtrack.com/programs/30084)
-- [@jrc03c/mailgun/send](https://www.guidedtrack.com/programs/31600/edit)
+- [@jrc03c/mailgun/send](https://www.guidedtrack.com/programs/31681/edit)
 - [@jrc03c/matrix-transpose](https://www.guidedtrack.com/programs/20498)
 - [@jrc03c/parse-iso-date-string](https://www.guidedtrack.com/programs/25113/edit)
 - [@jrc03c/parse-utc-date-string](https://www.guidedtrack.com/programs/25113/edit)
