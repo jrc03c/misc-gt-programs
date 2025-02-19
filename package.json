@@ -12,5 +12,8 @@
     "prettier": "^3.2.5",
     "vercel": "^34.2.7"
   },
+  "scripts": {
+    "build-readme": "node build-readme.mjs"
+  },
   "type": "module"
 }
