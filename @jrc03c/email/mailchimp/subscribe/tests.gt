@@ -1,4 +1,6 @@
 --------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/subscribe/tests
+--------------------------------------------------------------------------------
 -- target : https://www.guidedtrack.com/programs/31679/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 --------------------------------------------------------------------------------
@@ -18,7 +20,7 @@
 *program: @jrc03c/email/mailchimp/subscribe
 
 *if: was_subscribed = "yes"
-	>> success_title = "@jrc03c/mailchimp/subscribe"
+	>> success_title = "@jrc03c/email/mailchimp/subscribe"
 	>> success_message = "The email address '{email_address}' was subscribed to the list '{mailchimp_list_id}'!"
 	*program: @jrc03c/show-success
 

@@ -37,7 +37,7 @@
 -- https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
 --------------------------------------------------------------------------------
 
->> error_title = "@jrc03c/mailchimp/subscribe"
+>> error_title = "@jrc03c/email/mailchimp/subscribe"
 
 *if: not mailchimp_list_id
 	>> error_message = "You must define a variable called <code>mailchimp_list_id</code> that has a string value representing the ID of the list to which the email address will be subscribed!"
