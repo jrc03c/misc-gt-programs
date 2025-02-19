@@ -35,35 +35,43 @@
 	*if: not (count.type = "string")
 		>> error_message = "The variable called <code>count</code> must have either a number value (e.g., 5) or the string value 'all' representing the number of instances of <code>pattern</code> to be replaced in <code>target</code>."
 		*program: @jrc03c/show-error
+		*return
 
 *if: count.type = "string"
 	*if: not (count = "all")
 		>> error_message = "The variable called <code>count</code> must have either a number value (e.g., 5) or the string value 'all' representing the number of instances of <code>pattern</code> to be replaced in <code>target</code>. (You provided the string value '{count}'.)"
 		*program: @jrc03c/show-error
+		*return
 
 *if: not pattern
 	>> error_message = "You must define a variable called <code>pattern</code> that has a string value representing the sequence of characters that will be replaced in <code>target</code>!"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not (pattern.type = "string")
 	>> error_message = "The variable called <code>pattern</code> must have a string value representing the sequence of characters that will be replaced in <code>target</code>! (The value you provided is a(n) {pattern.type}.)"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not replacement
 	>> error_message = "You must define a variable called <code>replacement</code> that has a string value representing the sequence of characters that will replace <code>pattern</code> in <code>target</code>!"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not (replacement.type = "string")
 	>> error_message = "The variable called <code>replacement</code> must have a string value representing the sequence of characters that will replace <code>pattern</code> in <code>target</code>! (The value you provided is a(n) {replacement.type}.)"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not target
 	>> error_message = "You must define a variable called <code>target</code> that has a string value representing the sequence of characters in which a pattern will be replaced!"
 	*program: @jrc03c/show-error
+	*return
 
 *if: not (target.type = "string")
 	>> error_message = "The variable called <code>target</code> must have a string value representing the sequence of characters in which a pattern will be replaced! (The value you provided is a(n) {target.type}.)"
 	*program: @jrc03c/show-error
+	*return
 
 >> parts = target.split(pattern)
 >> string_replaced = ""

@@ -1,0 +1,259 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/string/replace/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/31675/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+*label: StartLabel
+
+*question: What would you like to do?
+	🤖 Run the automated unit tests
+		*goto: AutomatedTestsLabel
+	🧪 Run a manual test
+		*goto: ManualTestLabel
+
+--------------------------------------------------------------------------------
+
+*label: AutomatedTestsLabel
+
+>> error_is_fatal = "no"
+>> error_title = "@jrc03c/string/replace/tests"
+>> success_title = error_title
+
+*html
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should pass:
+	</h1>
+
+-----
+
+>> description = "Test that a single instance of <code>pattern</code> in <code>target</code> can be replaced with <code>replacement</code>"
+>> count = 1
+>> target = "It was the best of times; it was the worst of times."
+>> pattern = "times"
+>> replacement = "crimes"
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "It was the best of crimes; it was the worst of times."
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+>> description = "Test that an arbitrary number of instances of <code>pattern</code> in <code>target</code> can be replaced with <code>replacement</code>"
+>> count = 4
+>> target = "How much wood could a woodchuck chuck if a woodchuck could chuck wood? And if a woodchuck chucks wood in a forest and there's no one there to hear it, does it still make a sound?"
+>> pattern = "wood"
+>> replacement = "timber"
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "How much timber could a timberchuck chuck if a timberchuck could chuck timber? And if a woodchuck chucks wood in a forest and there's no one there to hear it, does it still make a sound?"
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+>> description = "Test that all instances of <code>pattern</code> in <code>target</code> can be replaced with <code>replacement</code>"
+>> count = "all"
+>> target = "c5c7f0e102e3c1f2b6edaeg5489a49ef1052b7e152g9ca28b0aed9cc5dg18g2c404c7f43fdfeb080bfg6g7bb024432a71c91a003eb96c3218886abfa1085bdc81560b7a86ffc88658gab64e184faccaa1fd51661ba0dd9728ag629baa39f5a646af81efcb771b95bgd6g73bb0d417f6191683g7726ca6g8egab48846g9031b3f"
+>> pattern = "f"
+>> replacement = "z"
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "c5c7z0e102e3c1z2b6edaeg5489a49ez1052b7e152g9ca28b0aed9cc5dg18g2c404c7z43zdzeb080bzg6g7bb024432a71c91a003eb96c3218886abza1085bdc81560b7a86zzc88658gab64e184zaccaa1zd51661ba0dd9728ag629baa39z5a646az81ezcb771b95bgd6g73bb0d417z6191683g7726ca6g8egab48846g9031b3z"
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+>> description = "Test that empty strings in <code>target</code> can be replaced with <code>replacement</code>"
+>> count = "all"
+>> target = "Hello, world!"
+>> pattern = ""
+>> replacement = "_"
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "H_e_l_l_o_,_ _w_o_r_l_d_!"
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+>> description = "Test that <code>pattern</code> in <code>target</code> can be replaced with empty strings"
+>> count = "all"
+>> target = "Hello, world!"
+>> pattern = "l"
+>> replacement = ""
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "Heo, word!"
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+>> description = "Test that an entire string can be replaced"
+>> count = "all"
+>> target = "Hello, world!"
+>> pattern = "Hello, world!"
+>> replacement = "Something entirely different"
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "Something entirely different"
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+>> description = "Test that <code>target</code> is returned if <code>pattern</code> is not found in it"
+>> count = "all"
+>> target = "Hello, world!"
+>> pattern = "zzz"
+>> replacement = "???"
+
+*program: @jrc03c/string/replace
+
+>> correct_answer = "Hello, world!"
+
+*if: string_replaced = correct_answer
+	>> success_message = description
+	*program: @jrc03c/show-success
+
+*if: not (string_replaced = correct_answer)
+	>> error_message = "{description} (The correct answer was supposed to be '{correct_answer}', but it was '{string_replaced}' instead!)"
+	*program: @jrc03c/show-error
+
+-----
+
+*html
+	<br>
+
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should fail:
+	</h1>
+
+-----
+
+>> wrongs = []
+>> wrongs.add([2, 3, 4])
+>> wrongs.add({ "hello" -> "world" })
+>> wrongs.add(calendar::now)
+>> wrongs.add(5.seconds)
+
+*for: wrong in wrongs
+	>> count = wrong
+	>> target = "Hello, world!"
+	>> pattern = "o"
+	>> replacement = "0"
+	*program: @jrc03c/string/replace
+
+	>> count = 1
+	>> target = wrong
+	>> pattern = "o"
+	>> replacement = "0"
+	*program: @jrc03c/string/replace
+
+	>> count = 1
+	>> target = "Hello, world!"
+	>> pattern = wrong
+	>> replacement = "0"
+	*program: @jrc03c/string/replace
+
+	>> count = 1
+	>> target = "Hello, world!"
+	>> pattern = "o"
+	>> replacement = wrong
+	*program: @jrc03c/string/replace
+
+>> count = "neither a number nor 'all'!"
+>> target = "Hello, world!"
+>> pattern = "o"
+>> replacement = "0"
+*program: @jrc03c/string/replace
+
+*button: Start over
+
+*goto: StartLabel
+
+--------------------------------------------------------------------------------
+
+*label: ManualTestLabel
+
+>> target = ""
+>> pattern = ""
+>> replacement = ""
+>> count = ""
+
+*page
+	*question: target:
+		*save: target
+		
+	*question: pattern:
+		*save: pattern
+		
+	*question: replacement:
+		*save: replacement
+		
+	*question: count:
+		*save: count
+
+>> count = count.clean
+
+*if: count = ""
+	>> count = 1
+	
+*if: not (count = "all")
+	>> count = count + 0
+		
+*program: @jrc03c/string/replace
+
+string_replaced:
+
+{string_replaced}
+
+*button: Start over
+
+*goto: StartLabel
