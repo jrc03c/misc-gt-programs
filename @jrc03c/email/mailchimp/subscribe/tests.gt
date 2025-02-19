@@ -1,3 +1,8 @@
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/31679/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
 *label: StartLabel
 
 *question: Mailchimp list ID:
@@ -6,7 +11,7 @@
 *question: Email address:
 	*save: email_address
 
-*program: @jrc03c/mailchimp/subscribe
+*program: @jrc03c/email/mailchimp/subscribe
 
 *if: was_subscribed = "yes"
 	>> success_title = "@jrc03c/mailchimp/subscribe"

@@ -1,8 +1,10 @@
 --------------------------------------------------------------------------------
--- @jrc03c/mailchimp/subscribe
+-- @jrc03c/email/mailchimp/subscribe
 --------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/31586/edit
--- author : Josh Castle (joshrcastle@gmail.com)
+-- url          : https://www.guidedtrack.com/programs/31679/edit
+-- tests        : https://www.guidedtrack.com/programs/31680/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
 -- inputs:
 --     `email_address` = a string representing the email address to be
