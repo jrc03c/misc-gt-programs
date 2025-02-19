@@ -10,5 +10,6 @@
     "globals": "^15.2.0",
     "prettier": "^3.2.5",
     "vercel": "^34.2.7"
-  }
+  },
+  "type": "module"
 }
