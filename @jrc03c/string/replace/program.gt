@@ -1,0 +1,94 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/string/replace
+--------------------------------------------------------------------------------
+-- url    : https://www.guidedtrack.com/programs/31675/edit
+-- tests  : https://www.guidedtrack.com/programs/31676/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- Replaces a pattern in a string with another string.
+--
+-- inputs:
+--     `count` = (optional) the number of instances of `pattern` to be replaced
+--         in `target`; can either be a literal number (e.g., 5) or the string
+--         "all"; the default is 1, meaning that only the first instance of
+--         `pattern` will be replaced
+--
+--     `pattern` = a string representing the sequence of characters to be
+--         replaced in `string`
+--
+--     `replacement` = a string representing the new sequence of characters that
+--         will replace `pattern` in `string`
+--
+--     `target` = the string in which `pattern` will be replaced
+--
+-- outputs:
+--     `string_replaced` = the string in which `replacement` has replaced
+--         `pattern`
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/string/replace"
+
+*if: not count
+	>> count = 1
+
+*if: not (count.type = "number")
+	*if: not (count.type = "string")
+		>> error_message = "The variable called <code>count</code> must have either a number value (e.g., 5) or the string value 'all' representing the number of instances of <code>pattern</code> to be replaced in <code>target</code>."
+		*program: @jrc03c/show-error
+
+*if: count.type = "string"
+	*if: not (count = "all")
+		>> error_message = "The variable called <code>count</code> must have either a number value (e.g., 5) or the string value 'all' representing the number of instances of <code>pattern</code> to be replaced in <code>target</code>. (You provided the string value '{count}'.)"
+		*program: @jrc03c/show-error
+
+*if: not pattern
+	>> error_message = "You must define a variable called <code>pattern</code> that has a string value representing the sequence of characters that will be replaced in <code>target</code>!"
+	*program: @jrc03c/show-error
+
+*if: not (pattern.type = "string")
+	>> error_message = "The variable called <code>pattern</code> must have a string value representing the sequence of characters that will be replaced in <code>target</code>! (The value you provided is a(n) {pattern.type}.)"
+	*program: @jrc03c/show-error
+
+*if: not replacement
+	>> error_message = "You must define a variable called <code>replacement</code> that has a string value representing the sequence of characters that will replace <code>pattern</code> in <code>target</code>!"
+	*program: @jrc03c/show-error
+
+*if: not (replacement.type = "string")
+	>> error_message = "The variable called <code>replacement</code> must have a string value representing the sequence of characters that will replace <code>pattern</code> in <code>target</code>! (The value you provided is a(n) {replacement.type}.)"
+	*program: @jrc03c/show-error
+
+*if: not target
+	>> error_message = "You must define a variable called <code>target</code> that has a string value representing the sequence of characters in which a pattern will be replaced!"
+	*program: @jrc03c/show-error
+
+*if: not (target.type = "string")
+	>> error_message = "The variable called <code>target</code> must have a string value representing the sequence of characters in which a pattern will be replaced! (The value you provided is a(n) {target.type}.)"
+	*program: @jrc03c/show-error
+
+>> parts = target.split(pattern)
+>> string_replaced = ""
+
+*for: i, part in parts
+	>> string_replaced = "{string_replaced}{part}"
+
+	*if: count = "all"
+		*if: i < parts.size
+			>> string_replaced = "{string_replaced}{replacement}"
+
+	*if: count.type = "number"
+		*if: i < parts.size
+			*if: i <= count
+				>> string_replaced = "{string_replaced}{replacement}"
+
+			*if: i > count
+				>> string_replaced = "{string_replaced}{pattern}"
+
+>> count = ""
+>> error_message = ""
+>> error_title = ""
+>> i = ""
+>> part = ""
+>> parts = ""
+>> pattern = ""
+>> replacement = ""
+>> target = ""
