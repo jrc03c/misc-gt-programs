@@ -11,10 +11,9 @@ const out = programs
     const raw = fs.readFileSync(file, "utf8")
     const lines = raw.split("\n")
 
-    const title = file
-      .split(cwd + "/")
+    const title = (lines.find(line => line.includes("@jrc03c")) || "")
+      .split("--")
       .at(-1)
-      .split("/program.gt")[0]
       .trim()
 
     const url = (lines.find(line => line.match(/url\s*?:/g)) || "")
