@@ -1,16 +1,15 @@
 {
   "devDependencies": {
-    "@eslint/js": "^9.2.0",
-    "@jrc03c/fs-extras": "^0.0.21",
+    "@jrc03c/fs-extras": "^0.0.23",
     "@jrc03c/gt-helpers": "^0.0.5",
-    "@jrc03c/js-data-science-helpers": "^0.0.70",
-    "@jrc03c/js-math-tools": "^0.0.63",
-    "@jrc03c/js-text-tools": "^0.0.57",
-    "@jrc03c/watch": "^0.0.18",
-    "eslint": "^9.2.0",
-    "globals": "^15.2.0",
-    "prettier": "^3.2.5",
-    "vercel": "^34.2.7"
+    "@jrc03c/js-data-science-helpers": "^0.0.86",
+    "@jrc03c/js-math-tools": "^0.0.92",
+    "@jrc03c/js-text-tools": "^0.0.62",
+    "@jrc03c/watch": "^0.0.20",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "vercel": "^41.4.0"
   },
   "scripts": {
     "build-readme": "node build-readme.mjs"
