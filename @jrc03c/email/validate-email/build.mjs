@@ -22,7 +22,7 @@ async function build() {
     extensions,
   }
 
-  const dir = import.meta.filename.split(path.sep).slice(0, -1).join(path.sep)
+  const dir = import.meta.dirname
 
   const template = fs.readFileSync(
     path.join(dir, "src/program-template.gt"),
