@@ -11,7 +11,7 @@
 	*tip: NOTE: After you enter this email address and we validate it, we'll send you a one-time passcode. You'll need to use that passcode to complete this program, so please make sure that you can successfully access the account associated with this email address before continuing.
 	*save: email
 
-*program: @jrc03c/validate-email
+*program: @jrc03c/email/validate-address
 
 *if: email_is_valid = "no"
 	*goto: EMAIL
