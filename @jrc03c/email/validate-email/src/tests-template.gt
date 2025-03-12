@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- @jrc03c/validate-email/tests
+-- @jrc03c/email/validate-address/tests
 -------------------------------------------------------------------------------
 -- target : https://www.guidedtrack.com/programs/21486
 -- author : Josh Castle (joshrcastle@gmail.com)
@@ -22,7 +22,7 @@
 		*type: text
 		*save: email
 
-	*program: @jrc03c/validate-email
+	*program: @jrc03c/email/validate-address
 
 	*if: email_is_valid = "yes"
 		>> success_title = "Valid!"
@@ -68,7 +68,7 @@
 		>> email = test[1]
 		>> should_be_valid = test[2]
 
-		*program: @jrc03c/validate-email
+		*program: @jrc03c/email/validate-address
 
 		*if: (should_be_valid = "yes" and email_is_valid = "yes") or (should_be_valid = "no" and email_is_valid = "no")
 			>> success_title = "PASSED"

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/validate-email
+-- @jrc03c/email/validate-address
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/21486
--- tests  : https://www.guidedtrack.com/programs/21487
+-- url    : https://www.guidedtrack.com/programs/32193/edit
+-- tests  : https://www.guidedtrack.com/programs/32194/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
