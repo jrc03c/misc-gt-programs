@@ -182,8 +182,11 @@ function rebuild() {
           .filter(v => v.inputOrOutput === "input")
           .map(v => v.description),
       }),
-      "INPUT ➡️",
-      nameColumnLength,
+      {
+        nameColumnLabel: "INPUT 👉",
+        nameColumnLength,
+        descriptionColumnLabel: "DESCRIPTION ℹ️",
+      },
     )
 
     const docsOutputsTable = createDocsTable(
@@ -195,8 +198,11 @@ function rebuild() {
           .filter(v => v.inputOrOutput === "output")
           .map(v => v.description),
       }),
-      "OUTPUT ⬅️",
-      nameColumnLength,
+      {
+        nameColumnLabel: "OUTPUT 👈",
+        nameColumnLength,
+        descriptionColumnLabel: "DESCRIPTION ℹ️",
+      },
     )
 
     const variableEncodings = variables

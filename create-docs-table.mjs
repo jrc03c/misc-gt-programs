@@ -37,8 +37,11 @@ const border = {
   },
 }
 
-function createDocsTable(df, nameColumnLabel, nameColumnWidth) {
+function createDocsTable(df, options) {
+  options = options || {}
+  let { nameColumnLabel, nameColumnWidth, descriptionColumnLabel } = options
   nameColumnLabel = nameColumnLabel || "NAME"
+  descriptionColumnLabel = descriptionColumnLabel || "DESCRIPTION"
 
   const maxNameLength =
     nameColumnWidth ||
@@ -67,7 +70,7 @@ function createDocsTable(df, nameColumnLabel, nameColumnWidth) {
       border.vert,
       (" " + nameColumnLabel + " ").padEnd(maxNameLength + 2, " "),
       border.vert,
-      " DESCRIPTION ".padEnd(maxDescLength + 2, " "),
+      (" " + descriptionColumnLabel + " ").padEnd(maxDescLength + 2, " "),
     ].join("") + border.vert,
   )
 
