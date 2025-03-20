@@ -6,26 +6,34 @@
 -- author       : Josh Castle (joshrcastle@gmail.com)
 -- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
--- inputs:
---     `email_address` = a string representing the email address to be
---         subscribed
---
---     `mailchimp_list_id` = a string representing the ID of the list to which 
---         the email address will be subscribed
---
---     `options` = an association whose key-value pairs will be attached to the
---         payload object sent in the request to Mailchimp; the default is an
---         empty association (`{}`); example: the default payload has the key-
---         value pair `{ "email_type" -> "html" }`, but that could be
---         overridden in the `option` variable as `{ "email_type" -> "text" }`;
---         see the Mailchimp API docs linked below for all options
---
--- outputs:
---     `was_subscribed` = "yes" or "no"
---
---     `mailchimp_subscribe_error` = an association with response data from
---         Mailchimp; will be an empty association (`{}`) if the subscription
---         request succeeds
+-- ┌───────────────────────────┬───────────────────────────────────────────────┐
+-- │ INPUT 👉                  │ DESCRIPTION ℹ️                                │
+-- ├───────────────────────────┼───────────────────────────────────────────────┤
+-- │ email_address*            │ a string representing the email address to be │
+-- │                           │ subscribed                                    │
+-- ├───────────────────────────┼───────────────────────────────────────────────┤
+-- │ mailchimp_list_id*        │ a string representing the ID of the list to   │
+-- │                           │ which the email address will be subscribed    │
+-- ├───────────────────────────┼───────────────────────────────────────────────┤
+-- │ options                   │ an association representing data to be        │
+-- │                           │ injected into to the payload object sent in   │
+-- │                           │ the request to Mailchimp                      │
+-- └───────────────────────────┴───────────────────────────────────────────────┘
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- ┌───────────────────────────┬───────────────────────────────────────────────┐
+-- │ OUTPUT 👈                 │ DESCRIPTION ℹ️                                │
+-- ├───────────────────────────┼───────────────────────────────────────────────┤
+-- │ was_subscribed            │ a string representing a string value of "yes" │
+-- │                           │ or "no" indicating whether or not the email   │
+-- │                           │ address was successfully subscribed to the    │
+-- │                           │ mailing list                                  │
+-- ├───────────────────────────┼───────────────────────────────────────────────┤
+-- │ mailchimp_subscribe_error │ an association representing an association    │
+-- │                           │ with response data from Mailchimp; will be an │
+-- │                           │ empty association (`{}`) if the subscription  │
+-- │                           │ request succeeds                              │
+-- └───────────────────────────┴───────────────────────────────────────────────┘
 --------------------------------------------------------------------------------
 -- SERVICE SETTINGS:
 -- Name: Mailchimp
@@ -39,28 +47,36 @@
 
 >> error_title = "@jrc03c/email/mailchimp/subscribe"
 
-*if: not mailchimp_list_id
-	>> error_message = "You must define a variable called <code>mailchimp_list_id</code> that has a string value representing the ID of the list to which the email address will be subscribed!"
-	*program: @jrc03c/show-error
-	
-*if: not (mailchimp_list_id.type = "string")
-	>> error_message = "The <code>mailchimp_list_id</code> variable must have a string value representing the ID of the list to which the email address will be subscribed! (The value you provided was a(n) {mailchimp_list_id.type}.)"
-	*program: @jrc03c/show-error
+---
 
 *if: not email_address
-	>> error_message = "You must define a variable called <code>email_address</code> that has a string value representing the email address to be added to the Mailchimp list!"
+	>> error_message = "You must define a variable called `email_address` that has a string value representing the email address to be subscribed!"
 	*program: @jrc03c/show-error
-	
+
 *if: not (email_address.type = "string")
-	>> error_message = "The <code>email_address</code> variable must have a string value representing the email address to be added to the Mailchimp list! (The value you provided was a(n) {email_address.type}.)"
+	>> error_message = "The variable `email_address` must have a string value representing the email address to be subscribed. (The value you provided was a(n) {email_address.type}.)"
 	*program: @jrc03c/show-error
+
+---
+
+*if: not mailchimp_list_id
+	>> error_message = "You must define a variable called `mailchimp_list_id` that has a string value representing the ID of the list to which the email address will be subscribed!"
+	*program: @jrc03c/show-error
+
+*if: not (mailchimp_list_id.type = "string")
+	>> error_message = "The variable `mailchimp_list_id` must have a string value representing the ID of the list to which the email address will be subscribed. (The value you provided was a(n) {mailchimp_list_id.type}.)"
+	*program: @jrc03c/show-error
+
+---
 
 *if: not options
 	>> options = {}
 
 *if: not (options.type = "association")
-	>> error_message = "The <code>options</code> variable must have an association value containing key-value pairs to be attached to the request send to Mailchimp! (The value you provided was a(n) {options.type}.)"
+	>> error_message = "The variable `options` must have an association value representing data to be injected into to the payload object sent in the request to Mailchimp. (The value you provided was a(n) {options.type}.)"
 	*program: @jrc03c/show-error
+
+---
 
 >> payload = {}
 >> payload["email_address"] = email_address
@@ -87,8 +103,5 @@
 	>> error_message = "Uh-oh! Something went wrong during the subscription process!"
 	*program: @jrc03c/show-error
 
->> error_message = ""
->> error_title = ""
->> it = ""
+>> mailchimp_list_id = ""
 >> options = ""
->> payload = ""

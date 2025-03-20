@@ -1,0 +1,55 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/subscribe
+--------------------------------------------------------------------------------
+-- url          : https://www.guidedtrack.com/programs/31679/edit
+-- tests        : https://www.guidedtrack.com/programs/31680/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
+--------------------------------------------------------------------------------
+-- {{ docsInputsTable }}
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- {{ docsOutputsTable }}
+--------------------------------------------------------------------------------
+-- SERVICE SETTINGS:
+-- Name: Mailchimp
+-- URL: https://YOUR_ZONE.api.mailchimp.com/3.0
+-- Username: anystring
+-- Password: YOUR_API_KEY
+--------------------------------------------------------------------------------
+-- MAILCHIMP API DOCUMENTATION:
+-- https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/email/mailchimp/subscribe"
+
+{{ variableChecks }}
+
+---
+
+>> payload = {}
+>> payload["email_address"] = email_address
+>> payload["status"] = "subscribed"
+>> payload["status_if_new"] = "subscribed"
+>> payload["email_type"] = "html"
+
+*for: key in options.keys
+	>> payload[key] = options[key]
+
+>> was_subscribed = "no"
+>> mailchimp_subscribe_error = {}
+
+*service: Mailchimp
+	*path: /lists/{mailchimp_list_id}/members/{email_address}
+	*method: PUT
+	*send: payload
+	*success
+		>> was_subscribed = "yes"
+	*error
+		>> mailchimp_subscribe_error = it
+
+*if: was_subscribed = "no"
+	>> error_message = "Uh-oh! Something went wrong during the subscription process!"
+	*program: @jrc03c/show-error
+
+{{ cleanup }}
