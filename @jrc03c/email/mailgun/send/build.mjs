@@ -1,4 +1,6 @@
-import { unindent, wrap } from "@jrc03c/js-text-tools"
+import { createDocsTable } from "../../../../create-docs-table.mjs"
+import { DataFrame } from "@jrc03c/js-math-tools"
+import { unindent } from "@jrc03c/js-text-tools"
 import { watch } from "@jrc03c/watch"
 import fs from "node:fs"
 import path from "node:path"
@@ -44,6 +46,7 @@ function rebuild() {
       {
         name: "mailgun_service_name",
         type: "string",
+        inputOrOutput: "input",
         required: false,
         description:
           "the name assigned to the Mailgun service your program's 'Service' settings",
@@ -53,6 +56,7 @@ function rebuild() {
       {
         name: "domain_name",
         urlParamName: "domain_name",
+        inputOrOutput: "input",
         type: "string",
         required: true,
         description: "the domain name from which the email will be sent",
@@ -62,6 +66,7 @@ function rebuild() {
       {
         name: "from_address",
         urlParamName: "from",
+        inputOrOutput: "input",
         type: "string",
         required: true,
         description: "the email address from which the email will be sent",
@@ -71,6 +76,7 @@ function rebuild() {
       {
         name: "to_address",
         urlParamName: "to",
+        inputOrOutput: "input",
         type: "string",
         required: true,
         description: "the email address to which the email will be sent",
@@ -80,6 +86,7 @@ function rebuild() {
       {
         name: "subject",
         urlParamName: "subject",
+        inputOrOutput: "input",
         type: "string",
         required: true,
         description: "the subject line of the email to be sent",
@@ -89,6 +96,7 @@ function rebuild() {
       {
         name: "body_text",
         urlParamName: "text",
+        inputOrOutput: "input",
         type: "string",
         required: false,
         description: "the plaintext body of the email to be sent",
@@ -100,6 +108,7 @@ function rebuild() {
       {
         name: "body_html",
         urlParamName: "html",
+        inputOrOutput: "input",
         type: "string",
         required: true,
         description: "the HTML body of the email to be sent",
@@ -107,9 +116,26 @@ function rebuild() {
           "Hey! This is a test email from <b>GuidedTrack</b> via <b>Mailgun</b>!",
         shouldStringifyDefaultValue: true,
       },
+      {
+        name: "was_sent",
+        inputOrOutput: "output",
+        type: "string",
+        description:
+          "a string with a value of 'yes' or 'no' indicating whether or not the email was sent",
+        default: "no",
+      },
+      {
+        name: "mailgun_send_error",
+        inputOrOutput: "output",
+        type: "string",
+        description:
+          "a string containing error information from Mailgun after a failed send attempt",
+        default: "",
+      },
     ].toSorted((a, b) => (a.name < b.name ? -1 : 1))
 
     const variableChecks = variables
+      .filter(v => v.inputOrOutput === "input")
       .map(v => {
         const undefinedRequiredBlock = unindent(
           removeLeadingAndTrailingSpaces(`
@@ -145,15 +171,33 @@ function rebuild() {
       })
       .join("\n\n")
 
-    const variableDocs = variables
-      .map(v => {
-        return wrap(
-          `--    \`${v.name}\` = ${v.required ? "(required)" : ""} a ${v.type} representing ${v.description}`,
-          80,
-          "--        ",
-        )
-      })
-      .join("\n--\n")
+    const nameColumnLength = Math.max(...variables.map(v => v.name.length))
+
+    const docsInputsTable = createDocsTable(
+      new DataFrame({
+        name: variables
+          .filter(v => v.inputOrOutput === "input")
+          .map(v => v.name + (v.required ? "*" : "")),
+        description: variables
+          .filter(v => v.inputOrOutput === "input")
+          .map(v => v.description),
+      }),
+      "INPUT ➡️",
+      nameColumnLength,
+    )
+
+    const docsOutputsTable = createDocsTable(
+      new DataFrame({
+        name: variables
+          .filter(v => v.inputOrOutput === "output")
+          .map(v => v.name),
+        description: variables
+          .filter(v => v.inputOrOutput === "output")
+          .map(v => v.description),
+      }),
+      "OUTPUT ⬅️",
+      nameColumnLength,
+    )
 
     const variableEncodings = variables
       .filter(v => v.type === "string")
@@ -194,7 +238,13 @@ function rebuild() {
       template.replaceAll("{{ variableChecks }}", variableChecks),
     )
       .split("\n")
-      .map(line => (line.includes("{{ variableDocs }}") ? variableDocs : line))
+      .map(line =>
+        line.includes("{{ docsInputsTable }}")
+          ? docsInputsTable
+          : line.includes("{{ docsOutputsTable }}")
+            ? docsOutputsTable
+            : line,
+      )
       .join("\n")
       .replace("{{ variableEncodings }}", variableEncodings)
       .replace("{{ pathConcatenations }}", pathConcatenations)

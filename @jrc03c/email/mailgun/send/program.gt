@@ -6,35 +6,36 @@
 -- author       : Josh Castle (joshrcastle@gmail.com)
 -- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
--- inputs:
---
---    `body_html` = (required) a string representing the HTML body of the email
---        to be sent
---
---    `body_text` =  a string representing the plaintext body of the email to be
---        sent
---
---    `domain_name` = (required) a string representing the domain name from
---        which the email will be sent
---
---    `from_address` = (required) a string representing the email address from
---        which the email will be sent
---
---    `mailgun_service_name` =  a string representing the name assigned to the
---        Mailgun service your program's 'Service' settings
---
---    `subject` = (required) a string representing the subject line of the email
---        to be sent
---
---    `to_address` = (required) a string representing the email address to which
---        the email will be sent
---
--- outputs:
---
---     `was_sent` = "yes" or "no"
---
---     `mailgun_send_error` = an association containing information about any
---         errors returned from the `*service` call
+-- ┌──────────────────────┬────────────────────────────────────────────────────┐
+-- │ INPUT ➡️             │ DESCRIPTION                                        │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ body_html*           │ the HTML body of the email to be sent              │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ body_text            │ the plaintext body of the email to be sent         │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ domain_name*         │ the domain name from which the email will be sent  │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ from_address*        │ the email address from which the email will be     │
+-- │                      │ sent                                               │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ mailgun_service_name │ the name assigned to the Mailgun service your      │
+-- │                      │ program's 'Service' settings                       │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ subject*             │ the subject line of the email to be sent           │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ to_address*          │ the email address to which the email will be sent  │
+-- └──────────────────────┴────────────────────────────────────────────────────┘
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- ┌──────────────────────┬────────────────────────────────────────────────────┐
+-- │ OUTPUT ⬅️            │ DESCRIPTION                                        │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ mailgun_send_error   │ a string containing error information from Mailgun │
+-- │                      │ after a failed send attempt                        │
+-- ├──────────────────────┼────────────────────────────────────────────────────┤
+-- │ was_sent             │ a string with a value of 'yes' or 'no' indicating  │
+-- │                      │ whether or not the email was sent                  │
+-- └──────────────────────┴────────────────────────────────────────────────────┘
 --------------------------------------------------------------------------------
 -- SERVICE SETTINGS:
 -- Name: Mailgun
@@ -122,9 +123,11 @@
 >> body_text = body_text.encode("URL")
 >> domain_name = domain_name.encode("URL")
 >> from_address = from_address.encode("URL")
+>> mailgun_send_error = mailgun_send_error.encode("URL")
 >> mailgun_service_name = mailgun_service_name.encode("URL")
 >> subject = subject.encode("URL")
 >> to_address = to_address.encode("URL")
+>> was_sent = was_sent.encode("URL")
 
 >> was_sent = "no"
 >> mailgun_send_error = {}
@@ -152,7 +155,9 @@
 >> domain_name = ""
 >> from_address = ""
 >> it = ""
+>> mailgun_send_error = ""
 >> mailgun_service_name = ""
 >> path = ""
 >> subject = ""
 >> to_address = ""
+>> was_sent = ""
