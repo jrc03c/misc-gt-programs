@@ -1,38 +1,12 @@
-import { createDocsTable } from "../../../../create-docs-table.mjs"
+import { createDocsTable } from "../../../../_build_helpers/create-docs-table.mjs"
 import { DataFrame } from "@jrc03c/js-math-tools"
+import { removeExtraWhitespace } from "../../../../_build_helpers/remove-extra-whitespace.mjs"
+import { removeLeadingAndTrailingSpaces } from "../../../../_build_helpers/remove-leading-and-trailing-whitespace.mjs"
+import { typePhrase } from "../../../../_build_helpers/type-phrase.mjs"
 import { unindent } from "@jrc03c/js-text-tools"
 import { watch } from "@jrc03c/watch"
 import fs from "node:fs"
 import path from "node:path"
-
-function removeExtraWhitespace(x) {
-  return x
-    .split("\n")
-    .filter((line, i, lines) => {
-      if (line.trim().length === 0) {
-        const nextLine = lines[i + 1]
-        return nextLine.trim().length > 0
-      }
-
-      return true
-    })
-    .map(line => (line.trim().length === 0 ? line.trim() : line))
-    .join("\n")
-}
-
-function removeLeadingAndTrailingSpaces(x) {
-  return x
-    .split("\n")
-    .filter(
-      (line, i, lines) =>
-        (i > 0 && i < lines.length - 1) || line.trim().length > 0,
-    )
-    .join("\n")
-}
-
-function typePhrase(t) {
-  return "aeiou".split("").some(v => t.startsWith(v)) ? "an " + t : "a " + t
-}
 
 function rebuild() {
   console.log("-----")
