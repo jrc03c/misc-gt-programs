@@ -1,8 +1,15 @@
 --------------------------------------------------------------------------------
--- @jrc03c/mailgun/send/tests
+-- @jrc03c/email/mailgun/send/tests
 --------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/31600/edit
+-- target : https://www.guidedtrack.com/programs/31681/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- 🚨 🚨 🚨
+-- NOTE: By itself, this program won't do anything! You'll have to create a 
+-- duplicate of it and set up Mailgun in the duplicate's service settings. See
+-- the target program (linked above) for more info about how to configure the
+-- service.
+-- 🚨 🚨 🚨
 --------------------------------------------------------------------------------
 
 *label: StartLabel

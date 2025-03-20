@@ -1,26 +1,33 @@
 --------------------------------------------------------------------------------
--- @jrc03c/mailgun/send
+-- @jrc03c/email/mailgun/send
 --------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/31600/edit
--- author : Josh Castle (joshrcastle@gmail.com)
+-- url          : https://www.guidedtrack.com/programs/31681/edit
+-- tests        : https://www.guidedtrack.com/programs/31682/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
 -- inputs:
 --
---    `body_html` = a string representing the HTML body of the email to be sent
+--    `body_html` = (required) a string representing the HTML body of the email
+--        to be sent
 --
---    `body_text` = a string representing the plaintext body of the email to be
+--    `body_text` =  a string representing the plaintext body of the email to be
 --        sent
 --
---    `domain_name` = a string representing the domain name from which the email
---        will be sent
+--    `domain_name` = (required) a string representing the domain name from
+--        which the email will be sent
 --
---    `from_address` = a string representing the email address from which the
---        email will be sent
+--    `from_address` = (required) a string representing the email address from
+--        which the email will be sent
 --
---    `subject` = a string representing the subject line of the email to be sent
+--    `mailgun_service_name` =  a string representing the name assigned to the
+--        Mailgun service your program's 'Service' settings
 --
---    `to_address` = a string representing the email address to which the email
---        will be sent
+--    `subject` = (required) a string representing the subject line of the email
+--        to be sent
+--
+--    `to_address` = (required) a string representing the email address to which
+--        the email will be sent
 --
 -- outputs:
 --
@@ -49,17 +56,16 @@
 
 *if: not (body_html.type = "string")
 	>> error_message = "The variable called <code>body_html</code> must have a string value representing the HTML body of the email to be sent! (The value you provided is a(n) {body_html.type}.)"
-	*program: @jrc03c/show-error
+	*program: @jrc03c/show-error  
 
 ---
 
 *if: not body_text
-	>> error_message = "You must define a variable called <code>body_text</code> that is a string representing the plaintext body of the email to be sent!"
-	*program: @jrc03c/show-error
+	>> body_text = body_html
 
 *if: not (body_text.type = "string")
 	>> error_message = "The variable called <code>body_text</code> must have a string value representing the plaintext body of the email to be sent! (The value you provided is a(n) {body_text.type}.)"
-	*program: @jrc03c/show-error
+	*program: @jrc03c/show-error  
 
 ---
 
@@ -69,7 +75,7 @@
 
 *if: not (domain_name.type = "string")
 	>> error_message = "The variable called <code>domain_name</code> must have a string value representing the domain name from which the email will be sent! (The value you provided is a(n) {domain_name.type}.)"
-	*program: @jrc03c/show-error
+	*program: @jrc03c/show-error  
 
 ---
 
@@ -79,7 +85,16 @@
 
 *if: not (from_address.type = "string")
 	>> error_message = "The variable called <code>from_address</code> must have a string value representing the email address from which the email will be sent! (The value you provided is a(n) {from_address.type}.)"
-	*program: @jrc03c/show-error
+	*program: @jrc03c/show-error  
+
+---
+
+*if: not mailgun_service_name
+	>> mailgun_service_name = "Mailgun"
+
+*if: not (mailgun_service_name.type = "string")
+	>> error_message = "The variable called <code>mailgun_service_name</code> must have a string value representing the name assigned to the Mailgun service your program's 'Service' settings! (The value you provided is a(n) {mailgun_service_name.type}.)"
+	*program: @jrc03c/show-error  
 
 ---
 
@@ -89,7 +104,7 @@
 
 *if: not (subject.type = "string")
 	>> error_message = "The variable called <code>subject</code> must have a string value representing the subject line of the email to be sent! (The value you provided is a(n) {subject.type}.)"
-	*program: @jrc03c/show-error
+	*program: @jrc03c/show-error  
 
 ---
 
@@ -99,7 +114,7 @@
 
 *if: not (to_address.type = "string")
 	>> error_message = "The variable called <code>to_address</code> must have a string value representing the email address to which the email will be sent! (The value you provided is a(n) {to_address.type}.)"
-	*program: @jrc03c/show-error
+	*program: @jrc03c/show-error  
 
 ---
 
@@ -107,6 +122,7 @@
 >> body_text = body_text.encode("URL")
 >> domain_name = domain_name.encode("URL")
 >> from_address = from_address.encode("URL")
+>> mailgun_service_name = mailgun_service_name.encode("URL")
 >> subject = subject.encode("URL")
 >> to_address = to_address.encode("URL")
 
@@ -121,7 +137,7 @@
 >> path = "{path}&subject={subject}"
 >> path = "{path}&to={to_address}"
 
-*service: Mailgun
+*service: {mailgun_service_name}
 	*method: POST
 	*path: {path}
 	*success
@@ -136,6 +152,7 @@
 >> domain_name = ""
 >> from_address = ""
 >> it = ""
+>> mailgun_service_name = ""
 >> path = ""
 >> subject = ""
 >> to_address = ""

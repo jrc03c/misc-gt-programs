@@ -1,8 +1,10 @@
 --------------------------------------------------------------------------------
--- @jrc03c/mailgun/send
+-- @jrc03c/email/mailgun/send
 --------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/31600/edit
--- author : Josh Castle (joshrcastle@gmail.com)
+-- url          : https://www.guidedtrack.com/programs/31681/edit
+-- tests        : https://www.guidedtrack.com/programs/31682/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
 -- inputs:
 --
@@ -39,7 +41,7 @@
 >> path = "/{domain_name}/messages?"
 {{ pathConcatenations }}
 
-*service: Mailgun
+*service: {mailgun_service_name}
 	*method: POST
 	*path: {path}
 	*success

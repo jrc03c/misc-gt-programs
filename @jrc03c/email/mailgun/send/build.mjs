@@ -42,12 +42,22 @@ function rebuild() {
 
     const variables = [
       {
+        name: "mailgun_service_name",
+        type: "string",
+        required: false,
+        description:
+          "the name assigned to the Mailgun service your program's 'Service' settings",
+        default: "Mailgun",
+        shouldStringifyDefaultValue: true,
+      },
+      {
         name: "domain_name",
         urlParamName: "domain_name",
         type: "string",
         required: true,
         description: "the domain name from which the email will be sent",
         default: "clearerthinking.net",
+        shouldStringifyDefaultValue: true,
       },
       {
         name: "from_address",
@@ -56,6 +66,7 @@ function rebuild() {
         required: true,
         description: "the email address from which the email will be sent",
         default: "info@clearerthinking.net",
+        shouldStringifyDefaultValue: true,
       },
       {
         name: "to_address",
@@ -64,6 +75,7 @@ function rebuild() {
         required: true,
         description: "the email address to which the email will be sent",
         default: "joshrcastle@gmail.com",
+        shouldStringifyDefaultValue: true,
       },
       {
         name: "subject",
@@ -72,6 +84,7 @@ function rebuild() {
         required: true,
         description: "the subject line of the email to be sent",
         default: "GuidedTrack + Mailgun",
+        shouldStringifyDefaultValue: true,
       },
       {
         name: "body_text",
@@ -79,7 +92,10 @@ function rebuild() {
         type: "string",
         required: false,
         description: "the plaintext body of the email to be sent",
-        default: "Hey! This is a test email from GuidedTrack via Mailgun!",
+        default: "body_html",
+        defaultForTests:
+          "Hey! This is a test email from GuidedTrack via Mailgun!",
+        shouldStringifyDefaultValue: false,
       },
       {
         name: "body_html",
@@ -89,23 +105,42 @@ function rebuild() {
         description: "the HTML body of the email to be sent",
         default:
           "Hey! This is a test email from <b>GuidedTrack</b> via <b>Mailgun</b>!",
+        shouldStringifyDefaultValue: true,
       },
     ].toSorted((a, b) => (a.name < b.name ? -1 : 1))
 
     const variableChecks = variables
       .map(v => {
-        return unindent(
+        const undefinedRequiredBlock = unindent(
           removeLeadingAndTrailingSpaces(`
-						---
-						
 						*if: not ${v.name}
 							>> error_message = "You must define a variable called <code>${v.name}</code> that is ${typePhrase(v.type)} representing ${v.description}!"
 							*program: @jrc03c/show-error
-
-						*if: not (${v.name}.type = "${v.type}")
-							>> error_message = "The variable called <code>${v.name}</code> must have ${typePhrase(v.type)} value representing ${v.description}! (The value you provided is a(n) {${v.name}.type}.)"
-							*program: @jrc03c/show-error
 					`),
+        )
+
+        const undefinedOptionalBlock = unindent(
+          removeLeadingAndTrailingSpaces(`
+						*if: not ${v.name}
+							>> ${v.name} = ${v.type === "string" && v.shouldStringifyDefaultValue ? JSON.stringify(v.default) : v.default}
+					`),
+        )
+
+        const dataTypeBlock = unindent(
+          removeLeadingAndTrailingSpaces(`
+					*if: not (${v.name}.type = "${v.type}")
+						>> error_message = "The variable called <code>${v.name}</code> must have ${typePhrase(v.type)} value representing ${v.description}! (The value you provided is a(n) {${v.name}.type}.)"
+						*program: @jrc03c/show-error  
+				`),
+        )
+
+        return unindent(
+          removeLeadingAndTrailingSpaces(
+            "---\n\n" +
+              (v.required ? undefinedRequiredBlock : undefinedOptionalBlock) +
+              "\n\n" +
+              dataTypeBlock,
+          ),
         )
       })
       .join("\n\n")
@@ -113,7 +148,7 @@ function rebuild() {
     const variableDocs = variables
       .map(v => {
         return wrap(
-          `--    \`${v.name}\` = a ${v.type} representing ${v.description}`,
+          `--    \`${v.name}\` = ${v.required ? "(required)" : ""} a ${v.type} representing ${v.description}`,
           80,
           "--        ",
         )
@@ -126,6 +161,7 @@ function rebuild() {
       .join("\n")
 
     const pathConcatenations = variables
+      .filter(v => !!v.urlParamName)
       .map(
         (v, i) =>
           `>> path = "{path}${i === 0 ? "" : "&"}${v.urlParamName}={${v.name}}"`,
@@ -143,7 +179,8 @@ function rebuild() {
         return unindent(
           removeLeadingAndTrailingSpaces(`
 						*question: ${v.name}
-							*default: ${v.type === "string" ? JSON.stringify(v.default) : v.default}
+							*tip: ${v.description}
+							*default: "${v.defaultForTests || v.default}"
 							*save: ${v.name}
 					`),
         )
@@ -178,8 +215,8 @@ function rebuild() {
 }
 
 const DIR = import.meta.dirname
-const TEMPLATE_FILE = path.join(DIR, "template.gt")
-const TESTS_TEMPLATE_FILE = path.join(DIR, "template-tests.gt")
+const TEMPLATE_FILE = path.join(DIR, "program-template.gt")
+const TESTS_TEMPLATE_FILE = path.join(DIR, "tests-template.gt")
 const PROGRAM_FILE = path.join(DIR, "program.gt")
 const TESTS_FILE = path.join(DIR, "tests.gt")
 

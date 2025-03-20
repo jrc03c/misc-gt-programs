@@ -1,34 +1,52 @@
 --------------------------------------------------------------------------------
--- @jrc03c/mailgun/send/tests
+-- @jrc03c/email/mailgun/send/tests
 --------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/31600/edit
+-- target : https://www.guidedtrack.com/programs/31681/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- 🚨 🚨 🚨
+-- NOTE: By itself, this program won't do anything! You'll have to create a 
+-- duplicate of it and set up Mailgun in the duplicate's service settings. See
+-- the target program (linked above) for more info about how to configure the
+-- service.
+-- 🚨 🚨 🚨
 --------------------------------------------------------------------------------
 
 *label: StartLabel
 
 *page
 	*question: body_html
+		*tip: the HTML body of the email to be sent
 		*default: "Hey! This is a test email from <b>GuidedTrack</b> via <b>Mailgun</b>!"
 		*save: body_html
 	
 	*question: body_text
+		*tip: the plaintext body of the email to be sent
 		*default: "Hey! This is a test email from GuidedTrack via Mailgun!"
 		*save: body_text
 	
 	*question: domain_name
+		*tip: the domain name from which the email will be sent
 		*default: "clearerthinking.net"
 		*save: domain_name
 	
 	*question: from_address
+		*tip: the email address from which the email will be sent
 		*default: "info@clearerthinking.net"
 		*save: from_address
 	
+	*question: mailgun_service_name
+		*tip: the name assigned to the Mailgun service your program's 'Service' settings
+		*default: "Mailgun"
+		*save: mailgun_service_name
+	
 	*question: subject
+		*tip: the subject line of the email to be sent
 		*default: "GuidedTrack + Mailgun"
 		*save: subject
 	
 	*question: to_address
+		*tip: the email address to which the email will be sent
 		*default: "joshrcastle@gmail.com"
 		*save: to_address
 
