@@ -1,7 +1,7 @@
 import { createDocsTable } from "../../../../_build_helpers/create-docs-table.mjs"
 import { DataFrame } from "@jrc03c/js-math-tools"
 import { removeExtraWhitespace } from "../../../../_build_helpers/remove-extra-whitespace.mjs"
-import { removeLeadingAndTrailingSpaces } from "../../../../_build_helpers/remove-leading-and-trailing-whitespace.mjs"
+import { removeLeadingAndTrailingSpaces } from "../../../../_build_helpers/remove-leading-and-trailing-spaces.mjs"
 import { typePhrase } from "../../../../_build_helpers/type-phrase.mjs"
 import { unindent } from "@jrc03c/js-text-tools"
 import { watch } from "@jrc03c/watch"
