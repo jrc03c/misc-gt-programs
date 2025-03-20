@@ -18,6 +18,15 @@ function rebuild() {
 
   const inputVariables = [
     {
+      name: "mailchimp_service_name",
+      type: "string",
+      description:
+        "the name assigned to the Mailchimp service in the program's 'Service' settings",
+      required: false,
+      default: "Mailchimp",
+      shouldBeCleanedUp: true,
+    },
+    {
       name: "email_address",
       type: "string",
       description: "the email address to be subscribed",
@@ -40,7 +49,7 @@ function rebuild() {
       default: "{}",
       shouldBeCleanedUp: true,
     },
-  ]
+  ].toSorted((a, b) => (a.name < b.name ? -1 : 1))
 
   const outputVariables = [
     {
@@ -51,9 +60,9 @@ function rebuild() {
     {
       name: "mailchimp_subscribe_error",
       type: "association",
-      description: `an association with response data from Mailchimp; will be an empty association (\`{}\`) if the subscription request succeeds`,
+      description: `an association with response data from Mailchimp; will be an empty association if the subscription request succeeds`,
     },
-  ]
+  ].toSorted((a, b) => (a.name < b.name ? -1 : 1))
 
   const nameColumnWidth = Math.max(
     ...inputVariables.concat(outputVariables).map(v => v.name.length),
@@ -63,7 +72,13 @@ function rebuild() {
     new DataFrame({
       name: inputVariables.map(v => v.name + (v.required ? "*" : "")),
       description: inputVariables.map(
-        v => typePhrase(v.type) + " representing " + v.description,
+        v =>
+          typePhrase(v.type) +
+          " representing " +
+          v.description +
+          (v.required
+            ? ""
+            : `; the default value is ${v.type === "string" ? JSON.stringify(v.default) : v.default}`),
       ),
     }),
     {

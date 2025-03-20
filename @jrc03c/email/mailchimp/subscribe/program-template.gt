@@ -39,7 +39,7 @@
 >> was_subscribed = "no"
 >> mailchimp_subscribe_error = {}
 
-*service: Mailchimp
+*service: {mailchimp_service_name}
 	*path: /lists/{mailchimp_list_id}/members/{email_address}
 	*method: PUT
 	*send: payload
