@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/r-squared
+-- @jrc03c/math/r-squared
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/30093
--- tests  : https://www.guidedtrack.com/programs/30094
+-- url    : https://www.guidedtrack.com/programs/32370/edit
+-- tests  : https://www.guidedtrack.com/programs/32371/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
@@ -15,25 +15,25 @@
 -------------------------------------------------------------------------------
 
 *if: not y_true
-	>> error_title = "@jrc03c/r-squared"
+	>> error_title = "@jrc03c/math/r-squared"
 	>> error_message = "The variable `y_true` is undefined!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
 
 *if: not (y_true.type = "collection")
-	>> error_title = "@jrc03c/r-squared"
+	>> error_title = "@jrc03c/math/r-squared"
 	>> error_message = "The variable `y_true` must be a collection!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
 
 *if: not y_pred
-	>> error_title = "@jrc03c/r-squared"
+	>> error_title = "@jrc03c/math/r-squared"
 	>> error_message = "The variable `y_pred` is undefined!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
 
 *if: not (y_pred.type = "collection")
-	>> error_title = "@jrc03c/r-squared"
+	>> error_title = "@jrc03c/math/r-squared"
 	>> error_message = "The variable `y_pred` must be a collection!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
@@ -53,7 +53,7 @@
 		>> shapes_are_the_same = "no"
 
 *if: shapes_are_the_same = "no"
-	>> error_title = "@jrc03c/r-squared"
+	>> error_title = "@jrc03c/math/r-squared"
 	>> error_message = "The variables `y_true` and `y_pred` do not have the same shape! ([{y_true_shape}] vs. [{y_pred_shape}])"
 	*program: @jrc03c/show-error
 	*goto: cleanup
