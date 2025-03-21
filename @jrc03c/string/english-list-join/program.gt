@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
--- @jrc03c/english-list-join
+-- @jrc03c/string/english-list-join
 -------------------------------------------------------------------------------
--- url        : https://www.guidedtrack.com/programs/26228/edit
--- unit tests : https://www.guidedtrack.com/programs/26231/edit
--- playground : https://www.guidedtrack.com/programs/26230/edit
+-- url        : https://www.guidedtrack.com/programs/32376/edit
+-- unit tests : https://www.guidedtrack.com/programs/32377/edit
+-- playground : https://www.guidedtrack.com/programs/32378/edit
 -- author     : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- Joins a list of values in a standard English way such that (1) a delimiter
@@ -29,13 +29,13 @@
 -------------------------------------------------------------------------------
 
 *if: not list
-	>> error_title = "@jrc03c/english-list-join"
+	>> error_title = "@jrc03c/string/english-list-join"
 	>> error_message = "No variable called `list` was defined!"
 	*program: @jrc03c/show-error
 	*return
 
 *if: not (list.type = "collection")
-	>> error_title = "@jrc03c/english-list-join"
+	>> error_title = "@jrc03c/string/english-list-join"
 	>> error_message = "A variable called `list` was defined, but its value was not a collection! (Instead, it was a(n) {list.type}.)"
 	*program: @jrc03c/show-error
 	*return

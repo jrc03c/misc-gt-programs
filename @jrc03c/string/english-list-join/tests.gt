@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/english-list-join/tests
+-- @jrc03c/string/english-list-join/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/26228/edit
+-- target : https://www.guidedtrack.com/programs/32376/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@
 >> delimiter = ","
 >> conjunction = "and"
 >> joined_true = "2, 3, 4, 5, and 6"
-*program: @jrc03c/english-list-join
+*program: @jrc03c/string/english-list-join
 
 *if: joined = joined_true
 	>> success_message = "Joined multiple numerical values with the default delimiter and conjunction!"
@@ -34,7 +34,7 @@
 >> delimiter = ";"
 >> conjunction = "buuuuut"
 >> joined_true = "foo; bar; buuuuut baz"
-*program: @jrc03c/english-list-join
+*program: @jrc03c/string/english-list-join
 
 *if: joined = joined_true
 	>> success_message = "Joined multiple string values with a non-default delimiter and a non-default conjunction!"
@@ -50,7 +50,7 @@
 >> delimiter = "~"
 >> conjunction = "..."
 >> joined_true = "yes ... no"
-*program: @jrc03c/english-list-join
+*program: @jrc03c/string/english-list-join
 
 *if: joined = joined_true
 	>> success_message = "Joined two string values!"
@@ -66,7 +66,7 @@
 >> delimiter = "&&&"
 >> conjunction = "***"
 >> joined_true = "Hello, world!"
-*program: @jrc03c/english-list-join
+*program: @jrc03c/string/english-list-join
 
 *if: joined = joined_true
 	>> success_message = "Joined one string value!"
@@ -82,7 +82,7 @@
 >> delimiter = ""
 >> conjunction = ""
 >> joined_true = ""
-*program: @jrc03c/english-list-join
+*program: @jrc03c/string/english-list-join
 
 *if: joined = joined_true
 	>> success_message = "Joined zero values!"
@@ -97,7 +97,7 @@
 >> list = [["hello", "world"], 234, "yes", { "foo" -> "bar" }, calendar::now, 5.seconds]
 >> delimiter = ""
 >> conjunction = ""
-*program: @jrc03c/english-list-join
+*program: @jrc03c/string/english-list-join
 
 *if: joined.type = "string"
 	>> success_message = "Joined mixed value types!"
@@ -122,7 +122,7 @@
 	>> list = wrong
 	>> delimiter = ","
 	>> conjunction = "and"
-	*program: @jrc03c/english-list-join
+	*program: @jrc03c/string/english-list-join
 	
 *html
 	<br><hr><br>
