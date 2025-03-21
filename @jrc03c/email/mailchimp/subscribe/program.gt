@@ -15,11 +15,6 @@
 -- │ mailchimp_list_id*        │ a string representing the ID of the list to   │
 -- │                           │ which the email address will be subscribed    │
 -- ├───────────────────────────┼───────────────────────────────────────────────┤
--- │ mailchimp_service_name    │ a string representing the name assigned to    │
--- │                           │ the Mailchimp service in the program's        │
--- │                           │ 'Service' settings; the default value is      │
--- │                           │ "Mailchimp"                                   │
--- ├───────────────────────────┼───────────────────────────────────────────────┤
 -- │ options                   │ an association representing data to be        │
 -- │                           │ injected into to the payload object sent in   │
 -- │                           │ the request to Mailchimp; the default value   │
@@ -75,15 +70,6 @@
 
 ---
 
-*if: not mailchimp_service_name
-	>> mailchimp_service_name = "Mailchimp"
-
-*if: not (mailchimp_service_name.type = "string")
-	>> error_message = "The variable `mailchimp_service_name` must have a string value representing the name assigned to the Mailchimp service in the program's 'Service' settings. (The value you provided was a(n) {mailchimp_service_name.type}.)"
-	*program: @jrc03c/show-error
-
----
-
 *if: not options
 	>> options = {}
 
@@ -105,7 +91,7 @@
 >> was_subscribed = "no"
 >> mailchimp_subscribe_error = {}
 
-*service: {mailchimp_service_name}
+*service: Mailchimp
 	*path: /lists/{mailchimp_list_id}/members/{email_address}
 	*method: PUT
 	*send: payload
@@ -119,5 +105,4 @@
 	*program: @jrc03c/show-error
 
 >> mailchimp_list_id = ""
->> mailchimp_service_name = ""
 >> options = ""
