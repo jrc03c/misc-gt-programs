@@ -7,8 +7,9 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 ## Email
 
 - [@jrc03c/email/mailchimp/subscribe](https://www.guidedtrack.com/programs/31679/edit)
+- [@jrc03c/email/mailchimp/update-tags](https://www.guidedtrack.com/programs/32351/edit)
 - [@jrc03c/email/mailgun/send](https://www.guidedtrack.com/programs/31681/edit)
-- [@jrc03c/email/validate-address](https://www.guidedtrack.com/programs/21486)
+- [@jrc03c/email/validate-address](https://www.guidedtrack.com/programs/32193/edit)
 
 ## Math
 
