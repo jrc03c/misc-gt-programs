@@ -1,19 +1,23 @@
+--------------------------------------------------------------------------------
+-- target: https://www.guidedtrack.com/programs/32385/edit
+--------------------------------------------------------------------------------
+
 >> dates = {{ dates }}
 
 *for: i, date in dates
 	>> date_string = date["string"]
 	>> parsed_datetime_true = calendar::date(date["object"])
-	*program: @jrc03c/parse-iso-date-string
+	*program: @jrc03c/string/parse-iso-date-string
 	>> parsed_datetime_pred = parsed_datetime
 
 	*if: parsed_datetime_pred = parsed_datetime_true
-		>> success_title = "@jrc03c/parse-iso-date-string/tests"
+		>> success_title = "@jrc03c/string/parse-iso-date-string/tests"
 		>> success_message = "Passed! Input: {date["string"]}; True: {parsed_datetime_true}; Predicted: {parsed_datetime_pred}"
 		*program: @jrc03c/show-success
 
 	*if: not (parsed_datetime_pred = parsed_datetime_true)
 		>> error_message = "Failed! Input: {date["string"]}; True: {parsed_datetime_true}; Predicted: {parsed_datetime_pred}"
-		>> error_title = "@jrc03c/parse-iso-date-string/tests"
+		>> error_title = "@jrc03c/string/parse-iso-date-string/tests"
 		>> error_is_fatal = "no"
 		*program: @jrc03c/show-error
 

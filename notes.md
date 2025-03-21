@@ -3,7 +3,8 @@
 - Add documentation and tests for:
   - `math/random`
   - `math/random-integer`
-- Maybe move the `string/join` program to something like `collection/join` or `array/join`.
+- Move the `string/join` program to something like `collection/join` or `array/join`.
+- Move the `string/parse-iso-date-string` and `string/parse-utc-date-string` to `date/parse-iso-date-string` and `date/parse-utc-date-string` respectively.
 
 # Program checklist
 
