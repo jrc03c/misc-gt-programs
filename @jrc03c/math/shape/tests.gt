@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/shape/tests
+-- @jrc03c/math/shape/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/30086
+-- target : https://www.guidedtrack.com/programs/32374/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -25,19 +25,19 @@
 >> shape_true = [5]
 >> failed = "no"
 
-*program: @jrc03c/shape
+*program: @jrc03c/math/shape
 
 *for: i, v in shape
 	*if: not (v = shape_true[i])
 		>> failed = "yes"
 
 *if: failed = "yes"
-	>> error_title = "@jrc03c/shape/tests"
+	>> error_title = "@jrc03c/math/shape/tests"
 	>> error_message = "Expected shape [{shape_true}] but received shape [{shape}]!"
 	*program: @jrc03c/show-error
 
 *if: failed = "no"
-	>> success_title = "@jrc03c/shape/tests"
+	>> success_title = "@jrc03c/math/shape/tests"
 	>> success_message = "Passed!"
 	*program: @jrc03c/show-success
 
@@ -47,19 +47,19 @@
 >> shape_true = [4, 3]
 >> failed = "no"
 
-*program: @jrc03c/shape
+*program: @jrc03c/math/shape
 
 *for: i, v in shape
 	*if: not (v = shape_true[i])
 		>> failed = "yes"
 
 *if: failed = "yes"
-	>> error_title = "@jrc03c/shape/tests"
+	>> error_title = "@jrc03c/math/shape/tests"
 	>> error_message = "Expected shape [{shape_true}] but received shape [{shape}]!"
 	*program: @jrc03c/show-error
 
 *if: failed = "no"
-	>> success_title = "@jrc03c/shape/tests"
+	>> success_title = "@jrc03c/math/shape/tests"
 	>> success_message = "Passed!"
 	*program: @jrc03c/show-success
 
@@ -69,19 +69,19 @@
 >> shape_true = [2, 3, 4]
 >> failed = "no"
 
-*program: @jrc03c/shape
+*program: @jrc03c/math/shape
 
 *for: i, v in shape
 	*if: not (v = shape_true[i])
 		>> failed = "yes"
 
 *if: failed = "yes"
-	>> error_title = "@jrc03c/shape/tests"
+	>> error_title = "@jrc03c/math/shape/tests"
 	>> error_message = "Expected shape [{shape_true}] but received shape [{shape}]!"
 	*program: @jrc03c/show-error
 
 *if: failed = "no"
-	>> success_title = "@jrc03c/shape/tests"
+	>> success_title = "@jrc03c/math/shape/tests"
 	>> success_message = "Passed!"
 	*program: @jrc03c/show-success
 
@@ -104,6 +104,6 @@
 
 *for: i, v in wrongs
 	>> x = v
-	*program: @jrc03c/shape
+	*program: @jrc03c/math/shape
 
 *button: Okay

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/shape
+-- @jrc03c/math/shape
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/30086
--- tests  : https://www.guidedtrack.com/programs/30087
+-- url    : https://www.guidedtrack.com/programs/32374/edit
+-- tests  : https://www.guidedtrack.com/programs/32375/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
@@ -18,13 +18,13 @@
 -------------------------------------------------------------------------------
 
 *if: not x
-	>> error_title = "@jrc03c/shape"
+	>> error_title = "@jrc03c/math/shape"
 	>> error_message = "The variable `x` is undefined!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
 
 *if: not (x.type = "collection")
-	>> error_title = "@jrc03c/shape"
+	>> error_title = "@jrc03c/math/shape"
 	>> error_message = "The variable `x` can only be a collection!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
