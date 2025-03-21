@@ -18,7 +18,7 @@
 -- Password: YOUR_API_KEY
 --------------------------------------------------------------------------------
 -- MAILCHIMP API DOCUMENTATION:
--- https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
+-- https://mailchimp.com/developer/marketing/api/list-members/add-or-update-list-member/
 --------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/email/mailchimp/subscribe"
