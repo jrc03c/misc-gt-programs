@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/random-string/tests
+-- @jrc03c/string/random/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/23237/edit
+-- target : https://www.guidedtrack.com/programs/32382/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@
 >> random_string_length = -1
 >> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
 
-*program: @jrc03c/random-string
+*program: @jrc03c/string/random
 
 *if: random_string
 	*if: random_string.size > 0
@@ -47,7 +47,7 @@
 >> random_string_length = 234.567
 >> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
 
-*program: @jrc03c/random-string
+*program: @jrc03c/string/random
 
 *if: random_string
 	*if: random_string.size > 0
@@ -72,7 +72,7 @@
 >> random_string_length = "nope!"
 >> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
 
-*program: @jrc03c/random-string
+*program: @jrc03c/string/random
 
 *if: random_string
 	*if: random_string.size > 0
@@ -97,7 +97,7 @@
 >> random_string_length = 8
 >> random_string_charset = ""
 
-*program: @jrc03c/random-string
+*program: @jrc03c/string/random
 
 *if: random_string
 	*if: random_string.size > 0
@@ -122,7 +122,7 @@
 >> random_string_length = 8
 >> random_string_charset = []
 
-*program: @jrc03c/random-string
+*program: @jrc03c/string/random
 
 *if: random_string
 	*if: random_string.size > 0
@@ -147,7 +147,7 @@
 >> random_string_length = 8
 >> random_string_charset = [0, "one", {}, []]
 
-*program: @jrc03c/random-string
+*program: @jrc03c/string/random
 
 *if: random_string
 	*if: random_string.size > 0
@@ -174,7 +174,7 @@
 *while: random_string_length <= 100
 	>> random_string_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
 
-	*program: @jrc03c/random-string
+	*program: @jrc03c/string/random
 	
 	*if: not (random_string.size = random_string_length)
 		>> result["status"] = "failed"
@@ -209,7 +209,7 @@
 	>> random_string_length = 8
 	>> random_string_charset = charset
 
-	*program: @jrc03c/random-string
+	*program: @jrc03c/string/random
 	
 	>> chars = random_string.split("")
 

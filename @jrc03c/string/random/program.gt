@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
--- @jrc03c/random-string
+-- @jrc03c/string/random
 -------------------------------------------------------------------------------
--- url        : https://www.guidedtrack.com/programs/23237/edit
--- unit tests : https://www.guidedtrack.com/programs/23238/edit
--- playground : https://www.guidedtrack.com/programs/23244/edit
+-- url        : https://www.guidedtrack.com/programs/32382/edit
+-- unit tests : https://www.guidedtrack.com/programs/32383/edit
+-- playground : https://www.guidedtrack.com/programs/32384/edit
 -- author     : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- Returns `random_string`, a random string of a given length.
@@ -27,21 +27,21 @@
 
 -- confirm that the length is a number
 *if: not (random_string_length.type = "number")
-	>> error_title = "Error: @jrc03c/random-string"
+	>> error_title = "Error: @jrc03c/string/random"
 	>> error_message = "The `random_string_length` variable must be a positive integer! (Its current value is: {random_string_length})"
 	*program: @jrc03c/show-error
 	*return
 
 -- confirm that the length is greater than 0
 *if: random_string_length <= 0
-	>> error_title = "Error: @jrc03c/random-string"
+	>> error_title = "Error: @jrc03c/string/random"
 	>> error_message = "The `random_string_length` variable must be a positive integer! (Its current value is: {random_string_length})"
 	*program: @jrc03c/show-error
 	*return
 
 -- confirm that the length is an integer
 *if: not (random_string_length.round = random_string_length)
-	>> error_title = "Error: @jrc03c/random-string"
+	>> error_title = "Error: @jrc03c/string/random"
 	>> error_message = "The `random_string_length` variable must be a positive integer! (Its current value is: {random_string_length})"
 	*program: @jrc03c/show-error
 	*return
@@ -56,14 +56,14 @@
 
 -- confirm that the character set is an array
 *if: not (random_string_charset.type = "collection")
-	>> error_title = "Error: @jrc03c/random-string"
+	>> error_title = "Error: @jrc03c/string/random"
 	>> error_message = "The `random_string_charset` variable must be a non-empty string (text) or a non-empty array (collection)! (Its current value is: {random_string_charset})"
 	*program: @jrc03c/show-error
 	*return
 
 -- confirm that the character set isn't empty
 *if: random_string_charset.size = 0
-	>> error_title = "Error: @jrc03c/random-string"
+	>> error_title = "Error: @jrc03c/string/random"
 	>> error_message = "The `random_string_charset` variable must be a non-empty string (text) or a non-empty array (collection)! (Its current value is: {random_string_charset})"
 	*program: @jrc03c/show-error
 	*return
@@ -71,7 +71,7 @@
 -- confirm that each value in the character set is a string
 *for: i, value in random_string_charset
 	*if: not (value.type = "string")
-		>> error_title = "Error: @jrc03c/random-string"
+		>> error_title = "Error: @jrc03c/string/random"
 		>> error_message = "The `random_string_charset` variable must be a non-empty string (text) or a non-empty array (collection)! (Its current value is: {random_string_charset})"
 		*program: @jrc03c/show-error
 		*return

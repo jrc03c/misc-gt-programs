@@ -1,0 +1,43 @@
+-- NOTE: This program produces values in the range [min, max] (i.e., it's inclusive on both ends)!
+
+*if: not range
+	>> range = [0, 100]
+	
+*if: range = ""
+	>> range = [0, 100]
+	
+>> range_min = range[1]
+>> range_max = range[2]
+
+*if: not (range_min.type = "number")
+	>> type = range_min.type
+	*program: @jrc03c/type-phrase
+	>> error_title = "@jrc03c/random-integer"
+	>> error_message = "The first value in the <code>range</code> collection must be a <b>number</b>! (Your first value was {type_phrase}.)"
+	>> error_is_fatal = "yes"
+	*program: @jrc03c/show-error
+	
+*if: not (range_max.type = "number")
+	>> type = range_max.type
+	*program: @jrc03c/type-phrase
+	>> error_title = "@jrc03c/random-integer"
+	>> error_message = "The second value in the <code>range</code> collection must be a <b>number</b>! (Your second value was {type_phrase}.)"
+	>> error_is_fatal = "yes"
+	*program: @jrc03c/show-error
+	
+*if: range_min > range_max
+	>> error_title = "@jrc03c/random-integer"
+	>> error_message = "The second value in the <code>range</code> collection must be greater than or equal to the first value! (Your `range` was defined as [{range_min}, {range_max}].)"
+	>> error_is_fatal = "yes"
+	*program: @jrc03c/show-error
+
+*program: @jrc03c/random
+
+>> r = r * (range_max - range_min) + range_min
+>> r = r.round
+
+-- clean up
+
+>> range = ""
+>> range_min = ""
+>> range_max = ""

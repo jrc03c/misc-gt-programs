@@ -1,6 +1,9 @@
 # To do
 
-- Maybe move the "string/join" program to "collection(s)/join"?
+- Add documentation and tests for:
+  - `math/random`
+  - `math/random-integer`
+- Maybe move the `string/join` program to something like `collection/join` or `array/join`.
 
 # Program checklist
 

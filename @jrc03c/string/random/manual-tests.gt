@@ -1,3 +1,10 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/string/random/tests
+-------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/32382/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
 >> default_length = 8
 >> default_charset = "abcdefghijklmnopqrstuvwxyz1234567890"
 >> error_is_fatal = "no"
@@ -28,7 +35,7 @@
 		>> random_string_charset = default_charset
 
 	>> random_string = ""
-	*program: @jrc03c/random-string
+	*program: @jrc03c/string/random
 	RESULT: {random_string}
 	LENGTH: {random_string.size}
 	*button: Start over
