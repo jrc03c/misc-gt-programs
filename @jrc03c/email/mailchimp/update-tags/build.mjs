@@ -1,9 +1,9 @@
 import { createDocsTable } from "../../../../_build_helpers/create-docs-table.mjs"
 import { DataFrame } from "@jrc03c/js-math-tools"
+import { indent, unindent } from "@jrc03c/js-text-tools"
 import { removeLeadingAndTrailingSpaces } from "../../../../_build_helpers/remove-leading-and-trailing-spaces.mjs"
 import { render } from "../../../../_build_helpers/render.mjs"
 import { typePhrase } from "../../../../_build_helpers/type-phrase.mjs"
-import { unindent } from "@jrc03c/js-text-tools"
 import { watch } from "@jrc03c/watch"
 import fs from "node:fs"
 import path from "node:path"
@@ -188,11 +188,28 @@ function rebuild() {
       .map(v => `>> ${v.name} = ""`)
       .join("\n")
 
+    const testQuestions = inputVariables
+      .map(v => {
+        return indent(
+          unindent(
+            removeLeadingAndTrailingSpaces(`
+              *question: ${v.name}
+                *tip: ${v.required ? "(required)" : ""} ${v.type} representing ${v.description}
+                *save: ${v.name}
+                *default: ${v.defaultForTests || v.default || '" "'}
+            `),
+          ),
+          "\t",
+        )
+      })
+      .join("\n\n")
+
     const programData = {
       docsInputsTable,
       docsOutputsTable,
       inputVariableChecks,
       cleanup,
+      testQuestions,
     }
 
     const program = render(programTemplate, programData)

@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/update-tags/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/32351/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- NOTE: By itself, this program won't do anything! You'll have to create a
+-- duplicate of it and set up Mailchimp in the duplicate's service settings. See
+-- the target program for more info about how to configure the service.
+--------------------------------------------------------------------------------
+
+*page
+	{{ testQuestions }}
+
+*program: @jrc03c/email/mailchimp/update-tags
+
+*if: was_updated = "yes"
+	>> success_title = "@jrc03c/email/mailchimp/update-tags"
+	>> success_message = "The tags for email address '{email_address}' were updated!"
+	*program: @jrc03c/show-success
+
+*if: was_updated = "no"
+	RESPONSE:
+	
+	{mailchimp_subscribe_error}
+
+*button: Start over
+
+*goto: StartLabel
