@@ -15,16 +15,13 @@
 -- │ mailchimp_list_id*          │ the ID of the list to which the email       │
 -- │                             │ address is subscribed                       │
 -- ├─────────────────────────────┼─────────────────────────────────────────────┤
--- │ mailchimp_service_name      │ the name assigned to the Mailchimp service  │
--- │                             │ in the program's 'Service' settings         │
--- ├─────────────────────────────┼─────────────────────────────────────────────┤
 -- │ tags*                       │ the tags to be updated; can include strings │
 -- │                             │ or association values (where each           │
--- │                             │ assocation has (1) a "name" key pointing to │
--- │                             │ a string value representing the name of the │
--- │                             │ tag to be updated, and (2) a "status" key   │
--- │                             │ pointing to a string value of "active" or   │
--- │                             │ "inactive")                                 │
+-- │                             │ association has (1) a "name" key pointing   │
+-- │                             │ to a string value representing the name of  │
+-- │                             │ the tag to be updated, and (2) a "status"   │
+-- │                             │ key pointing to a string value of "active"  │
+-- │                             │ or "inactive")                              │
 -- └─────────────────────────────┴─────────────────────────────────────────────┘
 -- * indicates a required input
 --------------------------------------------------------------------------------
@@ -51,6 +48,9 @@
 --------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/email/mailchimp/update-tags"
+>> error_is_fatal = "no"
+>> was_updated = "no"
+>> mailchimp_tag_update_error = {}
 
 ---
 
@@ -78,16 +78,6 @@
 
 ---
 
-*if: not mailchimp_service_name
-	>> mailchimp_service_name = "Mailchimp"
-
-*if: not (mailchimp_service_name.type = "string")
-	>> error_message = "The variable `mailchimp_service_name` must have a string value representing the name assigned to the Mailchimp service in the program's 'Service' settings. (The value you provided was a(n) {mailchimp_service_name.type}.)"
-	*program: @jrc03c/show-error
-	*return
-
----
-
 *if: not tags
 	>> error_message = "You must define a variable called `tags` that has a collection value representing the tags to be updated! See the program documentation for more information about what can be included in the `tags` collection."
 	*program: @jrc03c/show-error
@@ -98,30 +88,35 @@
 	*program: @jrc03c/show-error
 	*return
 
+*if: tags.size = 0
+	>> error_message = "Your `tags` collection must include at least one tag to update!"
+	*program: @jrc03c/show-error
+	*return
+
 *for: tag in tags
-	*if: (not tag.type = "string") and (not tag.type = "assocation")
-		>> error_message = ""
+	*if: (not (tag.type = "string")) and (not (tag.type = "association"))
+		>> error_message = "The `tags` collection must contain strings representing tag names and/or associations with 'name' and 'status' properties. See the program documentation for more information about what can be included in the `tags` collection. (One of the values you included was a(n) {tag.type}.)"
 		*program: @jrc03c/show-error
 		*return
 
 	*if: tag.type = "association"
 		*if: not tag["name"]
-			>> error_message = "Each assocation included in the `tags` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated!"
+			>> error_message = "Each association included in the `tags` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated!"
 			*program: @jrc03c/show-error
 			*return
 
 		*if: not (tag["name"].type = "string")
-			>> error_message = "Each assocation included in the `tags` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated! (The value you provided was a(n) {tag["name"].type}.)"
+			>> error_message = "Each association included in the `tags` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated! (The value you provided was a(n) {tag["name"].type}.)"
 			*program: @jrc03c/show-error
 			*return
 
 		*if: not tag["status"]
-			>> error_message = "Each assocation included in the `tags` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'!"
+			>> error_message = "Each association included in the `tags` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'!"
 			*program: @jrc03c/show-error
 			*return
 
 		*if: not (tag["status"].type = "string")
-			>> error_message = "Each assocation included in the `tags` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'! (The value you provided as a(n) {tag["status"].type}.)"
+			>> error_message = "Each association included in the `tags` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'! (The value you provided as a(n) {tag["status"].type}.)"
 			*program: @jrc03c/show-error
 			*return
 
@@ -134,17 +129,11 @@
 		>> payload["tags"].add(tag)
 
 	*if: tag.type = "string"
-		>> payload["tags"].add({ "tag" -> tag, "status" -> "active" })
+		>> payload["tags"].add({ "name" -> tag, "status" -> "active" })
 
-*for: key in options.keys
-	>> payload[key] = options[key]
-
->> was_updated = "no"
->> mailchimp_tag_update_error = {}
-
-*service: {mailchimp_service_name}
+*service: Mailchimp
 	*path: /lists/{mailchimp_list_id}/members/{email_address}/tags
-	*method: PUT
+	*method: POST
 	*send: payload
 	*success
 		>> was_updated = "yes"
@@ -156,5 +145,4 @@
 	*program: @jrc03c/show-error
 
 >> mailchimp_list_id = ""
->> mailchimp_service_name = ""
 >> tags = ""

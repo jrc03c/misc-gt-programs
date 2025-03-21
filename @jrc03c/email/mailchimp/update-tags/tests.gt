@@ -9,8 +9,57 @@
 -- the target program for more info about how to configure the service.
 --------------------------------------------------------------------------------
 
+*label: StartLabel
+
 *page
-	{{ testQuestions }}
+	*question: email_address
+		*tip: (required) string representing the email address for which the tags will be updated
+		*save: email_address
+
+	*question: mailchimp_list_id
+		*tip: (required) string representing the ID of the list to which the email address is subscribed
+		*save: mailchimp_list_id
+
+>> tags = []
+
+*label: NextActionLabel
+
+*question: What do you want to do next?
+	➕ Add a tag to be updated
+		>> action = "add"
+	📫 Send the tag update request to Mailchimp
+		>> action = "send"
+
+*if: action = "add"
+	*question: In what format do you want to create the new tag?
+		*tip: Either option is valid.
+		*save: how
+		string
+		association
+
+	*if: how = "string"
+		*question: Tag name:
+			*save: tag
+	
+	*if: how = "association"
+		>> tag = {}
+
+		*page
+			*question: Tag name
+				*tip: i.e., the "name" property of the association
+				*save: tag_name
+
+			*question: Tag status
+				*tip: i.e., the "status" property of the association
+				*save: tag_status
+
+		>> tag["name"] = tag_name
+		>> tag["status"] = tag_status
+		>> tag_name = ""
+		>> tag_status = ""
+
+	>> tags.add(tag)
+	*goto: NextActionLabel
 
 *program: @jrc03c/email/mailchimp/update-tags
 
@@ -20,9 +69,9 @@
 	*program: @jrc03c/show-success
 
 *if: was_updated = "no"
-	RESPONSE:
-	
-	{mailchimp_subscribe_error}
+	>> error_title = "@jrc03c/email/mailchimp/update-tags"
+	>> error_message = mailchimp_tag_update_error
+	*program: @jrc03c/show-error
 
 *button: Start over
 

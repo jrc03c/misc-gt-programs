@@ -22,6 +22,9 @@
 --------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/email/mailchimp/update-tags"
+>> error_is_fatal = "no"
+>> was_updated = "no"
+>> mailchimp_tag_update_error = {}
 
 {{ inputVariableChecks }}
 
@@ -34,17 +37,11 @@
 		>> payload["tags"].add(tag)
 
 	*if: tag.type = "string"
-		>> payload["tags"].add({ "tag" -> tag, "status" -> "active" })
+		>> payload["tags"].add({ "name" -> tag, "status" -> "active" })
 
-*for: key in options.keys
-	>> payload[key] = options[key]
-
->> was_updated = "no"
->> mailchimp_tag_update_error = {}
-
-*service: {mailchimp_service_name}
+*service: Mailchimp
 	*path: /lists/{mailchimp_list_id}/members/{email_address}/tags
-	*method: PUT
+	*method: POST
 	*send: payload
 	*success
 		>> was_updated = "yes"

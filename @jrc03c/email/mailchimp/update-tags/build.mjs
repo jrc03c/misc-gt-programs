@@ -24,15 +24,6 @@ function rebuild() {
 
     const inputVariables = [
       {
-        name: "mailchimp_service_name",
-        type: "string",
-        description:
-          "the name assigned to the Mailchimp service in the program's 'Service' settings",
-        required: false,
-        default: "Mailchimp",
-        shouldBeCleanedUp: true,
-      },
-      {
         name: "email_address",
         type: "string",
         description: "the email address for which the tags will be updated",
@@ -50,7 +41,7 @@ function rebuild() {
       {
         name: "tags",
         type: "collection",
-        description: `the tags to be updated; can include strings or association values (where each assocation has (1) a "name" key pointing to a string value representing the name of the tag to be updated, and (2) a "status" key pointing to a string value of "active" or "inactive")`,
+        description: `the tags to be updated; can include strings or association values (where each association has (1) a "name" key pointing to a string value representing the name of the tag to be updated, and (2) a "status" key pointing to a string value of "active" or "inactive")`,
         required: true,
         shouldBeCleanedUp: true,
         customCheck:
@@ -67,30 +58,35 @@ function rebuild() {
 							*program: @jrc03c/show-error
 							*return
 
+						*if: tags.size = 0
+							>> error_message = "Your \`tags\` collection must include at least one tag to update!"
+							*program: @jrc03c/show-error
+							*return
+
 						*for: tag in tags
-							*if: (not tag.type = "string") and (not tag.type = "assocation")
-								>> error_message = ""
+							*if: (not (tag.type = "string")) and (not (tag.type = "association"))
+								>> error_message = "The \`tags\` collection must contain strings representing tag names and/or associations with 'name' and 'status' properties. See the program documentation for more information about what can be included in the \`tags\` collection. (One of the values you included was a(n) {tag.type}.)"
 								*program: @jrc03c/show-error
 								*return
 
 							*if: tag.type = "association"
 								*if: not tag["name"]
-									>> error_message = "Each assocation included in the \`tags\` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated!"
+									>> error_message = "Each association included in the \`tags\` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated!"
 									*program: @jrc03c/show-error
 									*return
 
 								*if: not (tag["name"].type = "string")
-									>> error_message = "Each assocation included in the \`tags\` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated! (The value you provided was a(n) {tag["name"].type}.)"
+									>> error_message = "Each association included in the \`tags\` collection must have a 'name' key pointing to a string value representing the name of the tag to be updated! (The value you provided was a(n) {tag["name"].type}.)"
 									*program: @jrc03c/show-error
 									*return
 
 								*if: not tag["status"]
-									>> error_message = "Each assocation included in the \`tags\` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'!"
+									>> error_message = "Each association included in the \`tags\` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'!"
 									*program: @jrc03c/show-error
 									*return
 
 								*if: not (tag["status"].type = "string")
-									>> error_message = "Each assocation included in the \`tags\` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'! (The value you provided as a(n) {tag["status"].type}.)"
+									>> error_message = "Each association included in the \`tags\` collection must have a 'status' key pointing to a string value of either 'active' or 'inactive'! (The value you provided as a(n) {tag["status"].type}.)"
 									*program: @jrc03c/show-error
 									*return
 					`),
@@ -189,15 +185,15 @@ function rebuild() {
       .join("\n")
 
     const testQuestions = inputVariables
+      .filter(v => v.name !== "tags")
       .map(v => {
         return indent(
           unindent(
             removeLeadingAndTrailingSpaces(`
-              *question: ${v.name}
-                *tip: ${v.required ? "(required)" : ""} ${v.type} representing ${v.description}
-                *save: ${v.name}
-                *default: ${v.defaultForTests || v.default || '" "'}
-            `),
+							*question: ${v.name}
+								*tip: ${v.required ? "(required)" : ""} ${v.type} representing ${v.description}
+								*save: ${v.name}
+						`),
           ),
           "\t",
         )
@@ -209,7 +205,6 @@ function rebuild() {
       docsOutputsTable,
       inputVariableChecks,
       cleanup,
-      testQuestions,
     }
 
     const program = render(programTemplate, programData)
@@ -221,7 +216,7 @@ function rebuild() {
       "utf8",
     )
 
-    const testsData = {}
+    const testsData = { testQuestions }
     const tests = render(testsTemplate, testsData)
     fs.writeFileSync(path.join(dir, "tests.gt"), tests, "utf8")
 

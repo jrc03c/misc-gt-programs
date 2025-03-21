@@ -23,6 +23,8 @@
 
 >> error_title = "@jrc03c/email/mailchimp/subscribe"
 >> error_is_fatal = "no"
+>> was_subscribed = "no"
+>> mailchimp_subscribe_error = {}
 
 {{ variableChecks }}
 
@@ -36,9 +38,6 @@
 
 *for: key in options.keys
 	>> payload[key] = options[key]
-
->> was_subscribed = "no"
->> mailchimp_subscribe_error = {}
 
 *service: Mailchimp
 	*path: /lists/{mailchimp_list_id}/members/{email_address}
