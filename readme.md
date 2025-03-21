@@ -16,7 +16,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 - [@jrc03c/math/is-matrix](https://www.guidedtrack.com/programs/32358/edit)
 - [@jrc03c/math/is-vector](https://www.guidedtrack.com/programs/32360/edit)
 - [@jrc03c/math/contains-only-numbers](https://www.guidedtrack.com/programs/32362/edit)
-- [@jrc03c/math/dot](https://www.guidedtrack.com/programs/20504/edit)
+- [@jrc03c/math/dot](https://www.guidedtrack.com/programs/32364/edit)
 - [@jrc03c/math/logistic-regression-predict](https://www.guidedtrack.com/programs/30084)
 - [@jrc03c/math/matrix-transpose](https://www.guidedtrack.com/programs/20498)
 - [@jrc03c/math/r-squared](https://www.guidedtrack.com/programs/30093)

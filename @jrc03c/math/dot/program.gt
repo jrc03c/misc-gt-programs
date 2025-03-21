@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/dot
+-- @jrc03c/math/dot
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/20504/edit
--- tests  : https://www.guidedtrack.com/programs/20505
+-- url    : https://www.guidedtrack.com/programs/32364/edit
+-- tests  : https://www.guidedtrack.com/programs/32365/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
@@ -31,7 +31,7 @@
 
 -- confirm that the relevant variables exist
 *if: not a
-	>> error_title = "@jrc03c/dot"
+	>> error_title = "@jrc03c/math/dot"
 	>> error_message = "You must define a variable `a` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
@@ -39,7 +39,7 @@
 	*goto: clean-up
 
 *if: not b
-	>> error_title = "@jrc03c/dot"
+	>> error_title = "@jrc03c/math/dot"
 	>> error_message = "You must define a variable `b` that is a vector (i.e., a collection) or a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 
@@ -62,7 +62,7 @@
 >> a_is_a_matrix = is_a_matrix
 
 *if: a_is_a_vector = "no" and a_is_a_matrix = "no"
-	>> error_title = "@jrc03c/dot"
+	>> error_title = "@jrc03c/math/dot"
 	>> error_message = "The variable `a` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections), but instead it was a(n) {a.type}!"
 	*program: @jrc03c/show-error
 	
@@ -79,7 +79,7 @@
 >> b_is_a_matrix = is_a_matrix
 
 *if: b_is_a_vector = "no" and b_is_a_matrix = "no"
-	>> error_title = "@jrc03c/dot"
+	>> error_title = "@jrc03c/math/dot"
 	>> error_message = "The variable `b` must be a vector (i.e., a collection) or a matrix (i.e., a collection of collections), but instead it was a(n) {b.type}!"
 	*program: @jrc03c/show-error
 
@@ -91,7 +91,7 @@
 *program: @jrc03c/contains-only-numbers
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/dot"
+	>> error_title = "@jrc03c/math/dot"
 
 	*if: a_is_a_vector = "yes"
 		>> error_message = "The vector `a` should contain only numbers!"
@@ -108,7 +108,7 @@
 *program: @jrc03c/contains-only-numbers
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/dot"
+	>> error_title = "@jrc03c/math/dot"
 
 	*if: b_is_a_vector = "yes"
 		>> error_message = "The vector `b` should contain only numbers!"
@@ -142,7 +142,7 @@
 
 *if: a_is_a_vector = "yes" and b_is_a_vector = "yes"
 	*if: not (a.size = b.size)
-		>> error_title = "@jrc03c/dot"
+		>> error_title = "@jrc03c/math/dot"
 		>> error_message = "`a` and `b` are vectors of differing lengths! (a.size = {a.size}, b.size = {b.size})"
 		*program: @jrc03c/show-error
 
@@ -163,7 +163,7 @@
 
 *if: a_is_a_vector = "yes" and b_is_a_matrix = "yes"
 	*if: not (a.size = b[1].size)
-		>> error_title = "@jrc03c/dot"
+		>> error_title = "@jrc03c/math/dot"
 		>> error_message = "The length of `a` (a vector) doesn't match the row length of `b` (a matrix)! (a.size = {a.size}, b[1].size = {b[1].size})"
 		*program: @jrc03c/show-error
 
@@ -189,7 +189,7 @@
 
 *if: a_is_a_matrix = "yes" and b_is_a_vector = "yes"
 	*if: not (a[1].size = b.size)
-		>> error_title = "@jrc03c/dot"
+		>> error_title = "@jrc03c/math/dot"
 		>> error_message = "The row length of `a` (a matrix) doesn't match the length of `b` (a vector)! (a[1].size = {a[1].size}, b.size = {b.size})"
 		*program: @jrc03c/show-error
 
@@ -216,7 +216,7 @@
 *if: a_is_a_matrix = "yes" and b_is_a_matrix = "yes"
 	-- if the row sizes aren't compatible...
 	*if: not (a[1].size = b.size)
-		>> error_title = "@jrc03c/dot"
+		>> error_title = "@jrc03c/math/dot"
 		>> error_message = "The shapes of matrices `a` and `b` are not compatible! (`a` shape = ({a.size}, {a[1].size}), `b` shape = ({b.size}, {b[1].size}))"
 		*program: @jrc03c/show-error
 	
