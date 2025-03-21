@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/check-if-vector/tests
+-- @jrc03c/math/is-vector/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/20524/edit
+-- target : https://www.guidedtrack.com/programs/32360/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -13,10 +13,10 @@
 
 *for: i, item in rights
 	>> vector = item
-	*program: @jrc03c/check-if-vector
+	*program: @jrc03c/math/is-vector
 
 	*if: is_a_vector = "no"
-		>> error_title = "@jrc03c/check-if-vector"
+		>> error_title = "@jrc03c/math/is-vector"
 		>> error_message = "This item is a vector but wasn't identified as one: {item}"
 		*program: @jrc03c/show-error
 
@@ -30,10 +30,10 @@
 
 *for: i, item in wrongs
 	>> vector = item
-	*program: @jrc03c/check-if-vector
+	*program: @jrc03c/math/is-vector
 
 	*if: is_a_vector = "yes"
-		>> error_title = "@jrc03c/check-if-vector"
+		>> error_title = "@jrc03c/math/is-vector"
 		>> error_message = "This item is /not/ a vector but was identified as one: {item}"
 
 All tests passed!
