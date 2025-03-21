@@ -1,3 +1,7 @@
+# To do
+
+- Maybe move the "string/join" program to "collection(s)/join"?
+
 # Program checklist
 
 - Clean up all relevant variables at the end of the main program by assigning empty string values to them.

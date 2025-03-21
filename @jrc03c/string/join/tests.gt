@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/join/tests
+-- @jrc03c/string/join/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/22162/edit
+-- target : https://www.guidedtrack.com/programs/32379/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@
 >> list = ["a", "b", "c"]
 >> delimiter = ";"
 >> joined_true = "a;b;c"
-*program: @jrc03c/join
+*program: @jrc03c/string/join
 
 *if: joined = joined_true
 	>> success_message = description
@@ -33,7 +33,7 @@
 >> list = ["abc", "def", "ghi"]
 >> delimiter = "?"
 >> joined_true = "abc?def?ghi"
-*program: @jrc03c/join
+*program: @jrc03c/string/join
 
 *if: joined = joined_true
 	>> success_message = description
@@ -51,7 +51,7 @@
 >> list = ["!", "@", "#"]
 >> delimiter = "..."
 >> joined_true = "!...@...#"
-*program: @jrc03c/join
+*program: @jrc03c/string/join
 
 *if: joined = joined_true
 	>> success_message = description
@@ -69,7 +69,7 @@
 >> list = ["Hell", "hath", "no", "fury"]
 >> delimiter = " ^ "
 >> joined_true = "Hell ^ hath ^ no ^ fury"
-*program: @jrc03c/join
+*program: @jrc03c/string/join
 
 *if: joined = joined_true
 	>> success_message = description
@@ -106,7 +106,7 @@
 			
 		>> j = j + 1
 
-	*program: @jrc03c/join
+	*program: @jrc03c/string/join
 	
 	*if: joined = joined_true
 		>> success_message = description
@@ -138,7 +138,7 @@
 *for: i, list in wrong_lists
 	>> joined = ""
 	>> delimiter = "?"
-	*program: @jrc03c/join
+	*program: @jrc03c/string/join
 	
 	*if: joined.size > 0
 		>> warning_message = "This should've failed, but it didn't! (joined = '{joined}')"

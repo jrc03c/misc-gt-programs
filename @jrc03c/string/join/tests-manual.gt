@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/join/manual-tests
+-- @jrc03c/string/join/manual-tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/22162/edit
+-- target : https://www.guidedtrack.com/programs/32379/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@
 *question: Delimiter:
 	*save: delimiter
 	
-*program: @jrc03c/join
+*program: @jrc03c/string/join
 
 RESULT:
 

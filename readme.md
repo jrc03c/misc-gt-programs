@@ -26,7 +26,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 ## String / Text
 
 - [@jrc03c/string/english-list-join](https://www.guidedtrack.com/programs/32376/edit)
-- [@jrc03c/string/join](https://www.guidedtrack.com/programs/22162/edit)
+- [@jrc03c/string/join](https://www.guidedtrack.com/programs/32379/edit)
 - [@jrc03c/string/parse-iso-date-string](https://www.guidedtrack.com/programs/25113/edit)
 - [@jrc03c/string/parse-utc-date-string](https://www.guidedtrack.com/programs/25113/edit)
 - [@jrc03c/string/random](https://www.guidedtrack.com/programs/23237/edit)
