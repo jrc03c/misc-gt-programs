@@ -29,11 +29,12 @@
 	<style>
 		.alert-danger {
 			margin: 0 0 1.5em 0;
-			border: 1px solid rgb(169, 68, 66) !important;
+			border: 1px solid var(--color-danger-dark, rgb(169, 68, 66)) !important;
+			background-color: var(--color-danger-light, rgb(242, 222, 222)) !important;
 		}
 
 		.alert-danger * {
-			color: rgb(169, 68, 66) !important;
+			color: var(--color-danger-dark, rgb(169, 68, 66)) !important;
 		}
 		
 		.component h3 {

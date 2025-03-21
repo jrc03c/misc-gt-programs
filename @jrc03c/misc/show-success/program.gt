@@ -22,11 +22,12 @@
 	<style>
 		.alert-success {
 			margin: 0 0 1.5em 0;
-			border: 1px solid rgb(60, 118, 61) !important;
+			border: 1px solid var(--color-succes-dark, rgb(60, 118, 61)) !important;
+			background-color: var(--color-success-light, rgb(223, 240, 216)) !important;
 		}
 
 		.alert-success * {
-			color: rgb(60, 118, 61) !important;
+			color: var(--color-succes-dark, rgb(60, 118, 61)) !important;
 		}
 		
 		.component h3 {
