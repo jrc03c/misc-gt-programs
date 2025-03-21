@@ -47,6 +47,7 @@
 --------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/email/mailchimp/subscribe"
+>> error_is_fatal = "no"
 
 ---
 
