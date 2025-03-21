@@ -29,11 +29,13 @@
 	<style>
 		.alert-danger {
 			margin: 0 0 1.5em 0;
-			border: 1px solid var(--color-danger-dark, rgb(169, 68, 66)) !important;
+			border: 1px solid var(--color-danger, rgb(217, 83, 79)) !important;
 			background-color: var(--color-danger-light, rgb(242, 222, 222)) !important;
 		}
 
-		.alert-danger * {
+		.alert-danger *,
+		.alert-danger h3 .icon .fa,
+		.alert-danger h3 .icon .fa::before {
 			color: var(--color-danger-dark, rgb(169, 68, 66)) !important;
 		}
 		
