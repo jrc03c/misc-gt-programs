@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/contains-only-numbers/tests
+-- @jrc03c/math/contains-only-numbers/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/20580/edit
+-- target : https://www.guidedtrack.com/programs/32362/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -20,75 +20,75 @@
 ----------
 
 >> collection = []
-*program: @jrc03c/contains-only-numbers
+*program: @jrc03c/math/contains-only-numbers
 
 *if: contains_only_numbers = "yes"
-	>> success_title = "@jrc03c/contains-only-numbers/tests"
+	>> success_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> success_message = "Empty collection test passed!"
 	*program: @jrc03c/show-success
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/contains-only-numbers/tests"
+	>> error_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> error_message = "Empty collection test failed!"
 	*program: @jrc03c/show-error
 
 ----------
 
 >> collection = [2, 3, 4]
-*program: @jrc03c/contains-only-numbers
+*program: @jrc03c/math/contains-only-numbers
 
 *if: contains_only_numbers = "yes"
-	>> success_title = "@jrc03c/contains-only-numbers/tests"
+	>> success_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> success_message = "Vector w/ numbers test passed!"
 	*program: @jrc03c/show-success
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/contains-only-numbers/tests"
+	>> error_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> error_message = "Vector w/ numbers failed!"
 	*program: @jrc03c/show-error
 
 ----------
 
 >> collection = [[2, 3, 4], [5, 6, 7]]
-*program: @jrc03c/contains-only-numbers
+*program: @jrc03c/math/contains-only-numbers
 
 *if: contains_only_numbers = "yes"
-	>> success_title = "@jrc03c/contains-only-numbers/tests"
+	>> success_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> success_message = "Matrix w/ numbers test passed!"
 	*program: @jrc03c/show-success
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/contains-only-numbers/tests"
+	>> error_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> error_message = "Matrix w/ numbers test failed!"
 	*program: @jrc03c/show-error
 
 ----------
 
 >> collection = [2, [3, [4, [5, [6, 7, 8]]]]]
-*program: @jrc03c/contains-only-numbers
+*program: @jrc03c/math/contains-only-numbers
 
 *if: contains_only_numbers = "yes"
-	>> success_title = "@jrc03c/contains-only-numbers/tests"
+	>> success_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> success_message = "Jagged, nested collection w/ numbers test passed!"
 	*program: @jrc03c/show-success
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/contains-only-numbers/tests"
+	>> error_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> error_message = "Jagged, nested collection w/ numbers test failed!"
 	*program: @jrc03c/show-error
 
 ----------
 
 >> collection = [[[[[2], 3], 4], 5], 6, 7, 8]
-*program: @jrc03c/contains-only-numbers
+*program: @jrc03c/math/contains-only-numbers
 
 *if: contains_only_numbers = "yes"
-	>> success_title = "@jrc03c/contains-only-numbers/tests"
+	>> success_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> success_message = "Jagged, nested collection w/ numbers test passed!"
 	*program: @jrc03c/show-success
 
 *if: contains_only_numbers = "no"
-	>> error_title = "@jrc03c/contains-only-numbers/tests"
+	>> error_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> error_message = "Jagged, nested collection w/ numbers test failed!"
 	*program: @jrc03c/show-error
 
@@ -97,15 +97,15 @@
 >> wrongs = [234, "hello", calendar::now, {"yes" -> "no"}]
 >> collection = []
 >> collection.combine(wrongs)
-*program: @jrc03c/contains-only-numbers
+*program: @jrc03c/math/contains-only-numbers
 
 *if: contains_only_numbers = "no"
-	>> success_title = "@jrc03c/contains-only-numbers/tests"
+	>> success_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> success_message = "Flat collection w/ NaNs test passed!"
 	*program: @jrc03c/show-success
 
 *if: contains_only_numbers = "yes"
-	>> error_title = "@jrc03c/contains-only-numbers/tests"
+	>> error_title = "@jrc03c/math/contains-only-numbers/tests"
 	>> error_message = "Flat collection w/ NaNs test failed!"
 	*program: @jrc03c/show-error
 
@@ -117,6 +117,6 @@
 
 *for: i, value in wrongs
 	>> collection = value
-	*program: @jrc03c/contains-only-numbers
+	*program: @jrc03c/math/contains-only-numbers
 
 *button: Okay
