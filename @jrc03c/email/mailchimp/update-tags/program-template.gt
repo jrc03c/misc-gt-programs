@@ -1,0 +1,58 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/update-tags
+--------------------------------------------------------------------------------
+-- url          : https://www.guidedtrack.com/programs/32351/edit
+-- tests        : https://www.guidedtrack.com/programs/32352/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
+--------------------------------------------------------------------------------
+-- {{ docsInputsTable }}
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- {{ docsOutputsTable }}
+--------------------------------------------------------------------------------
+-- SERVICE SETTINGS:
+-- Name: Mailchimp
+-- URL: https://YOUR_ZONE.api.mailchimp.com/3.0
+-- Username: anystring
+-- Password: YOUR_API_KEY
+--------------------------------------------------------------------------------
+-- MAILCHIMP API DOCUMENTATION:
+-- https://mailchimp.com/developer/marketing/api/list-member-tags/add-or-remove-member-tags/
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/email/mailchimp/update-tags"
+
+{{ inputVariableChecks }}
+
+--
+
+>> payload = { "tags" -> [] }
+
+*for: tag in tags
+	*if: tag.type = "association"
+		>> payload["tags"].add(tag)
+
+	*if: tag.type = "string"
+		>> payload["tags"].add({ "tag" -> tag, "status" -> "active" })
+
+*for: key in options.keys
+	>> payload[key] = options[key]
+
+>> was_updated = "no"
+>> mailchimp_tag_update_error = {}
+
+*service: {mailchimp_service_name}
+	*path: /lists/{mailchimp_list_id}/members/{email_address}/tags
+	*method: PUT
+	*send: payload
+	*success
+		>> was_updated = "yes"
+	*error
+		>> mailchimp_tag_update_error = it
+
+*if: was_updated = "no"
+	>> error_message = "Uh-oh! Something went wrong during the tag update process!"
+	*program: @jrc03c/show-error
+
+{{ cleanup }}
