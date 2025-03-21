@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/logistic-regression-predict
+-- @jrc03c/math/logistic-regression-predict
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/30084
--- tests  : https://www.guidedtrack.com/programs/30085
+-- url    : https://www.guidedtrack.com/programs/32366/edit
+-- tests  : https://www.guidedtrack.com/programs/32367/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
@@ -17,19 +17,19 @@
 -------------------------------------------------------------------------------
 
 *if: not coefficients
-	>> error_title = "@jrc03c/logistic-regression-predict"
+	>> error_title = "@jrc03c/math/logistic-regression-predict"
 	>> error_message = "The variable `coefficients` is undefined!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
 
 *if: not intercept
-	>> error_title = "@jrc03c/logistic-regression-predict"
+	>> error_title = "@jrc03c/math/logistic-regression-predict"
 	>> error_message = "The variable `intercept` is undefined!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
 
 *if: not x
-	>> error_title = "@jrc03c/logistic-regression-predict"
+	>> error_title = "@jrc03c/math/logistic-regression-predict"
 	>> error_message = "The variable `x` is undefined!"
 	*program: @jrc03c/show-error
 	*goto: cleanup
@@ -59,7 +59,7 @@
 		>> coefficients_shape_string = joined
 		>> x = x_buf
 
-		>> error_title = "@jrc03c/logistic-regression-predict"
+		>> error_title = "@jrc03c/math/logistic-regression-predict"
 		>> error_message = "The shapes of `x` and `coefficients` are incompatible! ([{x_shape_string}] vs. [{coefficients_shape_string}])"
 		*program: @jrc03c/show-error
 		*goto: cleanup

@@ -16,7 +16,7 @@ unit_test_template = ptt.unindent("""
 	>> coefficients = {{ coefficients }}
 	>> intercept = {{ intercept }}
 
-	*program: @jrc03c/logistic-regression-predict
+	*program: @jrc03c/math/logistic-regression-predict
 
 	>> y_pred = y         
 	>> y_true = {{ y_true }}
@@ -24,12 +24,12 @@ unit_test_template = ptt.unindent("""
 	*program: @jrc03c/r-squared
 
 	*if: r_squared >= 0.9999
-		>> success_title = "@jrc03c/logistic-regression-predict/tests"
+		>> success_title = "@jrc03c/math/logistic-regression-predict/tests"
 		>> success_message = "Passed!"
 		*program: @jrc03c/show-success
 
 	*if: r_squared < 0.9999
-		>> error_title = "@jrc03c/logistic-regression-predict/tests"
+		>> error_title = "@jrc03c/math/logistic-regression-predict/tests"
 		>> error_message = "Expected an R^2 score greater than or equal to 0.9999, but received {r_squared}!"
 		*program: @jrc03c/show-error
 
