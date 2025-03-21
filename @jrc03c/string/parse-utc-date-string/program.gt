@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/parse-utc-date-string
+-- @jrc03c/string/parse-utc-date-string
 -------------------------------------------------------------------------------
--- url        : https://www.guidedtrack.com/programs/25113/edit
+-- url        : ...
 -- unit tests : ...
 -- playground : ...
 -- author     : Josh Castle (joshrcastle@gmail.com)
@@ -19,13 +19,13 @@
 >> date_string = "2023-09-13T11:57:28.000Z"
 
 *if: not date_string
-	>> error_title = "Error: @jrc03c/parse-utc-date-string"
+	>> error_title = "Error: @jrc03c/string/parse-utc-date-string"
 	>> error_message = "The `date_string` variable is undefined!"
 	>> error_is_fatal = "yes"
 	*program: @jrc03c/show-error
 
 *if: not (date_string.type = "string")
-	>> error_title = "Error: @jrc03c/parse-utc-date-string"
+	>> error_title = "Error: @jrc03c/string/parse-utc-date-string"
 	>> error_message = "The `date_string` variable is supposed to have a string value, but it currently has a(n) {date_string.type} value!"
 	>> error_is_fatal = "yes"
 	*program: @jrc03c/show-error
@@ -34,7 +34,7 @@
 
 *for: i, char in date_string_important_chars
 	*if: date_string.count(char) = 0
-		>> error_title = "Error: @jrc03c/parse-utc-date-string"
+		>> error_title = "Error: @jrc03c/string/parse-utc-date-string"
 		
 		>> error_message = "The `date_string` value you supplied doesn't look like a standard UTC date string! (The current value of `date_string` is '{date_string}', but a standard UTC date string looks like '2023-09-14T16:38:25.376Z'.)"
 		
