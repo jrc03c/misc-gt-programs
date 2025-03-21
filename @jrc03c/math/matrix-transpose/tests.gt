@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/matrix-transpose/tests
+-- @jrc03c/math/matrix-transpose/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/20498
+-- target : https://www.guidedtrack.com/programs/32368/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -21,11 +21,11 @@
 >> matrix = [[2, 3, 4], [5, 6, 7]]
 >> matrix_true = [[2, 5], [3, 6], [4, 7]]
 >> failed = "no"
-*program: @jrc03c/matrix-transpose
+*program: @jrc03c/math/matrix-transpose
 
 *if: not (matrix_transposed.size = matrix_true.size)
 	>> failed = "yes"
-	>> error_title = "@jrc03c/matrix-transpose/tests"
+	>> error_title = "@jrc03c/math/matrix-transpose/tests"
 	>> error_message = "The predicted matrix didn't have the same number of rows as the true matrix! (matrix_transposed.size = {matrix_transposed.size}, matrix_true.size = {matrix_true.size})"
 	*program: @jrc03c/show-error
 
@@ -34,7 +34,7 @@
 
 	*if: not (row.size = row_true.size)
 		>> failed = "yes"
-		>> error_title = "@jrc03c/matrix-transpose/tests"
+		>> error_title = "@jrc03c/math/matrix-transpose/tests"
 		>> error_message = "The predicted row length didn't match the true row length! (row{i}.size = {row.size}, row_true{i}.size = {row_true.size})"
 		*program: @jrc03c/show-error
 
@@ -43,12 +43,12 @@
 
 		*if: not (value = value_true)
 			>> failed = "yes"
-			>> error_title = "@jrc03c/matrix-transpose/tests"
+			>> error_title = "@jrc03c/math/matrix-transpose/tests"
 			>> error_message = "The predicted value didn't match the true value! (row{i}[{j}] = {value}, row_true{i}[{j}] = {value_true})"
 			*program: @jrc03c/show-error
 
 *if: failed = "no"
-	>> success_title = "@jrc03c/matrix-transpose/tests"
+	>> success_title = "@jrc03c/math/matrix-transpose/tests"
 	>> success_message = "Test passed!"
 	*program: @jrc03c/show-success
 
@@ -64,10 +64,10 @@
 	>> orig_value = value
 	>> matrix = value
 	>> matrix_transposed = ""
-	*program: @jrc03c/matrix-transpose
+	*program: @jrc03c/math/matrix-transpose
 
 	*if: not (matrix_transposed = "")
-		>> success_title = "@jrc03c/matrix-transpose/tests"
+		>> success_title = "@jrc03c/math/matrix-transpose/tests"
 		>> success_message = "The value {orig_value} was transposed successfully, which SHOULD NOT happen!"
 		*program: @jrc03c/show-success
 

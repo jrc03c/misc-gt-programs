@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/matrix-transpose
+-- @jrc03c/math/matrix-transpose
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/20498
--- tests  : https://www.guidedtrack.com/programs/20499
+-- url    : https://www.guidedtrack.com/programs/32368/edit
+-- tests  : https://www.guidedtrack.com/programs/32369/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- inputs:
@@ -16,7 +16,7 @@
 
 *if: not matrix
 	>> matrix = ""
-	>> error_title = "@jrc03c/matrix-transpose"
+	>> error_title = "@jrc03c/math/matrix-transpose"
 	>> error_message = "You must define a `matrix` variable that holds a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 	*goto: clean-up
@@ -25,7 +25,7 @@
 
 *if: not (matrix_type = "collection")
 	>> matrix = ""
-	>> error_title = "@jrc03c/matrix-transpose"
+	>> error_title = "@jrc03c/math/matrix-transpose"
 	>> error_message = "The `matrix` variable must be a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 	*goto: clean-up
@@ -36,7 +36,7 @@
 *program: @jrc03c/check-if-matrix
 
 *if: is_a_matrix = "no"
-	>> error_title = "@jrc03c/matrix-transpose"
+	>> error_title = "@jrc03c/math/matrix-transpose"
 	>> error_message = "The `matrix` variable must be a matrix (i.e., a collection of collections)!"
 	*program: @jrc03c/show-error
 	*goto: clean-up
