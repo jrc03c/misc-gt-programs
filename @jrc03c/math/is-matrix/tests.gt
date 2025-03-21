@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- @jrc03c/check-if-matrix/tests
+-- @jrc03c/math/is-matrix/tests
 -------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/20508/edit
+-- target : https://www.guidedtrack.com/programs/32358/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 
@@ -15,11 +15,11 @@
 
 *for: i, value in wrongs
 	>> matrix = value
-	*program: @jrc03c/check-if-matrix
+	*program: @jrc03c/math/is-matrix
 
 	*if: is_a_matrix = "yes"
-		>> error_title = "@jrc03c/check-if-matrix/tests"
-		>> error_message = "The value is /not/ a matrix, but the @jrc03c/check-if-matrix program said it was one! Value: {value}"
+		>> error_title = "@jrc03c/math/is-matrix/tests"
+		>> error_message = "The value is /not/ a matrix, but the @jrc03c/math/is-matrix program said it was one! Value: {value}"
 		*program: @jrc03c/show-error
 
 >> rights = []
@@ -29,11 +29,11 @@
 
 *for: i, value in rights
 	>> matrix = value
-	*program: @jrc03c/check-if-matrix
+	*program: @jrc03c/math/is-matrix
 	
 	*if: is_a_matrix = "no"
-		>> error_title = "@jrc03c/check-if-matrix/tests"
-		>> error_message = "The value /is/ a matrix, but the @jrc03c/check-if-matrix program said it wasn't one! Value: {value}"
+		>> error_title = "@jrc03c/math/is-matrix/tests"
+		>> error_message = "The value /is/ a matrix, but the @jrc03c/math/is-matrix program said it wasn't one! Value: {value}"
 		*program: @jrc03c/show-error
 
 All tests passed!

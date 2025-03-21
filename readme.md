@@ -13,7 +13,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 
 ## Math
 
-- [@jrc03c/math/is-matrix](https://www.guidedtrack.com/programs/20507/edit)
+- [@jrc03c/math/is-matrix](https://www.guidedtrack.com/programs/32358/edit)
 - [@jrc03c/math/is-vector](https://www.guidedtrack.com/programs/20523/edit)
 - [@jrc03c/math/contains-only-numbers](https://www.guidedtrack.com/programs/20579/edit)
 - [@jrc03c/math/dot](https://www.guidedtrack.com/programs/20504/edit)
