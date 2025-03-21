@@ -20,7 +20,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 - [@jrc03c/math/logistic-regression-predict](https://www.guidedtrack.com/programs/32366/edit)
 - [@jrc03c/math/matrix-transpose](https://www.guidedtrack.com/programs/32368/edit)
 - [@jrc03c/math/r-squared](https://www.guidedtrack.com/programs/32370/edit)
-- [@jrc03c/math/range](https://www.guidedtrack.com/programs/20584/edit)
+- [@jrc03c/math/range](https://www.guidedtrack.com/programs/32372/edit)
 - [@jrc03c/math/shape](https://www.guidedtrack.com/programs/30086)
 
 ## String / Text

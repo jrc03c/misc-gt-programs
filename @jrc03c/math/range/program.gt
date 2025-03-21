@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- @jrc03c/range
+-- @jrc03c/math/range
 -------------------------------------------------------------------------------
--- url    : https://www.guidedtrack.com/programs/20584/edit
--- tests  : https://www.guidedtrack.com/programs/20585/edit
+-- url    : https://www.guidedtrack.com/programs/32372/edit
+-- tests  : https://www.guidedtrack.com/programs/32373/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 -------------------------------------------------------------------------------
 -- Returns `range`, a collection of values in the range [`start`, `stop`) in
@@ -24,7 +24,7 @@
 -- recursion" error.
 
 *if: not start
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "You must define a number variable called `start` before invoking this program!"
 	*program: @jrc03c/show-error
 
@@ -34,7 +34,7 @@
 >> start_type = start.type
 
 *if: not (start_type = "number")
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "The variable called `start` must hold a number value, instead it was a(n) {start_type}!"
 	*program: @jrc03c/show-error
 
@@ -42,7 +42,7 @@
 	*goto: clean-up
 
 *if: not stop
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "You must define a number variable called `stop` before invoking this program!"
 	*program: @jrc03c/show-error
 
@@ -52,7 +52,7 @@
 >> stop_type = stop.type
 
 *if: not (stop_type = "number")
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "The variable called `stop` must hold a number value, but instead it was a(n) {stop_type}!"
 	*program: @jrc03c/show-error
 
@@ -65,7 +65,7 @@
 >> step_type = step.type
 
 *if: not (step_type = "number")
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "The variable called `step` must hold a non-zero number value (or be undefined), but instead it was a(n) {step_type}!"
 	*program: @jrc03c/show-error
 
@@ -73,7 +73,7 @@
 	*goto: clean-up
 
 *if: step = 0
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "The variable called `step` must hold a non-zero number value (or be undefined), but its value was {step}!"
 	*program: @jrc03c/show-error
 
@@ -81,7 +81,7 @@
 	*goto: clean-up
 
 *if: (stop - start < 0 and step > 0) or (stop - start > 0 and step < 0)
-	>> error_title = "@jrc03c/range"
+	>> error_title = "@jrc03c/math/range"
 	>> error_message = "The `step` value you provided ({step}) does not match the direction from `start` ({start}) to `stop` ({stop})!"
 	*program: @jrc03c/show-error
 
