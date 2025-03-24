@@ -35,7 +35,7 @@
 >> path = "/{domain_name}/messages?"
 {{ pathConcatenations }}
 
-*service: {mailgun_service_name}
+*service: Mailgun
 	*method: POST
 	*path: {path}
 	*success
@@ -45,4 +45,5 @@
 		>> mailgun_send_error["status"] = it["code"]
 		>> mailgun_send_error["message"] = it["message"]
 
+-- cleanup
 {{ cleanup }}

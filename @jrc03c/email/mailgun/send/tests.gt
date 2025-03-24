@@ -40,11 +40,6 @@
 		*default: ""
 		*save: mailgun_send_error
 	
-	*question: mailgun_service_name
-		*tip: the name assigned to the Mailgun service your program's 'Service' settings
-		*default: "Mailgun"
-		*save: mailgun_service_name
-	
 	*question: subject
 		*tip: the subject line of the email to be sent
 		*default: "GuidedTrack + Mailgun"

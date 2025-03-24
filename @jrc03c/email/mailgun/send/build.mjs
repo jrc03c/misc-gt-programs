@@ -18,16 +18,6 @@ function rebuild() {
 
     const variables = [
       {
-        name: "mailgun_service_name",
-        type: "string",
-        inputOrOutput: "input",
-        required: false,
-        description:
-          "the name assigned to the Mailgun service your program's 'Service' settings",
-        default: "Mailgun",
-        shouldStringifyDefaultValue: true,
-      },
-      {
         name: "domain_name",
         urlParamName: "domain_name",
         inputOrOutput: "input",
