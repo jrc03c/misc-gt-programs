@@ -135,6 +135,7 @@ function rebuild() {
       .join("\n\n")
 
     const nameColumnLength = Math.max(...variables.map(v => v.name.length))
+    console.log("nameColumnLength:", nameColumnLength)
 
     const docsInputsTable = createDocsTable(
       new DataFrame({
@@ -152,6 +153,8 @@ function rebuild() {
       },
     )
 
+    console.log(docsInputsTable)
+
     const docsOutputsTable = createDocsTable(
       new DataFrame({
         name: variables
@@ -167,6 +170,8 @@ function rebuild() {
         descriptionColumnLabel: "DESCRIPTION ℹ️",
       },
     )
+
+    console.log(docsOutputsTable)
 
     const variableEncodings = variables
       .filter(v => v.inputOrOutput === "input")

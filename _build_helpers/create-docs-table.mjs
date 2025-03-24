@@ -40,6 +40,7 @@ const border = {
 function createDocsTable(df, options) {
   options = options || {}
   let { nameColumnLabel, nameColumnWidth, descriptionColumnLabel } = options
+  nameColumnWidth = nameColumnWidth || options.nameColumnLength
   nameColumnLabel = nameColumnLabel || "NAME"
   descriptionColumnLabel = descriptionColumnLabel || "DESCRIPTION"
 
