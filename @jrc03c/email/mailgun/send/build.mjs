@@ -19,7 +19,6 @@ function rebuild() {
     const variables = [
       {
         name: "domain_name",
-        urlParamName: "domain_name",
         inputOrOutput: "input",
         type: "string",
         required: true,
@@ -170,6 +169,7 @@ function rebuild() {
     )
 
     const variableEncodings = variables
+      .filter(v => v.inputOrOutput === "input")
       .filter(v => v.type === "string")
       .map(v => `>> ${v.name} = ${v.name}.encode("URL")`)
       .join("\n")
@@ -183,12 +183,14 @@ function rebuild() {
       .join("\n")
 
     const cleanup = variables
+      .filter(v => v.inputOrOutput === "input")
       .map(v => `>> ${v.name} = ""`)
       .concat([`>> path = ""`, `>> it = ""`])
       .toSorted((a, b) => (a < b ? -1 : 1))
       .join("\n")
 
     const variableQuestions = variables
+      .filter(v => v.inputOrOutput === "input")
       .map(v => {
         return unindent(
           removeLeadingAndTrailingSpaces(`

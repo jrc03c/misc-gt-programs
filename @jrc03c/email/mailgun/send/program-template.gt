@@ -22,15 +22,14 @@
 --------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/mailgun/send"
+>> mailgun_send_error = {}
+>> was_sent = "no"
 
 {{ variableChecks }}
 
 ---
 
 {{ variableEncodings }}
-
->> was_sent = "no"
->> mailgun_send_error = {}
 
 >> path = "/{domain_name}/messages?"
 {{ pathConcatenations }}

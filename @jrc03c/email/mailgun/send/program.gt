@@ -44,6 +44,8 @@
 --------------------------------------------------------------------------------
 
 >> error_title = "@jrc03c/mailgun/send"
+>> mailgun_send_error = {}
+>> was_sent = "no"
 
 ---
 
@@ -110,18 +112,12 @@
 >> body_text = body_text.encode("URL")
 >> domain_name = domain_name.encode("URL")
 >> from_address = from_address.encode("URL")
->> mailgun_send_error = mailgun_send_error.encode("URL")
 >> subject = subject.encode("URL")
 >> to_address = to_address.encode("URL")
->> was_sent = was_sent.encode("URL")
-
->> was_sent = "no"
->> mailgun_send_error = {}
 
 >> path = "/{domain_name}/messages?"
 >> path = "{path}html={body_html}"
 >> path = "{path}&text={body_text}"
->> path = "{path}&domain_name={domain_name}"
 >> path = "{path}&from={from_address}"
 >> path = "{path}&subject={subject}"
 >> path = "{path}&to={to_address}"
@@ -142,8 +138,6 @@
 >> domain_name = ""
 >> from_address = ""
 >> it = ""
->> mailgun_send_error = ""
 >> path = ""
 >> subject = ""
 >> to_address = ""
->> was_sent = ""

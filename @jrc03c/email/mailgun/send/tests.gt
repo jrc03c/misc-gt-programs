@@ -35,11 +35,6 @@
 		*default: "info@clearerthinking.net"
 		*save: from_address
 	
-	*question: mailgun_send_error
-		*tip: a string containing error information from Mailgun after a failed send attempt
-		*default: ""
-		*save: mailgun_send_error
-	
 	*question: subject
 		*tip: the subject line of the email to be sent
 		*default: "GuidedTrack + Mailgun"
@@ -49,11 +44,6 @@
 		*tip: the email address to which the email will be sent
 		*default: "joshrcastle@gmail.com"
 		*save: to_address
-	
-	*question: was_sent
-		*tip: a string with a value of 'yes' or 'no' indicating whether or not the email was sent
-		*default: "no"
-		*save: was_sent
 
 *program: @jrc03c/mailgun/send
 
