@@ -1,15 +1,15 @@
 --------------------------------------------------------------------------------
 -- @jrc03c/string/encode-uri-component
 --------------------------------------------------------------------------------
--- url          : ???
--- tests        : ???
+-- url          : https://www.guidedtrack.com/programs/32442/edit
+-- tests        : https://www.guidedtrack.com/programs/32446/edit
 -- author       : Josh Castle (joshrcastle@gmail.com)
 -- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
---     {{ docsInputsTable }}
+{{ docsInputsTable }}
 -- * indicates a required input
 --------------------------------------------------------------------------------
---     {{ docsOutputsTable }}
+{{ docsOutputsTable }}
 --------------------------------------------------------------------------------
 -- `encodeURIComponent` @ MDN:
 -- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
