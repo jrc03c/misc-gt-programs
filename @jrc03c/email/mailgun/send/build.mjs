@@ -27,6 +27,16 @@ function rebuild() {
         shouldStringifyDefaultValue: true,
       },
       {
+        name: "should_encode_domain_name",
+        inputOrOutput: "input",
+        type: "string",
+        required: false,
+        description:
+          "whether or not the `domain_name` variable should be URL-encoded; the default is 'yes'",
+        default: "yes",
+        shouldStringifyDefaultValue: true,
+      },
+      {
         name: "from_address",
         urlParamName: "from",
         inputOrOutput: "input",
@@ -34,6 +44,16 @@ function rebuild() {
         required: true,
         description: "the email address from which the email will be sent",
         default: "info@clearerthinking.net",
+        shouldStringifyDefaultValue: true,
+      },
+      {
+        name: "should_encode_from_address",
+        inputOrOutput: "input",
+        type: "string",
+        required: false,
+        description:
+          "whether or not the `from_address` variable should be URL-encoded; the default is 'yes'",
+        default: "yes",
         shouldStringifyDefaultValue: true,
       },
       {
@@ -46,6 +66,17 @@ function rebuild() {
         default: "joshrcastle@gmail.com",
         shouldStringifyDefaultValue: true,
       },
+
+      {
+        name: "should_encode_to_address",
+        inputOrOutput: "input",
+        type: "string",
+        required: false,
+        description:
+          "whether or not the `to_address` variable should be URL-encoded; the default is 'yes'",
+        default: "yes",
+        shouldStringifyDefaultValue: true,
+      },
       {
         name: "subject",
         urlParamName: "subject",
@@ -54,6 +85,16 @@ function rebuild() {
         required: true,
         description: "the subject line of the email to be sent",
         default: "GuidedTrack + Mailgun",
+        shouldStringifyDefaultValue: true,
+      },
+      {
+        name: "should_encode_subject",
+        inputOrOutput: "input",
+        type: "string",
+        required: false,
+        description:
+          "whether or not the `subject` variable should be URL-encoded; the default is 'yes'",
+        default: "yes",
         shouldStringifyDefaultValue: true,
       },
       {
@@ -69,6 +110,16 @@ function rebuild() {
         shouldStringifyDefaultValue: false,
       },
       {
+        name: "should_encode_body_text",
+        inputOrOutput: "input",
+        type: "string",
+        required: false,
+        description:
+          "whether or not the `body_text` variable should be URL-encoded; the default is 'yes'",
+        default: "yes",
+        shouldStringifyDefaultValue: true,
+      },
+      {
         name: "body_html",
         urlParamName: "html",
         inputOrOutput: "input",
@@ -77,6 +128,16 @@ function rebuild() {
         description: "the HTML body of the email to be sent",
         default:
           "Hey! This is a test email from <b>GuidedTrack</b> via <b>Mailgun</b>!",
+        shouldStringifyDefaultValue: true,
+      },
+      {
+        name: "should_encode_body_html",
+        inputOrOutput: "input",
+        type: "string",
+        required: false,
+        description:
+          "whether or not the `body_html` variable should be URL-encoded; the default is 'yes'",
+        default: "yes",
         shouldStringifyDefaultValue: true,
       },
       {
@@ -135,7 +196,6 @@ function rebuild() {
       .join("\n\n")
 
     const nameColumnLength = Math.max(...variables.map(v => v.name.length))
-    console.log("nameColumnLength:", nameColumnLength)
 
     const docsInputsTable = createDocsTable(
       new DataFrame({
@@ -153,8 +213,6 @@ function rebuild() {
       },
     )
 
-    console.log(docsInputsTable)
-
     const docsOutputsTable = createDocsTable(
       new DataFrame({
         name: variables
@@ -171,13 +229,24 @@ function rebuild() {
       },
     )
 
-    console.log(docsOutputsTable)
-
     const variableEncodings = variables
       .filter(v => v.inputOrOutput === "input")
+      .filter(v => !v.name.includes("should_encode"))
       .filter(v => v.type === "string")
-      .map(v => `>> ${v.name} = ${v.name}.encode("URL")`)
-      .join("\n")
+      .map(v =>
+        `
+          *if: should_encode_${v.name} = "yes"
+            >> input = ${v.name}
+            *program: @jrc03c/string/encode-uri-component
+            >> ${v.name} = output
+        `
+          .split("\n")
+          .map(v => v.trim())
+          .filter(v => v.length > 0)
+          .map((v, i) => (i > 0 ? "\t" + v : v))
+          .join("\n"),
+      )
+      .join("\n\n")
 
     const pathConcatenations = variables
       .filter(v => !!v.urlParamName)

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <script src="https://www.guidedtrack.com/assets/jquery_gt.js"></script>
+    <script src="https://www.guidedtrack.com/assets/bootstrap.min.js"></script>
+    <script src="https://www.guidedtrack.com/assets/gt_interpreter.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://www.guidedtrack.com/assets/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://www.guidedtrack.com/assets/guidedtrack.css" />
+  </head>
+  <body>
+    <div
+      class="guidedtrack program_container"
+      id="ni7h5yb"
+      data-environment="production">
+      <div id="program_navigation" role="banner">
+        <div id="back-button"></div>
+        <div class="navigation_container" role="navigation"></div>
+        <div id="run-menu" role="navigation"></div>
+        <div
+          class="points"
+          role="complementary"
+          aria-label="points"
+          aria-live="assertive">
+          <div class="total"></div>
+          <div class="change"></div>
+        </div>
+      </div>
+      <div
+        class="maintain"
+        role="status"
+        aria-label="note"
+        aria-live="polite"></div>
+      <div class="main" role="main" aria-live="polite" aria-live="polite"></div>
+    </div>
+
+    <script>
+      $(window).on("encode-uri-component", (event, data) => {
+        $(window).trigger("encoded-uri-component", {
+          values: data.values.map(v => encodeURIComponent(v)),
+        })
+      })
+    </script>
+  </body>
+</html>

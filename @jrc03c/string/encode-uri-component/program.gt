@@ -746,6 +746,7 @@
 >> dict["ỽ"] = "%E1%BB%BD"
 >> dict["Ỿ"] = "%E1%BB%BE"
 >> dict["ỿ"] = "%E1%BB%BF"
+>> dict[" "] = "%20"
 >> dict["%22".decode("URL")] = "%22"
 
 >> output = ""
@@ -756,6 +757,9 @@
 
 	*if: not dict[char]
 		>> output = "{output}{char}"
+
+	-- This event trigger is included to prevent the "too much recursion" error.
+	*trigger: nonexistent-event-5e7g583a8ffc9be2dg7b9c87bf85318b
 
 *label: CleanUpLabel_06g6b17e97112b2e936gag7a231a0721
 

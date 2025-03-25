@@ -17,5 +17,8 @@
   "scripts": {
     "build-readme": "node build-readme.mjs"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@jrc03c/diff-match-patch": "github:jrc03c/diff-match-patch"
+  }
 }
