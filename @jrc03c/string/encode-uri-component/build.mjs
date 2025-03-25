@@ -24,6 +24,8 @@ import path from "node:path"
     }
   })
 
+  encodings[" "] = "%20"
+
   const programTemplate = fs.readFileSync(
     path.join(dir, "program-template.gt"),
     "utf8",
