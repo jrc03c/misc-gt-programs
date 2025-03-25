@@ -11,23 +11,53 @@
 >> pairs = []
 {{ pairsAssignments }}
 
+>> passes = 0
+>> total = 0
+
+*for: i, pair in pairs
+	*clear
+	Encoding random string {i} of {pairs.size}...
+
+	>> input = pair[1]
+	*program: @jrc03c/string/encode-uri-component
+	
+	*if: pair[2] = output
+		>> passes = passes + 1
+
+	>> total = total + 1
+	*wait: 0.1.seconds
+
+*clear
+
 *html
 	<h1 style="color: black; font-weight: bold;">
 		All of these tests should pass:
 	</h1>
 
-*for: pair in pairs
-	>> input = pair[1]
+*if: passes = total
+	>> success_message = "Successfully encoded {passes} of {total} random strings!"
+	*program: @jrc03c/show-success
+
+*if: passes < total
+	>> error_message = "Failed to encode {total - passes} of {total} random strings!"
+	*program: @jrc03c/show-error
+
+*html
+	<br>
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should fail:
+	</h1>
+
+>> wrongs = []
+>> wrongs.add(12345)
+>> wrongs.add(calendar::now)
+>> wrongs.add([])
+>> wrongs.add({})
+>> wrongs.add(5.minutes)
+
+*for: wrong in wrongs
+	>> input = wrong
 	*program: @jrc03c/string/encode-uri-component
-	
-	*if: pair[2] = output
-		>> success_message = "Successfully encoded random value!"
-		*program: @jrc03c/show-success
-
-	*if: not (pair[2] = output)
-		>> error_message = "These values should be identical, but they're not:\n\n<b>CORRECT VALUE:</b> {pair[2]}\n\n<b>RETURNED VALUE:</b> {output}"
-		*program: @jrc03c/show-error
-
 	*wait: 0.1.seconds
 
 *button: Okay
