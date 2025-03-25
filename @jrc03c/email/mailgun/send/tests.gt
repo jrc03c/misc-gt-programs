@@ -35,6 +35,36 @@
 		*default: "info@clearerthinking.net"
 		*save: from_address
 	
+	*question: should_encode_body_html
+		*tip: whether or not the `body_html` variable should be URL-encoded; the default is 'yes'
+		*default: "yes"
+		*save: should_encode_body_html
+	
+	*question: should_encode_body_text
+		*tip: whether or not the `body_text` variable should be URL-encoded; the default is 'yes'
+		*default: "yes"
+		*save: should_encode_body_text
+	
+	*question: should_encode_domain_name
+		*tip: whether or not the `domain_name` variable should be URL-encoded; the default is 'yes'
+		*default: "yes"
+		*save: should_encode_domain_name
+	
+	*question: should_encode_from_address
+		*tip: whether or not the `from_address` variable should be URL-encoded; the default is 'yes'
+		*default: "yes"
+		*save: should_encode_from_address
+	
+	*question: should_encode_subject
+		*tip: whether or not the `subject` variable should be URL-encoded; the default is 'yes'
+		*default: "yes"
+		*save: should_encode_subject
+	
+	*question: should_encode_to_address
+		*tip: whether or not the `to_address` variable should be URL-encoded; the default is 'yes'
+		*default: "yes"
+		*save: should_encode_to_address
+	
 	*question: subject
 		*tip: the subject line of the email to be sent
 		*default: "GuidedTrack + Mailgun"

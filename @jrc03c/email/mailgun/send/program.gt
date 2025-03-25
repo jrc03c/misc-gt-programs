@@ -6,32 +6,53 @@
 -- author       : Josh Castle (joshrcastle@gmail.com)
 -- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
--- ┌────────────────────┬──────────────────────────────────────────────────────┐
--- │ INPUT 👉           │ DESCRIPTION ℹ️                                       │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ body_html*         │ the HTML body of the email to be sent                │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ body_text          │ the plaintext body of the email to be sent           │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ domain_name*       │ the domain name from which the email will be sent    │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ from_address*      │ the email address from which the email will be sent  │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ subject*           │ the subject line of the email to be sent             │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ to_address*        │ the email address to which the email will be sent    │
--- └────────────────────┴──────────────────────────────────────────────────────┘
+-- ┌────────────────────────────┬──────────────────────────────────────────────┐
+-- │ INPUT 👉                   │ DESCRIPTION ℹ️                               │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ body_html*                 │ the HTML body of the email to be sent        │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ body_text                  │ the plaintext body of the email to be sent   │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ domain_name*               │ the domain name from which the email will be │
+-- │                            │ sent                                         │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ from_address*              │ the email address from which the email will  │
+-- │                            │ be sent                                      │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ should_encode_body_html    │ whether or not the `body_html` variable      │
+-- │                            │ should be URL-encoded; the default is 'yes'  │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ should_encode_body_text    │ whether or not the `body_text` variable      │
+-- │                            │ should be URL-encoded; the default is 'yes'  │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ should_encode_domain_name  │ whether or not the `domain_name` variable    │
+-- │                            │ should be URL-encoded; the default is 'yes'  │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ should_encode_from_address │ whether or not the `from_address` variable   │
+-- │                            │ should be URL-encoded; the default is 'yes'  │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ should_encode_subject      │ whether or not the `subject` variable should │
+-- │                            │ be URL-encoded; the default is 'yes'         │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ should_encode_to_address   │ whether or not the `to_address` variable     │
+-- │                            │ should be URL-encoded; the default is 'yes'  │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ subject*                   │ the subject line of the email to be sent     │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ to_address*                │ the email address to which the email will be │
+-- │                            │ sent                                         │
+-- └────────────────────────────┴──────────────────────────────────────────────┘
 -- * indicates a required input
 --------------------------------------------------------------------------------
--- ┌────────────────────┬──────────────────────────────────────────────────────┐
--- │ OUTPUT 👈          │ DESCRIPTION ℹ️                                       │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ mailgun_send_error │ a string containing error information from Mailgun   │
--- │                    │ after a failed send attempt                          │
--- ├────────────────────┼──────────────────────────────────────────────────────┤
--- │ was_sent           │ a string with a value of 'yes' or 'no' indicating    │
--- │                    │ whether or not the email was sent                    │
--- └────────────────────┴──────────────────────────────────────────────────────┘
+-- ┌────────────────────────────┬──────────────────────────────────────────────┐
+-- │ OUTPUT 👈                  │ DESCRIPTION ℹ️                               │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ mailgun_send_error         │ a string containing error information from   │
+-- │                            │ Mailgun after a failed send attempt          │
+-- ├────────────────────────────┼──────────────────────────────────────────────┤
+-- │ was_sent                   │ a string with a value of 'yes' or 'no'       │
+-- │                            │ indicating whether or not the email was sent │
+-- └────────────────────────────┴──────────────────────────────────────────────┘
 --------------------------------------------------------------------------------
 -- SERVICE SETTINGS:
 -- Name: Mailgun
@@ -88,6 +109,60 @@
 
 ---
 
+*if: not should_encode_body_html
+	>> should_encode_body_html = "yes"
+
+*if: not (should_encode_body_html.type = "string")
+	>> error_message = "The variable called <code>should_encode_body_html</code> must have a string value representing whether or not the `body_html` variable should be URL-encoded; the default is 'yes'! (The value you provided is a(n) {should_encode_body_html.type}.)"
+	*program: @jrc03c/show-error  
+
+---
+
+*if: not should_encode_body_text
+	>> should_encode_body_text = "yes"
+
+*if: not (should_encode_body_text.type = "string")
+	>> error_message = "The variable called <code>should_encode_body_text</code> must have a string value representing whether or not the `body_text` variable should be URL-encoded; the default is 'yes'! (The value you provided is a(n) {should_encode_body_text.type}.)"
+	*program: @jrc03c/show-error  
+
+---
+
+*if: not should_encode_domain_name
+	>> should_encode_domain_name = "yes"
+
+*if: not (should_encode_domain_name.type = "string")
+	>> error_message = "The variable called <code>should_encode_domain_name</code> must have a string value representing whether or not the `domain_name` variable should be URL-encoded; the default is 'yes'! (The value you provided is a(n) {should_encode_domain_name.type}.)"
+	*program: @jrc03c/show-error  
+
+---
+
+*if: not should_encode_from_address
+	>> should_encode_from_address = "yes"
+
+*if: not (should_encode_from_address.type = "string")
+	>> error_message = "The variable called <code>should_encode_from_address</code> must have a string value representing whether or not the `from_address` variable should be URL-encoded; the default is 'yes'! (The value you provided is a(n) {should_encode_from_address.type}.)"
+	*program: @jrc03c/show-error  
+
+---
+
+*if: not should_encode_subject
+	>> should_encode_subject = "yes"
+
+*if: not (should_encode_subject.type = "string")
+	>> error_message = "The variable called <code>should_encode_subject</code> must have a string value representing whether or not the `subject` variable should be URL-encoded; the default is 'yes'! (The value you provided is a(n) {should_encode_subject.type}.)"
+	*program: @jrc03c/show-error  
+
+---
+
+*if: not should_encode_to_address
+	>> should_encode_to_address = "yes"
+
+*if: not (should_encode_to_address.type = "string")
+	>> error_message = "The variable called <code>should_encode_to_address</code> must have a string value representing whether or not the `to_address` variable should be URL-encoded; the default is 'yes'! (The value you provided is a(n) {should_encode_to_address.type}.)"
+	*program: @jrc03c/show-error  
+
+---
+
 *if: not subject
 	>> error_message = "You must define a variable called <code>subject</code> that is a string representing the subject line of the email to be sent!"
 	*program: @jrc03c/show-error
@@ -108,12 +183,35 @@
 
 ---
 
->> body_html = body_html.encode("URL")
->> body_text = body_text.encode("URL")
->> domain_name = domain_name.encode("URL")
->> from_address = from_address.encode("URL")
->> subject = subject.encode("URL")
->> to_address = to_address.encode("URL")
+*if: should_encode_body_html = "yes"
+	>> input = body_html
+	*program: @jrc03c/string/encode-uri-component
+	>> body_html = output
+
+*if: should_encode_body_text = "yes"
+	>> input = body_text
+	*program: @jrc03c/string/encode-uri-component
+	>> body_text = output
+
+*if: should_encode_domain_name = "yes"
+	>> input = domain_name
+	*program: @jrc03c/string/encode-uri-component
+	>> domain_name = output
+
+*if: should_encode_from_address = "yes"
+	>> input = from_address
+	*program: @jrc03c/string/encode-uri-component
+	>> from_address = output
+
+*if: should_encode_subject = "yes"
+	>> input = subject
+	*program: @jrc03c/string/encode-uri-component
+	>> subject = output
+
+*if: should_encode_to_address = "yes"
+	>> input = to_address
+	*program: @jrc03c/string/encode-uri-component
+	>> to_address = output
 
 >> path = "/{domain_name}/messages?"
 >> path = "{path}html={body_html}"
@@ -139,5 +237,11 @@
 >> from_address = ""
 >> it = ""
 >> path = ""
+>> should_encode_body_html = ""
+>> should_encode_body_text = ""
+>> should_encode_domain_name = ""
+>> should_encode_from_address = ""
+>> should_encode_subject = ""
+>> should_encode_to_address = ""
 >> subject = ""
 >> to_address = ""
