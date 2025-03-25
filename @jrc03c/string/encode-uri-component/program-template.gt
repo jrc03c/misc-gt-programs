@@ -1,0 +1,49 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/string/encode-uri-component
+--------------------------------------------------------------------------------
+-- url          : ???
+-- tests        : ???
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
+--------------------------------------------------------------------------------
+--     {{ docsInputsTable }}
+-- * indicates a required input
+--------------------------------------------------------------------------------
+--     {{ docsOutputsTable }}
+--------------------------------------------------------------------------------
+-- `encodeURIComponent` @ MDN:
+-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/string/encode-uri-component"
+>> error_is_fatal = "no"
+
+*if: not input
+	>> error_message = "You must define a variable called `input` that has a string value representing the string to be encoded!"
+	*program: @jrc03c/show-error
+	*goto: CleanUpLabel_06g6b17e97112b2e936gag7a231a0721
+
+*if: not (input.type = "string")
+	>> error_message = "You must define a variable called `input` that has a string value representing the string to be encoded! (The value you provided was a(n) {input.type}.)"
+	*program: @jrc03c/show-error
+	*goto: CleanUpLabel_06g6b17e97112b2e936gag7a231a0721
+
+>> dict = {}
+{{ dictAssignments }}
+
+>> output = ""
+
+*for: i, char in input
+	*if: dict[char]
+		>> output = "{output}{dict[char]}"
+
+	*if: not dict[char]
+		>> output = "{output}{char}"
+
+*label: CleanUpLabel_06g6b17e97112b2e936gag7a231a0721
+
+>> dict = ""
+>> error_is_fatal = ""
+>> error_message = ""
+>> error_title = ""
+>> input = ""

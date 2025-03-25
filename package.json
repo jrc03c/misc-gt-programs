@@ -5,6 +5,8 @@
     "@jrc03c/js-data-science-helpers": "^0.0.86",
     "@jrc03c/js-math-tools": "^0.0.92",
     "@jrc03c/js-text-tools": "^0.0.62",
+    "@jrc03c/pause": "^0.0.10",
+    "@jrc03c/progress": "^0.0.7",
     "@jrc03c/watch": "^0.0.20",
     "eslint": "^9.22.0",
     "globals": "^16.0.0",
