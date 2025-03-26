@@ -17,14 +17,18 @@ import path from "node:path"
   const excluded = [`"`]
 
   glyphs.forEach(glyph => {
-    const encoded = encodeURIComponent(glyph)
-
-    if (glyph !== encoded && !excluded.includes(glyph)) {
+    if (!excluded.includes(glyph)) {
+      const encoded = encodeURIComponent(glyph)
       encodings[glyph] = encoded
     }
   })
 
   encodings[" "] = "%20"
+
+  for (let i = 0; i < 10; i++) {
+    const char = i.toString()
+    encodings[char] = encodeURIComponent(char)
+  }
 
   const programTemplate = fs.readFileSync(
     path.join(dir, "program-template.gt"),

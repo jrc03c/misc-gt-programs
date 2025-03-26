@@ -34,12 +34,7 @@
 >> output = ""
 
 *for: i, char in input
-	*if: dict[char]
-		>> output = "{output}{dict[char]}"
-
-	*if: not dict[char]
-		>> output = "{output}{char}"
-
+	>> output = "{output}{dict[char]}"
 	-- This event trigger is included to prevent the "too much recursion" error.
 	*trigger: nonexistent-event-5e7g583a8ffc9be2dg7b9c87bf85318b
 
