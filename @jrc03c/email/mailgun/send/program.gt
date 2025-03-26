@@ -64,7 +64,7 @@
 -- https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Messages/#tag/Messages/operation/POST-v3--domain-name--messages
 --------------------------------------------------------------------------------
 
->> error_title = "@jrc03c/mailgun/send"
+>> error_title = "@jrc03c/email/mailgun/send"
 >> mailgun_send_error = {}
 >> was_sent = "no"
 
