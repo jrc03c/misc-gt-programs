@@ -1,0 +1,28 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/list-tags/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/32482/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+-- NOTE: By itself, this program won't do anything! You'll have to create a
+-- duplicate of it and set up Mailchimp in the duplicate's service settings. See
+-- the target program for more info about how to configure the service.
+--------------------------------------------------------------------------------
+
+*page
+{{ testQuestions }}
+
+*program: @jrc03c/email/mailchimp/list-tags
+
+*if: mailchimp_tag_list_error = ""
+	>> success_message = "Tags: [{tags}]"
+	>> success_title = "@jrc03c/email/mailchimp/list-tags/tests"
+	*program: @jrc03c/show-success
+
+*if: not (mailchimp_tag_list_error = "")
+	>> error_message = "Error: {mailchimp_tag_list_error}"
+	>> error_title = "@jrc03c/email/mailchimp/list-tags/tests"
+	>> error_is_fatal = "no"
+	*program: @jrc03c/show-error
+
+*button: Start over

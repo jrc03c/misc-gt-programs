@@ -1,0 +1,87 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/list-tags
+--------------------------------------------------------------------------------
+-- url          : https://www.guidedtrack.com/programs/32482/edit
+-- tests        : https://www.guidedtrack.com/programs/32483/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
+--------------------------------------------------------------------------------
+-- ┌──────────────────────────┬────────────────────────────────────────────────┐
+-- │ INPUT 👉                 │ DESCRIPTION ℹ️                                 │
+-- ├──────────────────────────┼────────────────────────────────────────────────┤
+-- │ email_address*           │ the email address for which the tags will be   │
+-- │                          │ listed                                         │
+-- ├──────────────────────────┼────────────────────────────────────────────────┤
+-- │ mailchimp_list_id*       │ the ID of the list to which the email address  │
+-- │                          │ is subscribed                                  │
+-- └──────────────────────────┴────────────────────────────────────────────────┘
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- ┌──────────────────────────┬────────────────────────────────────────────────┐
+-- │ OUTPUT 👈                │ DESCRIPTION ℹ️                                 │
+-- ├──────────────────────────┼────────────────────────────────────────────────┤
+-- │ mailchimp_tag_list_error │ an association with response data from         │
+-- │                          │ Mailchimp; will be an empty association if the │
+-- │                          │ tag update request succeeds                    │
+-- ├──────────────────────────┼────────────────────────────────────────────────┤
+-- │ tags                     │ an array of strings representing the active    │
+-- │                          │ tags on the member's profile                   │
+-- └──────────────────────────┴────────────────────────────────────────────────┘
+--------------------------------------------------------------------------------
+-- SERVICE SETTINGS:
+-- Name: Mailchimp
+-- URL: https://YOUR_ZONE.api.mailchimp.com/3.0
+-- Username: anystring
+-- Password: YOUR_API_KEY
+--------------------------------------------------------------------------------
+-- MAILCHIMP API DOCUMENTATION:
+-- https://mailchimp.com/developer/marketing/api/list-member-tags/
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/email/mailchimp/list-tags"
+>> error_is_fatal = "no"
+>> mailchimp_tag_list_error = ""
+
+---
+
+*if: not email_address
+	>> error_message = "You must define a variable called `email_address` that has a string value representing the email address for which the tags will be listed!"
+	*program: @jrc03c/show-error
+	*return
+
+*if: not (email_address.type = "string")
+	>> error_message = "The variable `email_address` must have a string value representing the email address for which the tags will be listed. (The value you provided was a(n) {email_address.type}.)"
+	*program: @jrc03c/show-error
+	*return
+
+---
+
+*if: not mailchimp_list_id
+	>> error_message = "You must define a variable called `mailchimp_list_id` that has a string value representing the ID of the list to which the email address is subscribed!"
+	*program: @jrc03c/show-error
+	*return
+
+*if: not (mailchimp_list_id.type = "string")
+	>> error_message = "The variable `mailchimp_list_id` must have a string value representing the ID of the list to which the email address is subscribed. (The value you provided was a(n) {mailchimp_list_id.type}.)"
+	*program: @jrc03c/show-error
+	*return
+
+--
+
+>> tags = []
+
+*service: Mailchimp
+	*path: /lists/{mailchimp_list_id}/members/{email_address}/tags
+	*method: GET
+	*success
+		*if: it["tags"]
+			*for: tag in it["tags"]
+				>> tags.add(tag["name"])
+	*error
+		>> mailchimp_tag_list_error = it
+
+*if: not (mailchimp_tag_list_error = "")
+	>> error_message = "Uh-oh! Something went wrong during the tag list process!"
+	*program: @jrc03c/show-error
+
+>> mailchimp_list_id = ""

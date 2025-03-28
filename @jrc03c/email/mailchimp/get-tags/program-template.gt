@@ -1,0 +1,48 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/mailchimp/list-tags
+--------------------------------------------------------------------------------
+-- url          : https://www.guidedtrack.com/programs/32482/edit
+-- tests        : https://www.guidedtrack.com/programs/32483/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
+--------------------------------------------------------------------------------
+-- {{ docsInputsTable }}
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- {{ docsOutputsTable }}
+--------------------------------------------------------------------------------
+-- SERVICE SETTINGS:
+-- Name: Mailchimp
+-- URL: https://YOUR_ZONE.api.mailchimp.com/3.0
+-- Username: anystring
+-- Password: YOUR_API_KEY
+--------------------------------------------------------------------------------
+-- MAILCHIMP API DOCUMENTATION:
+-- https://mailchimp.com/developer/marketing/api/list-member-tags/
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/email/mailchimp/list-tags"
+>> error_is_fatal = "no"
+>> mailchimp_tag_list_error = ""
+
+{{ inputVariableChecks }}
+
+--
+
+>> tags = []
+
+*service: Mailchimp
+	*path: /lists/{mailchimp_list_id}/members/{email_address}/tags
+	*method: GET
+	*success
+		*if: it["tags"]
+			*for: tag in it["tags"]
+				>> tags.add(tag["name"])
+	*error
+		>> mailchimp_tag_list_error = it
+
+*if: not (mailchimp_tag_list_error = "")
+	>> error_message = "Uh-oh! Something went wrong during the tag list process!"
+	*program: @jrc03c/show-error
+
+{{ cleanup }}
