@@ -1,0 +1,77 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/math/random/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/32527/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+*label: StartLabel
+
+*question: What do you want to do?
+	Generate a single random number
+		*goto: SingleRandomNumberLabel
+	Draw a distribution plot of 1,000 random numbers
+		*goto: DistributionPlotLabel
+
+*label: SingleRandomNumberLabel
+
+*while: 0 < 1
+	*program: @jrc03c/math/random
+
+	Random number: {r.text}
+
+	*question: {""}
+		Generate another random number
+		Start over
+			*goto: StartLabel
+				*reset
+
+*label: DistributionPlotLabel
+
+*while: 0 < 1
+	Generating random numbers...
+
+	*wait: 0.1.seconds
+
+	>> x = []
+
+	*while: x.size < 1000
+		*program: @jrc03c/math/random
+		>> x.add(r)
+		*trigger: does-not-exist-636e2gbd0e298f0b2075b9acg4f14cag
+
+	>> bin_count = 50
+	>> bins = []
+	>> i = 0
+
+	Putting random numbers into bins...
+
+	*wait: 0.1.seconds
+
+	*while: i < bin_count
+		>> bins.add([i / bin_count, 0])
+		>> i = i + 1
+
+	>> step = 1 / bin_count
+
+	*for: v in x
+		>> bin = v / step
+		>> bin = bin.round
+		>> bin = bin * step
+		>> bin = bin * bin_count
+		>> bin = bin.round
+		>> bins[bin] = bins[bin][2] + 1
+
+	Drawing chart...
+
+	*wait: 0.1.seconds
+
+	*chart: Distribution of 1,000 random numbers
+		*type: bar
+		*data: bins
+
+	*question: {""}
+		Draw another distribution plot
+		Start over
+			*goto: StartLabel
+				*reset
