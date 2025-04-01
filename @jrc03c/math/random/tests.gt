@@ -10,7 +10,7 @@
 *question: What do you want to do?
 	Generate a single random number
 		*goto: SingleRandomNumberLabel
-	Draw a distribution plot of 1,000 random numbers
+	Draw a distribution plot of 100 random numbers
 		*goto: DistributionPlotLabel
 
 *label: SingleRandomNumberLabel
@@ -35,12 +35,12 @@
 
 	>> x = []
 
-	*while: x.size < 1000
+	*while: x.size < 100
 		*program: @jrc03c/math/random
 		>> x.add(r)
 		*trigger: does-not-exist-636e2gbd0e298f0b2075b9acg4f14cag
 
-	>> bin_count = 50
+	>> bin_count = 10
 	>> bins = []
 	>> i = 0
 
@@ -66,7 +66,7 @@
 
 	*wait: 0.1.seconds
 
-	*chart: Distribution of 1,000 random numbers
+	*chart: Distribution of 100 random numbers
 		*type: bar
 		*data: bins
 
