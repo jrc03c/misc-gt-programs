@@ -13,8 +13,10 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 
 ## Math
 
+- [@jrc03c/math/ceil](https://www.guidedtrack.com/programs/32621/edit)
 - [@jrc03c/math/contains-only-numbers](https://www.guidedtrack.com/programs/32362/edit)
 - [@jrc03c/math/dot](https://www.guidedtrack.com/programs/32364/edit)
+- [@jrc03c/math/floor](https://www.guidedtrack.com/programs/32609/edit)
 - [@jrc03c/math/is-matrix](https://www.guidedtrack.com/programs/32358/edit)
 - [@jrc03c/math/is-vector](https://www.guidedtrack.com/programs/32360/edit)
 - [@jrc03c/math/logistic-regression-predict](https://www.guidedtrack.com/programs/32366/edit)

@@ -1,13 +1,13 @@
 --------------------------------------------------------------------------------
--- @jrc03c/math/floor/tests
+-- @jrc03c/math/ceil/tests
 --------------------------------------------------------------------------------
--- target : https://www.guidedtrack.com/programs/32609/edit
+-- target : https://www.guidedtrack.com/programs/32621/edit
 -- author : Josh Castle (joshrcastle@gmail.com)
 --------------------------------------------------------------------------------
 
->> error_title = "@jrc03c/math/floor/tests"
+>> error_title = "@jrc03c/math/ceil/tests"
 >> error_is_fatal = "no"
->> success_title = "@jrc03c/math/floor/tests"
+>> success_title = "@jrc03c/math/ceil/tests"
 
 *html
 	<h1 style="color: black; font-weight: bold;">
@@ -22,21 +22,21 @@
 >> pairs.add([-1, -1])
 >> pairs.add([-1.0, -1.0])
 >> pairs.add([-234, -234])
->> pairs.add([3.1, 3])
->> pairs.add([3.9, 3])
->> pairs.add([-3.1, -4])
->> pairs.add([-3.9, -4])
+>> pairs.add([3.1, 4])
+>> pairs.add([3.9, 4])
+>> pairs.add([-3.1, -3])
+>> pairs.add([-3.9, -3])
 
 *for: pair in pairs
 	>> x = pair[1]
-	*program: @jrc03c/math/floor
+	*program: @jrc03c/math/ceil
 	
 	*if: y = pair[2]
-		>> success_message = "floor({pair[1]}) = {pair[2]}"
+		>> success_message = "ceil({pair[1]}) = {pair[2]}"
 		*program: @jrc03c/show-success
 	
 	*if: not (y = pair[2])
-		>> error_message = "floor({pair[1]}) != {pair[2]}; instead returned {y}"
+		>> error_message = "ceil({pair[1]}) != {pair[2]}; instead returned {y}"
 		*program: @jrc03c/show-error
 
 
@@ -51,6 +51,6 @@
 
 *for: wrong in wrongs
 	>> x = wrong
-	*program: @jrc03c/math/floor
+	*program: @jrc03c/math/ceil
 
 *button: Okay

@@ -1,51 +1,51 @@
 --------------------------------------------------------------------------------
--- @jrc03c/math/floor
+-- @jrc03c/math/ceil
 --------------------------------------------------------------------------------
--- url          : https://www.guidedtrack.com/programs/32609/edit
--- tests        : https://www.guidedtrack.com/programs/32610/edit
+-- url          : https://www.guidedtrack.com/programs/32621/edit
+-- tests        : https://www.guidedtrack.com/programs/32622/edit
 -- author       : Josh Castle (joshrcastle@gmail.com)
 -- all programs : https://github.com/jrc03c/misc-gt-programs
 --------------------------------------------------------------------------------
 -- ┌───────────────────┬───────────────────────────────────────────────────────┐
 -- │ INPUT 👉          │ DESCRIPTION ℹ️                                        │
 -- ├───────────────────┼───────────────────────────────────────────────────────┤
--- │ x*                │ the number to be floored                              │
+-- │ x*                │ the number to be rounded up                           │
 -- └───────────────────┴───────────────────────────────────────────────────────┘
 -- * indicates a required input
 --------------------------------------------------------------------------------
 -- ┌───────────────────┬───────────────────────────────────────────────────────┐
 -- │ OUTPUT 👈         │ DESCRIPTION ℹ️                                        │
 -- ├───────────────────┼───────────────────────────────────────────────────────┤
--- │ y                 │ the floored version of `x`                            │
+-- │ y                 │ the rounded-up version of `x`                         │
 -- └───────────────────┴───────────────────────────────────────────────────────┘
 --------------------------------------------------------------------------------
--- NOTE: Keep in mind that negative decimal numbers will get rounded down to the
--- next integer! For example, floor(-3.1) = -4
+-- NOTE: Keep in mind that negative decimal numbers will get rounded up to the
+-- next integer! For example, ceil(-3.1) = -3
 --------------------------------------------------------------------------------
 
->> error_title = "@jrc03c/math/floor"
+>> error_title = "@jrc03c/math/ceil"
 >> error_is_fatal = "no"
 
 *if: not x
 	>> error_message = "You must define a variable called <code>x</code> that has a number value!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel6129d8bc334bff6b7362g045f3g5gg21
+	*goto: CleanUpLabelf41dgea4fa9d661d77b5ga3517728e52
 
 *if: not (x.type = "number")
 	>> error_message = "The variable <code>x</code> must have a number value! (The value you provided was a(n) {x.type}.)"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel6129d8bc334bff6b7362g045f3g5gg21
+	*goto: CleanUpLabelf41dgea4fa9d661d77b5ga3517728e52
 
 >> y = x.text
 >> y = y.split(".")
 >> y = y[1]
 >> y = y + 0
 
-*if: y < 0 and (not (y = x))
-	>> y = y - 1
+*if: y > 0 and (not (y = x))
+	>> y = y + 1
 
 -- cleanup
-*label: CleanUpLabel6129d8bc334bff6b7362g045f3g5gg21
+*label: CleanUpLabelf41dgea4fa9d661d77b5ga3517728e52
 
 >> error_is_fatal = ""
 >> error_message = ""
