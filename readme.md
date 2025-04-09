@@ -36,6 +36,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 
 ## Miscellaneous
 
+- [@jrc03c/misc/slice](https://www.guidedtrack.com/programs/32625/edit)
 - [@jrc03c/flatten](https://www.guidedtrack.com/programs/30091)
 - [@jrc03c/show-error](https://www.guidedtrack.com/programs/20556/edit)
 - [@jrc03c/show-info](https://www.guidedtrack.com/programs/20559/edit)

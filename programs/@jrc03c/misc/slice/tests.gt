@@ -1,0 +1,101 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/misc/slice/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/32625/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+*html
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should pass:
+	</h1>
+
+>> rights = []
+>> rights.add([[5, 4, 3, 2, 1], 1, 5, [5, 4, 3, 2, 1]])
+>> rights.add([[234, 345, 456, 567, 678], 2, 4, [345, 456, 567]])
+>> rights.add(["Hello, world!", 1, 13, "Hello, world!"])
+>> rights.add(["Hello, world!", 5, 11, "o, worl"])
+>> rights.add([[2, 3, 5, 7, 11], 2, 2, [5]])
+>> rights.add([[2, 3, 5, 7, 11], 2, 1, []])
+>> rights.add(["Goodbye, world!", 7, 7, "e"])
+>> rights.add(["Goodbye, world!", 7, 2, ""])
+
+*for: quad in rights
+	>> x = quad[1]
+	>> start = quad[2]
+	>> end = quad[3]
+	*program: @jrc03c/misc/slice
+	>> x_pred = x_slice
+
+	>> passed = "yes"
+	>> x_true = quad[4]
+
+	*if: x_pred.size = x_true.size
+		>> i = 1
+
+		*while: i < x_pred.size
+			*if: not (x_pred[i] = x_true[i])
+				>> passed = "no"
+
+			>> i = i + 1
+
+	*if: not (x_pred.size = x_true.size)
+		>> passed = "no"
+
+	*if: passed = "yes"
+		*if: x.type = "collection"
+			>> success_message = "slice([{x}], {start}, {end}) = [{x_true}]"
+
+		*if: x.type = "string"
+			>> success_message = "slice('{x}', {start}, {end}) = '{x_true}'"
+
+		*program: @jrc03c/show-success
+
+	*if: passed = "no"
+		*if: x.type = "collection"
+			>> error_message = "slice([{x}], {start}, {end}) != [{x_true}]; returned [{x_pred}] instead"
+
+		*if: x.type = "string"
+			>> error_message = "slice('{x}', {start}, {end}) != '{x_true}'; returned '{x_pred}' instead"
+
+		*program: @jrc03c/show-error
+
+*html
+	<br>
+
+	<h1 style="color: black; font-weight: bold;">
+		All of these tests should fail:
+	</h1>
+
+>> wrongs = ["hello", [], {}, calendar::now, 5.minutes, -17, 1000]
+
+*for: wrong in wrongs
+	>> x = [1, 2, 3, 4, 5]
+	>> start = wrong
+	>> end = 1
+	*program: @jrc03c/misc/slice
+
+	>> x = [1, 2, 3, 4, 5]
+	>> start = 1
+	>> end = wrong
+	*program: @jrc03c/misc/slice
+
+	>> x = "Hey!"
+	>> start = wrong
+	>> end = 1
+	*program: @jrc03c/misc/slice
+
+	>> x = "Hey!"
+	>> start = 1
+	>> end = wrong
+	*program: @jrc03c/misc/slice
+
+>> wrongs = [234, {}, calendar::now, 5.minutes]
+
+*for: wrong in wrongs
+	>> x = wrong
+	>> start = 1
+	>> end = 1
+	*program: @jrc03c/misc/slice
+
+*button: Okay

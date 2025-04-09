@@ -1,0 +1,88 @@
+{{ docsString }}
+
+>> error_title = "{{ programName }}"
+>> error_is_fatal = "no"
+
+-- check `x`
+*if: not x
+	>> error_message = "You must define a variable called <code>x</code> that has a string or collection value from which a slice will be taken!"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+*if: (not (x.type = "collection")) and (not (x.type = "string"))
+	>> error_message = "The variable <code>x</code> must have a string or collection value! (The value you provided for <code>x</code> had a(n) {x.type} value.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+-- check `start`
+*if: not start
+	>> start = 1
+
+*if: (not (start.type = "number"))
+	>> error_message = "The variable <code>start</code> must have an integer value in the range [1, <code>x.size</code>]! (The value you provided for <code>start</code> was a(n) {start.type} value.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+*if: start < 1
+	>> error_message = "The variable <code>start</code> must have an integer value in the range [1, <code>x.size</code>]! (The value you provided for <code>start</code> was {start}.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+*if: start > x.size
+	>> error_message = "The variable <code>start</code> must have an integer value in the range [1, <code>x.size</code>]! (The value you provided for <code>start</code> was {start}.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+-- check `end`
+*if: not end
+	>> end = x.size
+
+*if: (not (end.type = "number"))
+	>> error_message = "The variable <code>end</code> must have an integer value in the range [<code>start</code>, <code>x.size</code>]! (The value you provided for <code>end</code> was a(n) {end.type} value.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+*if: end < 1
+	>> error_message = "The variable <code>end</code> must have an integer value in the range [1, <code>x.size</code>]! (The value you provided for <code>end</code> was {end}.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+*if: end < start
+	*if: x.type = "collection"
+		>> x_slice = []
+
+	*if: x.type = "string"
+		>> x_slice = ""
+
+	*goto: {{ cleanupLabelName }}
+
+*if: end > x.size
+	>> error_message = "The variable <code>end</code> must have an integer value in the range [<code>start</code>, <code>x.size</code>]! (Your <code>start</code> and <code>end</code> values, respectively, were {start} and {end}.)"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanupLabelName }}
+
+-- create slice
+>> i = start
+
+*if: x.type = "collection"
+	>> x_slice = []
+
+	*while: i <= end
+		>> x_slice.add(x[i])
+		>> i = i + 1
+		*trigger: {{ nonexistentTriggerName }}
+
+*if: x.type = "string"
+	>> x_slice = ""
+
+	*while: i <= end
+		>> x_slice = "{x_slice}{x[i]}"
+		>> i = i + 1
+		*trigger: {{ nonexistentTriggerName }}
+
+-- clean up
+*label: {{ cleanupLabelName }}
+
+>> error_is_fatal = ""
+>> error_message = ""
+>> error_title = ""
