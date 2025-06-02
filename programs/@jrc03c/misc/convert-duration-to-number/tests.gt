@@ -1,0 +1,70 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/convert-duration-to-number/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/33093/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+*html
+	<h1 style="color: black;">
+		<b>
+			All of these tests should pass:
+		</b>
+	</h1>
+
+>> error_title = "@jrc03c/convert-duration-to-number/tests"
+>> error_is_fatal = "no"
+>> success_title = error_title
+>> test_units = ["seconds", "minutes", "hours", "days", "weeks", "months", "years"]
+
+*for: test_unit in test_units
+	*program: @jrc03c/math/random
+	>> r = r * 200 - 100
+	
+	*if: test_unit = "seconds"
+		>> duration = r.seconds
+
+	*if: test_unit = "minutes"
+		>> duration = r.minutes
+
+	*if: test_unit = "hours"
+		>> duration = r.hours
+
+	*if: test_unit = "days"
+		>> duration = r.days
+
+	*if: test_unit = "weeks"
+		>> duration = r.weeks
+
+	*if: test_unit = "months"
+		>> duration = r.months
+
+	*if: test_unit = "years"
+		>> duration = r.years
+
+	*program: @jrc03c/convert-duration-to-number
+	
+	*if: number = r
+		>> success_message = "{test_unit} | {duration.text} == {number.text}"
+		*program: @jrc03c/show-success
+
+	*if: not (number = r)
+		>> error_message = "{test_unit} | {duration.text} != {number.text}"
+		*program: @jrc03c/show-error
+
+	*wait: 0.01.seconds
+
+*html
+	<br>
+	<h1 style="color: black;">
+		<b>
+			All of these tests should fail:
+		</b>
+	</h1>
+
+>> wrongs = [0, -1, 1, 234, -234, 1.23, -1.23, "Hello, world!", [2, 3, 4], { "hello" -> "world" }, calendar::now]
+
+*for: duration in wrongs
+	*program: @jrc03c/convert-duration-to-number
+
+*button: Okay
