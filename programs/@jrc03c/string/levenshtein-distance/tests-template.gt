@@ -1,0 +1,31 @@
+>> success_title = "@jrc03c/string/levenshtein-distance/tests"
+>> error_title = "@jrc03c/string/levenshtein-distance/tests"
+>> error_is_fatal = "no"
+
+*html
+	<h1 style="color: black">
+		All of these tests should pass:
+	</h1>
+
+{% for trio in testTrios %}
+--------------------------------------------------------------------------------
+
+>> a = "{{ trio[0] }}"
+>> b = "{{ trio[1] }}"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = {{ trio[2] }}
+	>> success_message = "'{{ trio[0] }}' vs. '{{ trio[1] }}' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = {{ trio[2] }})
+	>> error_message = "'{{ trio[0] }}' vs. '{{ trio[1] }}' is supposed to be {{ trio[2] }}, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+{% endfor %}
+
+--------------------------------------------------------------------------------
+
+*button: Okay

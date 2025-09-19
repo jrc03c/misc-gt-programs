@@ -72,10 +72,32 @@ async function rebuild() {
       "<< cleanUpAssignments >>",
     ].join("\n")
 
+    const testTrios = [
+      ["a", "a", 0],
+      ["a", "b", 1],
+      ["ab", "ab", 0],
+      ["ab", "ac", 1],
+      ["ab", "db", 1],
+      ["ab", "cd", 2],
+      ["37e9351f75a2152a", "", 16],
+      [
+        "355d8fea29123697b896eb2a844396de",
+        "70f8daa0c909036db3181a8211c6708d",
+        27,
+      ],
+      [
+        "70c5e7b4aa2f95c18253b15fe3fcdd8b4af40692aa143a9ddca9a5c1fb1f331aebb09f243b5e716b0ded2bbcad8063c4517c7e1a404a8869c617de6ebb336f6bec38910f27f62a2571213b5a01fd5a4c1436aceed00b9dd708f4951abb2d075483c11c5a648992a5155957883a8ed6582ca8d053c77191eb53d0d3f461d41eb2",
+        "d35caeae6b80b9d8f72f58fb92c50ce40fd9bbae97f762cff5148098e139f9431fbe3cfa1e1ba024e0ce0dffede0c2be9d5d850ce4e69c6431ab2694556eeff29a57609c34cf4d1eca3edc5e84a94493979db084faae174b5e478bb3496b5e67f145bd5c02237204b9a4f59a3aed7ccd9666e6e6d0c8f21508127c7e1fcafe72",
+        207,
+      ],
+    ]
+
     const data = {
       docsString,
       variableChecks,
       cleanUp,
+      cleanUpLabel,
+      testTrios,
     }
 
     // get all gt template files

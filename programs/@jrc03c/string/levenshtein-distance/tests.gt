@@ -1,0 +1,165 @@
+>> success_title = "@jrc03c/string/levenshtein-distance/tests"
+>> error_title = "@jrc03c/string/levenshtein-distance/tests"
+>> error_is_fatal = "no"
+
+*html
+	<h1 style="color: black">
+		All of these tests should pass:
+	</h1>
+
+--------------------------------------------------------------------------------
+
+>> a = "a"
+>> b = "a"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 0
+	>> success_message = "'a' vs. 'a' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 0)
+	>> error_message = "'a' vs. 'a' is supposed to be 0, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "a"
+>> b = "b"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 1
+	>> success_message = "'a' vs. 'b' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 1)
+	>> error_message = "'a' vs. 'b' is supposed to be 1, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "ab"
+>> b = "ab"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 0
+	>> success_message = "'ab' vs. 'ab' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 0)
+	>> error_message = "'ab' vs. 'ab' is supposed to be 0, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "ab"
+>> b = "ac"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 1
+	>> success_message = "'ab' vs. 'ac' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 1)
+	>> error_message = "'ab' vs. 'ac' is supposed to be 1, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "ab"
+>> b = "db"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 1
+	>> success_message = "'ab' vs. 'db' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 1)
+	>> error_message = "'ab' vs. 'db' is supposed to be 1, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "ab"
+>> b = "cd"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 2
+	>> success_message = "'ab' vs. 'cd' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 2)
+	>> error_message = "'ab' vs. 'cd' is supposed to be 2, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "37e9351f75a2152a"
+>> b = ""
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 16
+	>> success_message = "'37e9351f75a2152a' vs. '' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 16)
+	>> error_message = "'37e9351f75a2152a' vs. '' is supposed to be 16, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "355d8fea29123697b896eb2a844396de"
+>> b = "70f8daa0c909036db3181a8211c6708d"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 27
+	>> success_message = "'355d8fea29123697b896eb2a844396de' vs. '70f8daa0c909036db3181a8211c6708d' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 27)
+	>> error_message = "'355d8fea29123697b896eb2a844396de' vs. '70f8daa0c909036db3181a8211c6708d' is supposed to be 27, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+>> a = "70c5e7b4aa2f95c18253b15fe3fcdd8b4af40692aa143a9ddca9a5c1fb1f331aebb09f243b5e716b0ded2bbcad8063c4517c7e1a404a8869c617de6ebb336f6bec38910f27f62a2571213b5a01fd5a4c1436aceed00b9dd708f4951abb2d075483c11c5a648992a5155957883a8ed6582ca8d053c77191eb53d0d3f461d41eb2"
+>> b = "d35caeae6b80b9d8f72f58fb92c50ce40fd9bbae97f762cff5148098e139f9431fbe3cfa1e1ba024e0ce0dffede0c2be9d5d850ce4e69c6431ab2694556eeff29a57609c34cf4d1eca3edc5e84a94493979db084faae174b5e478bb3496b5e67f145bd5c02237204b9a4f59a3aed7ccd9666e6e6d0c8f21508127c7e1fcafe72"
+
+*program: @jrc03c/string/levenshtein-distance
+
+*if: levenshtein_distance = 207
+	>> success_message = "'70c5e7b4aa2f95c18253b15fe3fcdd8b4af40692aa143a9ddca9a5c1fb1f331aebb09f243b5e716b0ded2bbcad8063c4517c7e1a404a8869c617de6ebb336f6bec38910f27f62a2571213b5a01fd5a4c1436aceed00b9dd708f4951abb2d075483c11c5a648992a5155957883a8ed6582ca8d053c77191eb53d0d3f461d41eb2' vs. 'd35caeae6b80b9d8f72f58fb92c50ce40fd9bbae97f762cff5148098e139f9431fbe3cfa1e1ba024e0ce0dffede0c2be9d5d850ce4e69c6431ab2694556eeff29a57609c34cf4d1eca3edc5e84a94493979db084faae174b5e478bb3496b5e67f145bd5c02237204b9a4f59a3aed7ccd9666e6e6d0c8f21508127c7e1fcafe72' = {levenshtein_distance}"
+	*program: @jrc03c/show-success
+
+*if: not (levenshtein_distance = 207)
+	>> error_message = "'70c5e7b4aa2f95c18253b15fe3fcdd8b4af40692aa143a9ddca9a5c1fb1f331aebb09f243b5e716b0ded2bbcad8063c4517c7e1a404a8869c617de6ebb336f6bec38910f27f62a2571213b5a01fd5a4c1436aceed00b9dd708f4951abb2d075483c11c5a648992a5155957883a8ed6582ca8d053c77191eb53d0d3f461d41eb2' vs. 'd35caeae6b80b9d8f72f58fb92c50ce40fd9bbae97f762cff5148098e139f9431fbe3cfa1e1ba024e0ce0dffede0c2be9d5d850ce4e69c6431ab2694556eeff29a57609c34cf4d1eca3edc5e84a94493979db084faae174b5e478bb3496b5e67f145bd5c02237204b9a4f59a3aed7ccd9666e6e6d0c8f21508127c7e1fcafe72' is supposed to be 207, but instead it was {levenshtein_distance}!"
+	*program: @jrc03c/show-error
+
+*wait: 0.01.seconds
+
+--------------------------------------------------------------------------------
+
+*button: Okay
