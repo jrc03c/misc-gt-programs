@@ -49,12 +49,13 @@ async function rebuild() {
     const templateFiles = fs
       .readdirSync(dir)
       .filter(f => f.match(GT_PROGRAM_TEMPLATE_FILENAME_PATTERN))
+      .map(f => path.join(dir, f))
 
     // for each gt template file...
     if (templateFiles.length > 0) {
       for (const templateFile of templateFiles) {
         // read in the template source code
-        const template = fs.readFileSync(path.join(dir, templateFile), "utf8")
+        const template = fs.readFileSync(templateFile, "utf8")
 
         // render the template with the liquid engine using the data defined above
         const out = removeExtraWhitespace(
