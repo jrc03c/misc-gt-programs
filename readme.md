@@ -30,6 +30,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 
 - [@jrc03c/string/english-list-join](https://www.guidedtrack.com/programs/32376/edit)
 - [@jrc03c/string/join](https://www.guidedtrack.com/programs/32379/edit)
+- [@jrc03c/string/levenshtein-distance](https://www.guidedtrack.com/programs/34164/edit)
 - [@jrc03c/string/parse-iso-date-string](https://www.guidedtrack.com/programs/32385/edit)
 - [@jrc03c/string/random](https://www.guidedtrack.com/programs/32382/edit)
 - [@jrc03c/string/replace](https://www.guidedtrack.com/programs/31675/edit)
