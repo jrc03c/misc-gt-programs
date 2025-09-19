@@ -1,3 +1,10 @@
+-------------------------------------------------------------------------------
+-- @jrc03c/string/levenshtein-distance/tests
+-------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/34164/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+-------------------------------------------------------------------------------
+
 >> success_title = "@jrc03c/string/levenshtein-distance/tests"
 >> error_title = "@jrc03c/string/levenshtein-distance/tests"
 >> error_is_fatal = "no"
@@ -6,6 +13,8 @@
 	<h1 style="color: black">
 		All of these tests should pass:
 	</h1>
+
+NOTE: The final test takes a while to run! When it's finished, you should see an "Okay" button at the bottom of the page.
 
 --------------------------------------------------------------------------------
 

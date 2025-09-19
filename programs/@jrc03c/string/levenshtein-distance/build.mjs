@@ -46,7 +46,7 @@ async function rebuild() {
       author: "",
       inputVariables,
       outputVariables,
-      notes: `Levenshtein distance (LD) is a measure of the "edit distance" between two strings. In other words, it represents the minimum number of edits (insertions, deletions, and substitutions) required to convert one string into another. Therefore, the LD can be thought of as a measure of the similarity of two strings, where lower LDs mean fewer edits and therefore greater similarity, and higher LDs mean more edits and therefore less similarity. Learn more about the Levenshtein distance here: https://en.wikipedia.org/wiki/Levenshtein_distance`,
+      notes: `Levenshtein distance (LD) is a measure of the "edit distance" between two strings. In other words, it represents the minimum number of edits (insertions, deletions, and substitutions) required to convert one string into another. Therefore, the LD can be thought of as a measure of the similarity of two strings, where lower LDs mean fewer edits and therefore greater similarity, and higher LDs mean more edits and therefore less similarity. Learn more about the Levenshtein distance here: https://en.wikipedia.org/wiki/Levenshtein_distance NOTE: This program is not fast, so please only use it for relatively short strings (e.g., a few dozen characters or shorter)!`,
     })
 
     const cleanUpLabel = "CleanUpLabel09942ae978a753812a947c8504cba7c5"

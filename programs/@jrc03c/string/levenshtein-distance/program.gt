@@ -29,7 +29,9 @@
 -- similarity of two strings, where lower LDs mean fewer edits and therefore
 -- greater similarity, and higher LDs mean more edits and therefore less
 -- similarity. Learn more about the Levenshtein distance here:
--- https://en.wikipedia.org/wiki/Levenshtein_distance
+-- https://en.wikipedia.org/wiki/Levenshtein_distance NOTE: This program is not
+-- fast, so please only use it for relatively short strings (e.g., a few dozen
+-- characters or shorter)!
 --------------------------------------------------------------------------------
 
 >> levenshtein_distance = 0
