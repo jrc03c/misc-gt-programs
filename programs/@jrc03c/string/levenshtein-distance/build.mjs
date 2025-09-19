@@ -27,8 +27,8 @@ async function rebuild() {
 
     // define the data to use at render time
     const inputVariables = [
-      { name: "a", isRequired: true, description: "a string", type: "text" },
-      { name: "b", isRequired: true, description: "a string", type: "text" },
+      { name: "a", isRequired: true, description: "a string", type: "string" },
+      { name: "b", isRequired: true, description: "a string", type: "string" },
     ]
 
     const outputVariables = [

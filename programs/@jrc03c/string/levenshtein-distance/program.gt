@@ -32,26 +32,27 @@
 -- https://en.wikipedia.org/wiki/Levenshtein_distance
 --------------------------------------------------------------------------------
 
+>> levenshtein_distance = 0
 >> error_is_fatal = "no"
 >> error_title = "@jrc03c/string/levenshtein-distance"
 
 *if: not a
-	>> error_message = "You must define a variable called `a` that has a text value!"
+	>> error_message = "You must define a variable called `a` that has a string value!"
 	*program: @jrc03c/show-error
 	*goto: CleanUpLabel09942ae978a753812a947c8504cba7c5
 
-*if: not (a.type = "text")
-	>> error_message = "You must define a variable called `a` that has a text value!"
+*if: not (a.type = "string")
+	>> error_message = "You must define a variable called `a` that has a string value!"
 	*program: @jrc03c/show-error
 	*goto: CleanUpLabel09942ae978a753812a947c8504cba7c5
 
 *if: not b
-	>> error_message = "You must define a variable called `b` that has a text value!"
+	>> error_message = "You must define a variable called `b` that has a string value!"
 	*program: @jrc03c/show-error
 	*goto: CleanUpLabel09942ae978a753812a947c8504cba7c5
 
-*if: not (b.type = "text")
-	>> error_message = "You must define a variable called `b` that has a text value!"
+*if: not (b.type = "string")
+	>> error_message = "You must define a variable called `b` that has a string value!"
 	*program: @jrc03c/show-error
 	*goto: CleanUpLabel09942ae978a753812a947c8504cba7c5
 
@@ -65,6 +66,7 @@
 	>> v0.add(i)
 	>> v1.add(0)
 	>> i = i + 1
+	*trigger: 07cf5a2b5e990a38f6f1f1e0e5c4fbec
 
 >> i = 1
 
@@ -89,11 +91,14 @@
 			>> min = sub_cost
 
 		>> v1[j + 1] = min
+		>> j = j + 1
+		*trigger: 07cf5a2b5e990a38f6f1f1e0e5c4fbec
 
 	>> buf = v0
 	>> v0 = v1
 	>> v1 = buf
 	>> i = i + 1
+	*trigger: 07cf5a2b5e990a38f6f1f1e0e5c4fbec
 
 >> levenshtein_distance = v0[n + 1]
 

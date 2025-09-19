@@ -1,5 +1,6 @@
 {{ docsString }}
 
+>> levenshtein_distance = 0
 >> error_is_fatal = "no"
 >> error_title = "@jrc03c/string/levenshtein-distance"
 
@@ -15,6 +16,7 @@
 	>> v0.add(i)
 	>> v1.add(0)
 	>> i = i + 1
+	*trigger: 07cf5a2b5e990a38f6f1f1e0e5c4fbec
 
 >> i = 1
 
@@ -39,11 +41,14 @@
 			>> min = sub_cost
 
 		>> v1[j + 1] = min
+		>> j = j + 1
+		*trigger: 07cf5a2b5e990a38f6f1f1e0e5c4fbec
 
 	>> buf = v0
 	>> v0 = v1
 	>> v1 = buf
 	>> i = i + 1
+	*trigger: 07cf5a2b5e990a38f6f1f1e0e5c4fbec
 
 >> levenshtein_distance = v0[n + 1]
 
