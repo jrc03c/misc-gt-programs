@@ -2,7 +2,7 @@ function removeExtraWhitespace(x) {
   return x
     .split("\n")
     .filter((line, i, lines) => {
-      if (line.trim().length === 0) {
+      if (line.trim().length === 0 && i < lines.length - 1) {
         const nextLine = lines[i + 1]
         return nextLine.trim().length > 0
       }

@@ -1,5 +1,6 @@
 import { createDocsTable } from "#helpers/create-docs-table.mjs"
 import { DataFrame, flatten } from "@jrc03c/js-math-tools"
+import { wrap } from "@jrc03c/js-text-tools"
 
 const COMMENT_PREFIX = "-- "
 const DIVIDER = "-".repeat(80)
@@ -83,7 +84,9 @@ function createDocs(data) {
     DIVIDER,
     outputDocsTableString,
     DIVIDER,
-    ...(notes.length > 0 ? notes.concat([DIVIDER]) : []),
+    ...(notes.length > 0
+      ? notes.map(v => wrap(v, 80, "-- ")).concat([DIVIDER])
+      : []),
   ]
     .filter(v => !!v)
     .map(line => (line.startsWith("--") ? line : COMMENT_PREFIX + line))

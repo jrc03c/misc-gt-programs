@@ -1,0 +1,51 @@
+{{ docsString }}
+
+>> error_is_fatal = "no"
+>> error_title = "@jrc03c/string/levenshtein-distance"
+
+{{ variableChecks }}
+
+>> m = a.size
+>> n = b.size
+>> v0 = []
+>> v1 = []
+>> i = 0
+
+*while: i < n + 1
+	>> v0.add(i)
+	>> v1.add(0)
+	>> i = i + 1
+
+>> i = 1
+
+*while: i <= m
+	>> v1[1] = i + 1
+	>> j = 1
+
+	*while: j <= n
+		>> del_cost = v0[j + 1] + 1
+		>> ins_cost = v1[j] + 1
+		>> sub_cost = v0[j]
+
+		*if: not (a[i] = b[j])
+			>> sub_cost = sub_cost + 1
+
+		>> min = del_cost
+
+		*if: ins_cost < min
+			>> min = ins_cost
+
+		*if: sub_cost < min
+			>> min = sub_cost
+
+		>> v1[j + 1] = min
+
+	>> buf = v0
+	>> v0 = v1
+	>> v1 = buf
+	>> i = i + 1
+
+>> levenshtein_distance = v0[n + 1]
+
+-- clean up
+{{ cleanUp }}
