@@ -57,7 +57,8 @@ async function rebuild() {
         // read in the template source code
         const template = fs.readFileSync(templateFile, "utf8")
 
-        // render the template with the liquid engine using the data defined above
+        // render the template with the liquid engine using the data defined
+        // above
         const out = removeExtraWhitespace(
           engine.parseAndRenderSync(template, data),
         )
