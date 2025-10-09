@@ -42,6 +42,7 @@ Here are some miscellaneous helper programs for [GuidedTrack](https://guidedtrac
 - [@jrc03c/misc/slice](https://www.guidedtrack.com/programs/32625/edit)
 - [@jrc03c/show-error](https://www.guidedtrack.com/programs/20556/edit)
 - [@jrc03c/show-info](https://www.guidedtrack.com/programs/20559/edit)
+- [@jrc03c/show-progress](https://www.guidedtrack.com/programs/34309/edit)
 - [@jrc03c/show-success](https://www.guidedtrack.com/programs/20558/edit)
 - [@jrc03c/show-warning](https://www.guidedtrack.com/programs/20557/edit)
 - [@jrc03c/sort](https://www.guidedtrack.com/programs/31405/edit)
