@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/standardize-email-adddress/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/34794/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+>> error_is_fatal = "no"
+
+*html
+	<h1 style="color: black;">
+		All of these tests should pass:
+	</h1>
+
+{{ passingTests }}
+
+*button: Okay

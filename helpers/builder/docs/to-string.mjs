@@ -1,29 +1,29 @@
-import { createDocsTable } from "#helpers/create-docs-table.mjs"
 import { DataFrame, flatten } from "@jrc03c/js-math-tools"
+import { tableToString } from "./table-to-string.mjs"
 import { wrap } from "@jrc03c/js-text-tools"
 
 const COMMENT_PREFIX = "-- "
 const DIVIDER = "-".repeat(80)
 
-function createDocs(data) {
-  const name = data.name || "@jrc03c/untitled"
-  const editUrl = data.editUrl || "https://programs.guidedtrack.com"
-  const testsEditUrl = data.testsEditUrl || "https://programs.guidedtrack.com"
-  const author = data.author || "Josh Castle (joshrcastle@gmail.com)"
+function toString(docs) {
+  const title = docs.title || "@jrc03c/untitled"
+  const editUrl = docs.editUrl || "https://programs.guidedtrack.com"
+  const testsEditUrl = docs.testsEditUrl || "https://programs.guidedtrack.com"
+  const author = docs.author || "Josh Castle (joshrcastle@gmail.com)"
 
-  const otherMetadata = data.otherMetadata || [
+  const otherMetadata = docs.otherMetadata || [
     { "all programs": "https://github.com/jrc03c/misc-gt-programs" },
   ]
 
-  const inputVariables = data.inputVariables || []
-  const outputVariables = data.outputVariables || []
+  const inputVariables = (docs.inputVariables || []).map(v => v.toObject())
+  const outputVariables = (docs.outputVariables || []).map(v => v.toObject())
 
-  const notes = data.notes
-    ? data.notes instanceof Array
-      ? data.notes
-      : typeof data.notes === "string"
-        ? [data.notes]
-        : [data.notes.toString()]
+  const notes = docs.notes
+    ? docs.notes instanceof Array
+      ? docs.notes
+      : typeof docs.notes === "string"
+        ? [docs.notes]
+        : [docs.notes.toString()]
     : []
 
   const maxKeyLength = Math.max(
@@ -34,13 +34,19 @@ function createDocs(data) {
     ).map(v => v.length),
   )
 
+  const inputVariableNames = inputVariables.map(v =>
+    v.isRequired ? v.name + "*" : v.name,
+  )
+
+  const outputVariableNames = outputVariables.map(v => v.name)
+
   const inputDocs = new DataFrame({
-    name: inputVariables.map(v => (v.isRequired ? v.name + "*" : v.name)),
+    name: inputVariableNames,
     description: inputVariables.map(v => v.description),
   })
 
   const outputDocs = new DataFrame({
-    name: outputVariables.map(v => v.name),
+    name: outputVariableNames,
     description: outputVariables.map(v => v.description),
   })
 
@@ -48,25 +54,25 @@ function createDocs(data) {
   const outputNameColumnLabel = "OUTPUT 👈"
 
   const nameColumnWidth = Math.max(
-    ...flatten([inputDocs.get("name")])
-      .concat(flatten([outputDocs.get("name")]))
+    ...inputVariableNames
+      .concat(outputVariableNames)
       .concat([inputNameColumnLabel, outputNameColumnLabel])
       .map(v => v.length),
   )
 
-  const inputDocsTableString = createDocsTable(inputDocs, {
+  const inputDocsTableString = tableToString(inputDocs, {
     nameColumnLabel: inputNameColumnLabel,
     nameColumnWidth,
   })
 
-  const outputDocsTableString = createDocsTable(outputDocs, {
+  const outputDocsTableString = tableToString(outputDocs, {
     nameColumnLabel: outputNameColumnLabel,
     nameColumnWidth,
   })
 
   const out = [
     DIVIDER,
-    name,
+    title,
     DIVIDER,
     "url".padEnd(maxKeyLength, " ") + " : " + editUrl,
     "tests".padEnd(maxKeyLength, " ") + " : " + testsEditUrl,
@@ -95,4 +101,4 @@ function createDocs(data) {
   return out
 }
 
-export { createDocs }
+export { toString }

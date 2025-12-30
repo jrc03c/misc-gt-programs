@@ -1,0 +1,38 @@
+{{ docs.string }}
+
+>> error_title = "{{ title }}"
+
+*if: not email_address
+	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanUpLabel }}
+
+*if: not (email_address.type = "string")
+	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
+	*program: @jrc03c/show-error
+	*goto: {{ cleanUpLabel }}
+
+{% for variable in inputVariables %}
+{% if not variable.isRequired %}
+*if: not {{ variable.name }}
+	>> {{ variable.name }} = {{ variable.defaultValue }}
+{% endif %}
+{% endfor %}
+
+>> input = email_address
+*program: @jrc03c/string/encode-uri-component
+>> email_encoded = output
+
+>> params = "email={email_encoded}"
+>> params = "{params}&should_convert_domain_to_punycode={should_convert_domain_to_punycode}"
+>> params = "{params}&should_remove_diacritical_marks_in_username={should_remove_diacritical_marks_in_username}"
+>> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
+>> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
+
+*service: {{ serviceName }}
+	*method: GET
+	*path: /program-helpers/standardize-email-address?{params}
+	*success
+		>> email_address_standardized = it["email"]
+	*error
+		>> error_message = it["message"]

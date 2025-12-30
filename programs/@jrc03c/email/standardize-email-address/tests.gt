@@ -1,0 +1,255 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/standardize-email-adddress/tests
+--------------------------------------------------------------------------------
+-- target : https://www.guidedtrack.com/programs/34794/edit
+-- author : Josh Castle (joshrcastle@gmail.com)
+--------------------------------------------------------------------------------
+
+>> error_is_fatal = "no"
+
+*html
+	<h1 style="color: black;">
+		All of these tests should pass:
+	</h1>
+
+--------------------------------------------------------------------------------
+
+>> email_address = "someone"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone"
+	>> success_message = "'{email_address_standardized}' = 'someone'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone")
+	>> error_message = "'{email_address_standardized}' != 'someone'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "someone@a@b@c@example.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@a@b@c@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@a@b@c@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@a@b@c@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@a@b@c@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "someone@example.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "SoMeOnE@eXaMpLe.CoM"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "s o m e o n e @ e x a m p l e . c o m"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "sömeoné@exåmple.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@exåmple.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@exåmple.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@exåmple.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@exåmple.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "sömeoné@exåmple.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 0
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "sömeoné@exåmple.com"
+	>> success_message = "'{email_address_standardized}' = 'sömeoné@exåmple.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "sömeoné@exåmple.com")
+	>> error_message = "'{email_address_standardized}' != 'sömeoné@exåmple.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "sömeoné@exåmple.com"
+>> should_convert_domain_to_punycode = 1
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@xn--exmple-jua.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@xn--exmple-jua.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@xn--exmple-jua.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@xn--exmple-jua.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "s.o.m.e.o.n.e@example.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "s.o.m.e.o.n.e@example.com"
+	>> success_message = "'{email_address_standardized}' = 's.o.m.e.o.n.e@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "s.o.m.e.o.n.e@example.com")
+	>> error_message = "'{email_address_standardized}' != 's.o.m.e.o.n.e@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "s.o.m.e.o.n.e@example.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 1
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "someone+test@example.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 0
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone+test@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone+test@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone+test@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone+test@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+--------------------------------------------------------------------------------
+
+>> email_address = "someone+test@example.com"
+>> should_convert_domain_to_punycode = 0
+>> should_remove_diacritical_marks_in_username = 1
+>> should_remove_periods_in_username = 0
+>> should_remove_tags_in_username = 1
+
+*program: @jrc03c/email/standardize-email-address
+
+*if: email_address_standardized = "someone@example.com"
+	>> success_message = "'{email_address_standardized}' = 'someone@example.com'"
+	*program: @jrc03c/show-success
+
+*if: not (email_address_standardized = "someone@example.com")
+	>> error_message = "'{email_address_standardized}' != 'someone@example.com'"
+	*program: @jrc03c/show-error
+
+*wait: 1.seconds
+
+*button: Okay

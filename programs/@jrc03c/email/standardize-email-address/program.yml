@@ -1,0 +1,43 @@
+author: "Josh Castle (joshrcastle@gmail.com)"
+edit-url: "https://www.guidedtrack.com/programs/34794/edit"
+
+input-variables:
+  - default-value: ""
+    is-required: true
+    name: email_address
+    should-clean-up: false
+    type: string
+
+  - default-value: 0
+    is-required: false
+    name: should_convert_domain_to_punycode
+    should-clean-up: true
+    type: binary
+
+  - default-value: 1
+    is-required: false
+    name: should_remove_diacritical_marks_in_username
+    should-clean-up: true
+    type: binary
+
+  - default-value: 0
+    is-required: false
+    name: should_remove_periods_in_username
+    should-clean-up: true
+    type: binary
+
+  - default-value: 0
+    is-required: false
+    name: should_remove_tags_in_username
+    should-clean-up: true
+    type: binary
+
+output-variables:
+  - default-value: ""
+    name: email_address_standardized
+    type: string
+
+service-name: ct-programs-vercel-app
+template: program-template.gt
+tests-edit-url: "https://www.guidedtrack.com/programs/34813/edit"
+title: "@jrc03c/email/standardize-email-address"

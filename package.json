@@ -1,6 +1,8 @@
 {
   "devDependencies": {
-    "@jrc03c/bash-colors": "^0.0.8",
+    "@jrc03c/bash-colors": "^0.0.9",
+    "@jrc03c/data-class": "^0.0.3",
+    "@jrc03c/data-file-helpers": "^0.0.2",
     "@jrc03c/fs-extras": "^0.0.23",
     "@jrc03c/gt-helpers": "^0.0.5",
     "@jrc03c/js-data-science-helpers": "^0.0.86",
@@ -10,11 +12,11 @@
     "@jrc03c/pause": "^0.0.10",
     "@jrc03c/progress": "^0.0.7",
     "@jrc03c/watch": "^0.0.20",
-    "eslint": "^9.22.0",
+    "eslint": "^9.39.2",
     "globals": "^16.0.0",
     "gt-cli": "github:jrc03c/gt-cli",
     "liquidjs": "^10.21.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.7.4"
   },
   "imports": {
     "#*": "./*"

@@ -37,7 +37,7 @@ const border = {
   },
 }
 
-function createDocsTable(df, options) {
+function tableToString(df, options) {
   options = options || {}
   let { nameColumnLabel, nameColumnWidth, descriptionColumnLabel } = options
   nameColumnWidth = nameColumnWidth || options.nameColumnLength
@@ -140,4 +140,4 @@ function createDocsTable(df, options) {
   return out.map(v => "-- " + v).join("\n")
 }
 
-export { createDocsTable }
+export { tableToString }

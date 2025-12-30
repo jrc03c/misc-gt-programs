@@ -7,7 +7,7 @@ function getVariableNames(x) {
   const indexerPattern = /\[.*?\]/g
   const keywordPattern = /\*[a-z_-]+:?/g
   const numberPattern = /\b-?\d+(\.\d+)?\b/g
-  const operatorPattern = /[=><]|\+|-|\*|\\|\band\b|\bor\b|\bnot\b|\bin\b/g
+  const operatorPattern = /[=><]|\band\b|\bor\b|\bnot\b|\bin\b/g
   const quotePattern = /".*?"/g
 
   return x

@@ -1,0 +1,86 @@
+--------------------------------------------------------------------------------
+-- @jrc03c/email/standardize-email-address
+--------------------------------------------------------------------------------
+-- url          : https://www.guidedtrack.com/programs/34794/edit
+-- tests        : https://www.guidedtrack.com/programs/34813/edit
+-- author       : Josh Castle (joshrcastle@gmail.com)
+-- all programs : https://github.com/jrc03c/misc-gt-programs
+--------------------------------------------------------------------------------
+-- ┌─────────────────────────────────────────────┬─────────────────────────────┐
+-- │ INPUT 👉                                    │ DESCRIPTION                 │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ email_address*                              │ string; required;           │
+-- │                                             │ default=""                  │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ should_convert_domain_to_punycode           │ binary; default=0           │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ should_remove_diacritical_marks_in_username │ binary; default=1           │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ should_remove_periods_in_username           │ binary; default=0           │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ should_remove_tags_in_username              │ binary; default=0           │
+-- └─────────────────────────────────────────────┴─────────────────────────────┘
+-- * indicates a required input
+--------------------------------------------------------------------------------
+-- ┌─────────────────────────────────────────────┬─────────────────────────────┐
+-- │ OUTPUT 👈                                   │ DESCRIPTION                 │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ email_address_standardized                  │ string; default=""          │
+-- └─────────────────────────────────────────────┴─────────────────────────────┘
+--------------------------------------------------------------------------------
+
+>> error_title = "@jrc03c/email/standardize-email-address"
+
+*if: not email_address
+	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
+	*program: @jrc03c/show-error
+	*goto: CleanUpLabelBG41GG3B9F0G21B9B0D4GG4GEGF8GAE0
+
+*if: not (email_address.type = "string")
+	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
+	*program: @jrc03c/show-error
+	*goto: CleanUpLabelBG41GG3B9F0G21B9B0D4GG4GEGF8GAE0
+
+*if: not should_convert_domain_to_punycode
+	>> should_convert_domain_to_punycode = 0
+
+*if: not should_remove_diacritical_marks_in_username
+	>> should_remove_diacritical_marks_in_username = 1
+
+*if: not should_remove_periods_in_username
+	>> should_remove_periods_in_username = 0
+
+*if: not should_remove_tags_in_username
+	>> should_remove_tags_in_username = 0
+
+>> input = email_address
+*program: @jrc03c/string/encode-uri-component
+>> email_encoded = output
+
+>> params = "email={email_encoded}"
+>> params = "{params}&should_convert_domain_to_punycode={should_convert_domain_to_punycode}"
+>> params = "{params}&should_remove_diacritical_marks_in_username={should_remove_diacritical_marks_in_username}"
+>> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
+>> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
+
+*service: ct-programs-vercel-app
+	*method: GET
+	*path: /program-helpers/standardize-email-address?{params}
+	*success
+		>> email_address_standardized = it["email"]
+	*error
+		>> error_message = it["message"]
+
+--------------------------------------------------------------------------------
+
+*label: CleanUpLabelBG41GG3B9F0G21B9B0D4GG4GEGF8GAE0
+
+>> email_encoded = ""
+>> error_message = ""
+>> error_title = ""
+>> input = ""
+>> params = ""
+>> should_convert_domain_to_punycode = ""
+>> should_remove_diacritical_marks_in_username = ""
+>> should_remove_periods_in_username = ""
+>> should_remove_tags_in_username = ""
