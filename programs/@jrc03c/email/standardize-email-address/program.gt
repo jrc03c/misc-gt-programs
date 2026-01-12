@@ -26,6 +26,8 @@
 -- │ OUTPUT 👈                                   │ DESCRIPTION                 │
 -- ├─────────────────────────────────────────────┼─────────────────────────────┤
 -- │ email_address_standardized                  │ string; default=""          │
+-- ├─────────────────────────────────────────────┼─────────────────────────────┤
+-- │ service_response                            │ association; default=""     │
 -- └─────────────────────────────────────────────┴─────────────────────────────┘
 --------------------------------------------------------------------------------
 
@@ -34,12 +36,12 @@
 *if: not email_address
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
+	*goto: CleanUpLabel98A907E2884B4F7653B357137CA42003
 
 *if: not (email_address.type = "string")
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
+	*goto: CleanUpLabel98A907E2884B4F7653B357137CA42003
 
 *if: not should_convert_domain_to_punycode
 	>> should_convert_domain_to_punycode = 0
@@ -63,23 +65,17 @@
 >> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
 >> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
 
->> error_message = ""
-
 *service: ct-programs-vercel-app
 	*method: GET
 	*path: /utils/standardize-email-address?{params}
 	*success
 		>> email_address_standardized = it["email"]
 	*error
-		>> error_message = it["message"]
-
-*if: error_message.size > 0
-	*program: @jrc03c/show-error
-	*goto: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
+		>> service_response = it
 
 --------------------------------------------------------------------------------
 
-*label: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
+*label: CleanUpLabel98A907E2884B4F7653B357137CA42003
 
 >> email_encoded = ""
 >> error_message = ""

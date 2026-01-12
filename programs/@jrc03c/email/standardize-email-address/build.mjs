@@ -22,7 +22,6 @@ async function rebuild() {
     const data = YamlData.fromFile(path.join(dir, "program.yml"))
     const inputVariables = data.inputVariables.map(v => InputVariable.new(v))
     const outputVariables = data.outputVariables.map(v => OutputVariable.new(v))
-    const otherVariablesToCleanUp = ["output"]
 
     const docs = Docs.new({
       ...data.toObject(),
@@ -38,7 +37,6 @@ async function rebuild() {
         ...data.toObject(),
         docs,
         inputVariables,
-        otherVariablesToCleanUp,
         outputVariables,
       },
       true,

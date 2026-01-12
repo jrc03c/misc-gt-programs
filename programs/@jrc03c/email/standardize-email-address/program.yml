@@ -2,7 +2,7 @@ author: "Josh Castle (joshrcastle@gmail.com)"
 edit-url: "https://www.guidedtrack.com/programs/34794/edit"
 
 input-variables:
-  - default-value: ""
+  - default-value:
     is-required: true
     name: email_address
     should-clean-up: false
@@ -32,10 +32,17 @@ input-variables:
     should-clean-up: true
     type: binary
 
+other-variables-to-clean-up:
+  - output
+
 output-variables:
-  - default-value: ""
+  - default-value:
     name: email_address_standardized
     type: string
+
+  - default-value:
+    name: service_response
+    type: association
 
 service-name: ct-programs-vercel-app
 template: program-template.gt
