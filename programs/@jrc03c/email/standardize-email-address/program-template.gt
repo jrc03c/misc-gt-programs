@@ -29,10 +29,21 @@
 >> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
 >> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
 
+>> service_response = {}
+>> service_response["service"] = "{{ serviceName }}"
+>> service_response["method"] = "GET"
+>> service_response["path"] = "/utils/standardize-email-address?{params}"
+>> temp = {}
+
 *service: {{ serviceName }}
 	*method: GET
 	*path: /utils/standardize-email-address?{params}
 	*success
 		>> email_address_standardized = it["email"]
+		>> temp = it
 	*error
-		>> service_response = it
+		>> temp = it
+
+*for: key in temp.keys
+	>> service_response[key] = temp[key]
+		

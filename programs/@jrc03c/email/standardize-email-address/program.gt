@@ -27,7 +27,7 @@
 -- ├─────────────────────────────────────────────┼─────────────────────────────┤
 -- │ email_address_standardized                  │ string; default=""          │
 -- ├─────────────────────────────────────────────┼─────────────────────────────┤
--- │ service_response                            │ association; default=""     │
+-- │ service_response                            │ association; default={}     │
 -- └─────────────────────────────────────────────┴─────────────────────────────┘
 --------------------------------------------------------------------------------
 
@@ -36,12 +36,12 @@
 *if: not email_address
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel98A907E2884B4F7653B357137CA42003
+	*goto: CleanUpLabelF69G1CFEA5605F12D774AE5D1449D7F9
 
 *if: not (email_address.type = "string")
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel98A907E2884B4F7653B357137CA42003
+	*goto: CleanUpLabelF69G1CFEA5605F12D774AE5D1449D7F9
 
 *if: not should_convert_domain_to_punycode
 	>> should_convert_domain_to_punycode = 0
@@ -65,25 +65,37 @@
 >> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
 >> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
 
+>> service_response = {}
+>> service_response["service"] = "ct-programs-vercel-app"
+>> service_response["method"] = "GET"
+>> service_response["path"] = "/utils/standardize-email-address?{params}"
+>> temp = {}
+
 *service: ct-programs-vercel-app
 	*method: GET
 	*path: /utils/standardize-email-address?{params}
 	*success
 		>> email_address_standardized = it["email"]
+		>> temp = it
 	*error
-		>> service_response = it
+		>> temp = it
+
+*for: key in temp.keys
+	>> service_response[key] = temp[key]
 
 --------------------------------------------------------------------------------
 
-*label: CleanUpLabel98A907E2884B4F7653B357137CA42003
+*label: CleanUpLabelF69G1CFEA5605F12D774AE5D1449D7F9
 
 >> email_encoded = ""
 >> error_message = ""
 >> error_title = ""
 >> input = ""
+>> key = ""
 >> output = ""
 >> params = ""
 >> should_convert_domain_to_punycode = ""
 >> should_remove_diacritical_marks_in_username = ""
 >> should_remove_periods_in_username = ""
 >> should_remove_tags_in_username = ""
+>> temp = ""
