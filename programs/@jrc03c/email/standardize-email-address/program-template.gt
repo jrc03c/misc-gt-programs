@@ -29,6 +29,8 @@
 >> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
 >> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
 
+>> error_message = ""
+
 *service: {{ serviceName }}
 	*method: GET
 	*path: /program-helpers/standardize-email-address?{params}
@@ -36,3 +38,7 @@
 		>> email_address_standardized = it["email"]
 	*error
 		>> error_message = it["message"]
+
+*if: error_message.size > 0
+	*program: @jrc03c/show-error
+	*goto: {{ cleanUpLabel }}

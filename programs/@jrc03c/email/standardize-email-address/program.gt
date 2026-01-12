@@ -34,12 +34,12 @@
 *if: not email_address
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabelBG41GG3B9F0G21B9B0D4GG4GEGF8GAE0
+	*goto: CleanUpLabel62E3147C93254C849833EADAE3FC603B
 
 *if: not (email_address.type = "string")
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabelBG41GG3B9F0G21B9B0D4GG4GEGF8GAE0
+	*goto: CleanUpLabel62E3147C93254C849833EADAE3FC603B
 
 *if: not should_convert_domain_to_punycode
 	>> should_convert_domain_to_punycode = 0
@@ -63,6 +63,8 @@
 >> params = "{params}&should_remove_periods_in_username={should_remove_periods_in_username}"
 >> params = "{params}&should_remove_tags_in_username={should_remove_tags_in_username}"
 
+>> error_message = ""
+
 *service: ct-programs-vercel-app
 	*method: GET
 	*path: /program-helpers/standardize-email-address?{params}
@@ -71,9 +73,13 @@
 	*error
 		>> error_message = it["message"]
 
+*if: error_message.size > 0
+	*program: @jrc03c/show-error
+	*goto: CleanUpLabel62E3147C93254C849833EADAE3FC603B
+
 --------------------------------------------------------------------------------
 
-*label: CleanUpLabelBG41GG3B9F0G21B9B0D4GG4GEGF8GAE0
+*label: CleanUpLabel62E3147C93254C849833EADAE3FC603B
 
 >> email_encoded = ""
 >> error_message = ""
