@@ -33,7 +33,7 @@
 
 *service: {{ serviceName }}
 	*method: GET
-	*path: /program-helpers/standardize-email-address?{params}
+	*path: /utils/standardize-email-address?{params}
 	*success
 		>> email_address_standardized = it["email"]
 	*error
