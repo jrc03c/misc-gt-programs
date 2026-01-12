@@ -40,8 +40,10 @@
 
 *label: CleanUpLabel_06g6b17e97112b2e936gag7a231a0721
 
+>> char = ""
 >> dict = ""
 >> error_is_fatal = ""
 >> error_message = ""
 >> error_title = ""
+>> i = ""
 >> input = ""
