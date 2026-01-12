@@ -25,6 +25,7 @@ class Builder {
           options.inputVariables
             .filter(v => v.shouldCleanUp)
             .map(v => v.name)
+            .concat(options.otherVariablesToCleanUp || [])
             .concat(
               getVariableNamesInGTProgram(out)
                 .filter(v => !options.outputVariables.find(w => w.name === v))

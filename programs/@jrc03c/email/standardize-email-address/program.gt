@@ -34,12 +34,12 @@
 *if: not email_address
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel31E54C648E983E6CE77140F77FB0211A
+	*goto: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
 
 *if: not (email_address.type = "string")
 	>> error_message = "You must define a variable called `email_address` that has a string value representing an email address!"
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel31E54C648E983E6CE77140F77FB0211A
+	*goto: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
 
 *if: not should_convert_domain_to_punycode
 	>> should_convert_domain_to_punycode = 0
@@ -75,16 +75,17 @@
 
 *if: error_message.size > 0
 	*program: @jrc03c/show-error
-	*goto: CleanUpLabel31E54C648E983E6CE77140F77FB0211A
+	*goto: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
 
 --------------------------------------------------------------------------------
 
-*label: CleanUpLabel31E54C648E983E6CE77140F77FB0211A
+*label: CleanUpLabelG0030GE999GC9CGD840G3905FCBD07C9
 
 >> email_encoded = ""
 >> error_message = ""
 >> error_title = ""
 >> input = ""
+>> output = ""
 >> params = ""
 >> should_convert_domain_to_punycode = ""
 >> should_remove_diacritical_marks_in_username = ""
