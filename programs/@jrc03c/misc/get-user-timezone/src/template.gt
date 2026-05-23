@@ -1,0 +1,84 @@
+-- @gtlint-disable-next-line
+{{docs}}
+
+-- @from-parent: question_text
+-- @from-parent: question_tip
+-- @to-parent: timezone
+
+*if: not question_text
+	>> question_text = ""
+
+*if: question_text = ""
+	>> question_text = "What timezone are you in?"
+
+*if: not question_tip
+	>> question_tip = ""
+
+*if: question_tip = ""
+	>> question_tip = "Try typing the name of a major city near you."
+
+--------------------------------------------------------------------------------
+-- Fetch the list of timezones
+
+>> error = 0
+>> timezones = []
+
+*service: World Time API
+	*method: GET
+	*path: /timezone
+	*success
+		>> timezones = it
+	*error
+		>> error = it
+
+*if: not (error = 0)
+	-- @to-child: error_is_fatal
+	-- @to-child: error_message
+	-- @to-child: error_title
+	>> error_is_fatal = "no"
+	>> error_message = error.text
+	>> error_title = "{{ title }}"
+	*program: @jrc03c/show-error
+	*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- Ask the user to select a timezone from the list
+
+>> timezone = "Etc/UTC"
+
+*question: {question_text}
+	*tip: {question_tip}
+	*answers: timezones
+	*save: timezone
+	*searchable
+
+--------------------------------------------------------------------------------
+-- Fetch the full suite of data about the selected timezone
+
+>> error = 0
+
+*service: World Time API
+	*method: GET
+	*path: /timezone/{timezone}
+	*success
+		>> timezone = it
+	*error
+		>> error = it
+
+*if: not (error = 0)
+	-- @to-child: error_is_fatal
+	-- @to-child: error_message
+	-- @to-child: error_title
+	>> error_is_fatal = "no"
+	>> error_message = error.text
+	>> error_title = "{{ title }}"
+	*program: @jrc03c/show-error
+	*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- Clean up non-returned variables
+
+*label: EndLabel
+
+-- @gtlint-disable-next-line
+{{cleanup}}

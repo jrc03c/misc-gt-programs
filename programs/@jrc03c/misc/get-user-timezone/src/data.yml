@@ -1,0 +1,64 @@
+author: Josh Castle <joshrcastle@gmail.com>
+
+gtlint-directives-to-remove-on-build:
+  - gtlint.*
+  - gtformat.*
+
+input-variables:
+  - name: question_text
+    default-value: "What timezone are you in?"
+    description: the question posed to the user
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: string
+
+  - name: question_tip
+    default-value: "Try typing the name of a major city near you."
+    description: the tip displayed under the question posed to the user
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: string
+
+notes: >-
+  Sample response:
+
+  {
+    "abbreviation": "CDT",
+    "datetime": "2026-05-23T11:48:05.674341-05:00",
+    "day_of_week": 6,
+    "day_of_year": 143,
+    "dst_offset": 3600,
+    "dst": true,
+    "timezone": "America/Chicago",
+    "unixtime": 1779554885,
+    "utc_datetime": "2026-05-23T16:48:05.674426Z",
+    "utc_offset": "-05:00",
+    "week_number": 21
+  }
+
+  Test it out here: https://www.guidedtrack.com/programs/wdyicwu/run
+
+# other-variables-to-clean-up:
+#   - foo
+#   - bar
+#   - baz
+
+# other-variables-not-to-clean-up:
+#   - hello
+#   - world
+
+output-variables:
+  - name: timezone
+    description: >-
+      an association with these properties: "abbreviation", "datetime", "day_of_week", "day_of_year", "dst_offset", "dst", "timezone", "unixtime", "utc_datetime", "utc_offset", and "week_number"
+    should-show-in-table: true
+    type: association
+
+services:
+  - name: World Time API
+    url: https://time.now/developer/api
+
+title: "@jrc03c/misc/get-user-timezone"
+url: "https://www.guidedtrack.com/programs/37543/edit"

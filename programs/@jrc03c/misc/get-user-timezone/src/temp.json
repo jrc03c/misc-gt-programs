@@ -1,0 +1,17 @@
+{
+  "abbreviation": "CDT",
+  "client_ip": "44.192.72.82",
+  "datetime": "2026-05-23T11:48:05.674341-05:00",
+  "day_of_week": 6,
+  "day_of_year": 143,
+  "dst": true,
+  "dst_from": null,
+  "dst_offset": 3600,
+  "dst_until": null,
+  "raw_offset": -21600,
+  "timezone": "America/Chicago",
+  "unixtime": 1779554885,
+  "utc_datetime": "2026-05-23T16:48:05.674426Z",
+  "utc_offset": "-05:00",
+  "week_number": 21
+}

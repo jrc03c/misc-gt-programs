@@ -1,0 +1,37 @@
+*while: 0 < 1
+	*program: @jrc03c/misc/get-user-timezone
+
+	-- @from-child: timezone
+	>> tz_name = timezone["timezone"]
+	*header: {tz_name}
+
+	-- @to-child: headers
+	-- @to-child: values
+	>> headers = ["KEY", "VALUE"]
+	>> values = []
+	>> keys = []
+	>> keys.add("abbreviation")
+	>> keys.add("datetime")
+	>> keys.add("day_of_week")
+	>> keys.add("day_of_year")
+	>> keys.add("dst_offset")
+	>> keys.add("dst")
+	>> keys.add("timezone")
+	>> keys.add("unixtime")
+	>> keys.add("utc_datetime")
+	>> keys.add("utc_offset")
+	>> keys.add("week_number")
+
+	*for: key in keys
+		>> row = []
+		>> row.add("<code>{key}</code>")
+		>> row.add(timezone[key])
+		>> values.add(row)
+
+	*program: @jrc03c/generate-html-table
+
+	-- @from-child: table
+	*html
+		{table}
+
+	*button: Start over
