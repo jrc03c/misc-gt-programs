@@ -22,7 +22,6 @@ const rebuild = () => {
     const endIndex =
       startIndex + lines.slice(startIndex).findIndex(v => v.includes("-- │ }"))
 
-    console.log(startIndex, endIndex)
     const temp = []
 
     for (let i = 0; i < lines.length; i++) {
