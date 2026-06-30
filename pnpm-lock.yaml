@@ -25,8 +25,8 @@ importers:
         specifier: ^0.0.23
         version: 0.0.23
       '@jrc03c/gt-builder':
-        specifier: ^0.0.5
-        version: 0.0.5
+        specifier: ^0.0.8
+        version: 0.0.8
       '@jrc03c/gt-helpers':
         specifier: ^0.0.5
         version: 0.0.5
@@ -151,7 +151,7 @@ packages:
     resolution: {integrity: sha512-0l7baSgTwrCyfTbcjsWA0MTnBQSaFNvwOIjPHA/q/YenPpXXd0Ira3oss8TJ2vQ4dU4KW9MT0Ds+WWQxR2koNw==}
 
   '@jrc03c/diff-match-patch@https://codeload.github.com/jrc03c/diff-match-patch/tar.gz/e378f00d421f3febb15a58a78f97b67d0870d34e':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/jrc03c/diff-match-patch/tar.gz/e378f00d421f3febb15a58a78f97b67d0870d34e}
+    resolution: {gitHosted: true, integrity: sha512-SV6tkBB6z9WYXTv5NrFMe3JHW0I77wqZgcmueBchOrwte/YwWT9JV/kvkWz55sbk1d0uzadzeyW9Ihg99CT/HA==, tarball: https://codeload.github.com/jrc03c/diff-match-patch/tar.gz/e378f00d421f3febb15a58a78f97b67d0870d34e}
     version: 0.0.1
 
   '@jrc03c/exponential-backoff@0.0.3':
@@ -169,8 +169,8 @@ packages:
   '@jrc03c/fs-extras@0.0.30':
     resolution: {integrity: sha512-kjzXp16OmitmcvXbcdktng560+iv577COaa513ed5eJgc4oZkUw+++KmTqxcbY8PJLydkBFTz5YTiUZKxj7rgg==}
 
-  '@jrc03c/gt-builder@0.0.5':
-    resolution: {integrity: sha512-purSlH00mMn97znuLQaODg9HZqLfuq2ibtoLG6Go3dMQZ7ZU96g6qwTdF0KB4A5gt90Mla7UR80KgAdXcJybhQ==}
+  '@jrc03c/gt-builder@0.0.8':
+    resolution: {integrity: sha512-ymgf9jZRcwyPlt7satQmuoNVguHQvg5Z49284sfhy6z4JeF/dMVkKo93bHQv52DeTIOobze2/n86S2QZOhTlYg==}
     hasBin: true
 
   '@jrc03c/gt-helpers@0.0.5':
@@ -203,7 +203,7 @@ packages:
     resolution: {integrity: sha512-8/e56zdPjDtDjma22l2Fe3d8uGo3ZC5NssIu6JErm/SaWjQ8uD2zVLtsGtYaea1QDv8ccZhI6yYGtjTWDr36AA==}
 
   '@jrc03c/js-math-tools@https://codeload.github.com/jrc03c/js-math-tools/tar.gz/77fd5c42165cc829db7fff1044d62e53b42a9126':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/jrc03c/js-math-tools/tar.gz/77fd5c42165cc829db7fff1044d62e53b42a9126}
+    resolution: {gitHosted: true, integrity: sha512-+J7ZAem+OE8M+JF/dnm0FdAcg2YVVLlVxQxby2nQ3AC5ldlSoNFEQaYyKQq16lgb4TEZBZ1tN3jOUSziYjMG1g==, tarball: https://codeload.github.com/jrc03c/js-math-tools/tar.gz/77fd5c42165cc829db7fff1044d62e53b42a9126}
     version: 0.0.63
 
   '@jrc03c/js-text-tools@0.0.106':
@@ -1358,7 +1358,7 @@ snapshots:
     dependencies:
       '@jrc03c/js-math-tools': 0.0.104
 
-  '@jrc03c/gt-builder@0.0.5':
+  '@jrc03c/gt-builder@0.0.8':
     dependencies:
       '@jrc03c/data-class': 0.0.3
       '@jrc03c/data-file-helpers': 0.0.3

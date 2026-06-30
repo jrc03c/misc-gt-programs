@@ -4,7 +4,7 @@
     "@jrc03c/data-class": "^0.0.3",
     "@jrc03c/data-file-helpers": "^0.0.2",
     "@jrc03c/fs-extras": "^0.0.23",
-    "@jrc03c/gt-builder": "^0.0.5",
+    "@jrc03c/gt-builder": "^0.0.8",
     "@jrc03c/gt-helpers": "^0.0.5",
     "@jrc03c/js-data-science-helpers": "^0.0.86",
     "@jrc03c/js-math-tools": "^0.0.92",

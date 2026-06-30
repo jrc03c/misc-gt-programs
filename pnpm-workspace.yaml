@@ -1,3 +1,3 @@
 blockExoticSubdeps: false
 minimumReleaseAgeExclude:
-  - '@jrc03c/gt-builder@0.0.5'
+  - "@jrc03c/gt-builder"

@@ -1,0 +1,77 @@
+*html
+	<style>
+		h1 {
+			color: black !important;
+			font-weight: bold !important;
+			margin: 1.5em 0em !important;
+		}
+	</style>
+
+--------------------------------------------------------------------------------
+-- VALID VALUES
+--------------------------------------------------------------------------------
+
+>> rights = []
+>> rights.add("12345")
+>> rights.add("54321")
+>> rights.add("00000")
+>> rights.add("12345-6789")
+>> rights.add("00000-0000")
+>> rights.add("98765-4321")
+
+*html
+	<h1>All of these values should be valid:</h1>
+
+*for: i, v in rights
+	-- @to-child: zip_code
+	-- @from-child: is_valid
+	>> zip_code = v
+	*program: @jrc03c/misc/validate-zip-code
+
+	*if: is_valid = 1
+		🟢 {v}
+
+	*if: is_valid = 0
+		🔴 {v}
+
+--------------------------------------------------------------------------------
+-- INVALID VALUES
+--------------------------------------------------------------------------------
+
+>> wrongs = []
+>> wrongs.add("")
+>> wrongs.add("1")
+>> wrongs.add("12")
+>> wrongs.add("123")
+>> wrongs.add("1234")
+>> wrongs.add("123456")
+>> wrongs.add("1234567")
+>> wrongs.add("12345678")
+>> wrongs.add("123456789")
+>> wrongs.add("1234567890")
+>> wrongs.add("123-456-789")
+>> wrongs.add("1234-56789")
+>> wrongs.add("12345-6789-")
+>> wrongs.add("12345-6789-000")
+>> wrongs.add("foo")
+>> wrongs.add("foo-12345-6789")
+>> wrongs.add("foo12345-6789")
+>> wrongs.add("12345-6789foo")
+>> wrongs.add("12345-6789-foo")
+
+*html
+	<h1>All of these values should be invalid:</h1>
+
+*for: i, v in wrongs
+	-- @to-child: zip_code
+	-- @from-child: is_valid
+	>> zip_code = v
+	*program: @jrc03c/misc/validate-zip-code
+
+	*if: is_valid = 1
+		🟢 {v}
+
+	*if: is_valid = 0
+		🔴 {v}
+
+*button: Okay
