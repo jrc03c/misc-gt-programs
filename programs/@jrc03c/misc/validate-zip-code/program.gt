@@ -10,6 +10,7 @@
 	*question: What is your zip code?
 		*save: zip_code
 
+>> zip_code = zip_code.text
 >> zip_code = zip_code.clean
 
 --------------------------------------------------------------------------------
