@@ -15,55 +15,55 @@
 
 --------------------------------------------------------------------------------
 
->> is_valid = 1
+>> zip_code_is_valid = 1
 >> digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 *if: allow_zip_code_plus_four = 0
 	*if: not (zip_code.size = 5)
-		>> is_valid = 0
+		>> zip_code_is_valid = 0
 		*goto: EndLabel
 
 	>> chars = zip_code.split("")
 
 	*for: i, char in chars
 		*if: digits.count(char) = 0
-			>> is_valid = 0
+			>> zip_code_is_valid = 0
 
-	*if: is_valid = 0
+	*if: zip_code_is_valid = 0
 		*goto: EndLabel
 
 *if: allow_zip_code_plus_four = 1
 	>> parts = zip_code.split("-")
 
 	*if: parts.size > 2
-		>> is_valid = 0
+		>> zip_code_is_valid = 0
 		*goto: EndLabel
 
 	*if: not (parts[1].size = 5)
-		>> is_valid = 0
+		>> zip_code_is_valid = 0
 		*goto: EndLabel
 
 	>> chars1 = parts[1].split("")
 
 	*for: i, char in chars1
 		*if: digits.count(char) = 0
-			>> is_valid = 0
+			>> zip_code_is_valid = 0
 
-	*if: is_valid = 0
+	*if: zip_code_is_valid = 0
 		*goto: EndLabel
 
 	*if: parts.size = 2
 		*if: not (parts[2].size = 4)
-			>> is_valid = 0
+			>> zip_code_is_valid = 0
 			*goto: EndLabel
 
 		>> chars2 = parts[2].split("")
 
 		*for: i, char in chars2
 			*if: digits.count(char) = 0
-				>> is_valid = 0
+				>> zip_code_is_valid = 0
 
-		*if: is_valid = 0
+		*if: zip_code_is_valid = 0
 			*goto: EndLabel
 
 --------------------------------------------------------------------------------

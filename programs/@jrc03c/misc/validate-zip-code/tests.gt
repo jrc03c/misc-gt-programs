@@ -24,14 +24,14 @@
 
 *for: i, v in rights
 	-- @to-child: zip_code
-	-- @from-child: is_valid
+	-- @from-child: zip_code_is_valid
 	>> zip_code = v
 	*program: @jrc03c/misc/validate-zip-code
 
-	*if: is_valid = 1
+	*if: zip_code_is_valid = 1
 		🟢 {v}
 
-	*if: is_valid = 0
+	*if: zip_code_is_valid = 0
 		🔴 {v}
 
 --------------------------------------------------------------------------------
@@ -64,14 +64,14 @@
 
 *for: i, v in wrongs
 	-- @to-child: zip_code
-	-- @from-child: is_valid
+	-- @from-child: zip_code_is_valid
 	>> zip_code = v
 	*program: @jrc03c/misc/validate-zip-code
 
-	*if: is_valid = 1
+	*if: zip_code_is_valid = 1
 		🟢 {v}
 
-	*if: is_valid = 0
+	*if: zip_code_is_valid = 0
 		🔴 {v}
 
 *button: Okay
