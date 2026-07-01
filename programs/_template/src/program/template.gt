@@ -1,0 +1,14 @@
+-- @gt-disable-next-line
+{{ docs }}
+
+*question: What's your name?
+	*save: name
+
+Hi, {name}!
+
+*button: Okay
+
+--------------------------------------------------------------------------------
+
+-- @gt-disable-next-line
+{{ cleanup }}
