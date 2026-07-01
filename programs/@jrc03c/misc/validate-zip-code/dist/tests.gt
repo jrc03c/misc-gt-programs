@@ -20,62 +20,103 @@
 --------------------------------------------------------------------------------
 
 >> rights = []
->> rights.add("12345")
->> rights.add("54321")
->> rights.add("00000")
->> rights.add("12345-6789")
->> rights.add("00000-0000")
->> rights.add("98765-4321")
+>> rights.add(["12345", 0])
+>> rights.add(["12345", 1])
+>> rights.add(["54321", 0])
+>> rights.add(["54321", 1])
+>> rights.add(["00000", 0])
+>> rights.add(["00000", 1])
+>> rights.add(["12345-6789", 1])
+>> rights.add(["00000-0000", 1])
+>> rights.add(["98765-4321", 1])
 
 *html
 	<h1>All of these values should be valid:</h1>
 
-*for: i, v in rights
-	>> zip_code = v
+*for: i, pair in rights
+	>> allow_zip_code_plus_four = pair[2]
+	>> zip_code = pair[1]
 	*program: @jrc03c/misc/validate-zip-code
 
-	*if: zip_code_is_valid = 1
-		🟢 {v}
+	>> pass = 1
 
 	*if: zip_code_is_valid = 0
-		🔴 {v}
+		>> pass = 0
+
+	*if: not (zip_code_short.size = 5)
+		>> pass = 0
+
+	*if: zip_code_is_valid = 1 and zip_code.count("-") > 0
+		*if: not (zip_code_long.size = 10)
+			>> pass = 0
+
+	*if: pass = 1
+		🟢 {zip_code}
+
+	*if: pass = 0
+		🔴 {zip_code}
+
+	*wait: 0.01.seconds
 
 --------------------------------------------------------------------------------
 -- INVALID VALUES
 --------------------------------------------------------------------------------
 
 >> wrongs = []
->> wrongs.add("")
->> wrongs.add("1")
->> wrongs.add("12")
->> wrongs.add("123")
->> wrongs.add("1234")
->> wrongs.add("123456")
->> wrongs.add("1234567")
->> wrongs.add("12345678")
->> wrongs.add("123456789")
->> wrongs.add("1234567890")
->> wrongs.add("123-456-789")
->> wrongs.add("1234-56789")
->> wrongs.add("12345-6789-")
->> wrongs.add("12345-6789-000")
->> wrongs.add("foo")
->> wrongs.add("foo-12345-6789")
->> wrongs.add("foo12345-6789")
->> wrongs.add("12345-6789foo")
->> wrongs.add("12345-6789-foo")
+>> wrongs.add(["", 0])
+>> wrongs.add(["", 1])
+>> wrongs.add(["1", 0])
+>> wrongs.add(["1", 1])
+>> wrongs.add(["12", 0])
+>> wrongs.add(["12", 1])
+>> wrongs.add(["123", 0])
+>> wrongs.add(["123", 1])
+>> wrongs.add(["1234", 0])
+>> wrongs.add(["1234", 1])
+>> wrongs.add(["123456", 0])
+>> wrongs.add(["123456", 1])
+>> wrongs.add(["1234567", 0])
+>> wrongs.add(["1234567", 1])
+>> wrongs.add(["12345678", 0])
+>> wrongs.add(["12345678", 1])
+>> wrongs.add(["123456789", 0])
+>> wrongs.add(["123456789", 1])
+>> wrongs.add(["1234567890", 0])
+>> wrongs.add(["1234567890", 1])
+>> wrongs.add(["123-456-789", 0])
+>> wrongs.add(["123-456-789", 1])
+>> wrongs.add(["1234-56789", 0])
+>> wrongs.add(["1234-56789", 1])
+>> wrongs.add(["12345-6789-", 0])
+>> wrongs.add(["12345-6789-", 1])
+>> wrongs.add(["12345-6789-000", 0])
+>> wrongs.add(["12345-6789-000", 1])
+>> wrongs.add(["foo", 0])
+>> wrongs.add(["foo", 1])
+>> wrongs.add(["foo-12345-6789", 0])
+>> wrongs.add(["foo-12345-6789", 1])
+>> wrongs.add(["foo12345-6789", 0])
+>> wrongs.add(["foo12345-6789", 1])
+>> wrongs.add(["12345-6789foo", 0])
+>> wrongs.add(["12345-6789foo", 1])
+>> wrongs.add(["12345-6789-foo", 0])
+>> wrongs.add(["12345-6789-foo", 1])
+>> wrongs.add(["12345-6789", 0])
 
 *html
 	<h1>All of these values should be invalid:</h1>
 
-*for: i, v in wrongs
-	>> zip_code = v
+*for: i, pair in wrongs
+	>> allow_zip_code_plus_four = pair[2]
+	>> zip_code = pair[1]
 	*program: @jrc03c/misc/validate-zip-code
 
 	*if: zip_code_is_valid = 1
-		🟢 {v}
+		🟢 {zip_code}
 
 	*if: zip_code_is_valid = 0
-		🔴 {v}
+		🔴 {zip_code}
+
+	*wait: 0.01.seconds
 
 *button: Okay

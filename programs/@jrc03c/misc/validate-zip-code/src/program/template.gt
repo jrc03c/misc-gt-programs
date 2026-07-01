@@ -24,6 +24,7 @@
 >> zip_code_is_valid = 1
 >> digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 >> zip_code_short = zip_code
+>> zip_code_long = ""
 
 *if: allow_zip_code_plus_four = 0
 	*if: not (zip_code.size = 5)

@@ -35,13 +35,8 @@ notes: >-
 #   - world
 
 output-variables:
-  - name: name
-    description: the user's name
-    should-show-in-table: true
-    type: string
-
   - name: zip_code
-    description: the zip code, cleaned
+    description: the given zip code, cleaned
     should-show-in-table: true
     type: string
 
