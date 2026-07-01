@@ -1,3 +1,6 @@
+-- @gt-disable-next-line
+{{ docs }}
+
 *html
 	<style>
 		h1 {

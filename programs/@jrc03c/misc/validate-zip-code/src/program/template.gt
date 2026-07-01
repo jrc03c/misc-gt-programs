@@ -1,3 +1,6 @@
+-- @gt-disable-next-line
+{{ docs }}
+
 -- @from-parent: allow_zip_code_plus_four
 -- @from-parent: zip_code
 
@@ -69,3 +72,6 @@
 --------------------------------------------------------------------------------
 
 *label: EndLabel
+
+-- @gt-disable-next-line
+{{ cleanup }}
