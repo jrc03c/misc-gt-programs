@@ -45,6 +45,11 @@ output-variables:
     should-show-in-table: true
     type: string
 
+  - name: zip_code_is_valid
+    description: whether or not the zip code is valid (i.e., is a string in five-digit or nine-digit format)
+    should-show-in-table: true
+    type: binary (0 or 1)
+
   - name: zip_code_long
     description: the nine-digit zip code (i.e., in 00000-0000 format); is only defined if (1) `allow_zip_code_plus_four` = 1 and (2) `zip_code` was given in nine-digit format
     should-show-in-table: true
@@ -54,11 +59,6 @@ output-variables:
     description: the five-digit zip code (i.e., in 00000 format)
     should-show-in-table: true
     type: string
-
-  - name: zip_code_is_valid
-    description: whether or not the zip code is valid (i.e., is a string in five-digit or nine-digit format)
-    should-show-in-table: true
-    type: binary (0 or 1)
 
 # services:
 #   - name:
