@@ -1,4 +1,4 @@
-author: Alice Jones <alice.jones@example.com>
+author: Josh Castle <joshrcastle@gmail.com>
 
 gtlint-directives-to-remove-on-build:
   - "@*"
@@ -13,7 +13,7 @@ gtlint-directives-to-remove-on-build:
 #     type:
 
 notes: >-
-  Here are some notes!
+  Target: https://www.guidedtrack.com/programs/37778
 
 # other-variables-to-clean-up:
 #   - foo
@@ -24,11 +24,11 @@ notes: >-
 #   - hello
 #   - world
 
-output-variables:
-  - name: name
-    description: the user's name
-    should-show-in-table: true
-    type: string
+# output-variables:
+#   - name: name
+#     description: the user's name
+#     should-show-in-table: true
+#     type: string
 
 # services:
 #   - name:
@@ -37,5 +37,5 @@ output-variables:
 #       - key:
 #         value:
 
-title: My Cool Program
-url: https://www.guidedtrack.com/programs/00000/edit
+title: "@jrc03c/misc/validate-zip-code/tests"
+url: https://www.guidedtrack.com/programs/37781/edit
