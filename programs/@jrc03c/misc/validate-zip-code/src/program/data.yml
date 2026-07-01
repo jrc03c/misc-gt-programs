@@ -1,19 +1,27 @@
-author: Alice Jones <alice.jones@example.com>
+author: Josh Castle <joshrcastle@gmail.com>
 
 gtlint-directives-to-remove-on-build:
   - "@*"
 
-# input-variables:
-#   - name:
-#     default-value:
-#     description:
-#     is-required: false
-#     should-clean-up: true
-#     should-show-in-table: true
-#     type:
+input-variables:
+  - name: allow_zip_code_plus_four
+    default-value: 1
+    description: whether or not to allow zip codes in 00000-0000 format (in addition to 00000 format)
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: binary (0 or 1)
+
+  - name: zip_code
+    default-value:
+    description: a zip code to validate; if not provided, the user will be asked for its value
+    is-required: false
+    should-clean-up: false
+    should-show-in-table: true
+    type: string
 
 notes: >-
-  Here are some notes!
+  Unit tests: https://www.guidedtrack.com/programs/37781
 
 # other-variables-to-clean-up:
 #   - foo
@@ -30,6 +38,21 @@ output-variables:
     should-show-in-table: true
     type: string
 
+  - name: zip_code
+    description: the zip code, cleaned
+    should-show-in-table: true
+    type: string
+
+  - name: zip_code_long
+    description: the nine-digit zip code (i.e., in 00000-0000 format); is only defined if (1) `allow_zip_code_plus_four` = 1 and (2) `zip_code` was given in nine-digit format
+    should-show-in-table: true
+    type: string
+
+  - name: zip_code_short
+    description: the five-digit zip code (i.e., in 00000 format)
+    should-show-in-table: true
+    type: string
+
 # services:
 #   - name:
 #     url:
@@ -37,5 +60,5 @@ output-variables:
 #       - key:
 #         value:
 
-title: My Cool Program
-url: https://www.guidedtrack.com/programs/00000/edit
+title: "@jrc03c/misc/validate-zip-code"
+url: https://www.guidedtrack.com/programs/37778/edit
