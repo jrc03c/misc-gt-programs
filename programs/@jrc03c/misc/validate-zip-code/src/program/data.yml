@@ -23,6 +23,8 @@ input-variables:
 notes: >-
   Unit tests: https://www.guidedtrack.com/programs/37781
 
+  Note that this program only confirms that a given zip code is a string in five-digit (00000) or nine-digit (00000-0000) format. It does *not* verify that the given zip code actually exists in the real world.
+
 # other-variables-to-clean-up:
 #   - foo
 #   - bar
