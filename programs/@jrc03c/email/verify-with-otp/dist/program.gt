@@ -1,0 +1,383 @@
+--------------------------------------------------------------------------------
+-- 👉 INPUTS:
+--------------------------------------------------------------------------------
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : email_address                                               │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : string                                                      │
+-- │ DESCRIPTION : the user's email address; if undefined, then the user will  │
+-- │               be asked for it                                             │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : email_body                                                  │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : string                                                      │
+-- │ DEFAULT     : <p>Your one-time passcode is:</p><h1>$OTP</h1>              │
+-- │ DESCRIPTION : the body of the email to be sent to the user; instances of  │
+-- │               the string "$OTP" will be replaced with the actual          │
+-- │               one-time passcode value                                     │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : email_body_is_html                                          │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : binary (0 or 1)                                             │
+-- │ DEFAULT     : 1                                                           │
+-- │ DESCRIPTION : whether or not to interpret `email_body` as HTML code       │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : email_subject                                               │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : string                                                      │
+-- │ DEFAULT     : Your one-time passcode is: $OTP                             │
+-- │ DESCRIPTION : the subject of the email to be sent to the user; instances  │
+-- │               of the string "$OTP" will be replaced with the actual       │
+-- │               one-time passcode value                                     │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : max_send_count                                              │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : number                                                      │
+-- │ DEFAULT     : 5                                                           │
+-- │ DESCRIPTION : the maximum number of times a one-time passcode can be      │
+-- │               sent to the email address                                   │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : otp_timeout_seconds                                         │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : number                                                      │
+-- │ DEFAULT     : 900                                                         │
+-- │ DESCRIPTION : the amount of time in seconds for which a one-time          │
+-- │               passcode will remain valid                                  │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : send_timeout_scalar                                         │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : number                                                      │
+-- │ DEFAULT     : 2                                                           │
+-- │ DESCRIPTION : the amount by which the wait time will be scaled each time  │
+-- │               a one-time passcode is emailed to the user                  │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : send_timeout_seconds                                        │
+-- │ REQUIRED    : no                                                          │
+-- │ TYPE        : number                                                      │
+-- │ DEFAULT     : 30                                                          │
+-- │ DESCRIPTION : the number of seconds that must elapse before a one-time    │
+-- │               passcode can be emailed to the user again; only applies     │
+-- │               after the first two sends; will be scaled by                │
+-- │               `send_timeout_scalar` after *every* send (including after   │
+-- │               the first two "free" sends)                                 │
+-- └───────────────────────────────────────────────────────────────────────────┘
+--------------------------------------------------------------------------------
+-- 👈 OUTPUTS:
+--------------------------------------------------------------------------------
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : email_address                                               │
+-- │ TYPE        : string                                                      │
+-- │ DESCRIPTION : the cleaned, lowercased version of the given email address  │
+-- └───────────────────────────────────────────────────────────────────────────┘
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ NAME        : is_verified                                                 │
+-- │ TYPE        : binary (0 or 1)                                             │
+-- │ DESCRIPTION : whether or not the user's ownership of the email address    │
+-- │               was verified                                                │
+-- └───────────────────────────────────────────────────────────────────────────┘
+--------------------------------------------------------------------------------
+-- 📜 NOTES:
+--------------------------------------------------------------------------------
+-- ┌───────────────────────────────────────────────────────────────────────────┐
+-- │ This program verifies that a user owns an email address by sending a      │
+-- │ randomly-generated one-time passcode to the email address and then        │
+-- │ asking the user to enter that passcode into the program.                  │
+-- │                                                                           │
+-- │ Some things to keep in mind:                                              │
+-- │                                                                           │
+-- │ 1. Users can ask for passcodes to be re-emailed to them. However, this    │
+-- │ functionality is rate-limited. The first two sends are free; but after    │
+-- │ that, they must wait 2 minutes, then 4 minutes, then 8, then 16, etc.     │
+-- │ The exact amount of time and the rate at which it scales can be           │
+-- │ controlled by setting the `send_timeout_seconds` and                      │
+-- │ `send_timeout_scalar` variables. As long as a passcode hasn't yet         │
+-- │ expired, each re-send will include that same passcode.                    │
+-- │                                                                           │
+-- │ 2. Passcodes expire after 15 minutes. This can be changed by setting the  │
+-- │ `otp_timeout_seconds` variable. If a user waits too long to enter their   │
+-- │ passcode, they'll be asked whether they want to start over or to quit /   │
+-- │ return to the parent program. If they indicate that they want to start    │
+-- │ over, then a fresh passcode will be generated and sent.                   │
+-- │                                                                           │
+-- │ 3. If the user enters a passcode incorrectly more than 5 times, the       │
+-- │ program will quit / return to the parent program.                         │
+-- │                                                                           │
+-- │ 4. If `email_body_is_html` is set to 1, and if you provide a custom       │
+-- │ value for `email_body`, then be sure to test the program at least once    │
+-- │ to confirm that GuidedTrack doesn't silently strip out any of your HTML.  │
+-- │ For example, an `email_body` value of "Hello, world!" is not considered   │
+-- │ to be valid, safe HTML by GuidedTrack, and GuidedTrack will therefore     │
+-- │ strip that value out of the email body at send time — without warning     │
+-- │ you! To make the value valid, wrap it in at least one pair of HTML tags,  │
+-- │ like "<p>Hello, world!</p>". (But that's only the simplest case. There    │
+-- │ are innumerable ways to create invalid HTML, and merely wrapping your     │
+-- │ value in tags likely won't suffice to make it valid in most situations.   │
+-- │ If you run into issues here, feel free to ask me (joshrcastle@gmail.com)  │
+-- │ or an LLM for help!)                                                      │
+-- └───────────────────────────────────────────────────────────────────────────┘
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- DEFINE INITIAL VARIABLES
+--------------------------------------------------------------------------------
+
+*label: StartLabel
+
+*if: not email_body
+	>> email_body = ""
+	>> email_body = "{email_body}<p>Your one-time passcode is:</p>"
+	>> email_body = "{email_body}<h1>$OTP</h1>"
+
+*if: not email_body_is_html
+	>> email_body_is_html = 1
+
+*if: not email_subject
+	>> email_subject = "Your one-time passcode is: $OTP"
+
+*if: not max_send_count
+	>> max_send_count = 5
+
+*if: not otp_timeout_seconds
+	>> otp_timeout_seconds = 900
+
+*if: not send_timeout_scalar
+	>> send_timeout_scalar = 2
+
+*if: not send_timeout_seconds
+	>> send_timeout_seconds = 30
+
+>> is_verified = 0
+>> otp_timeout = otp_timeout_seconds.seconds
+>> send_count = 0
+
+--------------------------------------------------------------------------------
+-- ASK FOR EMAIL ADDRESS
+--------------------------------------------------------------------------------
+
+>> email_is_valid = "yes"
+
+*label: EmailAddressAskLabel
+
+*if: not email_address
+	>> email_address = ""
+
+	*if: email_is_valid = "no"
+		*html
+			<style>
+				.component *:last-child {
+					margin-bottom: 0;
+				}
+			</style>
+
+		*component
+			*classes: alert alert-warning
+			Oops! That email address doesn't appear to be valid. Please enter a valid email address.
+
+	*question: Email address:
+		*default: email_address
+		*save: email_address
+
+>> email_address = email_address.text
+>> email_address = email_address.clean
+>> email_address = email_address.lowercase
+
+>> email = email_address
+*program: @jrc03c/email/validate-address
+
+*if: email_is_valid = "no"
+	*goto: EmailAddressAskLabel
+
+--------------------------------------------------------------------------------
+-- GENERATE OTP
+--------------------------------------------------------------------------------
+
+>> otp = ""
+>> otp_generation_time = calendar::now
+
+*label: OtpGenerationLabel
+
+>> should_regenerate = 0
+
+*if: otp = ""
+	>> should_regenerate = 1
+
+*if: calendar::now > otp_generation_time + otp_timeout
+	>> should_regenerate = 1
+
+*if: should_regenerate = 1
+	>> random_string_charset = "1234567890"
+	>> random_string_length = 6
+	*program: @jrc03c/string/random
+	>> otp = random_string
+	>> otp_generation_time = calendar::now
+
+--------------------------------------------------------------------------------
+-- SEND OTP EMAIL
+--------------------------------------------------------------------------------
+
+*if: send_count > 1
+	*question: We can re-send the email after the timer above finishes counting down. In the meantime, if you receive one of the emails we've already sent, then please click the button below.
+		*tip: Remember to check your spam / junk folders!
+		*countdown: send_timeout_seconds.seconds
+		I have my one-time passcode now
+			*goto: OtpAskLabel
+
+>> count = "all"
+>> pattern = "$OTP"
+>> replacement = otp
+>> target = email_body
+*program: @jrc03c/string/replace
+>> email_body_temp = string_replaced
+
+>> count = "all"
+>> pattern = "$OTP"
+>> replacement = otp
+>> target = email_subject
+*program: @jrc03c/string/replace
+>> email_subject_temp = string_replaced
+
+*if: email_body_is_html = 0
+	*email
+		*to: {email_address}
+		*subject: {email_subject_temp}
+		*body
+			{email_body_temp}
+
+*if: email_body_is_html = 1
+	*email
+		*to: {email_address}
+		*subject: {email_subject_temp}
+		*body
+			*html
+				{email_body_temp}
+
+*html
+	<style>
+		#countdown {
+			visibility: hidden !important;
+		}
+	</style>
+
+*question: {""}
+	*countdown: 0.1.seconds
+	*classes: hidden
+
+>> send_count = send_count + 1
+>> send_timeout_seconds = send_timeout_seconds * send_timeout_scalar
+
+*if: send_count >= max_send_count
+	*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- ASK FOR OTP
+--------------------------------------------------------------------------------
+
+>> max_tries = 5
+>> tries = 0
+>> is_incorrect = 0
+
+*label: OtpAskLabel
+
+>> remaining_time = otp_generation_time + otp_timeout - calendar::now
+
+*html
+	<style>
+		.component *:last-child {
+			margin-bottom: 0;
+		}
+	</style>
+
+*if: is_incorrect = 1
+	*component
+		*classes: alert alert-warning
+		Oops! That doesn't look like the right one-time passcode. Please try again.
+
+*component
+	*classes: alert alert-info
+	*click
+		*goto: OtpGenerationLabel
+	Didn't receive your one-time passcode email? Click here.
+
+*question: One-time passcode:
+	*countdown: remaining_time
+	*save: otp_temp
+
+>> is_expired = 0
+
+*if: calendar::now > otp_generation_time + otp_timeout
+	>> is_expired = 1
+	*goto: OtpExpiredLabel
+
+>> otp_temp = otp_temp.clean
+>> is_incorrect = 0
+
+*if: not (otp_temp = otp)
+	>> is_incorrect = 1
+	>> tries = tries + 1
+
+	*if: tries >= max_tries
+		*goto: EndLabel
+
+	*wait: 3.seconds
+	*goto: OtpAskLabel
+
+>> is_verified = 1
+
+*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- HANDLE EXPIRED PASSCODES
+--------------------------------------------------------------------------------
+
+*label: OtpExpiredLabel
+
+*if: is_expired = 0
+	*goto: EndLabel
+
+*question: Oops! Your one-time passcode expired. What would you like to do?
+	Get a new passcode
+		*goto: StartLabel
+	Quit
+		*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- CLEAN UP & EXIT
+--------------------------------------------------------------------------------
+
+*label: EndLabel
+
+>> count = ""
+>> email = ""
+>> email_body = ""
+>> email_body_is_html = ""
+>> email_body_temp = ""
+>> email_is_valid = ""
+>> email_subject = ""
+>> email_subject_temp = ""
+>> is_expired = ""
+>> is_incorrect = ""
+>> max_send_count = ""
+>> max_tries = ""
+>> otp = ""
+>> otp_generation_time = ""
+>> otp_temp = ""
+>> otp_timeout = ""
+>> otp_timeout_seconds = ""
+>> pattern = ""
+>> random_string_charset = ""
+>> random_string_length = ""
+>> remaining_time = ""
+>> replacement = ""
+>> send_count = ""
+>> send_timeout_scalar = ""
+>> send_timeout_seconds = ""
+>> should_regenerate = ""
+>> target = ""
+>> tries = ""

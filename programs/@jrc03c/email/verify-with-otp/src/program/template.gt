@@ -1,0 +1,259 @@
+-- @gt-disable-next-line
+{{ docs }}
+
+--------------------------------------------------------------------------------
+-- DEFINE INITIAL VARIABLES
+--------------------------------------------------------------------------------
+
+-- @from-parent: email_address
+-- @from-parent: email_body
+-- @from-parent: email_body_is_html
+-- @from-parent: email_subject
+-- @from-parent: max_send_count
+-- @from-parent: otp_timeout_seconds
+-- @from-parent: send_timeout_scalar
+-- @from-parent: send_timeout_seconds
+-- @to-parent: email_address
+-- @to-parent: is_verified
+
+*label: StartLabel
+
+*if: not email_body
+	>> email_body = ""
+	>> email_body = "{email_body}<p>Your one-time passcode is:</p>"
+	>> email_body = "{email_body}<h1>$OTP</h1>"
+
+*if: not email_body_is_html
+	>> email_body_is_html = 1
+
+*if: not email_subject
+	>> email_subject = "Your one-time passcode is: $OTP"
+
+*if: not max_send_count
+	>> max_send_count = 5
+
+*if: not otp_timeout_seconds
+	>> otp_timeout_seconds = 900
+
+*if: not send_timeout_scalar
+	>> send_timeout_scalar = 2
+
+*if: not send_timeout_seconds
+	>> send_timeout_seconds = 30
+
+>> is_verified = 0
+>> otp_timeout = otp_timeout_seconds.seconds
+>> send_count = 0
+
+--------------------------------------------------------------------------------
+-- ASK FOR EMAIL ADDRESS
+--------------------------------------------------------------------------------
+
+>> email_is_valid = "yes"
+
+*label: EmailAddressAskLabel
+
+*if: not email_address
+	>> email_address = ""
+
+	*if: email_is_valid = "no"
+		*html
+			<style>
+				.component *:last-child {
+					margin-bottom: 0;
+				}
+			</style>
+
+		*component
+			*classes: alert alert-warning
+			Oops! That email address doesn't appear to be valid. Please enter a valid email address.
+
+	*question: Email address:
+		*default: email_address
+		*save: email_address
+
+>> email_address = email_address.text
+>> email_address = email_address.clean
+>> email_address = email_address.lowercase
+
+-- @to-child: email
+>> email = email_address
+*program: @jrc03c/email/validate-address
+
+*if: email_is_valid = "no"
+	*goto: EmailAddressAskLabel
+
+--------------------------------------------------------------------------------
+-- GENERATE OTP
+--------------------------------------------------------------------------------
+
+>> otp = ""
+>> otp_generation_time = calendar::now
+
+*label: OtpGenerationLabel
+
+>> should_regenerate = 0
+
+*if: otp = ""
+	>> should_regenerate = 1
+
+*if: calendar::now > otp_generation_time + otp_timeout
+	>> should_regenerate = 1
+
+*if: should_regenerate = 1
+	-- @to-child: random_string_charset
+	-- @to-child: random_string_length
+	-- @from-child: random_string
+	>> random_string_charset = "1234567890"
+	>> random_string_length = 6
+	*program: @jrc03c/string/random
+	>> otp = random_string
+	>> otp_generation_time = calendar::now
+
+--------------------------------------------------------------------------------
+-- SEND OTP EMAIL
+--------------------------------------------------------------------------------
+
+*if: send_count > 1
+	*question: We can re-send the email after the timer above finishes counting down. In the meantime, if you receive one of the emails we've already sent, then please click the button below.
+		*tip: Remember to check your spam / junk folders!
+		*countdown: send_timeout_seconds.seconds
+		I have my one-time passcode now
+			*goto: OtpAskLabel
+
+-- @to-child: count
+-- @to-child: pattern
+-- @to-child: replacement
+-- @to-child: target
+-- @from-child: string_replaced
+>> count = "all"
+>> pattern = "$OTP"
+>> replacement = otp
+>> target = email_body
+*program: @jrc03c/string/replace
+>> email_body_temp = string_replaced
+
+-- @to-child: count
+-- @to-child: pattern
+-- @to-child: replacement
+-- @to-child: target
+-- @from-child: string_replaced
+>> count = "all"
+>> pattern = "$OTP"
+>> replacement = otp
+>> target = email_subject
+*program: @jrc03c/string/replace
+>> email_subject_temp = string_replaced
+
+*if: email_body_is_html = 0
+	*email
+		*to: {email_address}
+		*subject: {email_subject_temp}
+		*body
+			{email_body_temp}
+
+*if: email_body_is_html = 1
+	*email
+		*to: {email_address}
+		*subject: {email_subject_temp}
+		*body
+			*html
+				{email_body_temp}
+
+*html
+	<style>
+		#countdown {
+			visibility: hidden !important;
+		}
+	</style>
+
+*question: {""}
+	*countdown: 0.1.seconds
+	*classes: hidden
+
+>> send_count = send_count + 1
+>> send_timeout_seconds = send_timeout_seconds * send_timeout_scalar
+
+*if: send_count >= max_send_count
+	*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- ASK FOR OTP
+--------------------------------------------------------------------------------
+
+>> max_tries = 5
+>> tries = 0
+>> is_incorrect = 0
+
+*label: OtpAskLabel
+
+>> remaining_time = otp_generation_time + otp_timeout - calendar::now
+
+*html
+	<style>
+		.component *:last-child {
+			margin-bottom: 0;
+		}
+	</style>
+
+*if: is_incorrect = 1
+	*component
+		*classes: alert alert-warning
+		Oops! That doesn't look like the right one-time passcode. Please try again.
+
+*component
+	*classes: alert alert-info
+	*click
+		*goto: OtpGenerationLabel
+	Didn't receive your one-time passcode email? Click here.
+
+*question: One-time passcode:
+	*countdown: remaining_time
+	*save: otp_temp
+
+>> is_expired = 0
+
+*if: calendar::now > otp_generation_time + otp_timeout
+	>> is_expired = 1
+	*goto: OtpExpiredLabel
+
+>> otp_temp = otp_temp.clean
+>> is_incorrect = 0
+
+*if: not (otp_temp = otp)
+	>> is_incorrect = 1
+	>> tries = tries + 1
+
+	*if: tries >= max_tries
+		*goto: EndLabel
+
+	*wait: 3.seconds
+	*goto: OtpAskLabel
+
+>> is_verified = 1
+
+*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- HANDLE EXPIRED PASSCODES
+--------------------------------------------------------------------------------
+
+*label: OtpExpiredLabel
+
+*if: is_expired = 0
+	*goto: EndLabel
+
+*question: Oops! Your one-time passcode expired. What would you like to do?
+	Get a new passcode
+		*goto: StartLabel
+	Quit
+		*goto: EndLabel
+
+--------------------------------------------------------------------------------
+-- CLEAN UP & EXIT
+--------------------------------------------------------------------------------
+
+*label: EndLabel
+
+-- @gt-disable-next-line
+{{ cleanup }}

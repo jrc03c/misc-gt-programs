@@ -1,0 +1,112 @@
+author: Josh Castle <joshrcastle@gmail.com>
+
+gtlint-directives-to-remove-on-build:
+  - "@*"
+
+input-variables:
+  - name: email_address
+    default-value:
+    description: the user's email address; if undefined, then the user will be asked for it
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: string
+
+  - name: email_body
+    default-value: "<p>Your one-time passcode is:</p><h1>$OTP</h1>"
+    description: the body of the email to be sent to the user; instances of the string "$OTP" will be replaced with the actual one-time passcode value
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: string
+
+  - name: email_body_is_html
+    default-value: 1
+    description: whether or not to interpret `email_body` as HTML code
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: binary (0 or 1)
+
+  - name: email_subject
+    default-value: "Your one-time passcode is: $OTP"
+    description: the subject of the email to be sent to the user; instances of the string "$OTP" will be replaced with the actual one-time passcode value
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: string
+
+  - name: max_send_count
+    default-value: 5
+    description: the maximum number of times a one-time passcode can be sent to the email address
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: number
+
+  - name: otp_timeout_seconds
+    default-value: 900
+    description: the amount of time in seconds for which a one-time passcode will remain valid
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: number
+
+  - name: send_timeout_scalar
+    default-value: 2
+    description: the amount by which the wait time will be scaled each time a one-time passcode is emailed to the user
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: number
+
+  - name: send_timeout_seconds
+    default-value: 30
+    description: the number of seconds that must elapse before a one-time passcode can be emailed to the user again; only applies after the first two sends; will be scaled by `send_timeout_scalar` after *every* send (including after the first two "free" sends)
+    is-required: false
+    should-clean-up: true
+    should-show-in-table: true
+    type: number
+
+notes: >-
+  This program verifies that a user owns an email address by sending a randomly-generated one-time passcode to the email address and then asking the user to enter that passcode into the program.
+
+  Some things to keep in mind:
+
+  1. Users can ask for passcodes to be re-emailed to them. However, this functionality is rate-limited. The first two sends are free; but after that, they must wait 2 minutes, then 4 minutes, then 8, then 16, etc. The exact amount of time and the rate at which it scales can be controlled by setting the `send_timeout_seconds` and `send_timeout_scalar` variables. As long as a passcode hasn't yet expired, each re-send will include that same passcode.
+
+  2. Passcodes expire after 15 minutes. This can be changed by setting the `otp_timeout_seconds` variable. If a user waits too long to enter their passcode, they'll be asked whether they want to start over or to quit / return to the parent program. If they indicate that they want to start over, then a fresh passcode will be generated and sent.
+
+  3. If the user enters a passcode incorrectly more than 5 times, the program will quit / return to the parent program.
+
+  4. If `email_body_is_html` is set to 1, and if you provide a custom value for `email_body`, then be sure to test the program at least once to confirm that GuidedTrack doesn't silently strip out any of your HTML. For example, an `email_body` value of "Hello, world!" is not considered to be valid, safe HTML by GuidedTrack, and GuidedTrack will therefore strip that value out of the email body at send time — without warning you! To make the value valid, wrap it in at least one pair of HTML tags, like "<p>Hello, world!</p>". (But that's only the simplest case. There are innumerable ways to create invalid HTML, and merely wrapping your value in tags likely won't suffice to make it valid in most situations. If you run into issues here, feel free to ask me (joshrcastle@gmail.com) or an LLM for help!)
+
+# other-variables-to-clean-up:
+#   - foo
+#   - bar
+#   - baz
+
+# other-variables-not-to-clean-up:
+#   - hello
+#   - world
+
+output-variables:
+  - name: email_address
+    description: the cleaned, lowercased version of the given email address
+    should-show-in-table: true
+    type: string
+
+  - name: is_verified
+    description: whether or not the user's ownership of the email address was verified
+    should-show-in-table: true
+    type: binary (0 or 1)
+
+# services:
+#   - name:
+#     url:
+#     headers:
+#       - key:
+#         value:
+
+title: "@jrc03c/email/verify-with-otp"
+url: https://www.guidedtrack.com/programs/37765/edit
